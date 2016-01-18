@@ -25,56 +25,18 @@ gulp.task('move-image-icon-dependencies', function() {
         .pipe(gulp.dest('public/assets'));
 });
 
-// Moving and concatinating all of the required thirdparty js dependencies
-gulp.task('move-concat-foundation-js-dependencies', function() {
-    console.log('Moving and concatinating all of the required thirdparty js dependencies');
-    gulp.src([
-        ('bower_components/jquery/dist/jquery.min.js'),
-        ('bower_components/foundation-sites/dist/foundation.min.js'),
-        ('bower_components/what-input/what-input.min.js')
-        ]).pipe(plumber())
-            .pipe(concat('thirdparty.js'))
-            .pipe(gulp.dest('resources/js/thirdparty'));
-});
-
-// Concatinating all of the custom js files
+// Compiling all of the custom js files into one file
+// After the compile task the file will be minified
 gulp.task('concat-custom-js', function() {
-    console.log('Concatinating all of the custom js files');
-    gulp.src('resources/js/custom/app.js')
-        .pipe(plumber())
-        .pipe(concat('custom.js'))
-        .pipe(gulp.dest('resources/js/custom'));
+    console.log('Compiling and minifying all javascript files into one file');
+    JavascriptCompile(JavascriptMinify);
 });
 
-// Compiling all sass files of the product
+// Compiling all of the sass files into one file
+// After the compile task the file will be minified
 gulp.task('sass', function () {
-    console.log('Compiling all sass files of the resources folder');
-    gulp.src('resources/scss/minimum-viable-product.scss')
-        .pipe(plumber())
-        .pipe(sass())
-        .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
-        .pipe(gulp.dest('public/css'))
-        .pipe(livereload())
-        .pipe(gulp.dest('resources/temp_css'))
-        .pipe(livereload());
-});
-
-// Minifying all css files in the public folder
-gulp.task('minify-css', function() {
-  return gulp.src('resources/temp_css/*.css')
-    .pipe(cssnano())
-    .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest('public/css'));
-});
-
-// Minifying all js files in the public js folder
-gulp.task('minify-js', function() {
-  return gulp.src([
-        ('resources/js/thirdparty/*.js'),
-        ('resources/js/custom/custom.js')
-        ]).pipe(uglify())
-          .pipe(rename({ extname: '.min.js' }))
-          .pipe(gulp.dest('public/js'));
+    console.log('Compiling and minifying all sass files into one file');
+    SassCompile(ConcatCss);
 });
 
 // Watching the scss src folder for changes
@@ -84,11 +46,53 @@ gulp.task('watch', function () {
     gulp.watch("resources/scss/**/*.scss", ['sass']);
 });
 
-// Run all tasks in the particular order
+// All functions used by the tasks above
+function JavascriptCompile(cb) {
+    console.log('Concatinating all js assets into the minimum-viable-product.js file');
+    gulp.src([
+        ('bower_components/jquery/dist/jquery.min.js'),
+        ('bower_components/foundation-sites/dist/foundation.min.js'),
+        ('bower_components/what-input/what-input.min.js'),
+        ('resources/js/custom/*')
+      ]).pipe(plumber())
+        .pipe(concat('minimum-viable-product.js'))
+        .pipe(gulp.dest('resources/js'))
+        .on('end', cb);
+}
+
+function JavascriptMinify() {
+    console.log('Minifying the minimum-viable-product.js file');
+    return gulp.src('resources/js/minimum-viable-product.js')
+        .pipe(uglify())
+        .pipe(rename({ extname: '.min.js' }))
+        .pipe(gulp.dest('public/js'));
+}
+
+function SassCompile(cb) {
+    console.log("Compiling the product and foundation sass files");
+    gulp.src('resources/scss/product.scss')
+        .pipe(plumber())
+        .pipe(sass())
+        .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
+        .pipe(gulp.dest('resources/temp_css'))
+        .on('end', cb);
+}
+
+function ConcatCss() {
+    console.log("Concat and minify the minimum-viable-product css");
+    gulp.src('resources/temp_css/product.css')
+        .pipe(concat('minimum-viable-product.css'))
+        .pipe(gulp.dest('resources/temp_css'))
+        .pipe(cssnano())
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest('public/css'));
+}
+
+// Running all tasks in a particular order
 gulp.task('default', function () {
     gulp.start('compile', 'watch');
 });
 
 gulp.task('compile', function () {
-    gulp.start('connect', 'move-image-icon-dependencies', 'move-concat-foundation-js-dependencies', 'concat-custom-js', 'sass', 'minify-css', 'minify-js');
+    gulp.start('connect', 'move-image-icon-dependencies', 'concat-custom-js', 'sass');
 });

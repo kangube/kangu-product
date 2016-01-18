@@ -1,6 +1,6 @@
 # Kangu Product - version 0.1
 
-Kangu's very first product version.
+Kangu's very first product version displaying the platform's functionality.
 
 #### Commands for getting the product running
 
