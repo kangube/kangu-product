@@ -4,7 +4,7 @@ var gulp = require('gulp'),
     plumber = require('gulp-plumber'),
     connect = require('gulp-connect-php'),
     concat = require('gulp-concat'),
-    minifyCSS = require('gulp-minify-css'),
+    cssnano = require('gulp-cssnano'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
     runSequence = require('run-sequence'),
@@ -31,8 +31,7 @@ gulp.task('move-concat-foundation-js-dependencies', function() {
     gulp.src([
         ('bower_components/jquery/dist/jquery.min.js'),
         ('bower_components/foundation-sites/dist/foundation.min.js'),
-        ('bower_components/what-input/what-input.min.js'),
-        ('bower_components/wow/dist/wow.min.js')
+        ('bower_components/what-input/what-input.min.js')
         ]).pipe(plumber())
             .pipe(concat('thirdparty.js'))
             .pipe(gulp.dest('resources/js/thirdparty'));
@@ -41,17 +40,13 @@ gulp.task('move-concat-foundation-js-dependencies', function() {
 // Concatinating all of the custom js files
 gulp.task('concat-custom-js', function() {
     console.log('Concatinating all of the custom js files');
-    gulp.src([
-        ('resources/js/custom/app.js'),
-        ('resources/js/custom/wow.js'),
-        ('resources/js/custom/pie-chart.js'),
-        ('resources/js/custom/form.js')
-        ]).pipe(plumber())
-            .pipe(concat('custom.js'))
-            .pipe(gulp.dest('resources/js/custom'));
+    gulp.src('resources/js/custom/app.js')
+        .pipe(plumber())
+        .pipe(concat('custom.js'))
+        .pipe(gulp.dest('resources/js/custom'));
 });
 
-// Compiling all sass files of the mvp
+// Compiling all sass files of the product
 gulp.task('sass', function () {
     console.log('Compiling all sass files of the resources folder');
     gulp.src('resources/scss/minimum-viable-product.scss')
@@ -67,7 +62,7 @@ gulp.task('sass', function () {
 // Minifying all css files in the public folder
 gulp.task('minify-css', function() {
   return gulp.src('resources/temp_css/*.css')
-    .pipe(minifyCSS())
+    .pipe(cssnano())
     .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest('public/css'));
 });
