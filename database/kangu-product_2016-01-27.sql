@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.38)
 # Database: kangu-product
-# Generation Time: 2016-01-25 10:35:42 +0000
+# Generation Time: 2016-01-27 13:12:01 +0000
 # ************************************************************
 
 
@@ -27,22 +27,23 @@ DROP TABLE IF EXISTS `tbl_advert`;
 
 CREATE TABLE `tbl_advert` (
   `advert_id` int(11) NOT NULL AUTO_INCREMENT,
+  `advert_name` varchar(255) NOT NULL,
   `advert_info` varchar(500) NOT NULL,
   `advert_rating` int(2) NOT NULL,
   `advert_price` int(10) NOT NULL,
   `advert_spots` int(2) NOT NULL,
   PRIMARY KEY (`advert_id`),
-  CONSTRAINT `fk_user_id` FOREIGN KEY (`advert_id`) REFERENCES `tbl_users` (`user_id`)
+  CONSTRAINT `fk_user_id` FOREIGN KEY (`advert_id`) REFERENCES `tbl_user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 
-# Dump of table tbl_users
+# Dump of table tbl_user
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `tbl_users`;
+DROP TABLE IF EXISTS `tbl_user`;
 
-CREATE TABLE `tbl_users` (
+CREATE TABLE `tbl_user` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_firstname` varchar(255) NOT NULL,
   `user_lastname` varchar(255) NOT NULL,
