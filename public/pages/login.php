@@ -1,34 +1,27 @@
 <?php
 session_start();
-include_once '../php-includes/dbconnect.php';
+require_once("class.user.php");
+$login = new USER();
 
-if(isset($_SESSION['userSession'])!="")
+if($login->is_loggedin()!="")
 {
-	header("Location: home.php");
-	exit;
+	$login->redirect('home.php');
 }
 
 if(isset($_POST['btn-login']))
 {
-	$email = $MySQLi_CON->real_escape_string(trim($_POST['user_email']));
-	$upass = $MySQLi_CON->real_escape_string(trim($_POST['user_password']));
-	
-	$query = $MySQLi_CON->query("SELECT user_id, user_email, user_password FROM tbl_user WHERE user_email='$email'");
-	$row=$query->fetch_array();
-	
-	if(password_verify($upass, $row['user_password']))
+	$uname = strip_tags($_POST['txt_uname_email']);
+	$umail = strip_tags($_POST['txt_uname_email']);
+	$upass = strip_tags($_POST['txt_password']);
+		
+	if($login->doLogin($uname,$umail,$upass))
 	{
-		$_SESSION['userSession'] = $row['user_id'];
-		header("Location: home.php");
+		$login->redirect('home.php');
 	}
 	else
 	{
-		$msg = "<div class='alert alert-danger'>
-					<span class='glyphicon glyphicon-info-sign'></span> &nbsp; email or password does not exists !
-				</div>";
-	}
-	
-	$MySQLi_CON->close();
+		$error = "Verkeerde gegevens!";
+	}	
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -38,36 +31,49 @@ if(isset($_POST['btn-login']))
 <title>Login</title>
 </head>
 <body>
-	<div class="signin-form">
 
-		<div class="container">
-	     
-	        
-	       <form class="form-signin" method="post" id="login-form">
-	      
-	        <h2 class="form-signin-heading">Login</h2>
-	        
-	        <?php
-			if(isset($msg)){
-				echo $msg;
+<div class="signin-form">
+
+	<div class="container">
+     
+        
+       <form class="form-signin" method="post" id="login-form">
+      
+        <h2 class="form-signin-heading">Log In</h2>
+        
+        <div id="error">
+        <?php
+			if(isset($error))
+			{
+				?>
+                <div class="alert alert-danger">
+                   <?php echo $error; ?>
+                </div>
+                <?php
 			}
-			?>
-	        
-	        <div class="form-group">
-	        	<input type="email" class="form-control" placeholder="Email address" name="user_email" required />
-	        </div>
-	        
-	        <div class="form-group">
-	        	<input type="password" class="form-control" placeholder="Password" name="user_password" required />
-	        </div>
-	        
-	        <div class="form-group">
-	            <button type="submit" class="btn btn-default" name="btn-login" id="btn-login">Login</button>             
-	        </div>  
-	 
-	      </form>
-	      <a href="register.php"><button>Register</button></a>
-	    </div>    
-	</div>
+		?>
+        </div>
+        
+        <div class="form-group">
+        <input type="text" class="form-control" name="txt_uname_email" placeholder="Username or E-mail" required />
+        </div>
+        
+        <div class="form-group">
+        <input type="password" class="form-control" name="txt_password" placeholder="Your Password" />
+        </div>
+        
+        <div class="form-group">
+            <button type="submit" name="btn-login" class="btn btn-default">
+                	Login
+            </button>
+        </div>  
+      	<br />
+            <label><a href="register.php">Sign Up</a></label>
+      </form>
+
+    </div>
+    
+</div>
+
 </body>
 </html>
