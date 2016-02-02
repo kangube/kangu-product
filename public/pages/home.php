@@ -1,8 +1,8 @@
 <?php
 
-	require_once("session.php");
+	require_once("../php-assets/session.php");
 	
-	require_once("class.user.php");
+	require_once("../php-assets/class.user.php");
 	$auth_user = new USER();
 	
 	

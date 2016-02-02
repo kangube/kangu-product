@@ -3,4 +3,6 @@
 /public/css/*
 /public/js/*
 !/public/assets/*
+!/public/pages/*
+!/public/php-assets/*
 !/public/index.html
