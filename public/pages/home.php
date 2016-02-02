@@ -1,6 +1,6 @@
 <?php
 
-	require_once("../php-assets/session.php");
+	require_once("../php-assets/class.session.php");
 	
 	require_once("../php-assets/class.user.php");
 	$auth_user = new USER();
@@ -24,6 +24,7 @@
 <body>
   
   <h5>welcome : <?php echo $userRow['user_email']; ?></h5>
+  <a href='logout.php'>log out</a>
 
 </body>
 </html>

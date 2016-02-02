@@ -1,5 +1,5 @@
 <?php
-	require_once('../php-assets/session.php');
+	require_once('../php-assets/class.session.php');
 	require_once('../php-assets/class.user.php');
 	$user_logout = new USER();
 	
