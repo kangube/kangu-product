@@ -1,0 +1,56 @@
+// Font settings
+$header-font-family: "sofia-pro-soft", sans-serif;
+$paragraph-font-family: "open-sans", sans-serif;
+
+// Headers
+h1 {
+	@include font($header-font-family, regular, regular, 36, 46.8, $text-dark-grey);
+	margin-top: 0;
+	margin-bottom: 0;
+}
+h2 {
+	@include font($header-font-family, regular, regular, 24, 31.2, $text-dark-grey);
+	margin-top: 0;
+	margin-bottom: 0;
+}
+h3 {
+	@include font($header-font-family, regular, regular, 18, 23.4, $text-dark-grey);
+	margin-top: 0;
+	margin-bottom: 0;
+}
+h4 {
+	@include font($header-font-family, regular, regular, 14, 18.2, $text-dark-grey);
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+h5 {
+	@include font($header-font-family, italic, regular, 16, 20.8, $text-dark-grey);
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+// Paragraphs
+.intro-paragraph {
+	@include font($paragraph-font-family, regular, regular, 16, 21.6, rgba($text-dark-grey, 0.8));
+}
+p {
+	@include font($paragraph-font-family, regular, regular, 14, 18.9, rgba($text-dark-grey, 0.8));
+}
+
+// Links
+a {
+	font-family: $paragraph-font-family;
+	font-weight: regular;
+	color: $light-red;
+	text-decoration: underline;
+
+	&:hover {
+		color: rgba($light-red, 0.8);
+	}
+
+	&:visited {
+		color: rgba($light-red, 0.8);
+	}
+}
