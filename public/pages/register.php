@@ -30,7 +30,7 @@ if(isset($_POST['register-button']))
 	else if($user_password=="")	{
 		$error[] = "Kies een wachtwoord dat minstens 8 karakters lang is, 1 cijfer en 1 hoofdletter bevat.";
 	}
-	else if(strlen($user_password) < 6){
+	else if(strlen($user_password) < 8){
 		$error[] = "Je wachtwoord moet minstens 8 karakters lang zijn.";	
 	}
 	else
@@ -113,20 +113,33 @@ if(isset($_POST['register-button']))
 						<h1 class="registration-header">Account aanmaken</h1>
 						<hr class="blue-horizontal-line"></hr>
 
-						<form method="post" class="form-signin">
+						<form method="post" class="form-signin" novalidate>
 							<div class="row">
 								<div class="large-6 medium-6 small-12 columns">
-									<input type="text" placeholder="jouw voornaam" name="user-first-name">
+									<input type="text" placeholder="jouw voornaam" name="user-first-name" required>
 								</div>
 
 								<div class="large-6 medium-6 small-12 columns">
-									<input type="text" placeholder="jouw achternaam" name="user-last-name">
+									<input type="text" placeholder="jouw achternaam" name="user-last-name" required>
 								</div>
 
 								<div class="large-12 columns">
-									<input type="email" placeholder="jouw e-mail adres" name="user-email">
-									<input type="password" placeholder="Kies een wachtwoord" name="user-password">
-									<p class="terms_conditions">Door een account aan te maken ga je akkoord met onze termen en condities.</p>
+									<input type="email" placeholder="jouw e-mail adres" name="user-email" required>
+									<input type="password" placeholder="Kies een wachtwoord" name="user-password" required>
+									
+									<?php
+										if(isset($error)) {
+											foreach($error as $error) { ?>
+												<div class="large-12 columns form-error-callout">
+													<?php echo $error; ?>
+												</div>
+									  <?php }
+										} else if(isset($_GET['joined'])) { ?>
+											<!-- A redirect to the advert overview-page must go here -->
+								  <?php } else { ?>
+								  				<p class="terms_conditions">Door een account aan te maken ga je akkoord met onze <a href="#">termen en condities<a>.</p>
+								  <?php } ?>
+
 									<input type="submit" class="create-account-btn" value="Account aanmaken" name="register-button">
 								</div>
 							</div>

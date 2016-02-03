@@ -82,6 +82,17 @@
 		font-size: rem-calc(30);
 	}
 
+	.form-error-callout {
+		background-color: rgba($light-red, 0.5);
+		border: 1px solid $light-red;
+		border-radius: 3px;
+		font-family: "open-sans", sans-serif;
+		font-size: rem-calc(12);
+		color: $text-white;
+		padding: 10px 0 10px 10px;
+		margin: 30px 0 30px 0;
+	}
+
 	form input[type="password"] {
 		margin-bottom: 0;
 	}
@@ -89,7 +100,7 @@
 	.terms_conditions {
 		font-family: "open-sans", sans-serif;
 		font-weight: regular;
-		font-size: rem-calc(12);
+		font-size: rem-calc(13);
 		margin: 30px 0 30px 0;
 	}
 
