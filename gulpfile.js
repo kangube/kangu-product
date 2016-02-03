@@ -13,8 +13,8 @@ var gulp = require('gulp'),
 
 // Setting up the server
 gulp.task('connect', function() {
-    console.log('starting localhost server at port 8080')
-    connect.server({ base: 'public', port: 8080 });
+    console.log('starting localhost server at port 8888')
+    connect.server({ base: 'public', port: 8888 });
 });
 
 // Moving all of the required image and icon assets from the resources folder to the public folder

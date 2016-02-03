@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once('class.user.php');
+require_once('../php-assets/class.user.php');
 $user = new USER();
 
 if($user->is_loggedin()!="")
