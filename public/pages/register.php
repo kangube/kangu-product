@@ -107,7 +107,9 @@ if(isset($_POST['register-button']))
 								<div class="large-12 columns">
 									<input type="email" placeholder="jouw e-mail adres" name="user-email" required>
 									<div class="form-error">Geef een geldig e-mail adres in.</div>
+								</div>
 
+								<div class="large-12 columns">
 									<input type="password" placeholder="Kies een wachtwoord" name="user-password" 
 										   pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z]).*$" required>
 									<div class="form-error">Je wachtwoord moet minstens 8 karakters lang zijn, 1 hoofletter en 1 cijfer bevatten.</div>
