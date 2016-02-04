@@ -45,16 +45,16 @@ class USER
 	}
 	
 	
-	public function doLogin($uname,$umail,$upass)
+	public function doLogin($user_mail, $user_password)
 	{
 		try
 		{
-			$stmt = $this->conn->prepare("SELECT user_id, user_firstname, user_email, user_password FROM tbl_user WHERE user_firstname=:uname OR user_email=:umail ");
-			$stmt->execute(array(':uname'=>$uname, ':umail'=>$umail));
+			$stmt = $this->conn->prepare("SELECT user_id, user_email, user_password FROM tbl_user WHERE user_email=:umail ");
+			$stmt->execute(array(':umail'=>$user_mail));
 			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 			if($stmt->rowCount() == 1)
 			{
-				if(password_verify($upass, $userRow['user_password']))
+				if(password_verify($user_password, $userRow['user_password']))
 				{
 					$_SESSION['user_session'] = $userRow['user_id'];
 					return true;

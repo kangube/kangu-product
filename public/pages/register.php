@@ -60,7 +60,7 @@ if(isset($_POST['register-button']))
 
 ?>
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="nl">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Account aanmaken</title>
@@ -72,7 +72,7 @@ if(isset($_POST['register-button']))
 			<div class="half-height-gradient"></div>
 
 			<div class="row">
-				<div class="large-10 medium-11 small-12 small-centered columns registration-panel" data-equalizer data-equalize-on="medium">
+				<div class="large-10 medium-11 small-12 small-centered columns registration-panel" data-equalizer data-equalize-on="large">
 
 					<div class="large-5 columns registration-introduction-panel show-for-large" data-equalizer-watch>
 						<h1 class="introduction-header">Vind de ideale naschoolse opvang</h1>
@@ -113,7 +113,7 @@ if(isset($_POST['register-button']))
 						<h1 class="registration-header">Account aanmaken</h1>
 						<hr class="blue-horizontal-line"></hr>
 
-						<form method="post" class="form-signin" novalidate>
+						<form method="post" novalidate>
 							<div class="row">
 								<div class="large-6 medium-6 small-12 columns">
 									<input type="text" placeholder="jouw voornaam" name="user-first-name" required>
@@ -130,7 +130,7 @@ if(isset($_POST['register-button']))
 									<?php
 										if(isset($error)) {
 											foreach($error as $error) { ?>
-												<div class="large-12 columns form-error-callout">
+												<div class="large-12 columns error-callout">
 													<?php echo $error; ?>
 												</div>
 									  <?php }

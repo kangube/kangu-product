@@ -5,75 +5,61 @@ $login = new USER();
 
 if($login->is_loggedin()!="")
 {
-	$login->redirect('home.php');
+    $login->redirect('home.php');
 }
 
-if(isset($_POST['btn-login']))
+if(isset($_POST['login-button']))
 {
-	$uname = strip_tags($_POST['txt_uname_email']);
-	$umail = strip_tags($_POST['txt_uname_email']);
-	$upass = strip_tags($_POST['txt_password']);
-		
-	if($login->doLogin($uname,$umail,$upass))
-	{
-		$login->redirect('home.php');
-	}
-	else
-	{
-		$error = "Verkeerde gegevens!";
-	}	
+    $user_email = strip_tags($_POST['user-email']);
+    $user_password = strip_tags($_POST['user-password']);
+        
+    if($login->doLogin($user_email, $user_password))
+    {
+        $login->redirect('home.php');
+    }
+    else
+    {
+        $error = "Je inloggegevens zijn niet correct.";
+    }   
 }
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Login</title>
-</head>
-<body>
+<!doctype html>
+<html class="no-js" lang="nl">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Aanmelden</title>
+        <link rel="stylesheet" href="../css/minimum-viable-product.min.css">
+    </head>
 
-<div class="signin-form">
+    <body>
+        <div class="full-width">
+            <div class="half-height-gradient"></div>
+                <div class="large-4 columns login-input-panel">
+                    <form method="post" novalidate>
+                        <div class="row">
+                            <div class="large-12 text-center columns">
+                                <h1 class="login-header">Aanmelden</h1>
+                                <hr class="blue-horizontal-line text-center"></hr>
+                                <input type="text" placeholder="jouw e-mail adres" name="user-email" required>
+                                <input type="password" placeholder="jouw wachtwoord" name="user-password" required>
 
-	<div class="container">
-     
-        
-       <form class="form-signin" method="post" id="login-form">
-      
-        <h2 class="form-signin-heading">Log In</h2>
-        
-        <div id="error">
-        <?php
-			if(isset($error))
-			{
-				?>
-                <div class="alert alert-danger">
-                   <?php echo $error; ?>
+                                <?php if(isset($error)) { ?>
+                                        <div class="large-12 columns error-callout">
+                                            <?php echo $error; ?>
+                                        </div>
+                                <?php } ?>
+
+                                <input type="submit" class="login-account-button" value="Aanmelden" name="login-button">
+                                <a href="#" class="forgot-password-link">Wachtwoord vergeten?</a>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <?php
-			}
-		?>
+            </div>
         </div>
-        
-        <div class="form-group">
-        <input type="text" class="form-control" name="txt_uname_email" placeholder="Username or E-mail" required />
-        </div>
-        
-        <div class="form-group">
-        <input type="password" class="form-control" name="txt_password" placeholder="Your Password" />
-        </div>
-        
-        <div class="form-group">
-            <button type="submit" name="btn-login" class="btn btn-default">
-                	Login
-            </button>
-        </div>  
-      	<br />
-            <label><a href="register.php">Sign Up</a></label>
-      </form>
 
-    </div>
-    
-</div>
-
-</body>
+        <script src="../js/minimum-viable-product.min.js"></script>
+        <script src="https://use.typekit.net/vnw3zje.js"></script>
+        <script>try{Typekit.load({ async: true });}catch(e){}</script>
+    </body>
 </html>

@@ -1,6 +1,6 @@
 // Importing foundation scss files
 @import '../../bower_components/foundation-sites/scss/foundation';
-@include foundation-everything;
+@include foundation-everything($flex: false);
 
 // Importing all modules
 @import 'modules/colors';
@@ -11,6 +11,8 @@
 // Importing all partials
 @import 'partials/input-fields';
 @import 'partials/horizontal-lines';
+@import 'partials/callouts';
 
 // Importing all pages
 @import 'pages/registration';
+@import 'pages/login';

@@ -1,0 +1,12 @@
+// Error callout
+
+.error-callout {
+	background-color: rgba($light-red, 0.5);
+	border: 1px solid $light-red;
+	border-radius: 3px;
+	font-family: "open-sans", sans-serif;
+	font-size: rem-calc(12);
+	color: $text-white;
+	padding: 10px 10px 10px 10px;
+	margin: 0 0 30px 0;
+}

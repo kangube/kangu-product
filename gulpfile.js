@@ -65,7 +65,8 @@ function JavascriptMinify() {
     return gulp.src('resources/js/minimum-viable-product.js')
         .pipe(uglify())
         .pipe(rename({ extname: '.min.js' }))
-        .pipe(gulp.dest('public/js'));
+        .pipe(gulp.dest('public/js'))
+        .pipe(livereload());
 }
 
 function SassCompile(cb) {
@@ -85,7 +86,8 @@ function ConcatCss() {
         .pipe(gulp.dest('resources/temp_css'))
         .pipe(cssnano())
         .pipe(rename({suffix: '.min'}))
-        .pipe(gulp.dest('public/css'));
+        .pipe(gulp.dest('public/css'))
+        .pipe(livereload());
 }
 
 // Running all tasks in a particular order
