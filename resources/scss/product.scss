@@ -6,3 +6,11 @@
 @import 'modules/colors';
 @import 'modules/functions';
 @import 'modules/mixins';
+@import 'modules/typography';
+
+// Importing all partials
+@import 'partials/input-fields';
+@import 'partials/horizontal-lines';
+
+// Importing all pages
+@import 'pages/registration';

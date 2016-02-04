@@ -1,0 +1,110 @@
+// Gradient background
+
+.half-height-gradient {
+	min-width: 100vw;
+	min-height: 50vh;
+	display: flex;
+	background-image: linear-gradient(-225deg, #57B9F6 0%, $dark-blue 100%);
+	position: absolute;
+	z-index: -1;
+}
+
+// Registration panel
+
+.full-width {
+	min-width: 100vw;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.registration-introduction-panel {
+	background-image: url(../assets/registration/registration-introduction-photo.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding: 35px 30px 35px 30px;
+	border-radius: 3px 0 0 3px;
+	box-shadow: 0px 19px 38px 0px rgba(0,0,0,0.2);
+
+	display:flex;
+	flex-flow: row wrap;
+	align-items: flex-start;
+
+	.introduction-header {
+		color: $text-white;
+		font-size: rem-calc(30);
+		line-height: rem-calc(36);
+		margin-bottom: 20px;
+	}
+
+	.introduction-paragraph {
+		color: $text-white;
+		font-size: rem-calc(14);
+		font-style: normal;
+		font-weight: 600;
+		line-height: rem-calc(24);
+	}
+
+	.introduction-social-links-list {
+		margin: 0;
+		align-self: flex-end;
+
+		li {
+			display: inline-block;
+			list-style-type: none;
+			margin: 0 5px 0 5px;
+
+			&:first-child {
+				margin-left: 0;
+			}
+
+			svg {
+				width: 35px;
+				height: 35px;
+				fill: $white;
+			}
+
+			svg:hover {
+				fill: darken($white, 15%);
+			}
+		}
+	}
+}
+
+.registration-input-panel {
+	background-color: $light-grey;
+	padding: 35px 30px 35px 30px;
+	border-radius: 0 3px 3px 0;
+	box-shadow: 0px 19px 38px 0px rgba(0,0,0,0.2);
+
+  	.registration-header {
+		font-size: rem-calc(30);
+	}
+
+	.form-error-callout {
+		background-color: rgba($light-red, 0.5);
+		border: 1px solid $light-red;
+		border-radius: 3px;
+		font-family: "open-sans", sans-serif;
+		font-size: rem-calc(12);
+		color: $text-white;
+		padding: 10px 0 10px 10px;
+		margin: 30px 0 30px 0;
+	}
+
+	form input[type="password"] {
+		margin-bottom: 0;
+	}
+
+	.terms_conditions {
+		font-family: "open-sans", sans-serif;
+		font-weight: regular;
+		font-size: rem-calc(13);
+		margin: 30px 0 30px 0;
+	}
+
+	.create-account-btn {
+		@include button($light-red, 3px);
+	}
+}

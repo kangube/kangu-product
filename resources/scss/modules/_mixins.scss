@@ -1,8 +1,38 @@
 // Font mixin
-@mixin font($font-family, $font-size, $font-weight, $line-height, $font-color) {
+
+@mixin font($font-family, $font-style, $font-weight, $font-size, $line-height, $font-color) {
 	font-family: $font-family;
-	font-size: rem-calc($font-size);
+	font-style: $font-style;
 	font-weight: $font-weight;
+	font-size: rem-calc($font-size);
 	line-height: rem-calc($line-height);
 	color: $font-color;
+}
+
+
+// Button state(s) mixin
+
+@mixin button($background-color, $border-radius) {
+	background-color: $background-color;
+	font-family: "open-sans", sans-serif;
+	font-style: regular;
+	font-size: rem-calc(14);
+	color: $text-white;
+	border-radius: $border-radius;
+	border: none;
+	padding: 10px 25px 10px 25px;
+	margin-bottom: 0;
+
+	&:hover {
+		background-color: darken($background-color, 5%);
+		transition: all 0.3s ease;
+	}
+
+	&:active {
+		background-color: darken($background-color, 5%);
+	}
+
+	&:visited {
+		background-color: darken($background-color, 5%);
+	} 
 }
