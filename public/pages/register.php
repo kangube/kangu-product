@@ -113,7 +113,7 @@ if(isset($_POST['register-button']))
 						<h1 class="registration-header">Account aanmaken</h1>
 						<hr class="blue-horizontal-line"></hr>
 
-						<form method="post" novalidate>
+						<form method="post">
 							<div class="row">
 								<div class="large-6 medium-6 small-12 columns">
 									<input type="text" placeholder="jouw voornaam" name="user-first-name" required>

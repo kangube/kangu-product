@@ -32,28 +32,30 @@ if(isset($_POST['login-button']))
     </head>
 
     <body>
-        <div class="full-width">
+        <div class="full-width full-width-login">
             <div class="half-height-gradient"></div>
-                <div class="large-4 columns login-input-panel">
-                    <form method="post" novalidate>
-                        <div class="row">
-                            <div class="large-12 text-center columns">
-                                <h1 class="login-header">Aanmelden</h1>
-                                <hr class="blue-horizontal-line text-center"></hr>
-                                <input type="text" placeholder="jouw e-mail adres" name="user-email" required>
-                                <input type="password" placeholder="jouw wachtwoord" name="user-password" required>
+                <div class="row">
+                    <div class="large-4 medium-6 small-12 small-centered columns login-input-panel">
+                        <form method="post">
+                            <div class="row">
+                                <div class="large-12 text-center columns">
+                                    <h1 class="login-header">Aanmelden</h1>
+                                    <hr class="blue-horizontal-line text-center"></hr>
+                                    <input type="text" placeholder="jouw e-mail adres" name="user-email" required>
+                                    <input type="password" placeholder="jouw wachtwoord" name="user-password" required>
 
-                                <?php if(isset($error)) { ?>
-                                        <div class="large-12 columns error-callout">
-                                            <?php echo $error; ?>
-                                        </div>
-                                <?php } ?>
+                                    <?php if(isset($error)) { ?>
+                                            <div class="large-12 columns error-callout">
+                                                <?php echo $error; ?>
+                                            </div>
+                                    <?php } ?>
 
-                                <input type="submit" class="login-account-button" value="Aanmelden" name="login-button">
-                                <a href="#" class="forgot-password-link">Wachtwoord vergeten?</a>
+                                    <input type="submit" class="login-account-button" value="Aanmelden" name="login-button">
+                                    <a href="#" class="forgot-password-link">Wachtwoord vergeten?</a>
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

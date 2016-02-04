@@ -1,5 +1,11 @@
 // Login input panel
 
+.full-width-login .row {
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .login-input-panel {
 	background-color: $light-grey;
 	padding: 35px 30px 35px 30px;
