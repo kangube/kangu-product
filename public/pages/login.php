@@ -41,7 +41,7 @@ if(isset($_POST['login-button']))
                                 <div class="large-12 text-center columns">
                                     <h1 class="login-header">Aanmelden</h1>
                                     <hr class="blue-horizontal-line text-center"></hr>
-                                    <input type="text" placeholder="jouw e-mail adres" name="user-email" required>
+                                    <input type="email" placeholder="jouw e-mail adres" name="user-email" required>
                                     <input type="password" placeholder="jouw wachtwoord" name="user-password" required>
 
                                     <?php if(isset($error)) { ?>
