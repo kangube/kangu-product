@@ -1,12 +1,14 @@
-// Error callout
+// Error callout(s)
 
 .error-callout {
-	background-color: rgba($light-red, 0.5);
-	border: 1px solid $light-red;
-	border-radius: 3px;
-	font-family: "open-sans", sans-serif;
-	font-size: rem-calc(12);
-	color: $text-white;
-	padding: 10px 10px 10px 10px;
+	@include font($paragraph-font-family, normal, bold, 12, 12, $light-red);
+	padding: 0;
 	margin: 0 0 30px 0;
+}
+
+.form-error {
+	margin-top: -10px !important;
+	margin-bottom: 20px;
+	@include font($paragraph-font-family, normal, regular, 12, 12, $light-red);
+	text-align: left !important;
 }

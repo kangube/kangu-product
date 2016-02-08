@@ -19,7 +19,7 @@ if(isset($_POST['login-button']))
     }
     else
     {
-        $error = "Je inloggegevens zijn niet correct.";
+        $error[] = "Je inloggegevens zijn niet correct.";
     }   
 }
 ?>
@@ -36,22 +36,36 @@ if(isset($_POST['login-button']))
             <div class="half-height-gradient"></div>
                 <div class="row">
                     <div class="large-4 medium-6 small-12 small-centered columns login-input-panel">
-                        <form method="post">
+                        <form method="post" data-abide novalidate>
                             <div class="row">
                                 <div class="large-12 text-center columns">
                                     <h1 class="login-header">Aanmelden</h1>
-                                    <hr class="blue-horizontal-line text-center"></hr>
-                                    <input type="email" placeholder="jouw e-mail adres" name="user-email" required>
-                                    <input type="password" placeholder="jouw wachtwoord" name="user-password" required>
+                                    <hr class="blue-horizontal-line"></hr>
 
-                                    <?php if(isset($error)) { ?>
-                                            <div class="large-12 columns error-callout">
-                                                <?php echo $error; ?>
-                                            </div>
-                                    <?php } ?>
+                                    <div class="large-12 columns">
+                                        <input type="email" placeholder="jouw e-mail adres" name="user-email" required>
+                                        <div class="form-error">Dit is geen geldig e-mail adres.</div>
+                                    </div>
 
-                                    <input type="submit" class="login-account-button" value="Aanmelden" name="login-button">
-                                    <a href="#" class="forgot-password-link">Wachtwoord vergeten?</a>
+                                    <div class="large-12 columns">
+                                        <input type="password" placeholder="jouw wachtwoord" name="user-password" 
+                                               pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z]).*$" required>
+                                        <div class="form-error">Dit is geen geldig wachtwoord.</div>
+                                    </div>
+
+                                    <div class="large-12 columns">
+                                        <?php 
+                                            if(isset($error)) { 
+                                                foreach($error as $error) { ?>
+                                                    <div class="large-12 columns error-callout">
+                                                        <?php echo $error; ?>
+                                                    </div>
+                                        <?php   }
+                                            } ?>
+
+                                        <input type="submit" class="login-account-button" value="Aanmelden" name="login-button">
+                                        <a href="#" class="forgot-password-link">Wachtwoord vergeten?</a>
+                                    </div>
                                 </div>
                             </div>
                         </form>

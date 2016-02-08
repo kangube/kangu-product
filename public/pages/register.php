@@ -26,8 +26,9 @@ if(isset($_POST['register-button']))
 		}
 		else
 		{
-			if($user->register($user_first_name,$user_last_name,$user_email,$user_password)){	
-				$user->redirect('register.php?joined');
+			if($user->register($user_first_name,$user_last_name,$user_email,$user_password)) {
+				$user->doLogin($user_email, $user_password);
+			    $user->redirect('home.php');
 			}
 		}
 	}
@@ -114,7 +115,17 @@ if(isset($_POST['register-button']))
 										   pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z]).*$" required>
 									<div class="form-error">Je wachtwoord moet minstens 8 karakters lang zijn, 1 hoofletter en 1 cijfer bevatten.</div>
 
-									<p class="terms_conditions">Door een account aan te maken ga je akkoord met onze <a href="#">termen en condities<a>.</p>
+									<?php
+										if(isset($error)) {
+											foreach($error as $error) { ?>
+												<div class="large-12 columns error-callout">
+													<?php echo $error; ?>
+												</div>
+									  <?php }
+										} else { ?>
+								  				<p class="terms_conditions">Door een account aan te maken ga je akkoord met onze <a href="#">termen en condities<a>.</p>
+								  <?php } ?>
+
 									<input type="submit" class="create-account-btn" value="Account aanmaken" name="register-button">
 								</div>
 							</div>
