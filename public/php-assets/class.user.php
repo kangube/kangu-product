@@ -45,12 +45,12 @@ class USER
 	}
 	
 	
-	public function doLogin($user_mail, $user_password)
+	public function doLogin($user_email, $user_password)
 	{
 		try
 		{
 			$stmt = $this->conn->prepare("SELECT user_id, user_email, user_password FROM tbl_user WHERE user_email=:umail ");
-			$stmt->execute(array(':umail'=>$user_mail));
+			$stmt->execute(array(':umail'=>$user_email));
 			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 			if($stmt->rowCount() == 1)
 			{
