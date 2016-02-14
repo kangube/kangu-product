@@ -1,0 +1,100 @@
+// Image background with search function
+
+.advert-overview-header {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+
+	min-width: 100vw;
+	min-height: 80vh;
+
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	overflow: hidden;
+
+	.advert-overview-title-container {
+		align-self: center;
+		margin-top: 8%;
+		margin-bottom: 12%;
+		width: 60%;
+	}
+
+	.advert-overview-title, .advert-overview-subheader {
+		color: $text-white !important;
+		text-align: center;
+	}
+
+	.advert-overview-title {
+		margin-bottom: 25px;
+		font-size: rem-calc(40);
+		line-height: rem-calc(48);
+	}
+
+	.advert-overview-subheader {
+		font-size: rem-calc(25);
+		line-height: rem-calc(30);
+	}
+}
+
+.advert-search-form {
+	align-self: center;
+	width: 50%;
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: no-wrap;
+
+	.search-region {
+		width: 50%;
+		border-radius: 3px 0 0 3px;
+	}
+
+	.search-price {
+		border-left: none !important;
+		border-right: none !important;
+	}
+
+	.search-spots {
+		border-right: none !important;
+	}
+
+	.search-price, .search-spots, .search-submit {
+		width: 16.67%;
+	}
+
+	.search-price, .search-spots, .search-submit, search-region {
+		display: inline-block;
+		margin: 0;
+	}
+
+	input:not([type=submit]):not([type=file]), select {
+		background-color: $white;
+		-webkit-box-shadow: $white !important;
+		-moz-box-shadow: $white !important;
+		box-shadow: none !important;
+		text-decoration: none;
+		border: 1px solid $border-color-light-grey;
+		font-family: "open-sans", sans-serif;
+		font-style: normal;
+		font-size: rem-calc(14);
+		color: $dark-grey;
+		padding: 10px 15px 10px 15px;
+		margin-bottom: 0;
+
+		&:focus, &:hover, &:active {
+			background-color: $white;
+			border: 1px solid $border-color-light-grey;
+		}
+	}
+
+	input[type=submit] {
+		background-color: $light-red;
+		padding: 10px 35px 10px 35px;
+		border: none;
+		color: $text-white;
+		border-radius: 0 3px 3px 0;
+	}
+}

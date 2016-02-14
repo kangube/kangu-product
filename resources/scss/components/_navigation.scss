@@ -1,0 +1,84 @@
+// Title-bar styling
+
+.title-bar {
+	height: 60px;
+	background-color: $light-grey;
+
+	.menu-icon:after {
+		background: $white;
+		box-shadow: 0 7px 0 rgba($text-dark-grey,0.8),0 14px 0 rgba($text-dark-grey,0.8);
+	}
+
+	.title-bar-title {
+		@include font($header-font-family, regular, bold, 25, 35, rgba($text-dark-grey,0.8));
+		text-align: center;
+	}
+}
+
+// Top-bar styling
+
+.top-bar {
+	height: 60px;
+	background-color: $white;
+	padding: 8px 0 8px 0;
+
+	.top-bar-title {
+		@include font($header-font-family, regular, bold, 25, 35, rgba($text-dark-grey,0.8));
+		margin-right: 0;
+		margin-top: 3px;
+	}
+}
+
+.top-bar-right {
+	.menu {
+		background-color: $white;
+
+		li a {
+			margin: 0 25px 0 25px;
+			padding-left: 0;
+			padding-right: 0;
+		}
+
+		li:nth-child(2) a {
+			margin-left: 35px;
+		}
+
+		li:nth-child(4) a {
+			margin-right: 0;
+		}
+
+		li:nth-child(5) a {
+			font-size: rem-calc(25);
+			margin: 0 35px 0 35px;
+		}
+
+		.user-dropdown-menu li a {
+			margin: 0 0 0 20px;
+			padding-right: 35px;
+		}
+
+		.user-dropdown-menu li a::after {
+			border-color: rgba($text-dark-grey, 0.8) transparent transparent;
+		}
+	}
+
+	a {
+		@include font($paragraph-font-family, regular, semi-bold, 14, 19, rgba($text-dark-grey,0.8));
+		text-decoration: none;
+	}
+
+	.provide-services-button {
+		@include font($paragraph-font-family, regular, regular, 14, 19, rgba($text-dark-grey,0.8));
+		border: 1px solid rgba($text-dark-grey, 0.8);
+		border-radius: 3px;
+		padding: 5px 15px 5px 15px;
+
+		&:hover {
+			background-color: rgba($dark-grey, 0.1);
+		}
+	}
+
+	.user-profile-image {
+		border-radius: 50px;
+	}
+}

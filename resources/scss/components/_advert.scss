@@ -1,0 +1,100 @@
+// Advert styling
+
+.advert-overview-row {
+	margin-top: 40px;
+}
+
+.advert-link {
+	text-decoration: none;
+}
+
+.advert {
+	background-color: $light-grey;
+	border: 1px solid $border-color-light-grey;
+	border-radius: 3px;
+	padding: 20px;
+
+	.columns {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.advert-profile-image {
+		border-radius: 40px;
+		min-width: 40px;
+		min-height: 40px;
+	}
+
+	.advert-information-list {
+		list-style-type: none;
+		display: inline-block;
+		margin: 0 0 20px 15px;
+
+		li {
+			@include font($paragraph-font-family, regular, regular, 15, 15, $text-dark-grey);
+		}
+		
+		li:last-child {
+			margin-top: 5px;
+
+			&:before {
+				font-size: rem-calc(16);
+				margin-right: 5px;
+				margin-top: 5px;
+			}
+		}
+	}
+
+	.advert-description {
+		@include font($paragraph-font-family, regular, regular, 14, 22, rgba($text-dark-grey, 0.8));
+		margin-bottom: 0;
+	}
+
+	.advert-price {
+		margin-right: 10px;
+	}
+
+	.advert-spots {
+		margin-left: 10px;
+	}
+
+	.advert-price, .advert-spots {
+		text-align: center;
+		background-color: rgba($dark-grey, 0.1);
+		border-radius: 3px;
+		padding: 5px 0 5px 0;
+		margin-top: 20px;
+		margin-bottom: 20px;
+
+		p:first-child {
+			@include font($paragraph-font-family, regular, semi-bold, 25, 34, $text-dark-grey);
+			margin-bottom: 5px;
+		}
+
+		p:last-child {
+			@include font($paragraph-font-family, regular, regular, 12, 17, $text-dark-grey);
+			margin-bottom: 0;
+		}
+	}
+
+	.advert-price p:first-child {
+		padding-right: 7px;
+
+		&:before {
+			@include font($paragraph-font-family, regular, semi-bold, 11, 25, $text-dark-grey);
+			vertical-align: top;
+			padding-right: 2px;
+			content: '\20AC';
+		}
+	}
+
+	.advert-school {
+		@include font($paragraph-font-family, regular, regular, 14, 22, rgba($text-dark-grey, 0.8));
+		margin: 0;
+
+		&:before {
+			font-size: rem-calc(20);
+			margin-right: 10px;
+		}
+	}
+}
