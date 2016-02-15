@@ -1,6 +1,7 @@
 // Importing foundation scss files
 @import '../../bower_components/foundation-sites/scss/foundation';
-@include foundation-everything;
+@include foundation-everything($flex: false);
+
 
 // Importing all modules
 @import 'modules/colors';

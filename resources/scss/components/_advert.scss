@@ -4,6 +4,26 @@
 	margin-top: 40px;
 }
 
+.advert-container {
+	margin-bottom: 20px;
+
+	@include breakpoint(320px) { 
+		@include grid-column(12);
+	}
+
+	@include breakpoint(600px) { 
+		@include grid-column(6);
+	}
+
+	@include breakpoint(920px) { 
+		@include grid-column(4);
+	}
+
+	@include breakpoint(xlarge) { 
+		@include grid-column(3);
+	}
+}
+
 .advert-link {
 	text-decoration: none;
 }

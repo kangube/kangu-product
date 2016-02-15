@@ -27,7 +27,7 @@
 		<div class="row">
 			<div class="large-12 small-centered columns">
 				<div class="title-bar" data-responsive-toggle="top-bar-menu" data-hide-for="medium">
-			        <button class="menu-icon" type="button" data-toggle></button>
+			        <button class="menu-icon" type="button" data-open="offCanvasLeft"></button>
 			        <div class="title-bar-title">kangu</div>
 				</div>
 		      
@@ -79,12 +79,13 @@
 	        </div>
 
         	<form method="post" class="advert-search-form">
-    			<input class="search-region" type="text" placeholder="In welke regio zoekt u een opvangbiedende ouder?">
+    			<input class="search-region" type="text" placeholder="Binnen welke school zoekt u een opvangbiedende ouder?">
     			<input class="search-price" type="text" placeholder="Prijs (max.)">	
     			<select class="search-spots" name="number-children">
 					<option value="1" selected>1 kind</option> 
 					<option value="2">2 kinderen</option>
 					<option value="3">3 kinderen</option>
+					<option value="3">4 kinderen</option>
 				</select>	
     			<input class="search-submit" type="submit" value="Zoeken">
         	</form>
@@ -97,7 +98,7 @@
 			    	<hr class="blue-horizontal-line"></hr>
 			    </div>
 			    
-	    		<div class="small-6 medium-4 large-3 columns end">
+	    		<div class="advert-container end">
 		    		<a href="#" class="advert-link">
 		    			<div class="advert">
 			    			<div class="small-12 columns">
@@ -134,7 +135,7 @@
 			    	</a>
 		    	</div>
 
-		    	<div class="small-6 medium-4 large-3 columns end">
+		    	<div class="advert-container end">
 		    		<a href="#" class="advert-link">
 		    			<div class="advert">
 			    			<div class="small-12 columns">
@@ -171,7 +172,7 @@
 			    	</a>
 		    	</div>
 
-		    	<div class="small-12 medium-4 large-3 columns end">
+		    	<div class="advert-container end">
 		    		<a href="#" class="advert-link">
 		    			<div class="advert">
 			    			<div class="small-12 columns">
@@ -208,7 +209,7 @@
 			    	</a>
 		    	</div>
 
-		    	<div class="small-12 medium-4 large-3 columns end">
+		    	<div class="advert-container end">
 		    		<a href="#" class="advert-link">
 		    			<div class="advert">
 			    			<div class="small-12 columns">

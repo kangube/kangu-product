@@ -20,6 +20,14 @@
 		margin-top: 8%;
 		margin-bottom: 12%;
 		width: 60%;
+
+		@include breakpoint(medium down) {
+			width: 95%;
+		}
+
+		@include breakpoint(large) {
+			width: 70%;
+		}
 	}
 
 	.advert-overview-title, .advert-overview-subheader {
@@ -29,19 +37,50 @@
 
 	.advert-overview-title {
 		margin-bottom: 25px;
-		font-size: rem-calc(40);
-		line-height: rem-calc(48);
+
+		@include breakpoint(small) { 
+			font-size: rem-calc(35);
+			line-height: rem-calc(42);
+		}
+
+		@include breakpoint(medium) { 
+			font-size: rem-calc(40);
+			line-height: rem-calc(48);
+		}
+
+		@include breakpoint(large up) { 
+			font-size: rem-calc(45);
+			line-height: rem-calc(54);
+		}
 	}
 
 	.advert-overview-subheader {
-		font-size: rem-calc(25);
-		line-height: rem-calc(30);
+
+		@include breakpoint(small) { 
+			font-size: rem-calc(20);
+			line-height: rem-calc(24);
+		}
+
+		@include breakpoint(medium) { 
+			font-size: rem-calc(25);
+			line-height: rem-calc(30);
+		}
+
+		@include breakpoint(large) {
+			font-size: rem-calc(30);
+			line-height: rem-calc(36);
+		}
+
+		@include breakpoint(xlarge) { 
+			font-size: rem-calc(30);
+			line-height: rem-calc(36);
+		}
 	}
 }
 
 .advert-search-form {
 	align-self: center;
-	width: 50%;
+	width: 57%;
 
 	display: flex;
 	flex-direction: row;
@@ -72,29 +111,35 @@
 
 	input:not([type=submit]):not([type=file]), select {
 		background-color: $white;
-		-webkit-box-shadow: $white !important;
-		-moz-box-shadow: $white !important;
-		box-shadow: none !important;
-		text-decoration: none;
 		border: 1px solid $border-color-light-grey;
-		font-family: "open-sans", sans-serif;
-		font-style: normal;
-		font-size: rem-calc(14);
-		color: $dark-grey;
+		@include font($paragraph-font-family, normal, regular, 14, 19, $text-dark-grey);
+		text-decoration: none;
 		padding: 10px 15px 10px 15px;
 		margin-bottom: 0;
+
+		&::-webkit-input-placeholder {
+			color: $text-dark-grey;
+		}
+
+		&::-moz-placeholder {
+			color: $text-dark-grey;
+		}
 
 		&:focus, &:hover, &:active {
 			background-color: $white;
 			border: 1px solid $border-color-light-grey;
+			-webkit-box-shadow: none !important;
+			-moz-box-shadow: none !important;
+			box-shadow: none !important;
+			outline: none;
 		}
 	}
 
 	input[type=submit] {
+		@include font($paragraph-font-family, regular, regular, 14, 19, $text-white);
 		background-color: $light-red;
 		padding: 10px 35px 10px 35px;
 		border: none;
-		color: $text-white;
 		border-radius: 0 3px 3px 0;
 	}
 }
