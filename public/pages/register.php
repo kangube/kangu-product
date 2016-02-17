@@ -14,48 +14,28 @@ if(isset($_POST['register-button']))
 	$user_last_name = strip_tags($_POST['user-last-name']);
 	$user_email = strip_tags($_POST['user-email']);
 	$user_password = strip_tags($_POST['user-password']);
-	
-	if($user_first_name=="")	{
-		$error[] = "Vergeet je voornaam niet in te vullen.";	
-	}
-	else if($user_last_name=="")	{
-		$error[] = "Vergeet je achternaam niet in te vullen.";	
-	}
-	else if($user_email=="")	{
-		$error[] = "Vergeet je e-mail adres niet in te vullen.";	
-	}
-	else if(!filter_var($user_email, FILTER_VALIDATE_EMAIL))	{
-	    $error[] = 'Geef een geldig e-mail adres in.';
-	}
-	else if($user_password=="")	{
-		$error[] = "Kies een wachtwoord dat minstens 8 karakters lang is, 1 cijfer en 1 hoofdletter bevat.";
-	}
-	else if(strlen($user_password) < 8){
-		$error[] = "Je wachtwoord moet minstens 8 karakters lang zijn.";	
-	}
-	else
+		
+	try
 	{
-		try
+		$stmt = $user->runQuery("SELECT user_firstname, user_email FROM tbl_user WHERE user_firstname=:user_first_name OR user_email=:user_email");
+		$stmt->execute(array(':user_first_name'=>$user_first_name, ':user_email'=>$user_email));
+		$row=$stmt->fetch(PDO::FETCH_ASSOC);
+			
+		if($row['user_email']==$user_email) {
+			$error[] = "Er is al een account aangemaakt met dit e-mail adres.";
+		}
+		else
 		{
-			$stmt = $user->runQuery("SELECT user_firstname, user_email FROM tbl_user WHERE user_firstname=:user_first_name OR user_email=:user_email");
-			$stmt->execute(array(':user_first_name'=>$user_first_name, ':user_email'=>$user_email));
-			$row=$stmt->fetch(PDO::FETCH_ASSOC);
-				
-			if($row['user_email']==$user_email) {
-				$error[] = "Er is al een account aangemaakt met dit e-mail adres.";
-			}
-			else
-			{
-				if($user->register($user_first_name,$user_last_name,$user_email,$user_password)){	
-					$user->redirect('register.php?joined');
-				}
+			if($user->register($user_first_name,$user_last_name,$user_email,$user_password)) {
+				$user->doLogin($user_email, $user_password);
+			    $user->redirect('home.php');
 			}
 		}
-		catch(PDOException $e)
-		{
-			echo $e->getMessage();
-		}
-	}	
+	}
+	catch(PDOException $e)
+	{
+		echo $e->getMessage();
+	}
 }
 
 ?>
@@ -113,20 +93,28 @@ if(isset($_POST['register-button']))
 						<h1 class="registration-header">Account aanmaken</h1>
 						<hr class="blue-horizontal-line"></hr>
 
-						<form method="post">
+						<form id="registration-form" method="post" data-abide novalidate>
 							<div class="row">
 								<div class="large-6 medium-6 small-12 columns">
-									<input type="text" placeholder="jouw voornaam" name="user-first-name" required>
+									<input type="text" placeholder="jouw voornaam" name="user-first-name" pattern="[a-zA-Z0-9]+" required>
+									<div class="form-error">Dit is een verplicht veld.</div>
 								</div>
 
 								<div class="large-6 medium-6 small-12 columns">
-									<input type="text" placeholder="jouw achternaam" name="user-last-name" required>
+									<input type="text" placeholder="jouw achternaam" name="user-last-name" pattern="[a-zA-Z0-9]+" required>
+									<div class="form-error">Dit is een verplicht veld.</div>
 								</div>
 
 								<div class="large-12 columns">
 									<input type="email" placeholder="jouw e-mail adres" name="user-email" required>
-									<input type="password" placeholder="Kies een wachtwoord" name="user-password" required>
-									
+									<div class="form-error">Geef een geldig e-mail adres in.</div>
+								</div>
+
+								<div class="large-12 columns">
+									<input type="password" placeholder="Kies een wachtwoord" name="user-password" 
+										   pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z]).*$" required>
+									<div class="form-error">Je wachtwoord moet minstens 8 karakters lang zijn, 1 hoofletter en 1 cijfer bevatten.</div>
+
 									<?php
 										if(isset($error)) {
 											foreach($error as $error) { ?>
@@ -134,9 +122,7 @@ if(isset($_POST['register-button']))
 													<?php echo $error; ?>
 												</div>
 									  <?php }
-										} else if(isset($_GET['joined'])) { ?>
-											<!-- A redirect to the advert overview-page must go here -->
-								  <?php } else { ?>
+										} else { ?>
 								  				<p class="terms_conditions">Door een account aan te maken ga je akkoord met onze <a href="#">termen en condities<a>.</p>
 								  <?php } ?>
 
