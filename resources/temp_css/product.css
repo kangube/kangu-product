@@ -3261,6 +3261,253 @@ table.hover tr:nth-of-type(even):hover {
 .top-bar-right {
   float: right; }
 
+h1 {
+  font-family: "sofia-pro-soft", sans-serif;
+  font-style: regular;
+  font-weight: regular;
+  font-size: 2.25rem;
+  line-height: 2.925rem;
+  color: #454553;
+  margin-top: 0;
+  margin-bottom: 0; }
+
+h2 {
+  font-family: "sofia-pro-soft", sans-serif;
+  font-style: regular;
+  font-weight: regular;
+  font-size: 1.5rem;
+  line-height: 1.95rem;
+  color: #454553;
+  margin-top: 0;
+  margin-bottom: 0; }
+
+h3 {
+  font-family: "sofia-pro-soft", sans-serif;
+  font-style: regular;
+  font-weight: regular;
+  font-size: 1.125rem;
+  line-height: 1.4625rem;
+  color: #454553;
+  margin-top: 0;
+  margin-bottom: 0; }
+
+h4 {
+  font-family: "sofia-pro-soft", sans-serif;
+  font-style: regular;
+  font-weight: regular;
+  font-size: 0.875rem;
+  line-height: 1.1375rem;
+  color: #454553;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 0; }
+
+h5 {
+  font-family: "sofia-pro-soft", sans-serif;
+  font-style: italic;
+  font-weight: regular;
+  font-size: 1rem;
+  line-height: 1.3rem;
+  color: #454553;
+  margin-top: 0;
+  margin-bottom: 0; }
+
+.intro-paragraph {
+  font-family: "open-sans", sans-serif;
+  font-style: regular;
+  font-weight: regular;
+  font-size: 1rem;
+  line-height: 1.35rem;
+  color: rgba(69, 69, 83, 0.8); }
+
+p {
+  font-family: "open-sans", sans-serif;
+  font-style: regular;
+  font-weight: regular;
+  font-size: 0.875rem;
+  line-height: 1.18125rem;
+  color: rgba(69, 69, 83, 0.8); }
+
+a {
+  font-family: "open-sans", sans-serif;
+  font-weight: regular;
+  color: #F37A7D;
+  text-decoration: underline; }
+  a:hover {
+    color: rgba(243, 122, 125, 0.8); }
+  a:visited {
+    color: rgba(243, 122, 125, 0.8); }
+
+input:not([type=submit]):not([type=file]) {
+  background-color: transparent;
+  box-shadow: none !important;
+  text-decoration: none;
+  border: none;
+  border-bottom: 1px solid rgba(69, 69, 83, 0.4);
+  font-family: "open-sans", sans-serif;
+  font-style: italic;
+  font-size: 0.875rem;
+  color: rgba(69, 69, 83, 0.4);
+  padding: 0 0 15px 0;
+  margin-bottom: 30px; }
+  input:not([type=submit]):not([type=file]):focus, input:not([type=submit]):not([type=file]):hover, input:not([type=submit]):not([type=file]):active {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    border-bottom: 1px solid rgba(69, 69, 83, 0.6); }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+          transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: rgba(69, 69, 83, 0.4) !important; }
+
+.blue-horizontal-line {
+  border: 2px solid #4AA0D5;
+  border-radius: 3px;
+  width: 60px;
+  margin: 20px 0 35px 0; }
+
+.red-horizontal-line {
+  border: 2px solid #4AA0D5;
+  border-radius: 3px;
+  width: 60px;
+  margin: 20px 0 35px 0; }
+
+.error-callout {
+  font-family: "open-sans", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 0.75rem;
+  line-height: 0.75rem;
+  color: #F37A7D;
+  padding: 0;
+  margin: 0 0 30px 0; }
+
+.form-error {
+  margin-top: -10px !important;
+  margin-bottom: 20px;
+  font-family: "open-sans", sans-serif;
+  font-style: normal;
+  font-weight: regular;
+  font-size: 0.75rem;
+  line-height: 0.75rem;
+  color: #F37A7D;
+  text-align: left !important; }
+
+.align-center {
+  text-align: center; }
+
+.landing-section-header {
+  font-size: 1.875rem;
+  margin-bottom: 23px;
+  text-align: center; }
+
+.intro-paragraph {
+  font-size: 1.25rem;
+  color: #888;
+  margin-bottom: 90px;
+  text-align: center; }
+
+.header {
+  height: 100vh;
+  width: 100vw;
+  background: #4AA0D5;
+  margin-bottom: 120px; }
+  .header h2 {
+    font-size: 2.125rem;
+    color: #FFFFFF;
+    line-height: 40px;
+    font-weight: bold;
+    margin-top: 36px; }
+  .header h3 {
+    font-size: 0.875rem;
+    color: #FFFFFF;
+    line-height: 29px; }
+  .header ul {
+    margin-top: 46px; }
+    .header ul li {
+      text-align: center; }
+    .header ul .registreren-button {
+      background: rgba(216, 233, 240, 0.2);
+      border: 1px solid #d8e9f0;
+      border-radius: 30px;
+      text-decoration: none;
+      padding-left: 19px;
+      padding-right: 19px; }
+  .header .index-header {
+    color: #FFFFFF;
+    font-size: 2.8125rem;
+    margin-top: 10%; }
+  .header .index-sub-header {
+    font-weight: normal;
+    color: #aadaf7;
+    margin-bottom: 117px; }
+  .header img {
+    margin-bottom: 50px;
+    width: 100%; }
+
+.veiligheid {
+  margin-bottom: 120px; }
+
+.functionaliteiten {
+  margin-bottom: 120px;
+  text-align: center; }
+  .functionaliteiten .opsom-header {
+    font-size: 1.5rem; }
+  .functionaliteiten .centered {
+    width: 61px;
+    display: block;
+    margin: 28px auto; }
+  .functionaliteiten .opsom-subheader {
+    margin-bottom: 16px; }
+  .functionaliteiten p {
+    margin-bottom: 40px; }
+
+.beta {
+  background: -webkit-linear-gradient(315deg, #57b9f6 0%, #4aa0d5 100%);
+  background: linear-gradient(-225deg, #57b9f6 0%, #4aa0d5 100%);
+  text-align: center;
+  padding-bottom: 60px;
+  margin-bottom: 47px; }
+  .beta .landing-section-header {
+    font-size: 1.875rem;
+    margin-top: 90px;
+    margin-bottom: 85px;
+    text-align: center;
+    color: #FFFFFF; }
+  .beta .subscribe-button {
+    background: rgba(216, 233, 240, 0.2);
+    border: 1px solid #D8E9F0;
+    border-radius: 5px;
+    width: 100%;
+    height: 44px;
+    color: #D8E9F0; }
+  .beta .input-field-index {
+    border-bottom: 1px solid #FFFFFF !important;
+    font-size: 1.25rem !important;
+    color: #white !important; }
+
+.footer {
+  margin-bottom: 47px; }
+
+.half-height-gradient {
+  min-width: 100vw;
+  min-height: 50vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background: -webkit-linear-gradient(315deg, #57B9F6 0%, #4AA0D5 100%);
+  background: linear-gradient(-225deg, #57B9F6 0%, #4AA0D5 100%);
+  left: 0;
+  top: 0;
+  position: absolute;
+  z-index: -1; }
+
 .full-width {
   min-width: 100vw;
   min-height: 100vh;
@@ -3275,81 +3522,127 @@ table.hover tr:nth-of-type(even):hover {
   -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
-          justify-content: center;
-  background-color: #4AA0D5; }
+          justify-content: center; }
 
-/*.registration-panel {
-	background-color: $light-grey;
-	padding: 35px 30px 35px 30px;
-	height: auto;
-}*/
 .registration-introduction-panel {
   background-image: url(../assets/registration/registration-introduction-photo.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 35px 30px 35px 30px; }
-  .registration-introduction-panel h1 {
-    font-family: "sofia-pro-soft", sans-serif;
-    font-weight: regular;
+  padding: 35px 30px 35px 30px;
+  border-radius: 3px 0 0 3px;
+  box-shadow: 0px 19px 38px 0px rgba(0, 0, 0, 0.2);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start; }
+  .registration-introduction-panel .introduction-header {
     color: #FFFFFF;
     font-size: 1.875rem;
-    line-height: 45px; }
-  .registration-introduction-panel p {
-    font-family: "open-sans", sans-serif;
-    font-weight: regular;
+    line-height: 2.25rem;
+    margin-bottom: 20px; }
+  .registration-introduction-panel .introduction-paragraph {
     color: #FFFFFF;
     font-size: 0.875rem;
-    line-height: 1.1875rem; }
-  .registration-introduction-panel .social-links-container .icon {
-    margin: 0 6px 0 6px; }
-  .registration-introduction-panel .social-links-container svg {
-    width: 40px;
-    height: 40px;
-    fill: #FFFFFF; }
-    .registration-introduction-panel .social-links-container svg:hover {
-      fill: rgba(255, 255, 255, 0.75); }
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.5rem; }
+  .registration-introduction-panel .introduction-social-links-list {
+    margin: 0;
+    -webkit-align-self: flex-end;
+        -ms-flex-item-align: end;
+            align-self: flex-end; }
+    .registration-introduction-panel .introduction-social-links-list li {
+      display: inline-block;
+      list-style-type: none;
+      margin: 0 5px 0 5px; }
+      .registration-introduction-panel .introduction-social-links-list li:first-child {
+        margin-left: 0; }
+      .registration-introduction-panel .introduction-social-links-list li svg {
+        width: 35px;
+        height: 35px;
+        fill: #FFFFFF; }
+      .registration-introduction-panel .introduction-social-links-list li svg:hover {
+        fill: #d9d9d9; }
 
 .registration-input-panel {
   background-color: #F9F9F9;
-  padding: 35px 30px 35px 30px; }
-  .registration-input-panel h1 {
-    font-family: "sofia-pro-soft", sans-serif;
-    font-weight: regular;
-    font-size: 1.875rem;
-    color: #454553; }
-  .registration-input-panel hr {
-    border: 2px solid #F37A7D;
-    border-radius: 3px;
-    width: 10%;
-    margin: 20px 0 30px 0; }
-  .registration-input-panel form input {
-    background-color: transparent;
-    box-shadow: none !important;
-    text-decoration: none;
-    border-style: solid;
-    border: none;
-    border-bottom: 1px solid rgba(69, 69, 83, 0.4);
-    font-family: "open-sans", sans-serif;
-    font-style: italic;
-    font-size: 0.875rem;
-    color: rgba(69, 69, 83, 0.4);
-    padding: 0 0 15px 0;
-    margin-bottom: 30px; }
-    .registration-input-panel form input:focus {
-      background-color: transparent;
-      text-decoration: none;
-      border: none;
-      border-bottom: 1px solid rgba(69, 69, 83, 0.4); }
+  padding: 35px 30px 35px 30px;
+  border-radius: 0 3px 3px 0;
+  box-shadow: 0px 19px 38px 0px rgba(0, 0, 0, 0.2); }
+  .registration-input-panel .registration-header {
+    font-size: 1.875rem; }
   .registration-input-panel .terms_conditions {
     font-family: "open-sans", sans-serif;
     font-weight: regular;
-    font-size: 0.75rem; }
+    font-size: 0.8125rem;
+    margin: 0 0 30px 0; }
   .registration-input-panel .create-account-btn {
+    background-color: #F37A7D;
     font-family: "open-sans", sans-serif;
-    font-weight: regular;
+    font-style: regular;
     font-size: 0.875rem;
     color: #FFFFFF;
-    background-color: #F37A7D;
     border-radius: 3px;
     border: none;
-    padding: 10px 25px 10px 25px; }
+    padding: 10px 25px 10px 25px;
+    margin-bottom: 0; }
+    .registration-input-panel .create-account-btn:hover {
+      background-color: #f16366;
+      -webkit-transition: all 0.3s ease;
+              transition: all 0.3s ease; }
+    .registration-input-panel .create-account-btn:active {
+      background-color: #f16366; }
+    .registration-input-panel .create-account-btn:visited {
+      background-color: #f16366; }
+
+.full-width-login .row {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto; }
+
+.login-input-panel {
+  background-color: #F9F9F9;
+  padding: 35px 30px 35px 30px;
+  border-radius: 3px;
+  box-shadow: 0px 19px 38px 0px rgba(0, 0, 0, 0.2); }
+  .login-input-panel .large-12 .columns {
+    padding-left: 0;
+    padding-right: 0; }
+  .login-input-panel .login-header {
+    font-size: 1.875rem;
+    text-align: center; }
+  .login-input-panel .blue-horizontal-line {
+    text-align: center !important;
+    display: inline-block; }
+  .login-input-panel .login-account-button {
+    background-color: #F37A7D;
+    font-family: "open-sans", sans-serif;
+    font-style: regular;
+    font-size: 0.875rem;
+    color: #FFFFFF;
+    border-radius: 3px;
+    border: none;
+    padding: 10px 25px 10px 25px;
+    margin-bottom: 0;
+    width: 100%; }
+    .login-input-panel .login-account-button:hover {
+      background-color: #f16366;
+      -webkit-transition: all 0.3s ease;
+              transition: all 0.3s ease; }
+    .login-input-panel .login-account-button:active {
+      background-color: #f16366; }
+    .login-input-panel .login-account-button:visited {
+      background-color: #f16366; }
+  .login-input-panel .forgot-password-link {
+    font-size: 0.75rem;
+    color: #454553;
+    text-decoration: none;
+    margin: 30px 0 0 0;
+    display: inline-block; }
