@@ -1,16 +1,12 @@
 <?php
 
-	require_once("../php-assets/class.session.php");
-	
+	require_once("../php-assets/class.session.php");	
 	require_once("../php-assets/class.user.php");
+	
 	$auth_user = new USER();
-	
-	
 	$user_id = $_SESSION['user_session'];
-	
 	$stmt = $auth_user->runQuery("SELECT * FROM tbl_user WHERE user_id=:user_id");
 	$stmt->execute(array(":user_id"=>$user_id));
-	
 	$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
 ?>
@@ -24,7 +20,11 @@
 <body>
   
   <h5>welcome : <?php echo $userRow['user_email']; ?></h5>
-  <a href='logout.php'>log out</a>
+  <a href='logout.php'>Log out</a>
+  <br/>
+  <a href="home.php"><button>Home</button></a>
+  <a href="advert_create.php"><button>Create an advert</button></a>
+  <a href="advert.php"><button>See all adverts</button></a>
 
 </body>
 </html>
