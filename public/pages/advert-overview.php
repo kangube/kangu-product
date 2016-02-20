@@ -24,40 +24,9 @@
     </head>
 
 	<body>
-		<div class="row">
-			<div class="large-12 small-centered columns">
-				<div class="title-bar" data-responsive-toggle="top-bar-menu" data-hide-for="medium">
-			        <button class="menu-icon" type="button" data-open="offCanvasLeft"></button>
-			        <div class="title-bar-title">kangu</div>
-				</div>
-		      
-				<div class="top-bar" id="top-bar-menu">
-					<div class="top-bar-title show-for-medium">kangu</div>
-
-					<div class="top-bar-right">
-						<ul class="vertical medium-horizontal menu">
-							<li><button type="button" class="provide-services-button">Bied opvang aan</button></li>
-							<li><a href="#">Advertenties</a></li>
-							<li><a href="#">Schema</a></li>
-							<li><a href="#">Transacties</a></li>
-							<li><a href="#" class="show-for-medium" data-icon="g"></a></li>
-							<li>
-								<ul class="dropdown menu user-dropdown-menu" data-dropdown-menu>
-									<li><img class="user-profile-image" src="../assets/advert-overview/user-profile-image.png"></li>
-									<li>
-										<a href="#">Jenny Doe</a>
-										<ul class="vertical menu">
-											<li><a href="#">Afmelden</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-
+		
+		<?php include('../php-includes/navigation.php'); ?>
+		
 		<div class="advert-overview-header" data-interchange="[../assets/advert-overview/advert-background-1366.jpg, default], 
                                    [../assets/advert-overview/advert-background-320.jpg, only screen and (min-width: 0px) and (max-width: 320px)],
                                    [../assets/advert-overview/advert-background-480.jpg, only screen and (min-width: 321px) and (max-width: 480px)], 
@@ -86,9 +55,38 @@
 					<option value="2">2 kinderen</option>
 					<option value="3">3 kinderen</option>
 					<option value="3">4 kinderen</option>
-				</select>	
+				</select>
     			<input class="search-submit" type="submit" value="Zoeken">
         	</form>
+
+        	<button id="mobile-search-form-button" data-icon="h">Zoek opvang</button>
+	    </div>
+
+	    <div class="mobile-search-form-container">
+		    <div class="row">
+		    	<button id="search-form-close-button" class="close-button" type="button">
+					<span aria-hidden="true">&times;</span>
+				</button>
+
+			    <div class="small-12 small-centered text-center columns">
+			    	<h2>Opvang zoeken</h2>
+			    	<hr class="blue-horizontal-line"></hr>
+			    </div>
+
+			    <div class="small-12 small-centered columns">
+			    	<form method="post" class="advert-search-form-mobile">
+			    		<input type="text" placeholder="Binnen welke school zoekt u een opvangouder?">
+			    		<select class="search-spots" name="number-children">
+							<option value="1" selected>1 kind</option> 
+							<option value="2">2 kinderen</option>
+							<option value="3">3 kinderen</option>
+							<option value="3">4 kinderen</option>
+						</select>
+						<input class="search-price" type="text" placeholder="Prijs (max.)">	
+						<input class="search-submit" type="submit" value="Zoeken">
+			    	</form>
+			    </div>
+			</div>
 	    </div>
 
 	    <div class="row large-collapse advert-overview-row">
