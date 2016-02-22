@@ -2,17 +2,24 @@
 @import '../../bower_components/foundation-sites/scss/foundation';
 @include foundation-everything($flex: false);
 
+
 // Importing all modules
 @import 'modules/colors';
 @import 'modules/functions';
 @import 'modules/mixins';
 @import 'modules/typography';
 
+// Importing all components
+@import 'components/navigation';
+@import 'components/advert';
+
 // Importing all partials
 @import 'partials/input-fields';
 @import 'partials/horizontal-lines';
 @import 'partials/callouts';
+@import 'partials/pagination';
 
 // Importing all pages
 @import 'pages/registration';
 @import 'pages/login';
+@import 'pages/advert-overview';

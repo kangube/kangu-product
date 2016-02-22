@@ -1,0 +1,87 @@
+// Pagination styling
+
+.pagination {
+	text-align: center;
+	margin: 40px 0 60px 0;
+
+	li {
+		padding: 5px 10px 5px 10px;
+		margin: 0 10px 0 10px;
+		background-color: $light-grey-alt;
+		border-radius: 3px;
+		color: $text-dark-grey;
+
+		&:hover {
+			background-color: darken($light-grey-alt, 5%);
+			color: $text-dark-grey;
+		}
+	}
+
+	li a {
+		color: $text-dark-grey;
+		text-decoration: none;
+		padding: 0;
+
+		&:hover {
+			color: $text-dark-grey;
+		}
+	}
+
+	.ellipsis:after {
+		padding: 0;
+	}
+
+	.current {
+		background-color: $light-red !important;
+		padding: 5px 10px 5px 10px;
+		margin: 0 10px 0 10px;
+
+		&:hover {
+			background-color: darken($light-red, 5%);
+			color: $text-white;
+		}
+	}
+
+	.current a {
+		padding: 0;
+		color: $text-white;
+
+		&:hover {
+			background-color: $light-red;
+			color: $text-white;
+		}
+	}
+
+	.pagination-previous {
+		float: left;
+
+		@include breakpoint(medium) { 
+			margin-left: .9375rem;
+		}
+	}
+
+	.pagination-next {
+		float: right;
+
+		@include breakpoint(medium) { 
+			margin-right: .9375rem;
+		}
+	}
+
+	.pagination-previous, .pagination-next {
+		background-color: $light-grey-alt;
+		border: 1px solid $border-color-light-grey;
+		border-radius: 3px;
+		color: $text-dark-grey;
+		padding: 5px 25px 5px 25px;
+
+		&:hover {
+			background-color: darken($light-grey-alt, 2%);
+			color: $text-dark-grey;
+		}
+
+		@include breakpoint(large up) { 
+			margin: 0;
+		}
+	}
+}
