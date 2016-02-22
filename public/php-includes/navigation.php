@@ -8,7 +8,7 @@
 	<div class="profile-information">
 		<ul>
 			<li><img src="../assets/advert-overview/user-profile-image.png"></li>
-			<li><a href="#">Jenny Doe</a></li>
+			<li><a href="#"><?php echo $userRow['user_firstname'].' '.$userRow['user_lastname']; ?></a></li>
 		</ul>
 	</div>
 
@@ -56,7 +56,7 @@
 						<ul class="dropdown menu user-dropdown-menu" data-dropdown-menu>
 							<li><img class="user-profile-image" src="../assets/advert-overview/user-profile-image.png"></li>
 							<li>
-								<a href="#">Jenny Doe</a>
+								<a href="#"><?php echo $userRow['user_firstname'].' '.$userRow['user_lastname']; ?></a>
 								<ul class="vertical menu">
 									<li><a href="#">Afmelden</a></li>
 								</ul>
