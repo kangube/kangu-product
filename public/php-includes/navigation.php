@@ -7,7 +7,7 @@
 
 	<div class="profile-information">
 		<ul>
-			<li><img src="../assets/advert-overview/user-profile-image.png"></li>
+			<li><img src="<?php echo $userRow['user_image_path']; ?>"></li>
 			<li><a href="#"><?php echo $userRow['user_firstname'].' '.$userRow['user_lastname']; ?></a></li>
 		</ul>
 	</div>
@@ -54,7 +54,7 @@
 					<li><a href="#" class="show-for-medium" data-icon="g"></a></li>
 					<li>
 						<ul class="dropdown menu user-dropdown-menu" data-dropdown-menu>
-							<li><img class="user-profile-image" src="../assets/advert-overview/user-profile-image.png"></li>
+							<li><img class="user-profile-image" src="<?php echo $userRow['user_image_path']; ?>"></li>
 							<li>
 								<a href="#"><?php echo $userRow['user_firstname'].' '.$userRow['user_lastname']; ?></a>
 								<ul class="vertical menu">

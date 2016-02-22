@@ -1,7 +1,7 @@
 <?php
-	//include_once("../php-assets/class.session.php");
+	include_once("../php-assets/class.session.php");
 	include_once("../php-assets/class.user.php");
-	//include_once("../php-assets/class.advert.php");
+	include_once("../php-assets/class.advert.php");
 	
 	/*
 	$auth_user = new USER();
@@ -12,9 +12,9 @@
 	*/
 	
 	$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "kangu-product";
+	$username = "root";
+	$password = "root";
+	$dbname = "kangu-product";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -23,26 +23,21 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
+if(isset($_POST['SubmitButton']))
+{ 
+	if(isset($_POST['descending']) && $_POST['descending'] == 'checked') 
+	{
+    	echo "Allebei aangevinkt";
+    	$sql = "SELECT advert_id, advert_name FROM tbl_advert DESC";
+		$result = mysqli_query($conn, $sql);
 
-
-
-
-	if(isset($_POST['SubmitButton']))
-	{ 
-		if(isset($_POST['descending']) && $_POST['descending'] == 'checked') 
-		{
-	    	echo "Allebei aangevinkt";
-	    	$sql = "SELECT advert_id, advert_name FROM tbl_advert DESC";
-			$result = mysqli_query($conn, $sql);
-
-			    // output data of each row
-			    while($row = mysqli_fetch_assoc($result)) 
-			    {
-			        echo "id: " . $row["advert_id"]. " - Name: " . $row["advert_name"]. "<br>";
-			    }
-			
-		}	
-	} 
+	    // output data of each row
+	    while($row = mysqli_fetch_assoc($result)) 
+	    {
+	        echo "id: " . $row["advert_id"]. " - Name: " . $row["advert_name"]. "<br>";
+	    }
+	}	
+} 
 
 mysqli_close($conn); 
 ?>
@@ -123,7 +118,7 @@ mysqli_close($conn);
 </head>
 <body>
 <div id="container">
-	<h5>welcome : <?php //echo $userRow['user_email']; ?></h5>
+	<h5>welcome : <?php echo $userRow['user_email']; ?></h5>
   	<a href='logout.php'>Log out</a>
   	
   	<br/>
@@ -161,7 +156,7 @@ mysqli_close($conn);
 	</form>  
 
 	<div class="loading-div"><img src="../assets/ajax-loader.gif" ></div>
-	<div id="results"><!-- database content will be loaded here --></div>
+	<div id="results"></div>
 
 </div>
 </body>

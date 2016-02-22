@@ -1,8 +1,8 @@
 <?php
 
 	require_once("../php-assets/class.session.php");
-	
 	require_once("../php-assets/class.user.php");
+	include_once("../php-assets/class.advert.php");
 	$auth_user = new USER();
 	
 	
@@ -12,7 +12,33 @@
 	$stmt->execute(array(":user_id"=>$user_id));
 	
 	$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+	
+	$servername = "localhost";
+	$username = "root";
+	$password = "root";
+	$dbname = "kangu-product";
 
+	$conn = mysqli_connect($servername, $username, $password, $dbname);
+	if (!$conn) {
+	    die("Connection failed: " . mysqli_connect_error());
+	}
+
+	if(isset($_POST['SubmitButton']))
+	{ 
+		if(isset($_POST['descending']) && $_POST['descending'] == 'checked') 
+		{
+	    	echo "Allebei aangevinkt";
+	    	$sql = "SELECT advert_id, advert_name FROM tbl_advert DESC";
+			$result = mysqli_query($conn, $sql);
+
+		    while($row = mysqli_fetch_assoc($result)) 
+		    {
+		        echo "id: " . $row["advert_id"]. " - Name: " . $row["advert_name"]. "<br>";
+		    }
+		}	
+	}
+
+	mysqli_close($conn);
 ?>
 <!doctype html>
 <html class="no-js" lang="nl">
@@ -74,15 +100,15 @@
 			    </div>
 
 			    <div class="small-12 small-centered columns">
-			    	<form method="post" class="advert-search-form-mobile">
-			    		<input type="text" placeholder="Binnen welke school zoekt u een opvangouder?">
-			    		<select class="search-spots" name="number-children">
+			    	<form action="search.php" method="GET" name="search" class="advert-search-form-mobile">
+			    		<input type="text" name="location" placeholder="Binnen welke school zoekt u een opvangouder?" required>
+			    		<select class="search-spots" name="children" required>
 							<option value="1" selected>1 kind</option> 
 							<option value="2">2 kinderen</option>
 							<option value="3">3 kinderen</option>
 							<option value="3">4 kinderen</option>
 						</select>
-						<input class="search-price" type="text" placeholder="Prijs (max.)">	
+						<input class="search-price" type="text" name="price" placeholder="Prijs (max.)" required>	
 						<input class="search-submit" type="submit" value="Zoeken">
 			    	</form>
 			    </div>
@@ -243,6 +269,10 @@
 			    		</div>
 			    	</a>
 		    	</div>
+
+
+		    	<div class="loading-div"><img src="../assets/ajax-loader.gif" ></div>
+				<div id="results"></div>
 		    </div>
 		</div>
 

@@ -1,51 +1,74 @@
 <?php
-/* Title : Ajax Pagination with jQuery & PHP
-Example URL : http://www.sanwebe.com/2013/03/ajax-pagination-with-jquery-php */
 
-//continue only if $_POST is set and it is a Ajax request
 if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
 	
 	include("../php-assets/class.dbconfig.php");
-  	//include config file
-	
-	//Get page number from Ajax POST
-	if(isset($_POST["page"])){
-		$page_number = filter_var($_POST["page"], FILTER_SANITIZE_NUMBER_INT, FILTER_FLAG_STRIP_HIGH); //filter number
-		if(!is_numeric($page_number)){die('Invalid page number!');} //incase of invalid page number
-	}else{
-		$page_number = 1; //if there's no page number, set it to 1
+  	
+	if(isset($_POST["page"])) {
+		$page_number = filter_var($_POST["page"], FILTER_SANITIZE_NUMBER_INT, FILTER_FLAG_STRIP_HIGH);
+		if(!is_numeric($page_number)){die('Invalid page number!'); }
+	} else {
+		$page_number = 1;
 	}
 	
-	//get total number of records from database for pagination
-	$results = $mysqli->query("SELECT COUNT(*) FROM tbl_advert");
-	$get_total_rows = $results->fetch_row(); //hold total records in variable
-	//break records into pages
-	$total_pages = ceil($get_total_rows[0]/$item_per_page);
 	
-	//get starting position to fetch the records
+	$advert_results = $mysqli->query("SELECT COUNT(*) FROM tbl_advert");
+	$get_total_rows = $advert_results->fetch_row();
+	$total_pages = ceil($get_total_rows[0]/$item_per_page);
 	$page_position = (($page_number-1) * $item_per_page);
 	
 
 	$test = 'true';
 	if ($test == 'true') 
 	{	
-		//Limit our results within a specified range. 
-		$results = $mysqli->prepare("SELECT advert_id, advert_name, advert_info, advert_rating, advert_price, advert_spots FROM tbl_advert ORDER BY advert_id ASC LIMIT $page_position, $item_per_page");
-		$results->execute(); //Execute prepared Query
-		$results->bind_result($id, $name, $message, $rating, $price, $spotsleft); //bind variables to prepared statement
 		
-		//Display records fetched from database.
-		echo '<ul class="contents">';
-		while($results->fetch()){ //fetch values
-			echo '<li>';
-			echo '<strong>' .$name.'</strong><br/>'.$message;
-			echo '<br/><br/>Rating: ' . $rating;
-			echo '<br/>Price: ' . $price;
-			echo '<br/>Spots that are left: ' . $spotsleft;
-			echo '<br/><br/><a href="advertdetail.php?id=' . $id .'"><button>Show details</button></a>';
-			echo '</li>';
+		$advert_results = $mysqli->prepare("SELECT advert_id, fk_user_id, advert_description, advert_price, advert_spots, advert_school, user_image_path, user_firstname, user_lastname, user_city FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id ORDER BY advert_id ASC LIMIT $page_position, $item_per_page");
+		$advert_results->execute();
+		$advert_results->bind_result($advert_id, $advert_creator, $description, $advert_price, $advert_spots, $advert_school, $user_profile_image, $user_first_name, $user_last_name, $user_city);
+
+
+		while($advert_results->fetch()) {
+
+			$shorten = strpos($description, ' ', 125);
+			$advert_description = substr($description, 0, $shorten);
+
+			echo "<div class='advert-container end'>
+				  	<a href='advertdetail.php?id=".$advert_id."' class='advert-link'>
+						<div class='advert'>
+			    			<div class='small-12 columns'>
+				    			<div class='small-2 columns'>
+				    				<img class='advert-profile-image' src='".$user_profile_image."'>
+				    			</div>
+				    			
+				    			<div class='small-10 columns'>
+					    			<ul class='advert-information-list'>
+					    				<li>".$user_first_name.' '.$user_last_name."</li>
+					    				<li data-icon='d'>".$user_city."</li>
+					    			</ul>
+				    			</div>
+			    			</div>
+
+							<p class='advert-description'>".$advert_description."</p>
+			
+			    			<div class='small-6 columns'>
+				    			<div class='advert-price'>
+					    			<p>".$advert_price."</p>
+					    			<p>p/u</p>
+				    			</div>
+				    		</div>
+
+				    		<div class='small-6 columns'>
+				    			<div class='advert-spots'>
+				    				<p>".$advert_spots."</p>
+					    			<p>plaatsen</p>
+				    			</div>
+				    		</div>
+	    	
+				    		<p class='advert-school' data-icon='e'>Basisschool ".$advert_school."</p>
+			    		</div>
+			    	</a>
+		    	</div>";
 		}
-		echo '</ul>';
 
 		echo '<div align="center">';
 		/* We call the pagination function here to generate Pagination link for us. 
@@ -59,40 +82,40 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 		echo 'nee';
 	}
 }
-################ pagination function #########################################
+
 function paginate_function($item_per_page, $current_page, $total_records, $total_pages)
 {
     $pagination = '';
-    if($total_pages > 0 && $total_pages != 1 && $current_page <= $total_pages){ //verify total pages and current page number
+    if($total_pages > 0 && $total_pages != 1 && $current_page <= $total_pages) {
         $pagination .= '<ul class="pagination">';
         
         $right_links    = $current_page + 3; 
-        $previous       = $current_page - 3; //previous link 
-        $next           = $current_page + 1; //next link
-        $first_link     = true; //boolean var to decide our first link
+        $previous       = $current_page - 3;
+        $next           = $current_page + 1;
+        $first_link     = true;
         
         if($current_page > 1){
 			$previous_link = ($previous==0)? 1: $previous;
             //$pagination .= '<li class="first"><a href="#" data-page="1" title="First">&laquo;</a></li>'; //first link
             //$pagination .= '<li><a href="#" data-page="'.$previous_link.'" title="Previous">&lt;</a></li>'; //previous link
-                for($i = ($current_page-2); $i < $current_page; $i++){ //Create left-hand side links
+                for($i = ($current_page-2); $i < $current_page; $i++) {
                     if($i > 0){
                         $pagination .= '<li><a href="#" data-page="'.$i.'" title="Page'.$i.'">'.$i.'</a></li>';
                     }
                 }   
-            $first_link = false; //set first link to false
+            $first_link = false;
         }
         
-        if($first_link){ //if current active page is first link
+        if($first_link) {
             $pagination .= '<li class="first active">'.$current_page.'</li>';
-        }elseif($current_page == $total_pages){ //if it's the last active link
+        } else if($current_page == $total_pages) {
             $pagination .= '<li class="last active">'.$current_page.'</li>';
-        }else{ //regular current link
+        } else {
             $pagination .= '<li class="active">'.$current_page.'</li>';
         }
                 
-        for($i = $current_page+1; $i < $right_links ; $i++){ //create right-hand side links
-            if($i<=$total_pages){
+        for($i = $current_page+1; $i < $right_links ; $i++) {
+            if($i<=$total_pages) {
                 $pagination .= '<li><a href="#" data-page="'.$i.'" title="Page '.$i.'">'.$i.'</a></li>';
             }
         }
@@ -104,7 +127,7 @@ function paginate_function($item_per_page, $current_page, $total_records, $total
         
         $pagination .= '</ul>'; 
     }
-    return $pagination; //return pagination links
+    return $pagination;
 }
 
 ?>
