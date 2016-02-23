@@ -47,7 +47,7 @@
 
 			<div class="top-bar-right">
 				<ul class="vertical medium-horizontal menu">
-					<li><button type="button" class="provide-services-button">Bied opvang aan</button></li>
+					<li><a href="../pages/advert-create.php" class="provide-services-button">Bied opvang aan</a></li>
 					<li><a href="#">Advertenties</a></li>
 					<li><a href="#">Schema</a></li>
 					<li><a href="#">Transacties</a></li>

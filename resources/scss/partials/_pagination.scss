@@ -5,11 +5,11 @@
 	margin: 40px 0 60px 0;
 
 	li {
+		@include font($paragraph-font-family, regular, regular, 14, 22, $text-dark-grey);
 		padding: 5px 10px 5px 10px;
 		margin: 0 10px 0 10px;
 		background-color: $light-grey-alt;
 		border-radius: 3px;
-		color: $text-dark-grey;
 
 		&:hover {
 			background-color: darken($light-grey-alt, 5%);
@@ -81,6 +81,11 @@
 		}
 
 		@include breakpoint(large up) { 
+			margin: 0;
+		}
+
+		@include breakpoint(small down) {
+			@include grid-column(5);
 			margin: 0;
 		}
 	}

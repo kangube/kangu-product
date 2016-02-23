@@ -135,22 +135,6 @@
 			</div>
 		</div>
 
-	    <div class="row">
-		    <div class="large-12 columns">
-				<ul class="pagination" role="navigation" aria-label="Pagination">
-					<li class="pagination-previous"><a href="#" aria-label="Previous page">Vorige pagina</a></li>
-					<li><a href="#" aria-label="Page 1">1</a></li>
-					<li class="current"><a href="#" aria-label="Page 2">2</a></li>
-					<li><a href="#" aria-label="Page 3">3</a></li>
-					<li><a href="#" aria-label="Page 4">4</a></li>
-					<li class="ellipsis"></li>
-					<li><a href="#" aria-label="Page 12">12</a></li>
-					<li><a href="#" aria-label="Page 13">13</a></li>
-					<li class="pagination-next"><a href="#" aria-label="Next page">Volgende pagina</a></li>
-				</ul>
-		    </div>
-	    </div>
-
 		<script src="../js/minimum-viable-product.min.js"></script>
 	    <script src="https://use.typekit.net/vnw3zje.js"></script>
 	    <script>try{Typekit.load({ async: true });}catch(e){}</script>

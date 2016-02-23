@@ -283,8 +283,8 @@
 		@include font($paragraph-font-family, regular, regular, 14, 19, rgba($text-dark-grey,0.8));
 		border: 1px solid rgba($text-dark-grey, 0.8);
 		border-radius: 3px;
-		padding: 5px 15px 5px 15px;
-
+		padding: 7px 15px 7px 15px !important;
+		
 		&:hover {
 			background-color: rgba($dark-grey, 0.1);
 		}
