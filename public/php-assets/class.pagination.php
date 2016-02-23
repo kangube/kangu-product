@@ -33,7 +33,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 			$advert_description = substr($description, 0, $shorten);
 
 			echo "<div class='advert-container end'>
-				  	<a href='advertdetail.php?id=".$advert_id."' class='advert-link'>
+				  	<a href='advert-detail.php?id=".$advert_id."' class='advert-link'>
 						<div class='advert'>
 			    			<div class='small-12 columns'>
 				    			<div class='small-2 columns'>
@@ -71,8 +71,6 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 		}
 
 		echo '<div align="center">';
-		/* We call the pagination function here to generate Pagination link for us. 
-		As you can see I have passed several parameters to the function. */
 		echo paginate_function($item_per_page, $page_number, $get_total_rows[0], $total_pages);
 		echo '</div>';
 		

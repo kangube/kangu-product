@@ -61,8 +61,8 @@ class advert
 	public function getOne() {
 		$conn = Db::getInstance();
 		$advertNumber = $_GET['id'];
-		$allAdverts = $conn->query("SELECT * FROM tbl_advert WHERE advert_id=$advertNumber");
-		return $allAdverts;
+		$oneAdvert = $conn->query("SELECT * FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id WHERE tbl_advert.advert_id=$advertNumber");
+		return $oneAdvert;
 	}
 }
 ?>
