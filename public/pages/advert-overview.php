@@ -73,10 +73,10 @@
 	            <h3 class="advert-overview-subheader">Deze header wordt vergezeld van een subheader met bijbehorende informatie over de pagina</h3>
 	        </div>
 
-        	<form method="post" class="advert-search-form">
-    			<input class="search-region" type="text" placeholder="Binnen welke school zoekt u een opvangbiedende ouder?">
-    			<input class="search-price" type="text" placeholder="Prijs (max.)">	
-    			<select class="search-spots" name="number-children">
+        	<form action="search.php" method="GET" method="post" name="search" class="advert-search-form">
+    			<input class="search-region" type="text" placeholder="Binnen welke school zoekt u een opvangbiedende ouder?" name="school" required>
+    			<input class="search-price" type="text" placeholder="Prijs (max.)" name="price" required>
+    			<select class="search-spots" name="number-children" required>
 					<option value="1" selected>1 kind</option> 
 					<option value="2">2 kinderen</option>
 					<option value="3">3 kinderen</option>
@@ -101,14 +101,14 @@
 
 			    <div class="small-12 small-centered columns">
 			    	<form action="search.php" method="GET" name="search" class="advert-search-form-mobile">
-			    		<input type="text" name="location" placeholder="Binnen welke school zoekt u een opvangouder?" required>
-			    		<select class="search-spots" name="children" required>
+			    		<input type="text" placeholder="Binnen welke school zoekt u een opvangouder?" name="school" required>
+			    		<select class="search-spots" name="number-children" required>
 							<option value="1" selected>1 kind</option> 
 							<option value="2">2 kinderen</option>
 							<option value="3">3 kinderen</option>
 							<option value="3">4 kinderen</option>
 						</select>
-						<input class="search-price" type="text" name="price" placeholder="Prijs (max.)" required>	
+						<input class="search-price" type="text" placeholder="Prijs (max.)" name="price" required>	
 						<input class="search-submit" type="submit" value="Zoeken">
 			    	</form>
 			    </div>
