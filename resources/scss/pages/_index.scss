@@ -10,9 +10,10 @@
 
 .intro-paragraph {
 	font-size: rem-calc(20px);
-	color: #888;
+	color:#a8aeba;
 	margin-bottom: 90px;
 	text-align: center;
+	font-family: $header-font-family;
 }
 
 .header {
@@ -60,7 +61,6 @@
 
 	.index-sub-header {
 		font-weight: normal;
-		color: #aadaf7;
 		margin-bottom: 117px;
 	}
 
@@ -72,6 +72,14 @@
 
 .veiligheid {
 	margin-bottom: 120px;
+
+	h2 {
+		margin-bottom: 120px;
+	}
+
+	h3 {
+		color: $text-dark-grey;
+	}
 }
 
 .functionaliteiten {
@@ -94,12 +102,12 @@
 
 	p{
 		margin-bottom: 40px;
+
 	}
 }
 
 .beta {
 	background: linear-gradient(-225deg, #57b9f6 0%, #4aa0d5 100%);
-	//background: linear-gradient(to top right, #4aa0d5, #57b9f6);
 	text-align: center;
 	padding-bottom: 60px;
 	margin-bottom: 47px;
@@ -121,11 +129,24 @@
 		color: $light-blue;
 	}
 
-	.input-field-index {
-		border-bottom: 1px solid $white !important;
-		font-size: rem-calc(20) !important;
-		color: $white !important;
+	input:not([type=submit]):not([type=file]), select {
+
+		@include font($paragraph-font-family, italic, regular, 20, 28, $white);
+		text-decoration: none;
+		background-color: none;
+		border-bottom: 1px solid $white;
+		padding: 10px 15px 10px 15px;
+		margin-bottom: 0;
+
+		&::-webkit-input-placeholder {
+			color: $white;
+		}
+
+		&::-moz-placeholder {
+			color: $white;
+		}
 	}
+
 }
 .footer {
 	margin-bottom: 47px;

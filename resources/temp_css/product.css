@@ -3408,9 +3408,10 @@ input:-webkit-autofill:active {
 
 .intro-paragraph {
   font-size: 1.25rem;
-  color: #888;
+  color: #a8aeba;
   margin-bottom: 90px;
-  text-align: center; }
+  text-align: center;
+  font-family: "sofia-pro-soft", sans-serif; }
 
 .header {
   height: 100vh;
@@ -3444,7 +3445,6 @@ input:-webkit-autofill:active {
     margin-top: 10%; }
   .header .index-sub-header {
     font-weight: normal;
-    color: #aadaf7;
     margin-bottom: 117px; }
   .header img {
     margin-bottom: 50px;
@@ -3452,6 +3452,10 @@ input:-webkit-autofill:active {
 
 .veiligheid {
   margin-bottom: 120px; }
+  .veiligheid h2 {
+    margin-bottom: 120px; }
+  .veiligheid h3 {
+    color: #454553; }
 
 .functionaliteiten {
   margin-bottom: 120px;
@@ -3486,10 +3490,22 @@ input:-webkit-autofill:active {
     width: 100%;
     height: 44px;
     color: #D8E9F0; }
-  .beta .input-field-index {
-    border-bottom: 1px solid #FFFFFF !important;
-    font-size: 1.25rem !important;
-    color: #FFFFFF !important; }
+  .beta input:not([type=submit]):not([type=file]), .beta select {
+    font-family: "open-sans", sans-serif;
+    font-style: italic;
+    font-weight: regular;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    color: #FFFFFF;
+    text-decoration: none;
+    background-color: none;
+    border-bottom: 1px solid #FFFFFF;
+    padding: 10px 15px 10px 15px;
+    margin-bottom: 0; }
+    .beta input:not([type=submit]):not([type=file])::-webkit-input-placeholder, .beta select::-webkit-input-placeholder {
+      color: #FFFFFF; }
+    .beta input:not([type=submit]):not([type=file])::-moz-placeholder, .beta select::-moz-placeholder {
+      color: #FFFFFF; }
 
 .footer {
   margin-bottom: 47px; }
