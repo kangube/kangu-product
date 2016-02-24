@@ -28,27 +28,23 @@
 		margin-top: 36px;
 	}
 
+	a {
+		margin-top: 40px;
+	}
+
 	h3 {
 		font-size: rem-calc(14px);
 		color: $white;
 		line-height: 29px;
 	}
 
-	ul {
-		margin-top: 46px;
-
-		li {
-			text-align: center;
-		}
-
-		.registreren-button {
-			background:rgba(216,233,240,0.20);
-			border:1px solid #d8e9f0;
-			border-radius:30px;
-			text-decoration: none;
-			padding-left: 19px;
-			padding-right: 19px;
-		}
+	.registreren-button {
+		background:rgba(216,233,240,0.20);
+		border:1px solid #d8e9f0;
+		border-radius:30px;
+		text-decoration: none;
+		padding-left: 19px;
+		padding-right: 19px;
 	}
 
 	.index-header {
@@ -158,6 +154,9 @@ footer {
 	}
 	.header {
 
+		.registreren-button {
+			margin-top: 8%;
+		}
 		.photo {
 			position: relative;
 			width: 100%;
@@ -235,5 +234,47 @@ footer {
 
 	.social-media {
 		margin-top: 3%;
+	}
+}
+
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+	
+	.functionaliteiten {
+		margin-bottom: 11%;
+		text-align: center;
+
+		h2 {
+			margin-top: 5%;
+		}
+
+		.landing-section-header {
+			font-size: rem-calc(28px);
+			line-height: rem-calc(32px);
+			margin-bottom: 7%;
+		}
+
+
+
+		.centered {
+	  		margin: 5% auto;
+	  		margin-bottom: 7%;
+		}
+		
+		.opsom-subheader {
+			margin-bottom: 5%;
+		}
+	}
+
+	.beta {
+
+		.subscribe-button {
+			margin-top: 5%;
+		}
+
+		input:not([type=submit]):not([type=file]), select {
+
+			margin-bottom: 7%;
+			margin-top: 5%;
+		}
 	}
 }

@@ -3422,21 +3422,19 @@ input:-webkit-autofill:active {
     line-height: 40px;
     font-weight: bold;
     margin-top: 36px; }
+  .header a {
+    margin-top: 40px; }
   .header h3 {
     font-size: 0.875rem;
     color: #FFFFFF;
     line-height: 29px; }
-  .header ul {
-    margin-top: 46px; }
-    .header ul li {
-      text-align: center; }
-    .header ul .registreren-button {
-      background: rgba(216, 233, 240, 0.2);
-      border: 1px solid #d8e9f0;
-      border-radius: 30px;
-      text-decoration: none;
-      padding-left: 19px;
-      padding-right: 19px; }
+  .header .registreren-button {
+    background: rgba(216, 233, 240, 0.2);
+    border: 1px solid #d8e9f0;
+    border-radius: 30px;
+    text-decoration: none;
+    padding-left: 19px;
+    padding-right: 19px; }
   .header .index-header {
     color: #FFFFFF;
     font-size: 2.8125rem;
@@ -3514,6 +3512,8 @@ footer {
     font-size: 1.125rem;
     line-height: 1.25rem;
     margin-bottom: 9%; }
+  .header .registreren-button {
+    margin-top: 8%; }
   .header .photo {
     position: relative;
     width: 100%; }
@@ -3559,6 +3559,27 @@ footer {
       margin-top: 5%; }
   .social-media {
     margin-top: 3%; } }
+
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+  .functionaliteiten {
+    margin-bottom: 11%;
+    text-align: center; }
+    .functionaliteiten h2 {
+      margin-top: 5%; }
+    .functionaliteiten .landing-section-header {
+      font-size: 1.75rem;
+      line-height: 2rem;
+      margin-bottom: 7%; }
+    .functionaliteiten .centered {
+      margin: 5% auto;
+      margin-bottom: 7%; }
+    .functionaliteiten .opsom-subheader {
+      margin-bottom: 5%; }
+  .beta .subscribe-button {
+    margin-top: 5%; }
+  .beta input:not([type=submit]):not([type=file]), .beta select {
+    margin-bottom: 7%;
+    margin-top: 5%; } }
 
 .half-height-gradient {
   min-width: 100vw;
