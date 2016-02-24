@@ -4,22 +4,21 @@
 
 .landing-section-header {
 	font-size: rem-calc(30px);
-	margin-bottom: 23px;
+	margin-bottom: 3%;
 }
 
 .intro-paragraph {
 	font-size: rem-calc(20px);
 	color:#a8aeba;
-	margin-bottom: 90px;
+	margin-bottom: 9%;
 	text-align: center;
 	font-family: $header-font-family;
 }
 
 .header {
-	height: 100vh;
 	width: 100vw;
+	height: 100vh;
 	background: $dark-blue;
-	margin-bottom: 120px;
 
 	h2 {
 		font-size: rem-calc(34px);
@@ -55,25 +54,26 @@
 	.index-header {
 		color: $white;
 		font-size: rem-calc(45px);
-		margin-top: 10%;
+		margin-top: 11%;
 	}
 
 	.index-sub-header {
 		font-weight: normal;
-		margin-bottom: 117px;
+		margin-bottom: 10%;
 	}
 
-	img {
-		margin-bottom: 50px;
+	.photo {
+		position: relative;
 		width: 100%;
+		margin-bottom: 7%;
 	}
 }
 
 .veiligheid {
-	margin-bottom: 120px;
+	margin-bottom: 11%;
 
 	h2 {
-		margin-bottom: 120px;
+		margin-bottom: 11%;
 	}
 
 	h3 {
@@ -82,7 +82,7 @@
 }
 
 .functionaliteiten {
-	margin-bottom: 120px;
+	margin-bottom: 11%;
 	text-align: center;
 
 	.opsom-header {
@@ -108,13 +108,13 @@
 .beta {
 	background: linear-gradient(-225deg, #57b9f6 0%, #4aa0d5 100%);
 	text-align: center;
-	padding-bottom: 60px;
-	margin-bottom: 47px;
+	padding-bottom: 5%;
+	margin-bottom: 3%;
 
 	.landing-section-header {
 		font-size: rem-calc(30px);
-		margin-top: 90px;
-		margin-bottom: 85px;
+		margin-top: 11%;
+		margin-bottom: 10%;
 		text-align: center;
 		color: $white;
 	}
@@ -145,8 +145,95 @@
 			color: $white;
 		}
 	}
-
 }
-.footer {
-	margin-bottom: 47px;
+footer {
+	margin-bottom: 3%;
+}
+
+@media screen and (max-width: 39.9375em) {
+	.intro-paragraph {
+		font-size: rem-calc(18px);
+		line-height: rem-calc(20px);
+		margin-bottom: 9%;
+	}
+	.header {
+
+		.photo {
+			position: relative;
+			width: 100%;
+		}
+
+		ul {
+			margin-top: 10%;
+		}
+		
+		h2 {
+			margin-top: 5%;
+		}
+
+		.index-header {
+			font-size: rem-calc(28px);
+			line-height: rem-calc(32px);
+			margin-bottom: 7%;
+		}
+
+		.index-sub-header {
+			font-size: rem-calc(18px);
+			line-height: rem-calc(20px);
+			margin-bottom: 7%;
+		}
+	}
+
+	.functionaliteiten {
+		margin-bottom: 11%;
+		text-align: center;
+
+		h2 {
+			margin-top: 5%;
+		}
+
+		.landing-section-header {
+			font-size: rem-calc(28px);
+			line-height: rem-calc(32px);
+			margin-bottom: 7%;
+		}
+
+		.opsom-header {
+			font-size: rem-calc(24px);
+			line-height: rem-calc(27px);
+			margin-top: 5%;
+		}
+
+		.centered {
+	  		margin: 5% auto;
+	  		margin-bottom: 7%;
+		}
+		
+		.opsom-subheader {
+			margin-bottom: 5%;
+		}
+
+		p{
+			margin-bottom: 9%;
+		}
+	}
+
+	.beta {
+		padding-bottom: 10%;
+		margin-bottom: 3%;
+
+		.subscribe-button {
+			margin-top: 5%;
+		}
+
+		input:not([type=submit]):not([type=file]), select {
+
+			margin-bottom: 7%;
+			margin-top: 5%;
+		}
+	}
+
+	.social-media {
+		margin-top: 3%;
+	}
 }

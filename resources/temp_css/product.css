@@ -3403,20 +3403,19 @@ input:-webkit-autofill:active {
 
 .landing-section-header {
   font-size: 1.875rem;
-  margin-bottom: 23px; }
+  margin-bottom: 3%; }
 
 .intro-paragraph {
   font-size: 1.25rem;
   color: #a8aeba;
-  margin-bottom: 90px;
+  margin-bottom: 9%;
   text-align: center;
   font-family: "sofia-pro-soft", sans-serif; }
 
 .header {
-  height: 100vh;
   width: 100vw;
-  background: #4AA0D5;
-  margin-bottom: 120px; }
+  height: 100vh;
+  background: #4AA0D5; }
   .header h2 {
     font-size: 2.125rem;
     color: #FFFFFF;
@@ -3441,23 +3440,24 @@ input:-webkit-autofill:active {
   .header .index-header {
     color: #FFFFFF;
     font-size: 2.8125rem;
-    margin-top: 10%; }
+    margin-top: 11%; }
   .header .index-sub-header {
     font-weight: normal;
-    margin-bottom: 117px; }
-  .header img {
-    margin-bottom: 50px;
-    width: 100%; }
+    margin-bottom: 10%; }
+  .header .photo {
+    position: relative;
+    width: 100%;
+    margin-bottom: 7%; }
 
 .veiligheid {
-  margin-bottom: 120px; }
+  margin-bottom: 11%; }
   .veiligheid h2 {
-    margin-bottom: 120px; }
+    margin-bottom: 11%; }
   .veiligheid h3 {
     color: #454553; }
 
 .functionaliteiten {
-  margin-bottom: 120px;
+  margin-bottom: 11%;
   text-align: center; }
   .functionaliteiten .opsom-header {
     font-size: 1.5rem; }
@@ -3474,12 +3474,12 @@ input:-webkit-autofill:active {
   background: -webkit-linear-gradient(315deg, #57b9f6 0%, #4aa0d5 100%);
   background: linear-gradient(-225deg, #57b9f6 0%, #4aa0d5 100%);
   text-align: center;
-  padding-bottom: 60px;
-  margin-bottom: 47px; }
+  padding-bottom: 5%;
+  margin-bottom: 3%; }
   .beta .landing-section-header {
     font-size: 1.875rem;
-    margin-top: 90px;
-    margin-bottom: 85px;
+    margin-top: 11%;
+    margin-bottom: 10%;
     text-align: center;
     color: #FFFFFF; }
   .beta .subscribe-button {
@@ -3506,8 +3506,59 @@ input:-webkit-autofill:active {
     .beta input:not([type=submit]):not([type=file])::-moz-placeholder, .beta select::-moz-placeholder {
       color: #FFFFFF; }
 
-.footer {
-  margin-bottom: 47px; }
+footer {
+  margin-bottom: 3%; }
+
+@media screen and (max-width: 39.9375em) {
+  .intro-paragraph {
+    font-size: 1.125rem;
+    line-height: 1.25rem;
+    margin-bottom: 9%; }
+  .header .photo {
+    position: relative;
+    width: 100%; }
+  .header ul {
+    margin-top: 10%; }
+  .header h2 {
+    margin-top: 5%; }
+  .header .index-header {
+    font-size: 1.75rem;
+    line-height: 2rem;
+    margin-bottom: 7%; }
+  .header .index-sub-header {
+    font-size: 1.125rem;
+    line-height: 1.25rem;
+    margin-bottom: 7%; }
+  .functionaliteiten {
+    margin-bottom: 11%;
+    text-align: center; }
+    .functionaliteiten h2 {
+      margin-top: 5%; }
+    .functionaliteiten .landing-section-header {
+      font-size: 1.75rem;
+      line-height: 2rem;
+      margin-bottom: 7%; }
+    .functionaliteiten .opsom-header {
+      font-size: 1.5rem;
+      line-height: 1.6875rem;
+      margin-top: 5%; }
+    .functionaliteiten .centered {
+      margin: 5% auto;
+      margin-bottom: 7%; }
+    .functionaliteiten .opsom-subheader {
+      margin-bottom: 5%; }
+    .functionaliteiten p {
+      margin-bottom: 9%; }
+  .beta {
+    padding-bottom: 10%;
+    margin-bottom: 3%; }
+    .beta .subscribe-button {
+      margin-top: 5%; }
+    .beta input:not([type=submit]):not([type=file]), .beta select {
+      margin-bottom: 7%;
+      margin-top: 5%; }
+  .social-media {
+    margin-top: 3%; } }
 
 .half-height-gradient {
   min-width: 100vw;
