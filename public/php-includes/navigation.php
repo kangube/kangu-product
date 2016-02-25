@@ -12,6 +12,10 @@
 		</ul>
 	</div>
 
+	<div class="create-advert">
+		<a href="../pages/advert-create.php">Opvang aanbieden</a>
+	</div>
+
 	<div class="menu-links">
 		<div><span>Het platform</span></div>
 		<ul>
@@ -47,7 +51,7 @@
 
 			<div class="top-bar-right">
 				<ul class="vertical medium-horizontal menu">
-					<li><a href="../pages/advert-create.php" class="provide-services-button">Bied opvang aan</a></li>
+					<li><a href="../pages/advert-create.php" class="provide-services-button">Opvang aanbieden</a></li>
 					<li><a href="#">Advertenties</a></li>
 					<li><a href="#">Schema</a></li>
 					<li><a href="#">Transacties</a></li>

@@ -1,44 +1,12 @@
 <?php
-
 	require_once("../php-assets/class.session.php");
 	require_once("../php-assets/class.user.php");
 	include_once("../php-assets/class.advert.php");
 	$auth_user = new USER();
-	
-	
 	$user_id = $_SESSION['user_session'];
-	
 	$stmt = $auth_user->runQuery("SELECT * FROM tbl_user WHERE user_id=:user_id");
 	$stmt->execute(array(":user_id"=>$user_id));
-	
 	$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
-	
-	$servername = "localhost";
-	$username = "root";
-	$password = "root";
-	$dbname = "kangu-product";
-
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
-	if (!$conn) {
-	    die("Connection failed: " . mysqli_connect_error());
-	}
-
-	if(isset($_POST['SubmitButton']))
-	{ 
-		if(isset($_POST['descending']) && $_POST['descending'] == 'checked') 
-		{
-	    	echo "Allebei aangevinkt";
-	    	$sql = "SELECT advert_id, advert_name FROM tbl_advert DESC";
-			$result = mysqli_query($conn, $sql);
-
-		    while($row = mysqli_fetch_assoc($result)) 
-		    {
-		        echo "id: " . $row["advert_id"]. " - Name: " . $row["advert_name"]. "<br>";
-		    }
-		}	
-	}
-
-	mysqli_close($conn);
 ?>
 <!doctype html>
 <html class="no-js" lang="nl">
@@ -49,8 +17,7 @@
         <link href="https://file.myfontastic.com/QxAJVhmfbQ2t7NGCUAnz9P/icons.css" rel="stylesheet">
     </head>
 
-	<body>
-		
+	<body>	
 		<?php include('../php-includes/navigation.php'); ?>
 		
 		<div class="advert-overview-header" data-interchange="[../assets/advert-overview/advert-background-1366.jpg, default], 
@@ -73,7 +40,7 @@
 	            <h3 class="advert-overview-subheader">Deze header wordt vergezeld van een subheader met bijbehorende informatie over de pagina</h3>
 	        </div>
 
-        	<form action="search.php" method="GET" method="post" name="search" class="advert-search-form">
+        	<form action="search.php" method="GET" name="search" class="advert-search-form">
     			<input class="search-region" type="text" placeholder="Binnen welke school zoekt u een opvangbiedende ouder?" name="school" required>
     			<input class="search-price" type="text" placeholder="Prijs (max.)" name="price" required>
     			<select class="search-spots" name="number-children" required>
@@ -82,7 +49,7 @@
 					<option value="3">3 kinderen</option>
 					<option value="3">4 kinderen</option>
 				</select>
-    			<input class="search-submit" type="submit" value="Zoeken">
+    			<input id="search-submit-button" class="search-submit" type="submit" value="Zoeken">
         	</form>
 
         	<button id="mobile-search-form-button" data-icon="h">Zoek opvang</button>
@@ -94,12 +61,12 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 
-			    <div class="small-12 small-centered text-center columns">
+			    <div class="mobile-search-form-header">
 			    	<h2>Opvang zoeken</h2>
 			    	<hr class="blue-horizontal-line"></hr>
 			    </div>
 
-			    <div class="small-12 small-centered columns">
+			    <div class="mobile-search-form">
 			    	<form action="search.php" method="GET" name="search" class="advert-search-form-mobile">
 			    		<input type="text" placeholder="Binnen welke school zoekt u een opvangouder?" name="school" required>
 			    		<select class="search-spots" name="number-children" required>
@@ -115,7 +82,7 @@
 			</div>
 	    </div>
 
-	    <div class="row large-collapse advert-overview-row">
+	    <div class="large-collapse advert-overview-container">
 	    	<div class="large-12 small-centered columns">
 			    <div class="large-12 columns">
 			    	<h2>Advertenties</h2>
@@ -124,15 +91,8 @@
 
 		    	<div class="loading-div"><img src="../assets/ajax-loader.gif" ></div>
 				<div id="results"></div>
+				<div id="searchresults"></div>
 		    </div>
-		</div>
-
-		<div class="row">
-			<div class="large-12 columns text-center">
-				<p class="show-for-large-only" style="background-color: blue; color: white;">large</p>
-				<p class="show-for-medium-only" style="background-color: blue; color: white;">medium</p>
-				<p class="show-for-small-only" style="background-color: blue; color: white;">small</p>
-			</div>
 		</div>
 
 		<script src="../js/minimum-viable-product.min.js"></script>

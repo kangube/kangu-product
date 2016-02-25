@@ -198,9 +198,28 @@
 	display: none;
 	padding: 40px 20px 40px 20px;
 
+	.mobile-search-form {
+		@include grid-column(12);
+	}
+}
+
+.mobile-search-form-header {
+	text-align: center !important;
+	margin-top: 20px;
+
+	@include breakpoint(small) {
+		@include grid-column(12);
+		@include grid-column-position(center);
+	}
+
 	h2 {
-		@include font($header-font-family, regular, regular, 36, 42, $text-dark-grey);
-		text-align: center;
+		@include breakpoint(small) {
+			@include font($header-font-family, regular, regular, 30, 36, $text-dark-grey);
+		}
+
+		@include breakpoint(medium) {
+			@include font($header-font-family, regular, regular, 36, 42, $text-dark-grey);
+		}
 	}
 
 	.blue-horizontal-line {
@@ -246,4 +265,11 @@
 		border-radius: 3px;
 		width: 100%;
 	}
+}
+
+// Styling of the advert overview container
+
+.advert-overview-container {
+	@include grid-row;
+	margin-top: 40px;
 }
