@@ -32,10 +32,6 @@
 			<li><a href="#">Afmelden</a></li>
 		</ul>
 	</div>
-
-	<div class="copyright-link">
-		<p>Made with <span data-icon="i"></span> by kangu</p>
-	</div>
 </div>
 
 <div class="top-bar-mobile">
