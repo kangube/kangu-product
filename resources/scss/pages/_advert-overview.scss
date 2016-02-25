@@ -6,7 +6,6 @@
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
-
 	min-width: 100vw;
 	min-height: 80vh;
 
@@ -28,6 +27,14 @@
 		@include breakpoint(large) {
 			width: 70%;
 		}
+
+		@include breakpoint(105em) { 
+			width: 50%;
+		}
+
+		@include breakpoint(120em) { 
+			width: 50%;
+		}
 	}
 
 	.advert-overview-title, .advert-overview-subheader {
@@ -48,9 +55,14 @@
 			line-height: rem-calc(48);
 		}
 
-		@include breakpoint(large up) { 
+		@include breakpoint(large) { 
 			font-size: rem-calc(45);
 			line-height: rem-calc(54);
+		}
+
+		@include breakpoint(120em) { 
+			font-size: rem-calc(55);
+			line-height: rem-calc(66);
 		}
 	}
 
@@ -71,9 +83,9 @@
 			line-height: rem-calc(36);
 		}
 
-		@include breakpoint(xlarge) { 
-			font-size: rem-calc(30);
-			line-height: rem-calc(36);
+		@include breakpoint(120em) { 
+			font-size: rem-calc(32);
+			line-height: rem-calc(38.4);
 		}
 	}
 }
@@ -82,9 +94,19 @@
 
 .advert-search-form {
 	@include show-for(large);
-
 	align-self: center;
-	width: 57%;
+
+	@include breakpoint(large) {
+		width: 57%;
+	}
+
+	@include breakpoint(105em) {
+		width: 50%;
+	}
+
+	@include breakpoint(120em) {
+		width: 45%;
+	}
 
 	display: flex;
 	flex-direction: row;

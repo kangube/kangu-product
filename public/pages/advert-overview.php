@@ -47,7 +47,7 @@
 					<option value="1" selected>1 kind</option> 
 					<option value="2">2 kinderen</option>
 					<option value="3">3 kinderen</option>
-					<option value="3">4 kinderen</option>
+					<option value="4">4 kinderen</option>
 				</select>
     			<input id="search-submit-button" class="search-submit" type="submit" value="Zoeken">
         	</form>
@@ -89,7 +89,6 @@
 			    	<hr class="blue-horizontal-line"></hr>
 			    </div>
 
-		    	<div class="loading-div"><img src="../assets/ajax-loader.gif" ></div>
 				<div id="results"></div>
 				<div id="searchresults"></div>
 		    </div>

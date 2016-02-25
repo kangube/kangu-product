@@ -8,10 +8,7 @@ $(document).ready(function() {
 	
 	$("#results").on( "click", ".pagination a", function (e) {
 		e.preventDefault();
-		$(".loading-div").show();
 		var page = $(this).attr("data-page");
-		$("#results").load("../php-assets/class.pagination.php",{"page":page}, function() {
-			$(".loading-div").hide();
-		});
+		$("#results").load("../php-assets/class.pagination.php",{"page":page});
 	});
 });
