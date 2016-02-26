@@ -3412,10 +3412,14 @@ input:-webkit-autofill:active {
   text-align: center;
   font-family: "sofia-pro-soft", sans-serif; }
 
+p {
+  color: #a8aeba; }
+
 .header {
   width: 100vw;
   height: 100vh;
-  background: #4AA0D5; }
+  background: #4AA0D5;
+  margin-bottom: 10%; }
   .header h2 {
     font-size: 2.125rem;
     color: #FFFFFF;
@@ -3445,14 +3449,28 @@ input:-webkit-autofill:active {
   .header .photo {
     position: relative;
     width: 100%;
-    margin-bottom: 7%; }
+    margin-bottom: 7%;
+    box-shadow: 0 0 80px rgba(0, 0, 0, 0.3); }
 
-.veiligheid {
+.veiligheid .veiligheid-item {
+  margin-bottom: 5%; }
+
+.veiligheid h2 {
   margin-bottom: 11%; }
-  .veiligheid h2 {
-    margin-bottom: 11%; }
-  .veiligheid h3 {
-    color: #454553; }
+
+.veiligheid h3 {
+  color: #454553;
+  font-size: 1.1875rem; }
+
+.veiligheid img {
+  width: 100%; }
+
+.veiligheid hr {
+  margin-bottom: 10%; }
+
+.veiligheid p {
+  width: 100%;
+  font-size: 13px; }
 
 .functionaliteiten {
   margin-bottom: 11%;
@@ -3529,6 +3547,19 @@ footer {
     font-size: 1.125rem;
     line-height: 1.25rem;
     margin-bottom: 7%; }
+  .veiligheid {
+    margin-top: 6%; }
+    .veiligheid h2 {
+      margin-bottom: 15%; }
+    .veiligheid h3 {
+      font-size: 1.1875rem;
+      line-height: 28px; }
+    .veiligheid hr {
+      margin-left: 10%;
+      margin-top: 7%;
+      margin-bottom: 8%; }
+    .veiligheid img {
+      max-height: 80px; }
   .functionaliteiten {
     margin-bottom: 11%;
     text-align: center; }
