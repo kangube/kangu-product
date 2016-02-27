@@ -103,7 +103,7 @@ p {
 }
 
 .functionaliteiten {
-	margin-bottom: 11%;
+	margin-bottom: 5%;
 	text-align: center;
 
 	.opsom-header {
@@ -177,6 +177,7 @@ footer {
 		line-height: rem-calc(20px);
 		margin-bottom: 9%;
 	}
+
 	.header {
 
 		.registreren-button {
@@ -185,6 +186,7 @@ footer {
 		.photo {
 			position: relative;
 			width: 100%;
+			margin-top: 5%;
 		}
 
 		ul {
@@ -197,7 +199,7 @@ footer {
 
 		.index-header {
 			font-size: rem-calc(28px);
-			line-height: rem-calc(32px);
+			line-height: rem-calc(30px);
 			margin-bottom: 7%;
 		}
 
@@ -212,7 +214,10 @@ footer {
 		margin-top: 6%;
 		
 		h2 {
-			margin-bottom: 15%;
+			margin-top: 12%;
+			margin-bottom: 20%;
+			font-size: rem-calc(28px);
+			line-height: rem-calc(30px);
 		}
 
 		h3 {
@@ -221,9 +226,12 @@ footer {
 		}
 
 		hr {
-			margin-left: 10%;
 			margin-top: 7%;
-			margin-bottom: 8%;
+			margin-bottom: 24%;
+		}
+
+		p {
+			margin-bottom: 15%;
 		}
 
 		img {
@@ -286,13 +294,24 @@ footer {
 }
 
 @media screen and (min-width: 40em) and (max-width: 63.9375em) {
-	
+	.veiligheid {
+
+		img {
+			min-width: 70px;
+			max-width: 70px;
+		}
+	}
+
 	.functionaliteiten {
-		margin-bottom: 11%;
+		margin-bottom: 5%;
 		text-align: center;
 
 		h2 {
 			margin-top: 5%;
+		}
+
+		.negmarg {
+			margin-bottom: 0;
 		}
 
 		.landing-section-header {
