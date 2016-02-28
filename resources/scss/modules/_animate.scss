@@ -1,0 +1,17 @@
+////////////////////////////////////////////////////////////
+// Import everything to generate your animate sass module //
+////////////////////////////////////////////////////////////
+@import "../../../bower_components/animate-sass/helpers/mixins",
+	"animate-settings",
+	"../../../bower_components/animate-sass/helpers/base";
+
+// FADE
+@import	"../../../bower_components/animate-sass/animations/fade-enter/fadeIn",
+	"../../../bower_components/animate-sass/animations/fade-enter/fadeInDown",
+	"../../../bower_components/animate-sass/animations/fade-enter/fadeInLeft",
+	"../../../bower_components/animate-sass/animations/fade-enter/fadeInRight",
+	"../../../bower_components/animate-sass/animations/fade-enter/fadeInUp",
+	"../../../bower_components/animate-sass/animations/fade-enter/fadeInDownBig",
+	"../../../bower_components/animate-sass/animations/fade-enter/fadeInLeftBig",
+	"../../../bower_components/animate-sass/animations/fade-enter/fadeInRightBig",
+	"../../../bower_components/animate-sass/animations/fade-enter/fadeInUpBig";
