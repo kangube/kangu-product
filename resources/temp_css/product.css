@@ -3637,6 +3637,8 @@ p {
   width: 100vw;
   height: 100vh;
   background: #4AA0D5;
+  background: -webkit-radial-gradient(50% 188%, #5db8f1 77%, #4aa0d5 100%);
+  background: radial-gradient(50% 188%, #5db8f1 77%, #4aa0d5 100%);
   margin-bottom: 10%; }
   .header h2 {
     font-size: 2.125rem;
@@ -3651,12 +3653,16 @@ p {
     color: #FFFFFF;
     line-height: 29px; }
   .header .registreren-button {
-    background: rgba(216, 233, 240, 0.2);
+    background: #6CB7E3;
     border: 1px solid #d8e9f0;
     border-radius: 30px;
     text-decoration: none;
     padding-left: 19px;
     padding-right: 19px; }
+  .header .registreren-button:hover,
+  .header .registreren-button:focus,
+  .header .registreren-button:active {
+    background: #41a2db; }
   .header .index-header {
     color: #FFFFFF;
     font-size: 2.8125rem;
@@ -3723,6 +3729,10 @@ p {
     width: 100%;
     height: 44px;
     color: #D8E9F0; }
+  .beta .subscribe-button:hover,
+  .beta .subscribe-button:focus,
+  .beta .subcribe-button:active {
+    background-color: #41a2db; }
   .beta input:not([type=submit]):not([type=file]), .beta select {
     font-family: "open-sans", sans-serif;
     font-style: italic;
