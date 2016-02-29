@@ -1,0 +1,233 @@
+// Styling of the introductory header with image background
+
+.advert-overview-header {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+
+	min-width: 100vw;
+	min-height: 80vh;
+
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	overflow: hidden;
+
+	.advert-overview-title-container {
+		align-self: center;
+		margin-top: 8%;
+		margin-bottom: 12%;
+		width: 60%;
+
+		@include breakpoint(medium down) {
+			width: 95%;
+		}
+
+		@include breakpoint(large) {
+			width: 70%;
+		}
+	}
+
+	.advert-overview-title, .advert-overview-subheader {
+		color: $text-white !important;
+		text-align: center;
+	}
+
+	.advert-overview-title {
+		margin-bottom: 25px;
+
+		@include breakpoint(small) { 
+			font-size: rem-calc(35);
+			line-height: rem-calc(42);
+		}
+
+		@include breakpoint(medium) { 
+			font-size: rem-calc(40);
+			line-height: rem-calc(48);
+		}
+
+		@include breakpoint(large up) { 
+			font-size: rem-calc(45);
+			line-height: rem-calc(54);
+		}
+	}
+
+	.advert-overview-subheader {
+
+		@include breakpoint(small) { 
+			font-size: rem-calc(20);
+			line-height: rem-calc(24);
+		}
+
+		@include breakpoint(medium) { 
+			font-size: rem-calc(25);
+			line-height: rem-calc(30);
+		}
+
+		@include breakpoint(large) {
+			font-size: rem-calc(30);
+			line-height: rem-calc(36);
+		}
+
+		@include breakpoint(xlarge) { 
+			font-size: rem-calc(30);
+			line-height: rem-calc(36);
+		}
+	}
+}
+
+// Styling of search function used for large screens and larger
+
+.advert-search-form {
+	@include show-for(large);
+
+	align-self: center;
+	width: 57%;
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: no-wrap;
+
+	.search-region {
+		width: 50%;
+		border-radius: 3px 0 0 3px;
+	}
+
+	.search-price {
+		border-left: none !important;
+		border-right: none !important;
+	}
+
+	.search-spots {
+		border-right: none !important;
+	}
+
+	.search-price, .search-spots, .search-submit {
+		width: 16.67%;
+	}
+
+	.search-price, .search-spots, .search-submit, search-region {
+		display: inline-block;
+		margin: 0;
+	}
+
+	input:not([type=submit]):not([type=file]), select {
+		@include font($paragraph-font-family, normal, regular, 14, 19, $text-dark-grey);
+		text-decoration: none;
+		background-color: $white;
+		border: 1px solid $border-color-light-grey;
+		padding: 10px 15px 10px 15px;
+		margin-bottom: 0;
+
+		&::-webkit-input-placeholder {
+			color: $text-dark-grey;
+		}
+
+		&::-moz-placeholder {
+			color: $text-dark-grey;
+		}
+
+		&:focus, &:hover, &:active {
+			background-color: $white;
+			border: 1px solid $border-color-light-grey;
+			-webkit-box-shadow: none !important;
+			-moz-box-shadow: none !important;
+			box-shadow: none !important;
+			outline: none;
+		}
+	}
+
+	input[type=submit] {
+		@include font($paragraph-font-family, regular, regular, 14, 19, $text-white);
+		background-color: $light-red;
+		padding: 10px 35px 10px 35px;
+		border: none;
+		border-radius: 0 3px 3px 0;
+	}
+}
+
+// Styling of the search form used for medium screens and smaller
+
+#mobile-search-form-button {
+	@include hide-for(large);
+	@include button($light-red, 3px);
+	@include font($paragraph-font-family, regular, 500, 18, 19, $text-white);
+	padding: 15px 20px 15px 20px;
+
+	&:before {
+		font-size: rem-calc(16);
+		color: $text-white;
+		margin-right: 10px;
+	}
+
+	@include breakpoint(small) { 
+		width: 50%;
+	}
+
+	@include breakpoint(medium) { 
+		width: 30%;
+	}
+}
+
+.mobile-search-form-container {
+	width: 100vw;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	position: fixed;
+	z-index: 1;
+	background-color: $light-grey-alt;
+	display: none;
+	padding: 40px 20px 40px 20px;
+
+	h2 {
+		@include font($header-font-family, regular, regular, 36, 42, $text-dark-grey);
+		text-align: center;
+	}
+
+	.blue-horizontal-line {
+		text-align: center !important;
+		display: inline-block !important;
+	}
+}
+
+.advert-search-form-mobile {
+	input[type=text], select {
+		@include font($paragraph-font-family, normal, regular, 14, 19, $text-dark-grey);
+		text-decoration: none;
+		background-color: $white;
+		border: 1px solid $border-color-light-grey;
+		border-radius: 3px;
+		padding: 10px 15px 10px 15px;
+		margin-bottom: 20px;
+		height: 45px;
+
+		&::-webkit-input-placeholder {
+			color: $text-dark-grey;
+		}
+
+		&::-moz-placeholder {
+			color: $text-dark-grey;
+		}
+
+		&:focus, &:hover, &:active {
+			background-color: $white;
+			border: 1px solid $border-color-light-grey;
+			-webkit-box-shadow: none !important;
+			-moz-box-shadow: none !important;
+			box-shadow: none !important;
+			outline: none;
+		}
+	}
+
+	input[type=submit] {
+		@include font($paragraph-font-family, regular, regular, 14, 19, $text-white);
+		background-color: $light-red;
+		padding: 10px 35px 10px 35px;
+		border: none;
+		border-radius: 3px;
+		width: 100%;
+	}
+}

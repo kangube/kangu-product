@@ -24,7 +24,7 @@ class USER
 	{
 		try
 		{
-			$new_password = password_hash($upass, PASSWORD_DEFAULT);
+			$new_password = password_hash($user_password, PASSWORD_DEFAULT);
 			
 			$stmt = $this->conn->prepare("INSERT INTO tbl_user(user_firstname, user_lastname, user_email, user_password) 
 		                                               VALUES(:ufirstname, :ulastname, :umail, :upass)");

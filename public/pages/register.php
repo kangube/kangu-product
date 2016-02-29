@@ -5,7 +5,7 @@ $user = new USER();
 
 if($user->is_loggedin()!="")
 {
-	$user->redirect('home.php');
+	$user->redirect('advert-overview.php');
 }
 
 if(isset($_POST['register-button']))
@@ -28,7 +28,7 @@ if(isset($_POST['register-button']))
 		{
 			if($user->register($user_first_name,$user_last_name,$user_email,$user_password)) {
 				$user->doLogin($user_email, $user_password);
-			    $user->redirect('home.php');
+			    $user->redirect('advert-overview.php');
 			}
 		}
 	}

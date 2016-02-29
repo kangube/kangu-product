@@ -9,7 +9,8 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     runSequence = require('run-sequence'),
     autoprefixer = require('gulp-autoprefixer'),
-    livereload = require('gulp-livereload');
+    livereload = require('gulp-livereload'),
+    imagemin = require('gulp-imagemin');
 
 // Setting up the server
 gulp.task('connect', function() {
@@ -17,10 +18,11 @@ gulp.task('connect', function() {
     connect.server({ base: 'public', port: 8888 });
 });
 
-// Moving all of the required image and icon assets from the resources folder to the public folder
+// Copying all of the required image assets from the resources folder to the public folder
 gulp.task('move-image-icon-dependencies', function() {
-    console.log('Moving all of the required image and icon assets from the resources folder to the public folder');
+    console.log('Copying and minifying all of the required image assets from the resources folder to the public folder');
     gulp.src('resources/assets/**/*')
+        .pipe(imagemin({ progressive: true }))
         .pipe(plumber())
         .pipe(gulp.dest('public/assets'));
 });

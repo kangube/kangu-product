@@ -5,7 +5,7 @@ $login = new USER();
 
 if($login->is_loggedin()!="")
 {
-    $login->redirect('home.php');
+    $login->redirect('advert-overview.php');
 }
 
 if(isset($_POST['login-button']))
@@ -15,7 +15,7 @@ if(isset($_POST['login-button']))
         
     if($login->doLogin($user_email, $user_password))
     {
-        $login->redirect('home.php');
+        $login->redirect('advert-overview.php');
     }
     else
     {
