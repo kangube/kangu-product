@@ -1,10 +1,5 @@
-.align-center{
+.align-center {
 	text-align: center;
-}
-
-.landing-section-header {
-	font-size: rem-calc(30px);
-	margin-bottom: 3%;
 }
 
 .intro-paragraph {
@@ -19,61 +14,65 @@ p {
 	color: $text-light-grey;
 }
 
+.full-width {
+	min-width: 100vw;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.full-height-gradient {
+	min-width: 100vw;
+	min-height: 100vh;
+	display: flex;
+	background: linear-gradient(-225deg, #57B9F6 0%, $dark-blue 100%);
+	left: 0;
+	top: 0;
+	position: absolute;
+	z-index: -1;
+}
+
 .header {
-	width: 100vw;
-	height: 100vh;
-	background: $dark-blue;
-	background: radial-gradient(50% 188%, #5db8f1 77%, #4aa0d5 100%);
+	@include grid-row;
+	margin-top: 40px;
 	margin-bottom: 10%;
 
 	h2 {
-		font-size: rem-calc(34px);
-		color: $white;
-		line-height: 40px;
-		font-weight: bold;
-		margin-top: 36px;
+		@include breakpoint(small) {
+			@include font($header-font-family, regular, bold, 28, 34, $text-white);
+		}
+
+		@include breakpoint(medium) {
+			@include font($header-font-family, regular, bold, 34, 32, $text-white);
+		}
 	}
 
-	a {
-		margin-top: 40px;
-	}
-
-	h3 {
-		font-size: rem-calc(14px);
-		color: $white;
-		line-height: 29px;
-	}
-
-	.registreren-button {
-		background: #6CB7E3;
-		border: 1px solid #d8e9f0;
-		border-radius: 30px;
+	.register-button {
+		@include button(rgba($light-blue, 0.2), 30px);
+		border: 1px solid $light-blue;
 		text-decoration: none;
-		padding-left: 19px;
-		padding-right: 19px;
-	}
+		text-align: center;
+		margin-top: 0;
 
-	.registreren-button:hover, 
-	.registreren-button:focus,
-	.registreren-button:active {
-	  	background: darken(#6CB7E3, 10%);
+		&:hover, &:focus, &:active {
+			background: darken(rgba($light-blue, 0.2), 20%);
+		}
 	}
 
 	.index-header {
-		color: $white;
-		font-size: rem-calc(45px);
-		margin-top: 11%;
+		@include font($header-font-family, regular, regular, 45, 54, $text-white);
+		margin: 120px 0 30px 0;
 	}
 
-	.index-sub-header {
-		font-weight: normal;
-		margin-bottom: 10%;
+	.index-subheader {
+		@include font($header-font-family, regular, regular, 30, 37, $light-blue);
+		margin-bottom: 120px;
 	}
 
-	.photo {
+	.advert-overview-preview {
 		position: relative;
-		width: 100%;
-		margin-bottom: 7%;
+		margin-bottom: 100px;
 		-webkit-box-shadow: 0 0 80px rgba(0, 0, 0, 0.3);
 		-moz-box-shadow: 0 0 80px rgba(0, 0, 0, 0.3);
 		box-shadow: 0 0 80px rgba(0, 0, 0, 0.3);
@@ -206,10 +205,6 @@ footer {
 			margin-top: 10%;
 		}
 		
-		h2 {
-			margin-top: 5%;
-		}
-
 		.index-header {
 			font-size: rem-calc(28px);
 			line-height: rem-calc(30px);
