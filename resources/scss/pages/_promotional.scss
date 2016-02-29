@@ -36,7 +36,6 @@ p {
 .header {
 	@include grid-row;
 	margin-top: 40px;
-	margin-bottom: 10%;
 
 	h2 {
 		@include breakpoint(small) {
@@ -72,39 +71,41 @@ p {
 
 	.advert-overview-preview {
 		position: relative;
-		margin-bottom: 100px;
 		-webkit-box-shadow: 0 0 80px rgba(0, 0, 0, 0.3);
 		-moz-box-shadow: 0 0 80px rgba(0, 0, 0, 0.3);
 		box-shadow: 0 0 80px rgba(0, 0, 0, 0.3);
 	}
 }
 
-.veiligheid {
+.features {
+	@include grid-row;
+	margin-top: 120px;
+	margin-bottom: 100px;
 
-	.veiligheid-item {
+	.feature-header {
+		@include font($header-font-family, regular, regular, 28, 37, $text-dark-grey);
+		text-align: center;
+		margin-bottom: 120px;
+	}
+
+	.feature-item {
 		margin-bottom: 5%;
-	}
+		
+		img {
+			margin-top: 5px;
+		}
 
-	h2 {
-		margin-bottom: 11%;
-	}
+		h3 {
+			@include font($header-font-family, regular, regular, 22, 26.4, $text-dark-grey);
+		}
 
-	h3 {
-		color: $text-dark-grey;
-		font-size: rem-calc(19px);
-	}
+		hr {
+			margin-bottom: 20px;
+		}
 
-	img {
-		width: 100%;
-	}
-
-	hr {
-		margin-bottom: 10%;
-	}
-
-	p {
-		width: 100%;
-		font-size: 13px;
+		p {
+			@include font($paragraph-font-family, regular, regular, 14, 19, rgba($text-dark-grey, 0.4));
+		}
 	}
 }
 
@@ -190,63 +191,6 @@ footer {
 		margin-bottom: 9%;
 	}
 
-	.header {
-
-		.registreren-button {
-			margin-top: 8%;
-		}
-		.photo {
-			position: relative;
-			width: 100%;
-			margin-top: 5%;
-		}
-
-		ul {
-			margin-top: 10%;
-		}
-		
-		.index-header {
-			font-size: rem-calc(28px);
-			line-height: rem-calc(30px);
-			margin-bottom: 7%;
-		}
-
-		.index-sub-header {
-			font-size: rem-calc(18px);
-			line-height: rem-calc(20px);
-			margin-bottom: 7%;
-		}
-	}
-
-	.veiligheid {
-		margin-top: 6%;
-		
-		h2 {
-			margin-top: 12%;
-			margin-bottom: 20%;
-			font-size: rem-calc(28px);
-			line-height: rem-calc(30px);
-		}
-
-		h3 {
-			font-size: rem-calc(19px);
-			line-height: 28px;
-		}
-
-		hr {
-			margin-top: 7%;
-			margin-bottom: 24%;
-		}
-
-		p {
-			margin-bottom: 15%;
-		}
-
-		img {
-			max-height: 80px;
-		}
-	}
-
 	.functionaliteiten {
 		margin-bottom: 11%;
 		text-align: center;
@@ -302,14 +246,6 @@ footer {
 }
 
 @media screen and (min-width: 40em) and (max-width: 63.9375em) {
-	.veiligheid {
-
-		img {
-			min-width: 70px;
-			max-width: 70px;
-		}
-	}
-
 	.functionaliteiten {
 		margin-bottom: 5%;
 		text-align: center;
