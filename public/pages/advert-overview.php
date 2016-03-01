@@ -1,18 +1,12 @@
 <?php
-
 	require_once("../php-assets/class.session.php");
-	
 	require_once("../php-assets/class.user.php");
+	include_once("../php-assets/class.advert.php");
 	$auth_user = new USER();
-	
-	
 	$user_id = $_SESSION['user_session'];
-	
 	$stmt = $auth_user->runQuery("SELECT * FROM tbl_user WHERE user_id=:user_id");
 	$stmt->execute(array(":user_id"=>$user_id));
-	
 	$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
-
 ?>
 <!doctype html>
 <html class="no-js" lang="nl">
@@ -23,8 +17,7 @@
         <link href="https://file.myfontastic.com/QxAJVhmfbQ2t7NGCUAnz9P/icons.css" rel="stylesheet">
     </head>
 
-	<body>
-		
+	<body>	
 		<?php include('../php-includes/navigation.php'); ?>
 		
 		<div class="advert-overview-header" data-interchange="[../assets/advert-overview/advert-background-1366.jpg, default], 
@@ -47,16 +40,16 @@
 	            <h3 class="advert-overview-subheader">Deze header wordt vergezeld van een subheader met bijbehorende informatie over de pagina</h3>
 	        </div>
 
-        	<form method="post" class="advert-search-form">
-    			<input class="search-region" type="text" placeholder="Binnen welke school zoekt u een opvangbiedende ouder?">
-    			<input class="search-price" type="text" placeholder="Prijs (max.)">	
-    			<select class="search-spots" name="number-children">
+        	<form action="search.php" method="GET" name="search" class="advert-search-form">
+    			<input class="search-region" type="text" placeholder="Binnen welke school zoekt u een opvangbiedende ouder?" name="school" required>
+    			<input class="search-price" type="text" placeholder="Prijs (max.)" name="price" required>
+    			<select class="search-spots" name="number-children" required>
 					<option value="1" selected>1 kind</option> 
 					<option value="2">2 kinderen</option>
 					<option value="3">3 kinderen</option>
-					<option value="3">4 kinderen</option>
+					<option value="4">4 kinderen</option>
 				</select>
-    			<input class="search-submit" type="submit" value="Zoeken">
+    			<input id="search-submit-button" class="search-submit" type="submit" value="Zoeken">
         	</form>
 
         	<button id="mobile-search-form-button" data-icon="h">Zoek opvang</button>
@@ -68,207 +61,38 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 
-			    <div class="small-12 small-centered text-center columns">
+			    <div class="mobile-search-form-header">
 			    	<h2>Opvang zoeken</h2>
 			    	<hr class="blue-horizontal-line"></hr>
 			    </div>
 
-			    <div class="small-12 small-centered columns">
-			    	<form method="post" class="advert-search-form-mobile">
-			    		<input type="text" placeholder="Binnen welke school zoekt u een opvangouder?">
-			    		<select class="search-spots" name="number-children">
+			    <div class="mobile-search-form">
+			    	<form action="search.php" method="GET" name="search" class="advert-search-form-mobile">
+			    		<input type="text" placeholder="Binnen welke school zoekt u een opvangouder?" name="school" required>
+			    		<select class="search-spots" name="number-children" required>
 							<option value="1" selected>1 kind</option> 
 							<option value="2">2 kinderen</option>
 							<option value="3">3 kinderen</option>
 							<option value="3">4 kinderen</option>
 						</select>
-						<input class="search-price" type="text" placeholder="Prijs (max.)">	
+						<input class="search-price" type="text" placeholder="Prijs (max.)" name="price" required>	
 						<input class="search-submit" type="submit" value="Zoeken">
 			    	</form>
 			    </div>
 			</div>
 	    </div>
 
-	    <div class="row large-collapse advert-overview-row">
+	    <div class="large-collapse advert-overview-container">
 	    	<div class="large-12 small-centered columns">
 			    <div class="large-12 columns">
 			    	<h2>Advertenties</h2>
 			    	<hr class="blue-horizontal-line"></hr>
 			    </div>
-			    
-	    		<div class="advert-container end">
-		    		<a href="#" class="advert-link">
-		    			<div class="advert">
-			    			<div class="small-12 columns">
-				    			<div class="small-2 columns">
-				    				<img class="advert-profile-image" src="../assets/advert-overview/user-profile-image.png">
-				    			</div>
-				    			
-				    			<div class="small-10 columns">
-					    			<ul class="advert-information-list">
-					    				<li>Maya Van den Broeck</li>
-					    				<li data-icon="d">Heist-op-den-Berg</li>
-					    			</ul>
-				    			</div>
-			    			</div>
 
-			    			<p class="advert-description">Ik ben Maya, 23 jaar woonachtig te zwevegem. Hoofdleiding in een Chiro en op zoek naar een nieuwe vaste job. Met kinderen ...</p>
-			    			
-			    			<div class="small-6 columns">
-				    			<div class="advert-price">
-					    			<p>5</p>
-					    			<p>p/u</p>
-				    			</div>
-				    		</div>
-
-				    		<div class="small-6 columns">
-				    			<div class="advert-spots">
-				    				<p>2</p>
-					    			<p>plaatsen</p>
-				    			</div>
-				    		</div>
-					    	
-				    		<p class="advert-school" data-icon="e">Basisschool Heilig-hartcollege</p>
-			    		</div>
-			    	</a>
-		    	</div>
-
-		    	<div class="advert-container end">
-		    		<a href="#" class="advert-link">
-		    			<div class="advert">
-			    			<div class="small-12 columns">
-				    			<div class="small-2 columns">
-				    				<img class="advert-profile-image" src="../assets/advert-overview/user-profile-image.png">
-				    			</div>
-				    			
-				    			<div class="small-10 columns">
-					    			<ul class="advert-information-list">
-					    				<li>Maya Van den Broeck</li>
-					    				<li data-icon="d">Heist-op-den-Berg</li>
-					    			</ul>
-				    			</div>
-			    			</div>
-
-			    			<p class="advert-description">Ik ben Maya, 23 jaar woonachtig te zwevegem. Hoofdleiding in een Chiro en op zoek naar een nieuwe vaste job. Met kinderen ...</p>
-			    			
-			    			<div class="small-6 columns">
-				    			<div class="advert-price">
-					    			<p>5</p>
-					    			<p>p/u</p>
-				    			</div>
-				    		</div>
-
-				    		<div class="small-6 columns">
-				    			<div class="advert-spots">
-				    				<p>2</p>
-					    			<p>plaatsen</p>
-				    			</div>
-				    		</div>
-					    	
-				    		<p class="advert-school" data-icon="e">Basisschool Heilig-hartcollege</p>
-			    		</div>
-			    	</a>
-		    	</div>
-
-		    	<div class="advert-container end">
-		    		<a href="#" class="advert-link">
-		    			<div class="advert">
-			    			<div class="small-12 columns">
-				    			<div class="small-2 columns">
-				    				<img class="advert-profile-image" src="../assets/advert-overview/user-profile-image.png">
-				    			</div>
-				    			
-				    			<div class="small-10 columns">
-					    			<ul class="advert-information-list">
-					    				<li>Maya Van den Broeck</li>
-					    				<li data-icon="d">Heist-op-den-Berg</li>
-					    			</ul>
-				    			</div>
-			    			</div>
-
-			    			<p class="advert-description">Ik ben Maya, 23 jaar woonachtig te zwevegem. Hoofdleiding in een Chiro en op zoek naar een nieuwe vaste job. Met kinderen ...</p>
-			    			
-			    			<div class="small-6 columns">
-				    			<div class="advert-price">
-					    			<p>5</p>
-					    			<p>p/u</p>
-				    			</div>
-				    		</div>
-
-				    		<div class="small-6 columns">
-				    			<div class="advert-spots">
-				    				<p>2</p>
-					    			<p>plaatsen</p>
-				    			</div>
-				    		</div>
-					    	
-				    		<p class="advert-school" data-icon="e">Basisschool Heilig-hartcollege</p>
-			    		</div>
-			    	</a>
-		    	</div>
-
-		    	<div class="advert-container end">
-		    		<a href="#" class="advert-link">
-		    			<div class="advert">
-			    			<div class="small-12 columns">
-				    			<div class="small-2 columns">
-				    				<img class="advert-profile-image" src="../assets/advert-overview/user-profile-image.png">
-				    			</div>
-				    			
-				    			<div class="small-10 columns">
-					    			<ul class="advert-information-list">
-					    				<li>Maya Van den Broeck</li>
-					    				<li data-icon="d">Heist-op-den-Berg</li>
-					    			</ul>
-				    			</div>
-			    			</div>
-
-			    			<p class="advert-description">Ik ben Maya, 23 jaar woonachtig te zwevegem. Hoofdleiding in een Chiro en op zoek naar een nieuwe vaste job. Met kinderen ...</p>
-			    			
-			    			<div class="small-6 columns">
-				    			<div class="advert-price">
-					    			<p>5</p>
-					    			<p>p/u</p>
-				    			</div>
-				    		</div>
-
-				    		<div class="small-6 columns">
-				    			<div class="advert-spots">
-				    				<p>2</p>
-					    			<p>plaatsen</p>
-				    			</div>
-				    		</div>
-					    	
-				    		<p class="advert-school" data-icon="e">Basisschool Heilig-hartcollege</p>
-			    		</div>
-			    	</a>
-		    	</div>
+				<div id="results"></div>
+				<div id="searchresults"></div>
 		    </div>
 		</div>
-
-		<div class="row">
-			<div class="large-12 columns text-center">
-				<p class="show-for-large-only" style="background-color: blue; color: white;">large</p>
-				<p class="show-for-medium-only" style="background-color: blue; color: white;">medium</p>
-				<p class="show-for-small-only" style="background-color: blue; color: white;">small</p>
-			</div>
-		</div>
-
-	    <div class="row">
-		    <div class="large-12 columns">
-				<ul class="pagination" role="navigation" aria-label="Pagination">
-					<li class="pagination-previous"><a href="#" aria-label="Previous page">Vorige pagina</a></li>
-					<li><a href="#" aria-label="Page 1">1</a></li>
-					<li class="current"><a href="#" aria-label="Page 2">2</a></li>
-					<li><a href="#" aria-label="Page 3">3</a></li>
-					<li><a href="#" aria-label="Page 4">4</a></li>
-					<li class="ellipsis"></li>
-					<li><a href="#" aria-label="Page 12">12</a></li>
-					<li><a href="#" aria-label="Page 13">13</a></li>
-					<li class="pagination-next"><a href="#" aria-label="Next page">Volgende pagina</a></li>
-				</ul>
-		    </div>
-	    </div>
 
 		<script src="../js/minimum-viable-product.min.js"></script>
 	    <script src="https://use.typekit.net/vnw3zje.js"></script>

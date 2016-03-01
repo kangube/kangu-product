@@ -6,7 +6,6 @@
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
-
 	min-width: 100vw;
 	min-height: 80vh;
 
@@ -28,6 +27,14 @@
 		@include breakpoint(large) {
 			width: 70%;
 		}
+
+		@include breakpoint(105em) { 
+			width: 50%;
+		}
+
+		@include breakpoint(120em) { 
+			width: 50%;
+		}
 	}
 
 	.advert-overview-title, .advert-overview-subheader {
@@ -48,9 +55,14 @@
 			line-height: rem-calc(48);
 		}
 
-		@include breakpoint(large up) { 
+		@include breakpoint(large) { 
 			font-size: rem-calc(45);
 			line-height: rem-calc(54);
+		}
+
+		@include breakpoint(120em) { 
+			font-size: rem-calc(55);
+			line-height: rem-calc(66);
 		}
 	}
 
@@ -71,9 +83,9 @@
 			line-height: rem-calc(36);
 		}
 
-		@include breakpoint(xlarge) { 
-			font-size: rem-calc(30);
-			line-height: rem-calc(36);
+		@include breakpoint(120em) { 
+			font-size: rem-calc(32);
+			line-height: rem-calc(38.4);
 		}
 	}
 }
@@ -82,9 +94,19 @@
 
 .advert-search-form {
 	@include show-for(large);
-
 	align-self: center;
-	width: 57%;
+
+	@include breakpoint(large) {
+		width: 57%;
+	}
+
+	@include breakpoint(105em) {
+		width: 50%;
+	}
+
+	@include breakpoint(120em) {
+		width: 45%;
+	}
 
 	display: flex;
 	flex-direction: row;
@@ -148,6 +170,22 @@
 	}
 }
 
+.loading-div {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.56);
+	z-index: 999;
+	display: none;
+
+	img {
+		margin-top: 20%;
+		margin-left: 50%;
+	}
+}
+
 // Styling of the search form used for medium screens and smaller
 
 #mobile-search-form-button {
@@ -182,9 +220,28 @@
 	display: none;
 	padding: 40px 20px 40px 20px;
 
+	.mobile-search-form {
+		@include grid-column(12);
+	}
+}
+
+.mobile-search-form-header {
+	text-align: center !important;
+	margin-top: 20px;
+
+	@include breakpoint(small) {
+		@include grid-column(12);
+		@include grid-column-position(center);
+	}
+
 	h2 {
-		@include font($header-font-family, regular, regular, 36, 42, $text-dark-grey);
-		text-align: center;
+		@include breakpoint(small) {
+			@include font($header-font-family, regular, regular, 30, 36, $text-dark-grey);
+		}
+
+		@include breakpoint(medium) {
+			@include font($header-font-family, regular, regular, 36, 42, $text-dark-grey);
+		}
 	}
 
 	.blue-horizontal-line {
@@ -230,4 +287,11 @@
 		border-radius: 3px;
 		width: 100%;
 	}
+}
+
+// Styling of the advert overview container
+
+.advert-overview-container {
+	@include grid-row;
+	margin-top: 40px;
 }
