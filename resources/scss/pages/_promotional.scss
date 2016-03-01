@@ -1,3 +1,5 @@
+// Styling of the introductory header and its background
+
 .full-width {
 	min-width: 100vw;
 	min-height: 100vh;
@@ -55,11 +57,14 @@
 
 	.advert-overview-preview {
 		position: relative;
+		z-index: 1;
 		-webkit-box-shadow: 0 0 80px rgba(0, 0, 0, 0.3);
 		-moz-box-shadow: 0 0 80px rgba(0, 0, 0, 0.3);
 		box-shadow: 0 0 80px rgba(0, 0, 0, 0.3);
 	}
 }
+
+// Styling of the features
 
 .features {
 	@include grid-row;
@@ -92,6 +97,8 @@
 		}
 	}
 }
+
+// Styling of the functionalities
 
 .functionalities {
 	@include grid-row;
@@ -130,7 +137,52 @@
 			@include font($paragraph-font-family, regular, regular, 14, 19, rgba($text-dark-grey, 0.4));
 		}
 	}
+
+	.functionalities-button-group {
+		@include grid-column(10);
+		@include grid-column-position(center);
+		@include button-group-expand('.button');
+
+		.button {
+			background-color: transparent;
+			border: 1px solid $dark-blue;
+			text-decoration: none;
+			color: $dark-blue;
+		}
+
+		.button:first-child {
+			border-radius: 3px 0 0 3px;
+			border-right: none;
+		}
+
+		.button:last-child {
+			border-radius: 0 3px 3px 0;
+		}
+
+		.button:hover, .button:focus, .button:active {
+			background-color: $dark-blue;
+			transition: all 0.3s ease;
+			color: $text-white;
+		}
+
+		.selected {
+			background-color: $dark-blue;
+			color: $text-white;
+		}
+	}
+
+	.functionalities-search-container, .functionalities-offer-container {
+		@include grid-column(12);
+		text-align: center !important;
+		margin-top: 60px;
+	}
+
+	.functionalities-offer-container {
+		display: none;
+	}
 }
+
+// Styling of the beta registration form
 
 .beta-registration-full-width {
 	min-width: 100vw;
@@ -189,6 +241,8 @@
 	}
 }
 
+// Styling of the footer
+
 footer {
 	@include grid-row;
 	margin-top: 50px;
@@ -213,6 +267,172 @@ footer {
 		a {
 			@include font($header-font-family, regular, regular, 18, 24, $text-dark-grey);
 			text-decoration: none;
+		}
+	}
+}
+
+// Responsiveness
+
+@include breakpoint(small only) {
+	.header {
+		.index-header {
+			@include font($header-font-family, regular, regular, 30, 36, $text-white);
+			margin: 90px 0 30px 0;
+		}
+
+		.index-subheader {
+			@include font($header-font-family, regular, regular, 20, 24, $light-blue);
+			margin-bottom: 90px;
+		}
+	}
+
+	.features {
+		margin-top: 90px;
+		margin-bottom: 90px;
+
+		.feature-header {
+			@include font($header-font-family, regular, regular, 22, 30, $text-dark-grey);
+			margin-bottom: 90px;
+		}
+
+		.feature-item h3 {
+			@include font($header-font-family, regular, regular, 20, 20, $text-dark-grey);
+		}
+	}
+
+	.functionalities {
+		margin-bottom: 90px;
+
+		.functionality-header {
+			@include font($header-font-family, regular, regular, 22, 30, $text-dark-grey);
+		}
+
+		.functionality-subheader {
+			@include font($header-font-family, regular, regular, 16, 21.6, rgba($text-dark-grey, 0.4));
+			margin-bottom: 60px;
+		}
+	}
+
+	.beta-registration {
+		.beta-registration-header {
+			@include font($header-font-family, regular, regular, 22, 30, $text-white);
+			margin-bottom: 85px;
+
+			br {
+				margin-top: 20px;
+			}
+		}
+
+		input:not([type=submit]):not([type=file]) {
+			margin-bottom: 35px;
+		}
+	}
+
+	footer {
+		margin-top: 0;
+		margin-bottom: 20px;
+	}
+
+	.platform-links-mobile {
+		list-style-type: none;
+		margin: 0;
+
+		li {
+			padding: 20px 0 20px 0;
+			border-top: 1px solid $border-color-light-grey;
+
+			&:hover, &:focus, &:active {
+				background-color: rgba($text-dark-grey, 0.05);
+			}
+		}
+
+		li:first-child {
+			border-top: none;
+		}
+
+		li:last-child {
+			border-bottom: 1px solid $border-color-light-grey;
+		}
+
+		a {
+			@include font($header-font-family, regular, regular, 18, 24, $text-dark-grey);
+			text-decoration :none;
+		}
+	}
+
+	.social-media-links-mobile {
+		list-style-type: none;
+		margin: 40px 0 20px 0;
+
+		li {
+			display: inline;
+		}
+
+		li:first-child {
+			margin-right: 15px;
+		}
+
+		a {
+			text-decoration: none;
+			font-size: rem-calc(35);
+			color: $text-dark-grey;
+		}
+	}
+}
+
+@include breakpoint(medium only) {
+	.header {
+		.index-header {
+			@include font($header-font-family, regular, regular, 35, 42, $text-white);
+			margin: 120px 0 30px 0;
+		}
+
+		.index-subheader {
+			@include font($header-font-family, regular, regular, 24, 28.8, $light-blue);
+		}
+	}
+
+	.features {
+		margin-top: 90px;
+		margin-bottom: 90px;
+
+		.feature-header {
+			@include font($header-font-family, regular, regular, 24, 28.8, $text-dark-grey);
+			margin-bottom: 90px;
+		}
+
+		.feature-item h3 {
+			@include font($header-font-family, regular, regular, 20, 20, $text-dark-grey);
+		}
+	}
+
+	.functionalities {
+		margin-bottom: 90px;
+
+		.functionality-header {
+			@include font($header-font-family, regular, regular, 24, 28.8, $text-dark-grey);
+		}
+
+		.functionality-subheader {
+			@include font($header-font-family, regular, regular, 16, 21.6, rgba($text-dark-grey, 0.4));
+			margin-bottom: 60px;
+		}
+
+		.vertical-timeline {
+			display: none;
+		}
+	}
+}
+
+@include breakpoint(large only) {
+	.header {
+		.index-header {
+			@include font($header-font-family, regular, regular, 40, 48, $text-white);
+			margin: 120px 0 30px 0;
+		}
+
+		.index-subheader {
+			@include font($header-font-family, regular, regular, 30, 36, $light-blue);
 		}
 	}
 }
