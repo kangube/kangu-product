@@ -56,6 +56,7 @@
 	left: -285px;
 	height: 100%;
 	background-color: $light-grey;
+	overflow-y: auto;
 	position: absolute;
 	z-index: 2;
 	box-shadow: 0px 19px 38px 0px rgba(0,0,0,0.2);
@@ -93,31 +94,26 @@
 		}
 	}
 
+	.create-advert {
+		width: 100%;
+		background-color: $light-red;
+		text-align: left;
+		padding: 15px 25px 15px 20px;
+
+		a {
+			text-decoration: none;
+			color: $text-white;
+		}
+
+		&:hover {
+			background-color: darken($light-red, 5%);
+			transition: all 0.3s ease 0s;
+		}
+	}
+
 	.menu-links, .profile-links {
 		li:first-child {
 			border-top: none;
-		}
-	}
-
-	.menu-links {
-		margin-bottom: 10px;
-	}
-
-	.copyright-link {
-		position: absolute;
-		bottom: 0;
-		padding: 0 0 0 20px;
-		margin-bottom: 20px;
-
-		p {
-			@include font($header-font-family, regular, 400, 14, 14, $text-dark-grey);
-			margin-bottom: 0;
-		}
-
-		[data-icon="i"] {
-			color: lighten(red, 15%);
-			vertical-align: middle;
-			margin: 0 2px 0 2px;
 		}
 	}
 }
@@ -125,6 +121,12 @@
 .menu-links, .profile-links {
 	padding: 0;
 	width: 100%;
+
+	div {
+		@include font($paragraph-font-family, regular, 500, 14, 19, rgba($text-dark-grey, 0.8));
+		padding: 12px 0 12px 20px;
+		background-color: darken($light-grey, 5%);
+	}
 
 	ul {
 		margin: 0;
@@ -143,14 +145,6 @@
 		li:hover {
 			background-color: darken($light-grey, 5%);
 		}
-	}
-}
-
-.menu-links, .profile-links {
-	div {
-		@include font($paragraph-font-family, regular, 500, 14, 19, rgba($text-dark-grey, 0.8));
-		padding: 12px 0 12px 20px;
-		background-color: darken($light-grey, 5%);
 	}
 }
 
@@ -237,7 +231,7 @@
 	.top-bar-title {
 		@include font($header-font-family, regular, bold, 25, 35, rgba($text-dark-grey,0.8));
 		margin-right: 0;
-		margin-top: 3px;
+		margin-top: 5px;
 	}
 }
 
@@ -252,7 +246,7 @@
 		}
 
 		li:nth-child(2) a {
-			margin-left: 35px;
+			margin-left: 10px;
 		}
 
 		li:nth-child(4) a {
@@ -283,7 +277,7 @@
 		@include font($paragraph-font-family, regular, regular, 14, 19, rgba($text-dark-grey,0.8));
 		border: 1px solid rgba($text-dark-grey, 0.8);
 		border-radius: 3px;
-		padding: 5px 15px 5px 15px;
+		padding: 7px 15px 7px 15px !important;
 
 		&:hover {
 			background-color: rgba($dark-grey, 0.1);
