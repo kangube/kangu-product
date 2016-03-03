@@ -1,5 +1,10 @@
 // Styling of the top-bar used for small and medium screens
 
+.full-width-navigation {
+	width: 100vw;
+	background-color: $white;
+}
+
 .top-bar-mobile {
 	@include hide-for(large);
 	display: flex;
