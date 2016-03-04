@@ -133,32 +133,29 @@ class advert
 	
 	public function Save() {
 		$conn = Db::getInstance();
-		$advert_query = "INSERT INTO tbl_advert(fk_user_id, advert_description, advert_price, advert_spots, advert_school, advert_transport) VALUES ($this->UserId, $this->Description, $this->Price, $this->NumberChildren, $this->School, $this->Transportation);";
-		$advert_query .= "INSERT INTO tbl_user(user_mobile_number, user_home_number, user_adress, user_city) VALUES ($this->MobileNumber, $this->HomeNumber, $this->HomeAdress, $this->HomeCity) WHERE user_id = $this->UserId;";
+		$advert_query = "INSERT INTO tbl_advert(fk_user_id, advert_description, advert_price, advert_spots, advert_school, advert_transport) VALUES ('$this->UserId', '$this->Description', '$this->Price', '$this->NumberChildren', '$this->School', '$this->Transportation');";
+		$advert_query .= "INSERT INTO tbl_user(user_mobile_number, user_home_number, user_adress, user_city) VALUES ('$this->MobileNumber', '$this->HomeNumber', '$this->HomeAdress', '$this->HomeCity') WHERE user_id = '$this->UserId';";
 
-		/*$advert_query .= "INSERT INTO tbl_services(fk_advert_id, service_name) VALUES ";
+	   	$statement = $conn->prepare($advert_query);
+		$statement->execute();
+		$last_created_id = $conn->lastInsertId();
+
+		$services_query .= "INSERT INTO tbl_service(fk_advert_id, service_name) VALUES ";
 		$iterator = new ArrayIterator($this->Services);
 		$cachingiterator = new CachingIterator($iterator);
 
 		foreach ($cachingiterator as $value)
 	    {
-	        $advert_query .= "(".$cachingiterator->current().")";
+	        $services_query .= "('$last_created_id', '".$cachingiterator->current()."')";
 
 	        if($cachingiterator->hasNext())
 	        {
-	            $advert_query .= ", ";
+	            $services_query .= ", ";
 	        }
-	    }*/
+	    }
 
-	   	//$statement = $conn->prepare($advert_query);
-		//$statement->execute();
-
-	    echo $advert_query;
-	    $statement = $conn->prepare(mysqli_multi_query($advert_query));
+	    $statement = $conn->prepare($services_query);
 		$statement->execute();
-
-	    //$last_created_id = mysqli_insert_id($conn);
-	    //echo "The last created advert-id is: ".$last_created_id;
 	}
 	
 	public function getAll() {
