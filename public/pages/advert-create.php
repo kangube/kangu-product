@@ -16,10 +16,27 @@
 	{
 		try 
 		{	
+			// Processing the given home and mobile telephone-numbers
+			$mobile_phone_number = preg_replace('/\s+/', '', $_POST['advert-mobile-number']);
+			$home_phone_number = preg_replace('/\s+/', '', $_POST['advert-home-number']);
+
+			if(preg_match( '/^(\d{4})(\d{3})(\d{3})$/', $mobile_phone_number, $matches))
+			{
+			    $mobile_phone_number = $matches[1].' '.$matches[2].' '.$matches[3];
+			}
+
+			if(preg_match( '/^(\d{3})(\d{2})(\d{2})(\d{2})$/', $home_phone_number, $matches))
+			{
+			    $home_phone_number = $matches[1].' '.$matches[2].' '.$matches[3].' '.$matches[4];
+			}
+
+			$home_phone_number = "+32 ".$home_phone_number;
+			$mobile_phone_number = "+32 ".$mobile_phone_number;
+
 			// Splitting the given home adress into an street-adress and a city
 			$given_home_adress = explode(",", $_POST['advert-home-adress']);
 			$advert_street_adress = $given_home_adress[0];
-			$advert_city = $given_home_adress[1];
+			$advert_city = preg_replace('/\s+/', '', $given_home_adress[1]);
 
 			// Processing the chosen transportation options
 			$chosen_transportation_options = implode(", ", $_POST['advert-transportation']);
@@ -50,14 +67,17 @@
 			$advert->Price = $advert_price;
 			$advert->NumberChildren = $_POST['advert-spots'];
 			$advert->School = 'Heilig-hartcollege';
-			$advert->MobileNumber = $_POST['advert-mobile-number'];
-			$advert->HomeNumber = $_POST['advert-home-number'];
+			$advert->MobileNumber = $mobile_phone_number;
+			$advert->HomeNumber = $home_phone_number;
 			$advert->Email = $_POST['advert-email'];
 			$advert->HomeAdress = $advert_street_adress;
 			$advert->HomeCity = $advert_city;
 			$advert->Transportation = $chosen_transportation_options;
 			$advert->Services = $_POST['advert-services'];
-
+			$advert->AvailableDates = $_POST['advert-availability-date'];
+			$advert->AvailableStartTimes = $_POST['advert-availability-start-time'];
+			$advert->AvailableEndTimes = $_POST['advert-availability-end-time'];
+			
 			$advert->Save();
 		}
 		catch(Exception $e)
@@ -65,7 +85,6 @@
 			$error = $e->getMessage();
 		}
 	}
-	
 ?>
 <!doctype html>
 <html class="no-js" lang="nl">
@@ -89,7 +108,7 @@
 				</div>
 			
 				<div class="advert-create-form-container">
-					<form class="advert-create-form" method="post" data-abide novalidate>
+					<form class="advert-create-form" method="post">
 						<div class="form-description-container">
 							<h3 class="form-header">Over deze advertentie</h3>
 							<hr class="blue-horizontal-line"></hr>
@@ -103,7 +122,7 @@
 							<hr class="blue-horizontal-line"></hr>
 							<p class="form-subheader">Selecteer het maximum aantal kinderen waarvoor je opvang wenst aan te bieden.</p>
 							<div class="number-children-radio-buttons">
-								<label class="badge radio-button"><input type="radio" name="advert-spots" value="1" required>1</label>
+								<label class="badge radio-button"><input type="radio" name="advert-spots" value="1">1</label>
 								<label class="badge radio-button"><input type="radio" name="advert-spots" value="2">2</label>
 								<label class="badge radio-button"><input type="radio" name="advert-spots" value="3">3</label>
 								<label class="badge radio-button"><input type="radio" name="advert-spots" value="4">4</label>
@@ -145,7 +164,7 @@
 							<div class="small-12 medium-6 large-6 columns form-icon-input-field">
 								<div class="form-icon-input-container">
 									<span class="form-icon" data-icon="v"></span>
-									<input class="form-input" type="text" name="advert-home-adress" placeholder="jouw adres en gemeente" required>
+									<input class="form-input" type="text" name="advert-home-adress" placeholder="jouw adres, jouw gemeente" required>
 								</div>
 								<div class="form-error">voorbeeld: bosstraat 2, Heist-op-den-Berg</div>
 							</div>
@@ -220,6 +239,31 @@
 	  								<label for="hulp-huiswerktaken"><span></span>Hulp bij huiswerktaken</label>
 								</div>
 							</div>
+						</div>
+
+						<div class="small-12 columns form-availability-container">
+							<h3 class="form-header">Beschikbaarheid</h3>
+							<hr class="blue-horizontal-line"></hr>
+							<p class="form-subheader">Maak je eigen planning en selecteer op welke dagen je opvang wenst aan te bieden. Alle dagen die je niet selecteert worden automatisch op niet beschikbaar geplaatst.</p>
+
+							<div class="advert-availability-input-fields">
+								<div class="small-12 large-4 columns">
+									<label>Datum</label>
+									<input type="date" name="advert-availability-date[]">
+								</div>
+
+								<div class="small-12 large-4 columns">
+									<label>Begin-tijd</label>
+									<input type="time" name="advert-availability-start-time[]">
+								</div>
+
+								<div class="small-12 large-4 columns">
+									<label>Eind-tijd</label>
+									<input type="time" name="advert-availability-end-time[]">
+								</div>
+							</div>
+
+							<button id="create-availability-input">Datum toevoegen</button>
 						</div>
 
 						<div class="small-12 columns">

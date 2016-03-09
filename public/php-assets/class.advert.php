@@ -16,6 +16,9 @@ class advert
 	private $m_sHomeCity;
 	private $m_sTransportation;
 	private $m_sServices;
+	private $m_sAvailableDates;
+	private $m_sAvailableStartTimes;
+	private $m_sAvailableEndTimes;
 
 	private $conn;
 	
@@ -75,6 +78,18 @@ class advert
 			case 'Services':
 				$this->m_sServices = $p_sValue;
 				break;
+
+			case 'AvailableDates':
+				$this->m_sAvailableDates = $p_sValue;
+				break;
+
+			case 'AvailableStartTimes':
+				$this->m_sAvailableStartTimes = $p_sValue;
+				break;
+
+			case 'AvailableEndTimes':
+				$this->m_sAvailableEndTimes = $p_sValue;
+				break;
 		}
 	}
 
@@ -128,33 +143,55 @@ class advert
 			case 'Services':
 				return $this->m_sServices;
 				break;
+
+			case 'AvailableDates':
+				return $this->m_sAvailableDates;
+				break;
+
+			case 'AvailableStartTimes':
+				return $this->m_sAvailableStartTimes;
+				break;
+
+			case 'AvailableEndTimes':
+				return $this->m_sAvailableEndTimes;
+				break;
 		}
 	}
 	
 	public function Save() {
 		$conn = Db::getInstance();
 		$advert_query = "INSERT INTO tbl_advert(fk_user_id, advert_description, advert_price, advert_spots, advert_school, advert_transport) VALUES ('$this->UserId', '$this->Description', '$this->Price', '$this->NumberChildren', '$this->School', '$this->Transportation');";
-		$advert_query .= "INSERT INTO tbl_user(user_mobile_number, user_home_number, user_adress, user_city) VALUES ('$this->MobileNumber', '$this->HomeNumber', '$this->HomeAdress', '$this->HomeCity') WHERE user_id = '$this->UserId';";
+		$advert_query .= "UPDATE tbl_user SET user_mobile_number = '$this->MobileNumber', user_home_number = '$this->HomeNumber', user_adress = '$this->HomeAdress', user_city = '$this->HomeCity' WHERE user_id = '$this->UserId';";
 
 	   	$statement = $conn->prepare($advert_query);
 		$statement->execute();
 		$last_created_id = $conn->lastInsertId();
 
-		$services_query .= "INSERT INTO tbl_service(fk_advert_id, service_name) VALUES ";
+		$services_dates_query .= "INSERT INTO tbl_service(fk_advert_id, service_name) VALUES ";
 		$iterator = new ArrayIterator($this->Services);
 		$cachingiterator = new CachingIterator($iterator);
 
 		foreach ($cachingiterator as $value)
 	    {
-	        $services_query .= "('$last_created_id', '".$cachingiterator->current()."')";
+	        $services_dates_query .= "('$last_created_id', '".$cachingiterator->current()."')";
 
 	        if($cachingiterator->hasNext())
 	        {
-	            $services_query .= ", ";
+	            $services_dates_query .= ", ";
 	        }
 	    }
 
-	    $statement = $conn->prepare($services_query);
+	    $services_dates_query .= "; ";
+
+	    $services_dates_query .= "INSERT INTO tbl_availability(fk_advert_id, availability_date, availability_time_start, availability_time_end) VALUES ";
+
+		foreach($this->AvailableDates as $key => $d) 
+		{
+			$services_dates_query .= "('$last_created_id', '".$d."', '".$this->AvailableStartTimes[$key]."', '".$this->AvailableEndTimes[$key]."'), ";
+		}
+
+		$services_dates_query = rtrim($services_dates_query,', ').";";
+	   	$statement = $conn->prepare($services_dates_query);
 		$statement->execute();
 	}
 	
