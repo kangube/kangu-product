@@ -241,7 +241,7 @@
 							</div>
 						</div>
 
-						<div class="small-12 columns form-availability-container">
+						<!--<div class="small-12 columns form-availability-container">
 							<h3 class="form-header">Beschikbaarheid</h3>
 							<hr class="blue-horizontal-line"></hr>
 							<p class="form-subheader">Maak je eigen planning en selecteer op welke dagen je opvang wenst aan te bieden. Alle dagen die je niet selecteert worden automatisch op niet beschikbaar geplaatst.</p>
@@ -264,6 +264,19 @@
 							</div>
 
 							<button id="create-availability-input">Datum toevoegen</button>
+						</div>-->
+
+						<div class="small-12 columns">
+							<div class="small-12 large-5 columns">
+								<div class="availability-datepicker"></div>
+							</div>
+
+							<div class="small-12 large-7 columns">
+								<h3 class="form-header">Opvangdagen</h3>
+								<hr class="blue-horizontal-line"></hr>
+							</div>
+
+							<div class="small-12 large-7 columns advert-availability-input-fields"></div>
 						</div>
 
 						<div class="small-12 columns">
