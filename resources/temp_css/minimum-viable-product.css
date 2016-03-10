@@ -4397,7 +4397,7 @@ hr {
   min-width: 100vw;
   min-height: 60vh;
   background-color: #4AA0D5;
-  z-index: 1; }
+  z-index: -1; }
   .advert-detail-header .advert-detail-title-container {
     -webkit-align-self: center;
         -ms-flex-item-align: center;
@@ -4491,7 +4491,7 @@ hr {
     color: #FFFFFF;
     text-decoration: none;
     text-align: center;
-    z-index: 2;
+    z-index: 0;
     font-family: "open-sans", sans-serif;
     font-style: regular;
     font-weight: regular;
@@ -4526,9 +4526,12 @@ hr {
     color: rgba(69, 69, 83, 0.8);
     line-height: 25px !important; }
   .advert-detail-calendar .border-right {
-    border-right: 2px solid #C4C4C4;
-    padding-right: 15px;
-    margin-left: -15px; }
+    border: none; }
+    @media screen and (min-width: 40em) {
+      .advert-detail-calendar .border-right {
+        border-right: 2px solid #C4C4C4;
+        padding-right: 15px;
+        margin-left: -15px; } }
   .advert-detail-calendar table, .advert-detail-calendar th, .advert-detail-calendar tr, .advert-detail-calendar td {
     font-family: "open-sans", sans-serif;
     font-style: regular;
@@ -4562,18 +4565,25 @@ hr {
   .advert-detail-services p {
     line-height: 30px !important; }
   .advert-detail-services .border-right {
-    border-right: 2px solid #C4C4C4;
     border: none; }
+    @media screen and (min-width: 40em) {
+      .advert-detail-services .border-right {
+        border-right: 2px solid #C4C4C4; } }
   .advert-detail-services .border-left {
-    border-left: 2px solid #C4C4C4; }
+    border: none; }
+    @media screen and (min-width: 40em) {
+      .advert-detail-services .border-left {
+        border-left: 2px solid #C4C4C4; } }
 
 .advert-detail-ratings {
   margin-bottom: 50px; }
   .advert-detail-ratings img {
     width: 40px;
     height: 40px;
-    border-radius: 50%; }
+    border-radius: 50%;
+    margin-top: 50px; }
   .advert-detail-ratings .lhplus {
+    margin-top: 50px;
     line-height: 40px; }
   .advert-detail-ratings i {
     color: #C4C4C4; }
@@ -4584,6 +4594,12 @@ hr {
     background-color: #F3F3F3;
     border-radius: 3px;
     text-align: center; }
+    .advert-detail-ratings .rate-button:hover {
+      background-color: #e6e6e6;
+      -webkit-transition: all 0.3s ease;
+              transition: all 0.3s ease; }
+    .advert-detail-ratings .rate-button:active {
+      background-color: #e6e6e6; }
     .advert-detail-ratings .rate-button span {
       font-size: 16px;
       line-height: 28px;
@@ -4593,3 +4609,5 @@ hr {
     .advert-detail-ratings .rate-button p {
       font-size: 10px;
       line-height: 28px; }
+  .advert-detail-ratings .mbot {
+    margin-bottom: 30px; }

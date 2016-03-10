@@ -10,8 +10,24 @@
 	$stmt->execute(array(":user_id"=>$user_id));
 	$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
-	$a1 = new Advert();
-	$oneAdvert = $a1->getOne();
+	$advert = new Advert();
+	$oneAdvert = $advert->getOne();
+	$advert_information = $oneAdvert->fetch(PDO::FETCH_ASSOC);
+	$simAdvert = $advert->getSimilar();
+	$advert_similar = $simAdvert->fetch(PDO::FETCH_ASSOC);
+
+	$similar_query = "SELECT * FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.advert_school = '".$advert_similar['advert_school']."' WHERE tbl_advert.advert_id != " . $advert_similar['advert_id'].";";
+	//echo $similar_query . "<br><br>";
+	$conn = Db::getInstance();
+	$similar_adverts = $conn->prepare($similar_query);
+	$similar_adverts = $conn->execute();
+
+	/*while($adverts = $similar_adverts)
+	{
+		echo "Advert price: ".$advert_similar["advert_price"]."<br />";
+		echo "Advert school: ".$advert_similar["advert_school"]."<br /><br />";
+		
+	}*/
 ?>
 
 <!doctype html>
@@ -22,6 +38,7 @@
         <link rel="stylesheet" href="../css/minimum-viable-product.min.css">
         <link href="https://file.myfontastic.com/QxAJVhmfbQ2t7NGCUAnz9P/icons.css" rel="stylesheet">
         <link href="https://file.myfontastic.com/wfY5TXHecmqLMkPUKHzNrK/icons.css" rel="stylesheet">
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMSIUIRS-lEyN5iRVhoCyvJ3FfVEdhE-s&callback=initMap"></script>
     </head>
 
 	<body>
@@ -30,7 +47,7 @@
 		<div class="small-12 columns advert-detail-header">
 	        <div class="advert-detail-title-container">
 	        	<img src="http://soocurious.com/fr/wp-content/uploads/2015/06/image-singe-telephone.jpg" alt="profiel foto" />
-	            <h1 class="advert-detail-title">Christel Janssens</h1>
+	            <h1 class="advert-detail-title"><?php echo $advert_information["user_firstname"]." ".$advert_information["user_lastname"]; ?></h1>
 	            <h3 class="advert-detail-subtitle">Ouder van Floor en Kilian</h3>
 	        </div>
         </div>
@@ -44,22 +61,20 @@
 			    <div class="small-12 medium-6 large-6 columns">
 			    	<h2>Over deze advertentie</h2>
 			    	<hr class="blue-horizontal-line"></hr>
-			    	<p>Drinking vinegar typewriter williamsburg deep v tote bag cornhole. Cliche affogato kinfolk shoreditch, actually +1 DIY twee occupy bitters sartorial kale chips put a bird on it fanny pack ugh. Squid actually pug vegan, locavore ennui tumblr +1 truffaut mixtape lo-fi chartreuse drinking vinegar bitters. Pop-up blog bushwick aesthetic quinoa tofu. Green juice single-origin coffee vice pitchfork DIY.</p>
+			    	<p><?php echo $advert_information["advert_description"]; ?></p>
 					<div class="small-12 medium-6 large-6 columns">
 			    		<div class="border-right">
 				    		<span data-icon="e"></span>
-				    		<p>Basisschool Heilig-hartcollege</p>
+				    		<p>Basisschool <?php echo $advert_information["advert_school"]; ?></p>
 				    		<span data-icon="o"></span>
-				    		<p>Plaats voor 2 kinderen</p>
+				    		<p>Plaats voor <?php echo $advert_information["advert_spots"]; ?> kinderen</p>
 			    		</div>
 			    	</div>
 			    	<div class="small-12 medium-6 large-6 columns">
-				    	<div class="large-12 columns float-right">
-				    		<span data-icon="b"></span>
-				    		<p>Tussen 5 - 9 euro per uur</p>
-				    		<span data-icon="a"></span>
-				    		<p>Verplaatsing met de auto</p>
-			    		</div>
+			    		<span data-icon="m"></span>
+			    		<p>Tussen 5 - <?php echo $advert_information["advert_price"]; ?> euro per uur</p>
+			    		<span data-icon="k"></span>
+			    		<p>Verplaatsing met <?php echo $advert_information["advert_transport"]; ?></p>
 			    	</div>
 			    </div>
 			    <div class="small-12 medium-6 large-6 columns">
@@ -133,16 +148,16 @@
 			    	<hr class="blue-horizontal-line"></hr>
 
 			    	<span data-icon="x"></span>
-			    	<p>somethingsomething@gmail.com</p>
+			    	<p><?php echo $advert_information["user_email"]; ?></p>
 			    	<span data-icon="z"></span>
-			    	<p>+32 440 555 555</p>
+			    	<p><?php echo "+32 " . $advert_information["user_mobile_number"]; ?></p>
 			    	<span data-icon="q"></span>
-			    	<p>+32 440 555 555</p>
+			    	<p><?php echo "+32 " . $advert_information["user_home_number"]; ?></p>
 			    	<span class="double-line-height" data-icon="v"></span>
-			    	<p>Bullshitstraat 22 <br> 2220, Heist-op-den-berg</p>
+			    	<p><?php echo $advert_information["user_adress"] . "<br>" . $advert_information["user_city"]; ?></p>
 				</div>
 				<div class="small-12 medium-7 large-9 columns">
-					<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d80140.98660363081!2d4.5042499072459785!3d51.1194218869208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1snl!2sbe!4v1457276638613" frameborder="0" style="border:0" allowfullscreen></iframe>
+					<iframe src="https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyBMSIUIRS-lEyN5iRVhoCyvJ3FfVEdhE-s" frameborder="0" style="border:0" allowfullscreen></iframe>					
 				</div>
 		    </div>
 		</div>
@@ -157,26 +172,26 @@
 			<div class="small-10 small-centered medium-12 medium-uncentered large-12 columns">
 				<div class="large-4 columns">
 					<div class="border-right">
-				    	<span class="extra" data-icon="b"></span>
+				    	<span class="extra" data-icon="m"></span>
 				    	<p>Opvang in een thuisomgeving</p>
-				    	<span class="extra" data-icon="b"></span>
+				    	<span class="extra" data-icon="m"></span>
 				    	<p>Ophalen aan de schoolpoort</p>
 					</div>
 				</div>
 				<div class="large-4 columns">
 			    	<div class="large-10 large-centered columns">
-				    	<span class="extra" data-icon="b"></span>
-				    	<p>Opvang in een thuisomgeving</p>
-				    	<span class="extra" data-icon="b"></span>
-				    	<p>Ophalen aan de schoolpoort</p>
+				    	<span class="extra" data-icon="m"></span>
+				    	<p>Vervoer naar thuis na opvang</p>
+				    	<span class="extra" data-icon="m"></span>
+				    	<p>Vervoer naschoolse activiteiten</p>
 				    </div>
 				</div>
 				<div class="large-4 columns border-left">
 			    	<div class="large-10 columns float-right">
-				    	<span class="extra" data-icon="b"></span>
-				    	<p>Opvang in een thuisomgeving</p>
-				    	<span class="extra" data-icon="b"></span>
-				    	<p>Ophalen aan de schoolpoort</p>
+				    	<span class="extra" data-icon="m"></span>
+				    	<p>Voorzien van een maaltijd</p>
+				    	<span class="extra" data-icon="m"></span>
+				    	<p>Hulp bij huiswerk taken</p>
 				    </div>
 				</div>
 		    </div>
@@ -194,7 +209,7 @@
 			    		<p class="lhplus">Jan Janssens</p>
 			    	</div>
 			    	<div class="small-12 medium-12 large-12 columns">
-			    		<p>Listicle everyday carry jean shorts fingerstache messenger bag art party. Pitchfork blue bottle actually, iPhone keytar tote bag VHS cronut typewriter trust fund pork belly leggings cardigan. Vinyl meggings fap shabby chic mlkshk, yuccie narwhal yr salvia banjo. Man braid cardigan artisan dreamcatcher.</p>
+			    		<p>Asymmetrical pop-up brooklyn, try-hard waistcoat pabst small batch bespoke bushwick retro pour-over austin kombucha neutra sartorial. Tofu cornhole four loko, gastropub wolf fingerstache DIY keytar kitsch street art umami ramps. Blue bottle dreamcatcher polaroid hoodie, cred poutine microdosing tacos pork belly. Disrupt man bun four dollar toast green juice ethical, blue bottle slow-carb.</p>
 			    	</div>
 			    	<div class="small-12 medium-12 large-12 columns">
 			    		<p class="float-left"><i>9 Februari 2016</i></p>
@@ -261,27 +276,9 @@
 			    	<h2>Vergelijkbare advertenties</h2>
 			    	<hr class="red-horizontal-line"></hr>
 			    </div>
-
-				<div id="results"></div>
-				<div id="searchresults"></div>
 		    </div>
 		</div>
 		
-		<!--<?php
-			/*while($advert = $oneAdvert->fetch(PDO::FETCH_ASSOC))
-			{
-				echo "Advert creator: ".$advert["user_firstname"].' '.$advert["user_lastname"]."<br />";
-				echo "Advert location: ".$advert["user_adress"].', '.$advert["user_city"]."<br />";
-				echo "Contact email: ".$advert["user_email"]."<br />";
-				echo "Contact home number: ".$advert["user_home_number"]."<br />";
-				echo "Contact mobile number: ".$advert["user_mobile_number"]."<br />";
-				echo "Description: ".$advert["advert_description"]."<br />";
-				echo "Price: ".$advert["advert_price"]."<br />";
-				echo "Spots left: ".$advert["advert_spots"]."<br />";
-				echo "Advert school: ".$advert["advert_school"]."<br />";
-				echo "Advert transport: ".$advert["advert_transport"]."<br />";
-			}*/
-		?>-->
 		<script src="../js/minimum-viable-product.min.js"></script>
 	    <script src="https://use.typekit.net/vnw3zje.js"></script>
 	    <script>try{Typekit.load({ async: true });}catch(e){}</script>

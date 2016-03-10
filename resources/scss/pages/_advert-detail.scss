@@ -31,7 +31,7 @@ hr {
 	min-width: 100vw;
 	min-height: 60vh;
 	background-color: $dark-blue;
-	z-index: 1;
+	z-index: -1;
 
 	.advert-detail-title-container {
 		align-self: center;
@@ -130,7 +130,7 @@ hr {
 		@include font($paragraph-font-family, regular, regular, 20, 55, $text-white);
 		text-decoration: none;
 		text-align: center;
-		z-index: 2;
+		z-index: 0;
 
 		&:hover {
 			background-color: darken($light-red, 5%);
@@ -164,9 +164,15 @@ hr {
 	}
 
 	.border-right {
-		border-right: 2px solid $border-color-light-grey;
-		padding-right: 15px;
-		margin-left: -15px;
+		@include breakpoint(small) { 
+			border: none;
+		}
+
+		@include breakpoint(medium) { 
+			border-right: 2px solid $border-color-light-grey;
+			padding-right: 15px;
+			margin-left: -15px;
+		}
 	}
 
 	table, th, tr, td {
@@ -215,15 +221,23 @@ hr {
 	}
 
 	.border-right {
-		border-right: 2px solid $border-color-light-grey;
-
 		@include breakpoint(small) { 
 			border: none;
+		}
+
+		@include breakpoint(medium) { 
+			border-right: 2px solid $border-color-light-grey;
 		}
 	}
 
 	.border-left {
-		border-left: 2px solid $border-color-light-grey;
+		@include breakpoint(small) { 
+			border: none;
+		}
+
+		@include breakpoint(medium) { 
+			border-left: 2px solid $border-color-light-grey;
+		}
 	}
 }
 
@@ -234,9 +248,11 @@ hr {
 		width: 40px;
 		height: 40px;
 		border-radius: 50%;
+		margin-top: 50px;
 	}
 
 	.lhplus {
+		margin-top: 50px;
 		line-height: 40px;
 	}
 
@@ -252,6 +268,15 @@ hr {
 		border-radius: 3px;
 		text-align: center;
 
+		&:hover {
+			background-color: darken($light-grey-alt, 5%);
+			transition: all 0.3s ease;
+		}
+
+		&:active {
+			background-color: darken($light-grey-alt, 5%);
+		}
+
 		span {
 			font-size: 16px;
 			line-height: 28px;
@@ -264,5 +289,9 @@ hr {
 			font-size: 10px;
 			line-height: 28px;
 		}
+	}
+
+	.mbot {
+		margin-bottom: 30px;
 	}
 }
