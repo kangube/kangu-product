@@ -23,10 +23,6 @@ class advert
 				$this->m_sID = $p_sValue;
 				break;
 
-			case 'School':
-				$this->m_sSchool = $p_sValue;
-				break;
-
 			case 'Description':
 				$this->m_sDescription = $p_sValue;
 				break;
@@ -38,10 +34,6 @@ class advert
 		{
 			case 'ID':
 				return $this->m_sID;
-				break;
-
-			case 'School':
-				return $this->m_sSchool;
 				break;
 
 			case 'Description':
@@ -71,13 +63,6 @@ class advert
 		$conn = Db::getInstance();
 		$advertNumber = $_GET['id'];
 		$oneAdvert = $conn->query("SELECT * FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id WHERE tbl_advert.advert_id=$advertNumber");
-		return $oneAdvert;
-	}
-
-	public function getSimilar() {
-		$conn = Db::getInstance();
-		$advertNumber = $_GET['id'];
-		$oneAdvert = $conn->query("SELECT * FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id WHERE tbl_advert.advert_id!=$advertNumber");
 		return $oneAdvert;
 	}
 }

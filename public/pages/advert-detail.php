@@ -1,8 +1,8 @@
 <?php
 	require_once("../php-assets/class.session.php");
 	require_once("../php-assets/class.user.php");
-	include_once("../php-assets/class.advert.php");
 	require_once("../php-assets/class.advert.php");
+	require_once("../php-assets/class.pagination-reviews.php");
 
 	$auth_user = new USER();
 	$user_id = $_SESSION['user_session'];
@@ -13,21 +13,6 @@
 	$advert = new Advert();
 	$oneAdvert = $advert->getOne();
 	$advert_information = $oneAdvert->fetch(PDO::FETCH_ASSOC);
-	$simAdvert = $advert->getSimilar();
-	$advert_similar = $simAdvert->fetch(PDO::FETCH_ASSOC);
-
-	$similar_query = "SELECT * FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.advert_school = '".$advert_similar['advert_school']."' WHERE tbl_advert.advert_id != " . $advert_similar['advert_id'].";";
-	//echo $similar_query . "<br><br>";
-	$conn = Db::getInstance();
-	$similar_adverts = $conn->prepare($similar_query);
-	$similar_adverts = $conn->execute();
-
-	/*while($adverts = $similar_adverts)
-	{
-		echo "Advert price: ".$advert_similar["advert_price"]."<br />";
-		echo "Advert school: ".$advert_similar["advert_school"]."<br /><br />";
-		
-	}*/
 ?>
 
 <!doctype html>
@@ -39,6 +24,32 @@
         <link href="https://file.myfontastic.com/QxAJVhmfbQ2t7NGCUAnz9P/icons.css" rel="stylesheet">
         <link href="https://file.myfontastic.com/wfY5TXHecmqLMkPUKHzNrK/icons.css" rel="stylesheet">
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMSIUIRS-lEyN5iRVhoCyvJ3FfVEdhE-s&callback=initMap"></script>
+        	<title>Alle advertenties</title>
+		<script type="text/javascript" src="//code.jquery.com/jquery-2.2.0.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() 
+			{
+
+				//-----------
+				$("#reviews" ).load( "../php-assets/class.pagination-reviews.php"); //load initial records
+
+	    		$("#hide").click(function(e) {
+	        		$("#reviews").hide();
+
+	    		});
+				//executes code below when user click on pagination links
+				$("#reviews").on( "click", ".pagination a", function (e)
+				{
+					e.preventDefault();
+					$(".loading-div").show(); //show loading element
+					var page = $(this).attr("data-page"); //get page number from link
+					$("#reviews").load("../php-assets/class.pagination-reviews.php",{"page":page}, function()
+					{ //get content from PHP page
+						$(".loading-div").hide(); //once done, hide loading element
+					});
+				});
+			});
+		</script>
     </head>
 
 	<body>
@@ -203,69 +214,10 @@
 			    	<h2>Ratings &amp; reviews</h2>
 			    	<hr class="blue-horizontal-line"></hr>
 			    </div>
-			    <div class="small-12 medium-6 large-6 columns small-collapse">
-			    	<div class="small-12 medium-12 large-12 columns">
-			    		<span><img src="http://soocurious.com/fr/wp-content/uploads/2015/06/image-singe-telephone.jpg" alt="profiel foto" /></span>
-			    		<p class="lhplus">Jan Janssens</p>
-			    	</div>
-			    	<div class="small-12 medium-12 large-12 columns">
-			    		<p>Asymmetrical pop-up brooklyn, try-hard waistcoat pabst small batch bespoke bushwick retro pour-over austin kombucha neutra sartorial. Tofu cornhole four loko, gastropub wolf fingerstache DIY keytar kitsch street art umami ramps. Blue bottle dreamcatcher polaroid hoodie, cred poutine microdosing tacos pork belly. Disrupt man bun four dollar toast green juice ethical, blue bottle slow-carb.</p>
-			    	</div>
-			    	<div class="small-12 medium-12 large-12 columns">
-			    		<p class="float-left"><i>9 Februari 2016</i></p>
-			    		<a class="rate-button float-right" href="#">
-			    			<span data-icon="r"></span>
-			    			<p>Behulpzaam</p>
-			    		</a>
-			    	</div>
+
+			    <div class="small-12 medium-12 large-12 columns small-collapse">
+			    	<div id="reviews"></div>
 			    </div>
-			    <div class="small-12 medium-6 large-6 columns small-collapse">
-			    	<div class="small-12 medium-12 large-12 columns">
-			    		<span><img src="http://soocurious.com/fr/wp-content/uploads/2015/06/image-singe-telephone.jpg" alt="profiel foto" /></span>
-			    		<p class="lhplus">Jan Janssens</p>
-			    	</div>
-			    	<div class="small-12 medium-12 large-12 columns">
-			    		<p>Listicle everyday carry jean shorts fingerstache messenger bag art party. Pitchfork blue bottle actually, iPhone keytar tote bag VHS cronut typewriter trust fund pork belly leggings cardigan. Vinyl meggings fap shabby chic mlkshk, yuccie narwhal yr salvia banjo. Man braid cardigan artisan dreamcatcher.</p>
-			    	</div>
-			    	<div class="small-12 medium-12 large-12 columns">
-			    		<p class="float-left"><i>9 Februari 2016</i></p>
-			    		<a class="rate-button float-right" href="#">
-			    			<span data-icon="r"></span>
-			    			<p>Behulpzaam</p>
-			    		</a>
-			    	</div>
-			    </div>
-			    <div class="small-12 medium-6 large-6 columns small-collapse">
-			    	<div class="small-12 medium-12 large-12 columns">
-			    		<span><img src="http://soocurious.com/fr/wp-content/uploads/2015/06/image-singe-telephone.jpg" alt="profiel foto" /></span>
-			    		<p class="lhplus">Jan Janssens</p>
-			    	</div>
-			    	<div class="small-12 medium-12 large-12 columns">
-			    		<p>Listicle everyday carry jean shorts fingerstache messenger bag art party. Pitchfork blue bottle actually, iPhone keytar tote bag VHS cronut typewriter trust fund pork belly leggings cardigan. Vinyl meggings fap shabby chic mlkshk, yuccie narwhal yr salvia banjo. Man braid cardigan artisan dreamcatcher.</p>
-			    	</div>
-			    	<div class="small-12 medium-12 large-12 columns">
-			    		<p class="float-left"><i>9 Februari 2016</i></p>
-			    		<a class="rate-button float-right" href="#">
-			    			<span data-icon="r"></span>
-			    			<p>Behulpzaam</p>
-			    		</a>
-			    	</div>
-			    </div>
-			    <div class="small-12 medium-6 large-6 columns small-collapse">
-			    	<div class="small-12 medium-12 large-12 columns">
-			    		<span><img src="http://soocurious.com/fr/wp-content/uploads/2015/06/image-singe-telephone.jpg" alt="profiel foto" /></span>
-			    		<p class="lhplus">Jan Janssens</p>
-			    	</div>
-			    	<div class="small-12 medium-12 large-12 columns">
-			    		<p>Listicle everyday carry jean shorts fingerstache messenger bag art party. Pitchfork blue bottle actually, iPhone keytar tote bag VHS cronut typewriter trust fund pork belly leggings cardigan. Vinyl meggings fap shabby chic mlkshk, yuccie narwhal yr salvia banjo. Man braid cardigan artisan dreamcatcher.</p>
-			    	</div>
-			    	<div class="small-12 medium-12 large-12 columns">
-			    		<p class="float-left"><i>9 Februari 2016</i></p>
-			    		<a class="rate-button float-right" href="#">
-			    			<span data-icon="r"></span>
-			    			<p>Behulpzaam</p>
-			    		</a>
-			    	</div>
 			    </div>
 			</div>
 		</div>
@@ -276,6 +228,54 @@
 			    	<h2>Vergelijkbare advertenties</h2>
 			    	<hr class="red-horizontal-line"></hr>
 			    </div>
+			    <?php
+			$advert_results = $mysqli->prepare("SELECT advert_id, fk_user_id, advert_description, advert_price, advert_spots, advert_school, user_image_path, user_firstname, user_lastname, user_city FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id WHERE tbl_advert.advert_school = '". $advert_information['advert_school']."' LIMIT 3");
+					$advert_results->execute();
+					$advert_results->bind_result($advert_id, $advert_creator, $advert_description, $advert_price, $advert_spots, $advert_school, $user_profile_image, $user_first_name, $user_last_name, $user_city);
+
+					while($advert_results->fetch()) 
+					{
+						$shorten = strpos($advert_description, ' ', 145);
+						$final_advert_description = substr($advert_description, 0, $shorten)." ...";
+
+						echo "<div class='advert-container end'>
+							  	<a href='advert-detail.php?id=".$advert_id."' class='advert-link'>
+									<div class='advert'>
+						    			<div class='small-12 columns'>
+							    			<div class='small-2 columns'>
+							    				<img class='advert-profile-image' src='".$user_profile_image."'>
+							    			</div>
+							    			
+							    			<div class='small-10 columns'>
+								    			<ul class='advert-information-list'>
+								    				<li>".$user_first_name.' '.$user_last_name."</li>
+								    				<li data-icon='d'>".$user_city."</li>
+								    			</ul>
+							    			</div>
+						    			</div>
+
+										<p class='advert-description'>".$final_advert_description."</p>
+						
+						    			<div class='small-6 columns'>
+							    			<div class='advert-price'>
+								    			<p>".$advert_price."</p>
+								    			<p>p/u</p>
+							    			</div>
+							    		</div>
+
+							    		<div class='small-6 columns'>
+							    			<div class='advert-spots'>
+							    				<p>".$advert_spots."</p>
+								    			<p>plaatsen</p>
+							    			</div>
+							    		</div>
+				    	
+							    		<p class='advert-school' data-icon='e'>Basisschool ".$advert_school."</p>
+						    		</div>
+						    	</a>
+					    	</div>";
+					}    
+		?>
 		    </div>
 		</div>
 		

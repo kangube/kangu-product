@@ -4504,8 +4504,6 @@ hr {
               transition: all 0.3s ease; }
     .advert-detail-container .boeking-button:active {
       background-color: #f16366; }
-    .advert-detail-container .boeking-button:visited {
-      background-color: #f16366; }
     @media screen and (min-width: 40em) {
       .advert-detail-container .boeking-button {
         font-family: "open-sans", sans-serif;
@@ -4577,6 +4575,8 @@ hr {
 
 .advert-detail-ratings {
   margin-bottom: 50px; }
+  .advert-detail-ratings .reviewdescription {
+    height: 100px; }
   .advert-detail-ratings img {
     width: 40px;
     height: 40px;

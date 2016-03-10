@@ -141,10 +141,6 @@ hr {
 			background-color: darken($light-red, 5%);
 		}
 
-		&:visited {
-			background-color: darken($light-red, 5%);
-		}
-
 		@include breakpoint(small) { 
 			@include font($paragraph-font-family, regular, regular, 16, 55, $text-white);
 		}
@@ -243,6 +239,10 @@ hr {
 
 .advert-detail-ratings {
 	margin-bottom: 50px;
+
+	.reviewdescription {
+		height: 100px;
+	}
 
 	img {
 		width: 40px;

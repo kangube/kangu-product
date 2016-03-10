@@ -68,6 +68,25 @@ mysqli_close($conn);
 					$(".loading-div").hide(); //once done, hide loading element
 				});
 			});
+
+			//-----------
+			/*$("#reviews" ).load( "../php-assets/class.pagination-reviews.php"); //load initial records
+
+    		$("#hide").click(function(e) {
+        		$("#reviews").hide();
+
+    		});
+			//executes code below when user click on pagination links
+			$("#reviews").on( "click", ".pagination a", function (e)
+			{
+				e.preventDefault();
+				$(".loading-div").show(); //show loading element
+				var page = $(this).attr("data-page"); //get page number from link
+				$("#reviews").load("../php-assets/class.pagination-reviews.php",{"page":page}, function()
+				{ //get content from PHP page
+					$(".loading-div").hide(); //once done, hide loading element
+				});
+			});*/
 		});
 </script>
 <style>
