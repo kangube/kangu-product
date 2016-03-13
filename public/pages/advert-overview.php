@@ -40,7 +40,7 @@
 	            <h3 class="advert-overview-subheader">Deze header wordt vergezeld van een subheader met bijbehorende informatie over de pagina</h3>
 	        </div>
 
-        	<form action="search.php" method="GET" name="search" class="advert-search-form">
+        	<form action="advert-overview.php" method="post" name="search" class="advert-search-form">
     			<input class="search-region" type="text" placeholder="Binnen welke school zoekt u een opvangbiedende ouder?" name="school" required>
     			<input class="search-price" type="text" placeholder="Prijs (max.)" name="price" required>
     			<select class="search-spots" name="number-children" required>
@@ -49,7 +49,7 @@
 					<option value="3">3 kinderen</option>
 					<option value="4">4 kinderen</option>
 				</select>
-    			<input id="search-submit-button" class="search-submit" type="submit" value="Zoeken">
+    			<input id="search-submit-button" class="search-submit" type="submit" value="Zoeken" name="search">
         	</form>
 
         	<button id="mobile-search-form-button" data-icon="h">Zoek opvang</button>
@@ -67,7 +67,7 @@
 			    </div>
 
 			    <div class="mobile-search-form">
-			    	<form action="search.php" method="GET" name="search" class="advert-search-form-mobile">
+			    	<form action="advert-overview.php" method="post" name="search" class="advert-search-form-mobile">
 			    		<input type="text" placeholder="Binnen welke school zoekt u een opvangouder?" name="school" required>
 			    		<select class="search-spots" name="number-children" required>
 							<option value="1" selected>1 kind</option> 
@@ -76,7 +76,7 @@
 							<option value="3">4 kinderen</option>
 						</select>
 						<input class="search-price" type="text" placeholder="Prijs (max.)" name="price" required>	
-						<input class="search-submit" type="submit" value="Zoeken">
+						<input class="search-submit" type="submit" name="search" value="Zoeken">
 			    	</form>
 			    </div>
 			</div>
@@ -87,10 +87,324 @@
 			    <div class="large-12 columns">
 			    	<h2>Advertenties</h2>
 			    	<hr class="blue-horizontal-line"></hr>
+			    	
+			    	<form action="advert-overview.php" method="post">
+						<input type='submit' name='recent' value="Most recent"/>
+					</form>
+
+					<form action="advert-overview.php" method="post">
+						<input type='submit' name='popular' value="Most popular"/>
+					</form>
+
+			    	<form action="advert-overview.php" method="post">
+						<input type='submit' name='descending' value="Price highest to lowest"/>
+					</form>
+
+					<form action="advert-overview.php" method="post">
+						<input type='submit' name='ascending' value="Price lowest to highest" />
+					</form>
+
+					<form action="advert-overview.php" method="post">
+						<input type='submit' name='reset' value="Reset filter" />
+					</form>
 			    </div>
 
-				<div id="results"></div>
-				<div id="searchresults"></div>
+				<?php
+
+				$con = mysqli_connect("localhost","root","root","kangu-product");
+				if (mysqli_connect_errno())
+				{
+				  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+				}
+				mysqli_select_db($con,"test");
+
+				if(!isset($_POST['descending']) AND !isset($_POST['ascending'])AND !isset($_POST['reset'])AND !isset($_POST['recent'])AND !isset($_POST['popular'])AND !isset($_POST['search']))
+				{
+					//Standaard, Display all results
+					echo "<div id='results'></div><div id='searchresults'></div>";
+				}
+
+				if(isset($_POST['reset']))
+				{
+					//echo "Display all results by reset";
+					echo "<div id='results'></div><div id='searchresults'></div>";
+				}
+
+				if(isset($_POST['popular']))
+				{
+					//echo "Display all results by popularity by number of bookings";
+					//echo "Most popular";
+
+					$advert_results = $mysqli->prepare("SELECT advert_id, fk_user_id, advert_description, advert_price, advert_spots, advert_school, user_image_path, user_firstname, user_lastname, user_city FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id ORDER BY advert_number_bookings DESC");
+					$advert_results->execute();
+					$advert_results->bind_result($advert_id, $advert_creator, $advert_description, $advert_price, $advert_spots, $advert_school, $user_profile_image, $user_first_name, $user_last_name, $user_city);
+
+					while($advert_results->fetch()) 
+					{
+						$shorten = strpos($advert_description, ' ', 145);
+						$final_advert_description = substr($advert_description, 0, $shorten)." ...";
+
+						echo "<div class='advert-container end'>
+							  	<a href='advert-detail.php?id=".$advert_id."' class='advert-link'>
+									<div class='advert'>
+						    			<div class='small-12 columns'>
+							    			<div class='small-2 columns'>
+							    				<img class='advert-profile-image' src='".$user_profile_image."'>
+							    			</div>
+							    			
+							    			<div class='small-10 columns'>
+								    			<ul class='advert-information-list'>
+								    				<li>".$user_first_name.' '.$user_last_name."</li>
+								    				<li data-icon='d'>".$user_city."</li>
+								    			</ul>
+							    			</div>
+						    			</div>
+
+										<p class='advert-description'>".$final_advert_description."</p>
+						
+						    			<div class='small-6 columns'>
+							    			<div class='advert-price'>
+								    			<p>".$advert_price."</p>
+								    			<p>p/u</p>
+							    			</div>
+							    		</div>
+
+							    		<div class='small-6 columns'>
+							    			<div class='advert-spots'>
+							    				<p>".$advert_spots."</p>
+								    			<p>plaatsen</p>
+							    			</div>
+							    		</div>
+				    	
+							    		<p class='advert-school' data-icon='e'>Basisschool ".$advert_school."</p>
+						    		</div>
+						    	</a>
+					    	</div>";
+					}    
+				}
+
+				if(isset($_POST['recent']))
+				{
+				    //echo "Display all results by recent";
+				    $advert_results = $mysqli->prepare("SELECT advert_id, fk_user_id, advert_description, advert_price, advert_spots, advert_school, user_image_path, user_firstname, user_lastname, user_city FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id ORDER BY advert_id DESC");
+					$advert_results->execute();
+					$advert_results->bind_result($advert_id, $advert_creator, $advert_description, $advert_price, $advert_spots, $advert_school, $user_profile_image, $user_first_name, $user_last_name, $user_city);
+
+					while($advert_results->fetch()) 
+					{
+						$shorten = strpos($advert_description, ' ', 145);
+						$final_advert_description = substr($advert_description, 0, $shorten)." ...";
+
+						echo "<div class='advert-container end'>
+							  	<a href='advert-detail.php?id=".$advert_id."' class='advert-link'>
+									<div class='advert'>
+						    			<div class='small-12 columns'>
+							    			<div class='small-2 columns'>
+							    				<img class='advert-profile-image' src='".$user_profile_image."'>
+							    			</div>
+							    			
+							    			<div class='small-10 columns'>
+								    			<ul class='advert-information-list'>
+								    				<li>".$user_first_name.' '.$user_last_name."</li>
+								    				<li data-icon='d'>".$user_city."</li>
+								    			</ul>
+							    			</div>
+						    			</div>
+
+										<p class='advert-description'>".$final_advert_description."</p>
+						
+						    			<div class='small-6 columns'>
+							    			<div class='advert-price'>
+								    			<p>".$advert_price."</p>
+								    			<p>p/u</p>
+							    			</div>
+							    		</div>
+
+							    		<div class='small-6 columns'>
+							    			<div class='advert-spots'>
+							    				<p>".$advert_spots."</p>
+								    			<p>plaatsen</p>
+							    			</div>
+							    		</div>
+				    	
+							    		<p class='advert-school' data-icon='e'>Basisschool ".$advert_school."</p>
+						    		</div>
+						    	</a>
+					    	</div>";
+					}     
+				}
+
+				if(isset($_POST['descending']))
+				{
+				    $advert_results = $mysqli->prepare("SELECT advert_id, fk_user_id, advert_description, advert_price, advert_spots, advert_school, user_image_path, user_firstname, user_lastname, user_city FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id ORDER BY advert_price DESC");
+					$advert_results->execute();
+					$advert_results->bind_result($advert_id, $advert_creator, $advert_description, $advert_price, $advert_spots, $advert_school, $user_profile_image, $user_first_name, $user_last_name, $user_city);
+
+					while($advert_results->fetch()) 
+					{
+						$shorten = strpos($advert_description, ' ', 145);
+						$final_advert_description = substr($advert_description, 0, $shorten)." ...";
+
+						echo "<div class='advert-container end'>
+							  	<a href='advert-detail.php?id=".$advert_id."' class='advert-link'>
+									<div class='advert'>
+						    			<div class='small-12 columns'>
+							    			<div class='small-2 columns'>
+							    				<img class='advert-profile-image' src='".$user_profile_image."'>
+							    			</div>
+							    			
+							    			<div class='small-10 columns'>
+								    			<ul class='advert-information-list'>
+								    				<li>".$user_first_name.' '.$user_last_name."</li>
+								    				<li data-icon='d'>".$user_city."</li>
+								    			</ul>
+							    			</div>
+						    			</div>
+
+										<p class='advert-description'>".$final_advert_description."</p>
+						
+						    			<div class='small-6 columns'>
+							    			<div class='advert-price'>
+								    			<p>".$advert_price."</p>
+								    			<p>p/u</p>
+							    			</div>
+							    		</div>
+
+							    		<div class='small-6 columns'>
+							    			<div class='advert-spots'>
+							    				<p>".$advert_spots."</p>
+								    			<p>plaatsen</p>
+							    			</div>
+							    		</div>
+				    	
+							    		<p class='advert-school' data-icon='e'>Basisschool ".$advert_school."</p>
+						    		</div>
+						    	</a>
+					    	</div>";
+					}     
+				}
+
+				if(isset($_POST['ascending']))
+				{
+				    $advert_results = $mysqli->prepare("SELECT advert_id, fk_user_id, advert_description, advert_price, advert_spots, advert_school, user_image_path, user_firstname, user_lastname, user_city FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id ORDER BY advert_price ASC");
+					$advert_results->execute();
+					$advert_results->bind_result($advert_id, $advert_creator, $advert_description, $advert_price, $advert_spots, $advert_school, $user_profile_image, $user_first_name, $user_last_name, $user_city);
+
+					while($advert_results->fetch()) 
+					{
+						$shorten = strpos($advert_description, ' ', 145);
+						$final_advert_description = substr($advert_description, 0, $shorten)." ...";
+
+						echo "<div class='advert-container end'>
+							  	<a href='advert-detail.php?id=".$advert_id."' class='advert-link'>
+									<div class='advert'>
+						    			<div class='small-12 columns'>
+							    			<div class='small-2 columns'>
+							    				<img class='advert-profile-image' src='".$user_profile_image."'>
+							    			</div>
+							    			
+							    			<div class='small-10 columns'>
+								    			<ul class='advert-information-list'>
+								    				<li>".$user_first_name.' '.$user_last_name."</li>
+								    				<li data-icon='d'>".$user_city."</li>
+								    			</ul>
+							    			</div>
+						    			</div>
+
+										<p class='advert-description'>".$final_advert_description."</p>
+						
+						    			<div class='small-6 columns'>
+							    			<div class='advert-price'>
+								    			<p>".$advert_price."</p>
+								    			<p>p/u</p>
+							    			</div>
+							    		</div>
+
+							    		<div class='small-6 columns'>
+							    			<div class='advert-spots'>
+							    				<p>".$advert_spots."</p>
+								    			<p>plaatsen</p>
+							    			</div>
+							    		</div>
+				    	
+							    		<p class='advert-school' data-icon='e'>Basisschool ".$advert_school."</p>
+						    		</div>
+						    	</a>
+					    	</div>";
+					}  
+				}
+
+				if(isset($_POST['search']))
+				{
+
+				    $school = $_POST['school'];
+				    $price = $_POST['price']; 
+				    $children = $_POST['number-children'];
+				     
+				    $min_length = 1;
+				     
+				    if(strlen($school) >= $min_length) {
+				         
+				        $school = htmlspecialchars($school); 
+				        $price = htmlspecialchars($price);
+				        $school = mysqli_real_escape_string($con, $school);
+				        
+				        $raw_results = mysqli_query($con, "SELECT * FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id WHERE advert_school LIKE '%".$school."%' AND advert_price <= $price AND advert_spots >= $children");
+				         
+				        if(mysqli_num_rows($raw_results) > 0) {
+				            while($results = mysqli_fetch_array($raw_results)) {
+
+				            	$shorten = strpos($results['advert_description'], ' ', 145);
+								$final_advert_description = substr($results['advert_description'], 0, $shorten)." ...";
+
+					            echo "<div class='advert-container end'>
+			    					  	<a href='advert-detail.php?id=".$results['advert_id']."' class='advert-link'>
+			    							<div class='advert'>
+								    			<div class='small-12 columns'>
+									    			<div class='small-2 columns'>
+									    				<img class='advert-profile-image' src='".$results['user_image_path']."'>
+									    			</div>
+									    			
+									    			<div class='small-10 columns'>
+										    			<ul class='advert-information-list'>
+										    				<li>".$results['user_firstname'].' '.$results['user_lastname']."</li>
+										    				<li data-icon='d'>".$results['user_city']."</li>
+										    			</ul>
+									    			</div>
+								    			</div>
+
+				    							<p class='advert-description'>".$final_advert_description."</p>
+				    			
+								    			<div class='small-6 columns'>
+									    			<div class='advert-price'>
+										    			<p>".$results['advert_price']."</p>
+										    			<p>p/u</p>
+									    			</div>
+									    		</div>
+
+									    		<div class='small-6 columns'>
+									    			<div class='advert-spots'>
+									    				<p>".$results['advert_spots']."</p>
+										    			<p>plaatsen</p>
+									    			</div>
+									    		</div>
+						    	
+									    		<p class='advert-school' data-icon='e'>Basisschool ".$results['advert_school']."</p>
+								    		</div>
+								    	</a>
+							    	</div>";
+				            }
+				        }
+				        else {
+				            echo "Geen resultaten gevonden.";
+				        }
+				         
+				    }
+				    else { 
+				    	echo "Je hebt niet alle velden correct ingevuld.<br/>Er zijn geen resultaten gevonden.";
+				    }
+				}
+				?>
 		    </div>
 		</div>
 
