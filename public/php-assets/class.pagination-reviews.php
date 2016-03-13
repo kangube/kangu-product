@@ -23,9 +23,9 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 	$review_exist = 'true';
 	if ($review_exist == 'true') 
 	{	
-		$review_results = $mysqli->prepare("SELECT review_id, review_description, review_date, fk_user_id, user_firstname, user_lastname FROM tbl_review LEFT JOIN tbl_user ON tbl_review.fk_user_id=tbl_user.user_id LIMIT $page_position, $item_per_page_reviews");
+		$review_results = $mysqli->prepare("SELECT review_id, review_description, review_date, fk_user_id, user_firstname, user_lastname, user_image_path FROM tbl_review LEFT JOIN tbl_user ON tbl_review.fk_user_id=tbl_user.user_id LIMIT $page_position, $item_per_page_reviews");
 		$review_results->execute();
-		$review_results->bind_result($review_id, $review_description, $review_date, $fk_user_id, $user_firstname, $user_lastname);
+		$review_results->bind_result($review_id, $review_description, $review_date, $fk_user_id, $user_firstname, $user_lastname, $user_image_path);
 
 
 		while($review_results->fetch()) {
@@ -33,7 +33,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 			echo "
 
 				<div class='small-12 medium-6 large-6 columns'>
-			    		<span><img src='../assets/user-profile-images/" . $user_firstname . "-" . $user_lastname . ".png' alt='profiel foto' /></span>
+			    		<span><img src='" . $user_image_path . "' alt='review profiel foto' /></span>
 			    		<p class='lhplus'>" . $user_firstname . " " . $user_lastname . "</p>
 
 			    		<p class='reviewdescription'>" . $review_description . "</p>

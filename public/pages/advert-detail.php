@@ -57,7 +57,7 @@
 
 		<div class="small-12 columns advert-detail-header">
 	        <div class="advert-detail-title-container">
-	        	<img src=<?php echo "../assets/user-profile-images/" . $advert_information['user_firstname'] . "-" . $advert_information['user_lastname'] . ".png"; ?> alt="profiel foto" />
+	        	<img src=<?php echo $advert_information['user_image_path']; ?> alt="profiel foto" />
 	            <h1 class="advert-detail-title"><?php echo $advert_information["user_firstname"]." ".$advert_information["user_lastname"]; ?></h1>
 	            <h3 class="advert-detail-subtitle">Ouder van Floor en Kilian</h3>
 	        </div>
@@ -232,7 +232,7 @@
 		</div>
 
 		<div class="test">
-		<div class="row advert-detail-container">
+		<div class="row large-collapse advert-detail-container">
 	    	<div class="large-12 small-centered columns">
 			    <div class="large-12 columns">
 			    	<h2>Vergelijkbare advertenties</h2>
@@ -248,7 +248,8 @@
 						$shorten = strpos($advert_description, ' ', 145);
 						$final_advert_description = substr($advert_description, 0, $shorten)." ...";
 
-						echo "<div class='advert-container small-12 columns end'>
+						echo "
+							<div class='advert-container columns end'>
 							  	<a href='advert-detail.php?id=".$advert_id."' class='advert-link'>
 									<div class='advert'>
 						    			<div class='small-12 columns'>
@@ -283,7 +284,8 @@
 							    		<p class='advert-school' data-icon='e'>Basisschool ".$advert_school."</p>
 						    		</div>
 						    	</a>
-					    	</div>";
+					    	</div>
+					    ";
 					}    
 				?>
 		    </div>
