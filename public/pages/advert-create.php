@@ -266,14 +266,13 @@
 							<button id="create-availability-input">Datum toevoegen</button>
 						</div>-->
 
-						<div class="small-12 columns">
-							<div class="small-12 large-5 columns">
-								<div class="availability-datepicker"></div>
-							</div>
+						<div class="small-12 columns form-availability-container">
+							<h3 class="form-header">Beschikbaarheid</h3>
+							<hr class="blue-horizontal-line"></hr>
+							<p class="form-subheader">Selecteer welke diensten je wenst aan te bieden aan andere ouders.</p>
 
-							<div class="small-12 large-7 columns">
-								<h3 class="form-header">Opvangdagen</h3>
-								<hr class="blue-horizontal-line"></hr>
+							<div class="small-12 large-5 columns availability-datepicker-container">
+								<div class="availability-datepicker"></div>
 							</div>
 
 							<div class="small-12 large-7 columns advert-availability-input-fields"></div>

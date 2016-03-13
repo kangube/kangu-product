@@ -198,6 +198,19 @@
 		}
 	}
 
+	// Styling of the advert-availability container
+
+	.availability-datepicker-container {
+		padding-left: 0;
+	}
+		
+	.advert-availability-input-fields {
+		height: 317px;
+		overflow-y: auto;
+		background-color: $light-grey-alt;
+		padding-right: 0;
+	}
+
 	// Styling of the advert-create container
 
 	#advert-create-button {

@@ -1,10 +1,6 @@
 // Styling of the datepicker
 
-.ui-datepicker,
-.ui-datepicker table,
-.ui-datepicker tr,
-.ui-datepicker td,
-.ui-datepicker th {
+.ui-datepicker, .ui-datepicker table, .ui-datepicker tr, .ui-datepicker td, .ui-datepicker th {
     margin: 0;
     padding: 0;
     border: none;
@@ -14,76 +10,138 @@
 .ui-datepicker {
     display: none;
     cursor: default;
-}
+    border: 1px solid $border-color-light-grey;
 
-.ui-datepicker-header {
-    position: relative;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #d6d6d6;
-}
- 
-.ui-datepicker-title { text-align: center; }
- 
-.ui-datepicker-month {
-    position: relative;
-}
+    tbody, thead, ui-datepicker-calendar {
+        margin: 0 !important;
+    }
 
-i-datepicker-prev,
-.ui-datepicker-next {
-    position: absolute;
-    padding: 5px;
-    cursor: pointer;
-}
- 
-.ui-datepicker-prev {
-    padding-left: 0;
-}
- 
-.ui-datepicker-next {
-    padding-right: 0;
-}
+    th, tr:not(:last-child) {
+        border-bottom: 1px solid $border-color-light-grey;
+    }
 
-.ui-datepicker-calendar th {
-    padding-top: 15px;
-    padding-bottom: 10px;
- 
-    text-align: center;
-    font-weight: normal;
-}
+    th {
+        border-top: 1px solid $border-color-light-grey;
+        padding: 10px 0 10px 0;
+        text-align: center;
+    }
 
-.ui-datepicker-calendar td {
-    padding: 0 7px;
- 
-    text-align: center;
-    line-height: 26px;
-}
- 
-.ui-datepicker-calendar .ui-state-default {
-    display: block;
-    width: 26px;
-    outline: none;
- 
-    text-decoration: none;
-    color: #a8a8a8;
- 
-    border: 1px solid transparent;
-}
+    th:not(:last-of-type), td:not(:last-of-type) {
+        border-right: 1px solid $border-color-light-grey;
+    }
 
-.ui-datepicker-calendar .ui-state-active {
-    color: #6a9113;
-    border: 1px solid #6a9113;
-}
- 
-.ui-datepicker-other-month .ui-state-default { color: #565656; }
+    th span {
+        text-align: center;
+        @include font($paragraph-font-family, regular, regular, 14, 14, $text-dark-grey);
+    }
 
+    td:not(:last-child) {
+        background-color: $white;
+        padding: 15px;
+        text-align: center;
+        @include font($paragraph-font-family, regular, regular, 14, 14, $text-dark-grey);
+    }
+     
+    .ui-datepicker-title, .ui-datepicker-header {
+        background-color: $light-grey-alt;
+    }
+
+    .ui-datepicker-header {
+        position: relative;
+    }
+
+    .ui-datepicker-title {
+        text-align: center;
+        padding: 10px 0 10px 0;
+    }
+     
+    .ui-datepicker-month, .ui-datepicker-year {
+        position: relative;
+        @include font($paragraph-font-family, regular, regular, 16, 16, $text-dark-grey);
+    }
+
+    .ui-datepicker-prev, .ui-datepicker-next {
+        position: absolute;
+        cursor: pointer;
+    }
+
+    .ui-datepicker-prev {
+        left: 0;
+        padding: 17px 0 0 120px;
+    }
+
+    .ui-datepicker-next {
+        right: 0;
+        padding: 17px 120px 0 0;
+    }
+
+    .ui-datepicker-prev span, .ui-datepicker-next span {
+        display: block;
+        width: 10px;
+        height: 10px;
+        text-indent: -9999px;
+        background-repeat: no-repeat;
+    }
+
+    .ui-datepicker-prev span {
+        background-image: url(../assets/advert-create/previous-month.svg);
+    }
+
+    .ui-datepicker-next span {
+        background-image: url(../assets/advert-create/next-month.svg);
+    }
+     
+    .ui-state-default {
+        display: block;
+        padding: 0;
+        text-decoration: none;
+        color: $text-dark-grey;
+    }
+
+    /*.ui-state-active {
+        border-radius: 30px;
+        background-color: red;
+    }*/
+
+    .ui-state-selected {
+        border-radius: 30px;
+        background-color: red;
+    }
+     
+    .ui-datepicker-other-month .ui-state-default { 
+        color: rgba($text-dark-grey, 0.35);
+    }
+}
 
 // Hiding weekends from the calendar
+
 th.ui-datepicker-week-end,
 td.ui-datepicker-week-end {
     display: none;
 }
 
-.advert-availability-input-fields {
-	height: 400px;
-	overflow-y: auto;
+// Responsiveness
+
+@include breakpoint(small only) {
+    .ui-datepicker .ui-datepicker-prev {
+        left: 0;
+        padding: 17px 0 0 50px;
+    }
+
+    .ui-datepicker .ui-datepicker-next {
+        right: 0;
+        padding: 17px 50px 0 0;
+    }
+}
+
+@include breakpoint(large only) {
+    .ui-datepicker .ui-datepicker-prev {
+        left: 0;
+        padding: 17px 0 0 70px;
+    }
+
+    .ui-datepicker .ui-datepicker-next {
+        right: 0;
+        padding: 17px 70px 0 0;
+    }
 }
