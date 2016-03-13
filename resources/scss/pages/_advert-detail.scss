@@ -116,7 +116,7 @@ hr {
 	}
 }
 
-.advert-detail-container {
+.advert-detail-button-container {
 	display: flex;
 	@include grid-row;
 
@@ -216,6 +216,26 @@ hr {
 		line-height: 30px !important;
 	}
 
+	.mrglnul {
+		@include breakpoint(small) { 
+			margin-left: -10px;
+		}
+
+		@include breakpoint(medium) { 
+			margin-left: 0px;
+		}
+	}
+
+	.mrgrnul {
+		@include breakpoint(small) { 
+			margin-right: 10px;
+		}
+
+		@include breakpoint(medium) { 
+			margin-right: 0px;
+		}
+	}
+
 	.border-right {
 		@include breakpoint(small) { 
 			border: none;
@@ -241,7 +261,21 @@ hr {
 	margin-bottom: 50px;
 
 	.reviewdescription {
-		height: 100px;
+
+		@include breakpoint(small) { 
+			min-height: 50px;
+		}
+
+		@include breakpoint(medium) { 
+			min-height: 120px;
+			max-height: 120px;
+		}
+
+		@include breakpoint(large) { 
+			min-height: 120px;
+			max-height: 120px;
+		}
+
 	}
 
 	img {
@@ -293,5 +327,27 @@ hr {
 
 	.mbot {
 		margin-bottom: 30px;
+	}
+
+	.pagination-style {
+		float: left;
+		margin-left: -10px;
+	}
+}
+
+.test {
+	background-color: $light-grey-alt;
+}
+.advert-detail-container {
+	padding-top: 40px;
+	padding-bottom: 40px;
+
+
+	.advert, .advert-price, .advert-spots {
+		background-color: $white !important;
+	}
+
+	.advert-price, .advert-spots {
+		border: 1px solid $border-color-light-grey;
 	}
 }

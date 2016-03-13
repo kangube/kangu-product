@@ -4463,7 +4463,7 @@ hr {
         line-height: 1.5rem;
         margin-bottom: 0px; } }
 
-.advert-detail-container {
+.advert-detail-button-container {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4471,12 +4471,12 @@ hr {
   max-width: 75rem;
   margin-left: auto;
   margin-right: auto; }
-  .advert-detail-container::before, .advert-detail-container::after {
+  .advert-detail-button-container::before, .advert-detail-button-container::after {
     content: ' ';
     display: table; }
-  .advert-detail-container::after {
+  .advert-detail-button-container::after {
     clear: both; }
-  .advert-detail-container .boeking-button {
+  .advert-detail-button-container .boeking-button {
     display: block;
     height: 55px;
     margin-top: -27.5px;
@@ -4498,14 +4498,14 @@ hr {
     font-size: 1rem;
     line-height: 3.4375rem;
     color: #FFFFFF; }
-    .advert-detail-container .boeking-button:hover {
+    .advert-detail-button-container .boeking-button:hover {
       background-color: #f16366;
       -webkit-transition: all 0.3s ease;
               transition: all 0.3s ease; }
-    .advert-detail-container .boeking-button:active {
+    .advert-detail-button-container .boeking-button:active {
       background-color: #f16366; }
     @media screen and (min-width: 40em) {
-      .advert-detail-container .boeking-button {
+      .advert-detail-button-container .boeking-button {
         font-family: "open-sans", sans-serif;
         font-style: regular;
         font-weight: regular;
@@ -4562,6 +4562,16 @@ hr {
   margin-bottom: 50px; }
   .advert-detail-services p {
     line-height: 30px !important; }
+  .advert-detail-services .mrglnul {
+    margin-left: -10px; }
+    @media screen and (min-width: 40em) {
+      .advert-detail-services .mrglnul {
+        margin-left: 0px; } }
+  .advert-detail-services .mrgrnul {
+    margin-right: 10px; }
+    @media screen and (min-width: 40em) {
+      .advert-detail-services .mrgrnul {
+        margin-right: 0px; } }
   .advert-detail-services .border-right {
     border: none; }
     @media screen and (min-width: 40em) {
@@ -4576,7 +4586,15 @@ hr {
 .advert-detail-ratings {
   margin-bottom: 50px; }
   .advert-detail-ratings .reviewdescription {
-    height: 100px; }
+    min-height: 50px; }
+    @media screen and (min-width: 40em) {
+      .advert-detail-ratings .reviewdescription {
+        min-height: 120px;
+        max-height: 120px; } }
+    @media screen and (min-width: 64em) {
+      .advert-detail-ratings .reviewdescription {
+        min-height: 120px;
+        max-height: 120px; } }
   .advert-detail-ratings img {
     width: 40px;
     height: 40px;
@@ -4611,3 +4629,17 @@ hr {
       line-height: 28px; }
   .advert-detail-ratings .mbot {
     margin-bottom: 30px; }
+  .advert-detail-ratings .pagination-style {
+    float: left;
+    margin-left: -10px; }
+
+.test {
+  background-color: #F3F3F3; }
+
+.advert-detail-container {
+  padding-top: 40px;
+  padding-bottom: 40px; }
+  .advert-detail-container .advert, .advert-detail-container .advert-price, .advert-detail-container .advert-spots {
+    background-color: #FFFFFF !important; }
+  .advert-detail-container .advert-price, .advert-detail-container .advert-spots {
+    border: 1px solid #C4C4C4; }

@@ -57,13 +57,13 @@
 
 		<div class="small-12 columns advert-detail-header">
 	        <div class="advert-detail-title-container">
-	        	<img src="http://soocurious.com/fr/wp-content/uploads/2015/06/image-singe-telephone.jpg" alt="profiel foto" />
+	        	<img src=<?php echo "../assets/user-profile-images/" . $advert_information['user_firstname'] . "-" . $advert_information['user_lastname'] . ".png"; ?> alt="profiel foto" />
 	            <h1 class="advert-detail-title"><?php echo $advert_information["user_firstname"]." ".$advert_information["user_lastname"]; ?></h1>
 	            <h3 class="advert-detail-subtitle">Ouder van Floor en Kilian</h3>
 	        </div>
         </div>
         <div class="row">
-	        <div class="small-12 columns advert-detail-container">
+	        <div class="small-12 columns advert-detail-button-container">
 	        	<a class="small-7 medium-5 large-3 small-centered columns boeking-button" href="#">Boeking aanvragen</a>
 	        </div>
 	    </div>
@@ -181,7 +181,7 @@
 			    </div>
 			</div>
 			<div class="small-10 small-centered medium-12 medium-uncentered large-12 columns">
-				<div class="large-4 columns">
+				<div class="large-4 columns end">
 					<div class="border-right">
 				    	<span class="extra" data-icon="m"></span>
 				    	<p>Opvang in een thuisomgeving</p>
@@ -190,7 +190,7 @@
 					</div>
 				</div>
 				<div class="large-4 columns">
-			    	<div class="large-10 large-centered columns">
+			    	<div class="large-10 large-centered columns mrglnul">
 				    	<span class="extra" data-icon="m"></span>
 				    	<p>Vervoer naar thuis na opvang</p>
 				    	<span class="extra" data-icon="m"></span>
@@ -198,7 +198,7 @@
 				    </div>
 				</div>
 				<div class="large-4 columns border-left">
-			    	<div class="large-10 columns float-right">
+			    	<div class="large-10 columns float-right mrgrnul">
 				    	<span class="extra" data-icon="m"></span>
 				    	<p>Voorzien van een maaltijd</p>
 				    	<span class="extra" data-icon="m"></span>
@@ -222,14 +222,15 @@
 			</div>
 		</div>
 
-		<div class="large-collapse advert-overview-container">
+		<div class="test">
+		<div class="row advert-detail-container">
 	    	<div class="large-12 small-centered columns">
 			    <div class="large-12 columns">
 			    	<h2>Vergelijkbare advertenties</h2>
 			    	<hr class="red-horizontal-line"></hr>
 			    </div>
 			    <?php
-			$advert_results = $mysqli->prepare("SELECT advert_id, fk_user_id, advert_description, advert_price, advert_spots, advert_school, user_image_path, user_firstname, user_lastname, user_city FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id WHERE tbl_advert.advert_school = '". $advert_information['advert_school']."' LIMIT 3");
+					$advert_results = $mysqli->prepare("SELECT advert_id, fk_user_id, advert_description, advert_price, advert_spots, advert_school, user_image_path, user_firstname, user_lastname, user_city FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id WHERE tbl_advert.advert_school = '". $advert_information['advert_school']."' LIMIT 3");
 					$advert_results->execute();
 					$advert_results->bind_result($advert_id, $advert_creator, $advert_description, $advert_price, $advert_spots, $advert_school, $user_profile_image, $user_first_name, $user_last_name, $user_city);
 
@@ -238,7 +239,7 @@
 						$shorten = strpos($advert_description, ' ', 145);
 						$final_advert_description = substr($advert_description, 0, $shorten)." ...";
 
-						echo "<div class='advert-container end'>
+						echo "<div class='advert-container small-12 columns end'>
 							  	<a href='advert-detail.php?id=".$advert_id."' class='advert-link'>
 									<div class='advert'>
 						    			<div class='small-12 columns'>
@@ -275,8 +276,9 @@
 						    	</a>
 					    	</div>";
 					}    
-		?>
+				?>
 		    </div>
+		</div>
 		</div>
 		
 		<script src="../js/minimum-viable-product.min.js"></script>

@@ -33,7 +33,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 			echo "
 
 				<div class='small-12 medium-6 large-6 columns'>
-			    		<span><img src='http://soocurious.com/fr/wp-content/uploads/2015/06/image-singe-telephone.jpg' alt='profiel foto' /></span>
+			    		<span><img src='../assets/user-profile-images/" . $user_firstname . "-" . $user_lastname . ".png' alt='profiel foto' /></span>
 			    		<p class='lhplus'>" . $user_firstname . " " . $user_lastname . "</p>
 
 			    		<p class='reviewdescription'>" . $review_description . "</p>
@@ -64,19 +64,12 @@ function paginate_function($item_per_page_reviews, $current_page, $total_records
     $pagination = '';
 
     if($total_pages > 0 && $total_pages != 1 && $current_page <= $total_pages) {
-        $pagination .= '<ul class="pagination" role="navigation" aria-label="Pagination">';
+        $pagination .= '<ul class="pagination pagination-style" role="navigation" aria-label="Pagination">';
         
         $right_links    = $current_page + 4; 
         $previous       = $current_page - 1;
         $next           = $current_page + 1;
         $first_link     = true;
-        
-        // Previous page button
-        if($current_page > 1) {
-            $pagination .= '<li class="pagination-previous"><a href="#" data-page="'.$previous.'" title="Previous">Vorige pagina</a></li>';
-        } else {
-            $pagination .= '<li class="pagination-previous disabled">Vorige pagina</li>';
-        }
 
         // Page links
         if($current_page > 1){
@@ -101,13 +94,6 @@ function paginate_function($item_per_page_reviews, $current_page, $total_records
             if($i<=$total_pages) {
                 $pagination .= '<li data-page="'.$i.'" title="Page '.$i.'">'.$i.'</li>';
             }
-        }
-
-        // Next page button
-        if($current_page < $total_pages) {
-            $pagination .= '<li class="pagination-next"><a href="#" data-page="'.$next.'" title="Next">Volgende pagina</a></li>';
-        } else {
-            $pagination .= '<li class="pagination-next disabled">Volgende pagina</li>';
         }
         
         $pagination .= '</ul>'; 
