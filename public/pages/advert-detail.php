@@ -23,8 +23,8 @@
         <link rel="stylesheet" href="../css/minimum-viable-product.min.css">
         <link href="https://file.myfontastic.com/QxAJVhmfbQ2t7NGCUAnz9P/icons.css" rel="stylesheet">
         <link href="https://file.myfontastic.com/wfY5TXHecmqLMkPUKHzNrK/icons.css" rel="stylesheet">
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMSIUIRS-lEyN5iRVhoCyvJ3FfVEdhE-s&callback=initMap"></script>
-        	<title>Alle advertenties</title>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCK4od9WLji1WkDzFFyLls-226CbhN8Jl4&callback=initMap"></script>
+        <title>Alle advertenties</title>
 		<script type="text/javascript" src="//code.jquery.com/jquery-2.2.0.min.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function() 
@@ -168,7 +168,16 @@
 			    	<p><?php echo $advert_information["user_adress"] . "<br>" . $advert_information["user_city"]; ?></p>
 				</div>
 				<div class="small-12 medium-7 large-9 columns">
-					<iframe src="https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyBMSIUIRS-lEyN5iRVhoCyvJ3FfVEdhE-s" frameborder="0" style="border:0" allowfullscreen></iframe>					
+					<!--<iframe
+					  frameborder="0" style="border:0"
+					  src=<?php echo "https://www.google.com/maps/embed/v1/place?key=AIzaSyCK4od9WLji1WkDzFFyLls-226CbhN8Jl4
+					    &q=" . $advert_information["user_adress"] . "," . $advert_information["user_city"];?> allowfullscreen>
+					</iframe>-->
+					<iframe
+					  frameborder="0" style="border:0"
+					  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCK4od9WLji1WkDzFFyLls-226CbhN8Jl4
+					    &q=akkerstraat,lier" allowfullscreen>
+					</iframe>	
 				</div>
 		    </div>
 		</div>
