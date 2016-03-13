@@ -32,7 +32,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 
 			echo "
 
-				<div class='small-12 medium-6 large-6 columns'>
+				<div class='small-12 medium-12 large-6 columns'>
 			    		<span><img src='" . $user_image_path . "' alt='review profiel foto' /></span>
 			    		<p class='lhplus'>" . $user_firstname . " " . $user_lastname . "</p>
 

@@ -67,12 +67,13 @@
 	        	<a class="small-7 medium-5 large-3 small-centered columns boeking-button" href="#">Boeking aanvragen</a>
 	        </div>
 	    </div>
-	    <div class="row small-collapse">
-		    <div class="small-10 small-centered medium-12 medium-uncentered large-12 columns advert-detail-calendar">
-			    <div class="small-12 medium-6 large-6 columns">
+	    <div class="row advert-detail-calendar">
+	    	<div class="large-12 columns">
+			    <div class="small-12 medium-12 large-6 columns">
 			    	<h2>Over deze advertentie</h2>
 			    	<hr class="blue-horizontal-line"></hr>
 			    	<p><?php echo $advert_information["advert_description"]; ?></p>
+
 					<div class="small-12 medium-6 large-6 columns">
 			    		<div class="border-right">
 				    		<span data-icon="e"></span>
@@ -88,8 +89,8 @@
 			    		<p>Verplaatsing met <?php echo $advert_information["advert_transport"]; ?></p>
 			    	</div>
 			    </div>
-			    <div class="small-12 medium-6 large-6 columns">
-			    	<h2>Beschikbaarheid</h2>
+			    <div class="small-12 medium-12 large-6 columns">
+			    	<h2 class="mrgtop">Beschikbaarheid</h2>
 			    	<hr class="blue-horizontal-line"></hr>
 			    	<table class="small-12 columns">
 				    	<thead>
@@ -152,22 +153,25 @@
 			    </div>
 		  	</div>
 		</div>
-		<div class="row small-collapse">
-		    <div class="small-10 small-centered medium-12 medium-uncentered large-12 columns advert-detail-map">
-				<div class="small-12 medium-5 large-3 columns">
+		<div class="row advert-detail-map">
+			<div class="large-12 columns">
+				<div class="small-12 medium-12 large-3 columns">
 			    	<h2>Contact informatie</h2>
 			    	<hr class="blue-horizontal-line"></hr>
-
-			    	<span data-icon="x"></span>
-			    	<p><?php echo $advert_information["user_email"]; ?></p>
-			    	<span data-icon="z"></span>
-			    	<p><?php echo "+32 " . $advert_information["user_mobile_number"]; ?></p>
-			    	<span data-icon="q"></span>
-			    	<p><?php echo "+32 " . $advert_information["user_home_number"]; ?></p>
-			    	<span class="double-line-height" data-icon="v"></span>
-			    	<p><?php echo $advert_information["user_adress"] . "<br>" . $advert_information["user_city"]; ?></p>
+					<div class="flleft">
+				    	<span data-icon="x"></span>
+				    	<p><?php echo $advert_information["user_email"]; ?></p>
+				    	<span data-icon="z"></span>
+				    	<p><?php echo "+32 " . $advert_information["user_mobile_number"]; ?></p>
+			    	</div>
+			    	<div class="flleft">
+				    	<span data-icon="q"></span>
+				    	<p><?php echo "+32 " . $advert_information["user_home_number"]; ?></p>
+				    	<span class="double-line-height" data-icon="v"></span>
+				    	<p><?php echo $advert_information["user_adress"] . "<br > " . $advert_information["user_city"]; ?></p>
+			    	</div>
 				</div>
-				<div class="small-12 medium-7 large-9 columns">
+				<div class="small-12 medium-12 large-9 columns">
 					<!--<iframe
 					  frameborder="0" style="border:0"
 					  src=<?php echo "https://www.google.com/maps/embed/v1/place?key=AIzaSyCK4od9WLji1WkDzFFyLls-226CbhN8Jl4
@@ -176,64 +180,57 @@
 					<iframe
 					  frameborder="0" style="border:0"
 					  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCK4od9WLji1WkDzFFyLls-226CbhN8Jl4
-					    &q=akkerstraat,lier" allowfullscreen>
+					    &q=Mechelsesteenweg+34,Heist-op-den-Berg" allowfullscreen>
 					</iframe>	
 				</div>
-		    </div>
+			</div>
 		</div>
 
-		<div class="row small-collapse advert-detail-services">
-		    <div class="small-10 small-centered medium-12 medium-uncentered large-12 columns">
+		<div class="row large-collapse advert-detail-services">
+		    <div class="small-12 medium-12 large-12 columns">
 				<div class="small-12 columns">
 			    	<h2>Aangeboden diensten</h2>
 			    	<hr class="blue-horizontal-line"></hr>
 			    </div>
 			</div>
-			<div class="small-10 small-centered medium-12 medium-uncentered large-12 columns">
-				<div class="large-4 columns end">
-					<div class="border-right">
-				    	<span class="extra" data-icon="m"></span>
-				    	<p>Opvang in een thuisomgeving</p>
-				    	<span class="extra" data-icon="m"></span>
-				    	<p>Ophalen aan de schoolpoort</p>
-					</div>
+			<div class="small-12 medium-12 large-12 columns">
+				<div class="medium-4 large-4 columns">
+			    	<span class="extra" data-icon="m"></span>
+			    	<p>Opvang in een thuisomgeving</p>
+			    	<span class="extra" data-icon="m"></span>
+			    	<p>Ophalen aan de schoolpoort</p>
 				</div>
-				<div class="large-4 columns">
-			    	<div class="large-10 large-centered columns mrglnul">
-				    	<span class="extra" data-icon="m"></span>
-				    	<p>Vervoer naar thuis na opvang</p>
-				    	<span class="extra" data-icon="m"></span>
-				    	<p>Vervoer naschoolse activiteiten</p>
-				    </div>
+				<div class="medium-4 large-4 columns">
+			    	<span class="extra" data-icon="m"></span>
+			    	<p>Vervoer naar thuis na opvang</p>
+			    	<span class="extra" data-icon="m"></span>
+			    	<p>Vervoer naschoolse activiteiten</p>
 				</div>
-				<div class="large-4 columns border-left">
-			    	<div class="large-10 columns float-right mrgrnul">
-				    	<span class="extra" data-icon="m"></span>
-				    	<p>Voorzien van een maaltijd</p>
-				    	<span class="extra" data-icon="m"></span>
-				    	<p>Hulp bij huiswerk taken</p>
-				    </div>
+				<div class="medium-4 large-4 columns">
+			    	<span class="extra" data-icon="m"></span>
+			    	<p>Voorzien van een maaltijd</p>
+			    	<span class="extra" data-icon="m"></span>
+			    	<p>Hulp bij huiswerk taken</p>
 				</div>
 		    </div>
 		</div>
 
-		<div class="row small-collapse advert-detail-ratings">
-		    <div class="small-10 small-centered medium-12 medium-uncentered large-12 columns">
-				<div class="small-12 columns">
+		<div class="large-collapse row advert-detail-ratings">
+		    <div class="large-12 columns">
+				<div class="large-12 columns">
 			    	<h2>Ratings &amp; reviews</h2>
 			    	<hr class="blue-horizontal-line"></hr>
 			    </div>
 
-			    <div class="small-12 medium-12 large-12 columns small-collapse">
+			    <div class="large-12 columns">
 			    	<div id="reviews"></div>
-			    </div>
 			    </div>
 			</div>
 		</div>
 
 		<div class="test">
 		<div class="row large-collapse advert-detail-container">
-	    	<div class="large-12 small-centered columns">
+	    	<div class="large-12 columns">
 			    <div class="large-12 columns">
 			    	<h2>Vergelijkbare advertenties</h2>
 			    	<hr class="red-horizontal-line"></hr>
