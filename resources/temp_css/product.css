@@ -4588,6 +4588,9 @@ hr {
 
 .advert-detail-ratings {
   margin-top: 50px; }
+  @media screen and (min-width: 64em) {
+    .advert-detail-ratings .mrgneg {
+      margin-left: -15px; } }
   .advert-detail-ratings .reviewdescription {
     min-height: 50px; }
     @media screen and (min-width: 40em) {
@@ -4604,7 +4607,8 @@ hr {
   .advert-detail-ratings .lhplus {
     line-height: 40px; }
   .advert-detail-ratings i {
-    color: #C4C4C4; }
+    color: #C4C4C4;
+    line-height: 28px; }
   .advert-detail-ratings .rate-button {
     width: 125px;
     height: 28px;

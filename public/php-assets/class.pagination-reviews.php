@@ -32,18 +32,17 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 
 			echo "
 
-				<div class='small-12 medium-12 large-6 columns'>
-			    		<span><img src='" . $user_image_path . "' alt='review profiel foto' /></span>
-			    		<p class='lhplus'>" . $user_firstname . " " . $user_lastname . "</p>
+				<div class='small-12 medium-12 large-6 columns mrgneg'>
+		    		<span><img src='" . $user_image_path . "' alt='review profiel foto' /></span>
+		    		<p class='lhplus'>" . $user_firstname . " " . $user_lastname . "</p>
 
-			    		<p class='reviewdescription'>" . $review_description . "</p>
+		    		<p class='reviewdescription'>" . $review_description . "</p>
 
-			    		<p class='float-left'><i>9 Februari 2016</i></p>
-			    		<a class='rate-button float-right' href='#''>
-			    			<span data-icon='r'></span>
-			    			<p>Behulpzaam</p>
-			    		</a>
-			    	</div>
+		    		<p class='float-left'><i>". $review_date . "</i></p>
+		    		<a class='rate-button float-right' href='#''>
+		    			<span data-icon='r'></span>
+		    			<p>Behulpzaam</p>
+		    		</a>
 			    </div>
 			";
 		}

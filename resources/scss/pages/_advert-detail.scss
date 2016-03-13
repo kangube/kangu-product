@@ -261,6 +261,12 @@ hr {
 .advert-detail-ratings {
 	margin-top: 50px;
 
+	.mrgneg {
+		@include breakpoint(large) { 
+			margin-left: -15px;
+		}
+	}
+
 	.reviewdescription {
 
 		@include breakpoint(small) { 
@@ -275,7 +281,6 @@ hr {
 			min-height: 120px;
 			max-height: 120px;
 		}
-
 	}
 
 	img {
@@ -290,6 +295,7 @@ hr {
 
 	i {
 		color: $border-color-light-grey;
+		line-height: 28px;
 	}
 
 	.rate-button {
