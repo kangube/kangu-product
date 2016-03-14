@@ -428,6 +428,11 @@ footer {
 	.functionalities {
 		margin-bottom: 90px;
 
+		.functionalities-button-group {
+			@include grid-column(8);
+			@include grid-column-position(center);
+		}
+
 		.functionality-header {
 			@include font($header-font-family, regular, regular, 24, 28.8, $text-dark-grey);
 		}
@@ -439,6 +444,10 @@ footer {
 
 		.vertical-timeline {
 			display: none;
+		}
+
+		section {
+			margin-bottom: 9%;
 		}
 
 		section .functionality-item-subheader {
