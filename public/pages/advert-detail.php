@@ -92,64 +92,8 @@
 			    <div class="small-12 medium-12 large-6 columns">
 			    	<h2 class="mrgtop">Beschikbaarheid</h2>
 			    	<hr class="blue-horizontal-line"></hr>
-			    	<table class="small-12 columns">
-				    	<thead>
-							<tr>
-								<th class="weekdagen" colspan="7">Februari 2016</th>
-							</tr>
-							<tr class="hide-for-small-only">
-								<td class="weekdagen">Maandag</td>
-								<td class="weekdagen">Dinsdag</td>
-								<td class="weekdagen">Woensdag</td>
-								<td class="weekdagen">Donderdag</td>
-								<td class="weekdagen">Vrijdag</td>
-							</tr>
-							<tr class="hide-for-medium">
-								<td class="weekdagen">Ma</td>
-								<td class="weekdagen">Di</td>
-								<td class="weekdagen">Wo</td>
-								<td class="weekdagen">Do</td>
-								<td class="weekdagen">Vr</td>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>1</td>
-								<td>2</td>
-								<td>3</td>
-								<td>4</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>8</td>
-								<td>9</td>
-								<td>10</td>
-								<td>11</td>
-								<td>12</td>
-							</tr>
-							<tr>
-								<td>15</td>
-								<td>16</td>
-								<td>17</td>
-								<td>18</td>
-								<td>19</td>
-							</tr>
-							<tr>
-								<td>22</td>
-								<td>23</td>
-								<td>24</td>
-								<td>25</td>
-								<td>26</td>
-							</tr>
-							<tr>
-								<td>29</td>
-								<td>1</td>
-								<td>2</td>
-								<td>3</td>
-								<td>4</td>
-							</tr>
-						</tbody>
-					</table>
+			    	
+			    	
 			    </div>
 		  	</div>
 		</div>
