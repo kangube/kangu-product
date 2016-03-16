@@ -113,7 +113,7 @@
 							<h3 class="form-header">Over deze advertentie</h3>
 							<hr class="blue-horizontal-line"></hr>
 							<p class="form-subheader">Presenteer jouw advertentie op de best mogelijke manier aan de hand van een gepersonaliseerde beschrijving van jezelf en jouw motivatie.</p>
-							<textarea placeholder="Geef een korte beschrijving jezelf en waarom je deze advertentie aanmaakt" name="advert-description" required></textarea>
+							<textarea placeholder="Geef een korte beschrijving van jezelf en waarom je opvang wil aanbieden." name="advert-description" rows="2" required></textarea>
 							<div class="form-error">Het is verplicht om een beschrijving te geven aan je advertentie.</div>
 						</div>
 
@@ -174,70 +174,198 @@
 							<h3 class="form-header">Verplaatsingsmogelijkheden</h3>
 							<hr class="blue-horizontal-line"></hr>
 							<p class="form-subheader">Geef aan op welke manier je de kinderen van en naar school voert. (Meerdere opties zijn mogelijk)</p>
-							<div class="checkbox transportation-checkbox">
-								<input type="checkbox" name="advert-transportation[]" id="auto" value="auto">
-  								<label for="auto"><span></span>Met de auto</label>
+
+							<div class="show-for-large transportation-container">
+								<div class="transportation">
+									<ul>
+										<li>
+											<div class="checkbox">
+												<input type="checkbox" name="advert-transportation[]" id="auto" value="auto">
+												<label for="auto"><span></span>Met de auto</label>
+			  								</div>
+			  							</li>
+
+			  							<li>
+			  								<div class="checkbox">
+				  								<input type="checkbox" name="advert-transportation[]" id="fiets" value="fiets">
+		  										<label for="fiets"><span></span>Met de fiets</label>
+			  								</div>
+			  							</li>
+									</ul>
+								</div>
+
+								<div class="vertical-line"></div>
+
+								<div class="transportation">
+									<ul>
+										<li>
+			  								<div class="checkbox">
+				  								<input type="checkbox" name="advert-transportation[]" id="openbaar-vervoer" value="openbaar-vervoer">
+		  										<label for="openbaar-vervoer"><span></span>Openbaar vervoer</label>
+			  								</div>
+			  							</li>
+
+			  							<li>
+			  								<div class="checkbox">
+				  								<input type="checkbox" name="advert-transportation[]" id="wandelend" value="wandelend">
+		  										<label for="wandelend"><span></span>Te voet</label>
+			  								</div>
+			  							</li>
+									</ul>
+								</div>
 							</div>
 
-							<div class="checkbox transportation-checkbox">
-								<input type="checkbox" name="advert-transportation[]" id="openbaar-vervoer" value="openbaar-vervoer">
-  								<label for="openbaar-vervoer"><span></span>Openbaar verv.</label>
-							</div>
+							<div class="show-for-small hide-for-large transportation-container-mobile">
+								<ul>
+									<li>
+										<div class="checkbox">
+											<input type="checkbox" name="advert-transportation[]" id="auto-mobile" value="auto">
+											<label for="auto-mobile"><span></span>Met de auto</label>
+		  								</div>
+		  							</li>
 
-							<div class="checkbox transportation-checkbox">
-								<input type="checkbox" name="advert-transportation[]" id="fiets" value="fiets">
-  								<label for="fiets"><span></span>Met de fiets</label>
-							</div>
+		  							<li>
+		  								<div class="checkbox">
+			  								<input type="checkbox" name="advert-transportation[]" id="openbaar-vervoer-mobile" value="openbaar-vervoer">
+	  										<label for="openbaar-vervoer-mobile"><span></span>Openbaar vervoer</label>
+		  								</div>
+		  							</li>
 
-							<div class="checkbox transportation-checkbox">
-								<input type="checkbox" name="advert-transportation[]" id="wandelend" value="wandelend">
-  								<label for="wandelend"><span></span>Te voet</label>
+		  							<li>
+		  								<div class="checkbox">
+			  								<input type="checkbox" name="advert-transportation[]" id="fiets-mobile" value="fiets">
+	  										<label for="fiets-mobile"><span></span>Met de fiets</label>
+		  								</div>
+		  							</li>
+
+		  							<li>
+		  								<div class="checkbox">
+			  								<input type="checkbox" name="advert-transportation[]" id="wandelend-mobile" value="wandelend">
+	  										<label for="wandelend-mobile"><span></span>Te voet</label>
+		  								</div>
+		  							</li>
+								</ul>
 							</div>
-							<div class="form-error">Geef aan op welke manier je de kinderen vervoert van en naar school.</div>
 						</div>
 
-						<div class="small-12 columns form-services-container">
+						<div class="form-services-container">
 							<h3 class="form-header">Aangeboden diensten</h3>
 							<hr class="blue-horizontal-line"></hr>
-							<p class="form-subheader">Selecteer welke diensten je wenst aan te bieden aan andere ouders.</p>
+							<p class="form-subheader">Selecteer welke extra diensten je wenst aan te bieden aan andere ouders. Zoals je merkt is het ophalen en tijdelijk opvangen van de kinderen in jouw thuisomgeving standaard inbegrepen.</p>
 
-							<div class="small-6 medium-4 columns services-checkbox">
-								<div class="checkbox">
-									<input type="checkbox" name="advert-services[]" id="opvang" value="opvang-thuisomgeving" 
-										   checked>
-	  								<label for="opvang"><span></span>Opvang in een thuisomgeving</label>
+							<div class="show-for-large services-container">
+								<div class="service">
+									<ul>
+										<li>
+											<div class="checkbox">
+												<input type="checkbox" name="advert-services[]" id="opvang-thuisomgeving" 
+													   value="opvang-thuisomgeving" disabled checked>
+				  								<label for="opvang-thuisomgeving"><span></span>Opvang in een thuisomgeving</label>
+			  								</div>
+			  							</li>
+
+			  							<li>
+			  								<div class="checkbox">
+				  								<input type="checkbox" name="advert-services[]" id="ophalen-schoolpoort" 
+				  									   value="ophalen-schoolpoort" disabled checked>
+				  								<label for="ophalen-schoolpoort"><span></span>Ophalen aan de schoolpoort</label>
+			  								</div>
+			  							</li>
+									</ul>
 								</div>
 
-								<div class="checkbox">
-									<input type="checkbox" name="advert-services[]" id="ophalen" value="ophalen-schoolpoort" 
-										   checked>
-	  								<label for="ophalen"><span></span>Ophalen aan de schoolpoort</label>
+								<div class="vertical-line"></div>
+
+								<div class="service">
+									<ul>
+										<li>
+											<div class="checkbox">
+												<input type="checkbox" name="advert-services[]" id="vervoer-thuis" value="vervoer-thuis">
+				  								<label for="vervoer-thuis"><span></span>Vervoer naar thuis na opvang</label>
+			  								</div>
+			  							</li>
+
+			  							<li>
+			  								<div class="checkbox">
+				  								<input type="checkbox" name="advert-services[]" id="vervoer-activiteiten" 
+				  									   value="vervoer-naschoolse-activiteiten">
+				  								<label for="vervoer-activiteiten"><span></span>Vervoer naschoolse activiteiten</label>
+			  								</div>
+			  							</li>
+									</ul>
+								</div>
+
+								<div class="vertical-line"></div>
+
+								<div class="service">
+									<ul>
+										<li>
+											<div class="checkbox">
+												<input type="checkbox" name="advert-services[]" id="voorzien-maaltijd" value="voorzien-maaltijd">
+				  								<label for="voorzien-maaltijd"><span></span>Voorzien van een maaltijd</label>
+			  								</div>
+			  							</li>
+
+			  							<li>
+			  								<div class="checkbox">
+				  								<input type="checkbox" name="advert-services[]" id="hulp-huiswerk" value="hulp-huiswerktaken">
+				  								<label for="hulp-huiswerk"><span></span>Hulp bij huiswerktaken</label>
+			  								</div>
+			  							</li>
+									</ul>
 								</div>
 							</div>
 
-							<div class="small-6 medium-4 columns services-checkbox">
-								<div class="checkbox">
-									<input type="checkbox" name="advert-services[]" id="vervoer-thuis" value="vervoer-thuis">
-	  								<label for="vervoer-thuis"><span></span>Vervoer naar thuis na opvang</label>
-								</div>
 
-								<div class="checkbox">
-									<input type="checkbox" name="advert-services[]" id="vervoer-naschoolse-activiteiten" 
-										   value="vervoer-naschoolse-activiteiten">
-	  								<label for="vervoer-naschoolse-activiteiten"><span></span>Vervoer naschoolse activiteiten</label>
-								</div>
-							</div>
+							<div class="show-for-small hide-for-large services-container-mobile">
+								<ul>
+									<li>
+										<div class="checkbox">
+											<input type="checkbox" name="advert-services[]" id="opvang-thuisomgeving-mobile" 
+												   value="opvang-thuisomgeving" disabled checked>
+			  								<label for="opvang-thuisomgeving-mobile"><span></span>Opvang in een thuisomgeving</label>
+		  								</div>
+		  							</li>
 
-							<div class="small-12 medium-4 columns services-checkbox">
-								<div class="checkbox">
-									<input type="checkbox" name="advert-services[]" id="voorzien-maaltijd" value="voorzien-maaltijd">
-	  								<label for="voorzien-maaltijd"><span></span>Voorzien van een maaltijd</label>
-								</div>
+		  							<li>
+		  								<div class="checkbox">
+			  								<input type="checkbox" name="advert-services[]" id="ophalen-schoolpoort-mobile" 
+			  									   value="ophalen-schoolpoort" disabled checked>
+			  								<label for="ophalen-schoolpoort-mobile"><span></span>Ophalen aan de schoolpoort</label>
+		  								</div>
+		  							</li>
+								
+									<li>
+										<div class="checkbox">
+											<input type="checkbox" name="advert-services[]" id="vervoer-thuis-mobile" value="vervoer-thuis">
+			  								<label for="vervoer-thuis-mobile"><span></span>Vervoer naar thuis na opvang</label>
+		  								</div>
+		  							</li>
 
-								<div class="checkbox">
-									<input type="checkbox" name="advert-services[]" id="hulp-huiswerktaken" value="hulp-huiswerktaken">
-	  								<label for="hulp-huiswerktaken"><span></span>Hulp bij huiswerktaken</label>
-								</div>
+		  							<li>
+		  								<div class="checkbox">
+			  								<input type="checkbox" name="advert-services[]" id="vervoer-activiteiten-mobile" 
+			  									   value="vervoer-naschoolse-activiteiten">
+			  								<label for="vervoer-activiteiten-mobile"><span></span>Vervoer naschoolse activiteiten</label>
+		  								</div>
+		  							</li>
+								
+									<li>
+										<div class="checkbox">
+											<input type="checkbox" name="advert-services[]" id="voorzien-maaltijd-mobile" 
+												   value="voorzien-maaltijd">
+			  								<label for="voorzien-maaltijd-mobile"><span></span>Voorzien van een maaltijd</label>
+		  								</div>
+		  							</li>
+
+		  							<li>
+		  								<div class="checkbox">
+			  								<input type="checkbox" name="advert-services[]" id="hulp-huiswerk-mobile" 
+			  									   value="hulp-huiswerktaken">
+			  								<label for="hulp-huiswerk-mobile"><span></span>Hulp bij huiswerktaken</label>
+		  								</div>
+		  							</li>
+								</ul>
 							</div>
 						</div>
 
@@ -276,6 +404,12 @@
 							</div>
 
 							<div class="small-12 large-7 columns advert-availability-input-fields"></div>
+						</div>
+
+						<div class="small-12 columns">
+							<p class="show-for-large" style="background-color: blue; color: white; padding: 10px;">Large and up</p>
+							<p class="show-for-medium-only" style="background-color: blue; color: white; padding: 10px;">Medium</p>
+							<p class="show-for-small-only" style="background-color: blue; color: white; padding: 10px;">Small</p>
 						</div>
 
 						<div class="small-12 columns">

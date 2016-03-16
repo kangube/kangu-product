@@ -56,15 +56,8 @@
 	.form-description-container, .form-number-children-container,
 	.form-contact-information-container, .form-transportation-container,
 	.form-services-container, .form-availability-container {
+		@include grid-column(12);
 		margin-bottom: 50px;
-	}
-
-	@include breakpoint(small only) {
-		.form-description-container, .form-number-children-container,
-		.form-contact-information-container, .form-transportation-container,
-		.form-services-container, .form-availability-container {
-			@include grid-column(12);
-		}
 	}
 
 	@include breakpoint(large) {
@@ -164,37 +157,155 @@
 
 	// Styling of the transportation container
 
-	.transportation-checkbox {
-		@include grid-column(6);
-		height: 43px;
-		margin-bottom: 30px;
+	.form-transportation-container ul {
+		margin: 0;
+	}
+
+	.transportation-container {
 		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
 		align-items: center;
-	}
-
-	.transportation-checkbox:nth-of-type(1), .transportation-checkbox:nth-of-type(3) {
-		padding-left: 0;
-	}
-
-	// Styling of the services container
-
-	.services-checkbox {
-		border-right: 1px solid $border-color-light-grey;
-
-		&:first-of-type {
-			padding-left: 0;
+	
+		.vertical-line {
+			border: 1px solid $border-color-light-grey;
+			min-height: 95px;
+			width: 1px;
 		}
 
-		&:last-of-type {
-			padding-right: 0;
+		.transportation ul {
+			margin: 0;
 		}
 
-		.checkbox:first-of-type {
+		.transportation ul li {
+			text-align: left;
+			list-style-type: none;
+			padding: 7px 0 7px 0!important;
+		}
+
+		.transportation ul li:not(:last-child) {
+			margin-bottom: 30px;
+		}
+	}
+
+	@include breakpoint(small only) {
+		.transportation-container-mobile ul li {
+			@include grid-column(12);
+			list-style-type: none;
+			border: 1px solid $border-color-light-grey;
+			padding: 15px !important;
+		}
+
+		.transportation-container-mobile ul li:nth-child(even) {
+			border-top: none;
+			border-bottom: none;
+		}
+
+		.transportation-container-mobile ul li:last-child {
+			border-bottom: 1px solid $border-color-light-grey;
+		}
+	}
+
+	@include breakpoint(medium only) {
+		.transportation-container-mobile ul li {
+			@include grid-column(6);
+			list-style-type: none;
+			border: 1px solid $border-color-light-grey;
+			padding: 15px !important;
+		}
+
+		.transportation-container-mobile ul li:nth-child(odd) {
+			border-right: none;
+		}
+
+		.transportation-container-mobile ul li:nth-child(-n+2) {
+			border-bottom: none;
+		}
+	}
+
+	// Styling of the services container for large and up screens
+
+	.services-container {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
+
+		margin-top: 35px;
+
+		.vertical-line {
+			border: 1px solid $border-color-light-grey;
+			min-height: 77px;
+			width: 1px;
+		}
+
+		.service ul {
+			margin: 0;
+		}
+
+		.service ul li:not(:last-child) {
 			margin-bottom: 25px;
 		}
 
+		.service ul li {
+			text-align: left;
+			list-style-type: none;
+			color: white;
+		}
+
 		.checkbox label span {
-			margin-right: 35px;
+			margin-right: 25px;
+		}
+	}
+
+	// Styling of the services container for medium and smaller screens
+
+	@include breakpoint(small only) {
+		.services-container-mobile ul {
+			margin: 0;
+		}
+
+		.services-container-mobile ul li {
+			@include grid-column(12);
+			list-style-type: none;
+			border: 1px solid $border-color-light-grey;
+			padding: 15px;
+		}
+
+		.services-container-mobile ul li:nth-child(even) {
+			border-top: none;
+			border-bottom: none;
+		}
+
+		.services-container-mobile ul li:last-child {
+			border-bottom: 1px solid $border-color-light-grey;
+		}
+	}
+
+	@include breakpoint(medium only) {
+		.services-container-mobile ul {
+			margin: 0;
+		}
+
+		.services-container-mobile ul li {
+			@include grid-column(6);
+			list-style-type: none;
+			border: 1px solid $border-color-light-grey;
+			padding: 15px;
+		}
+
+		.services-container-mobile ul li:nth-child(odd) {
+			border-right: none;
+		}
+
+		.services-container-mobile ul li:nth-child(-n+2) {
+			border-bottom: none;
+		}
+
+		.services-container-mobile ul li:nth-last-child(-n+2) {
+			border-top: none;
 		}
 	}
 
