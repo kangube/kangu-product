@@ -60,7 +60,6 @@
 	        	<img src=<?php echo $advert_information['user_image_path']; ?> alt="profiel foto" />
 	            <h1 class="advert-detail-title"><?php echo $advert_information["user_firstname"]." ".$advert_information["user_lastname"]; ?></h1>
 	            <h3 class="advert-detail-subtitle">Ouder van Floor en Kilian</h3>
-	            <a class="small-7 medium-5 large-3 small-centered columns boeking-button fav" href="#">Boeking aanvragen</a>
 	        </div>
         </div>
         <div class="row">
