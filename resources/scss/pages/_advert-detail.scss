@@ -48,6 +48,17 @@ hr {
 	background-color: $dark-blue;
 	z-index: -1;
 
+	.boeking-button {
+		position: relative;
+		display: block;
+		height: 55px;
+		border-radius: 5px;
+		background-color: $light-red;
+		@include font($paragraph-font-family, regular, regular, 20, 55, $text-white);
+		text-decoration: none;
+		text-align: center;
+	}
+
 	.advert-detail-title-container {
 		align-self: center;
 		text-align: center;
@@ -195,6 +206,31 @@ hr {
 	.weekdagen {
 		background-color: $light-grey-alt !important;
 	}
+
+	.flex-container {
+	    display: flex;
+	    flex-direction: row;
+	    flex-wrap: wrap;
+	    justify-content: space-between;
+
+	    .flex-item {
+	    	margin: 0;
+	    }
+
+	    .flex-item ul {
+	    	margin: 0;
+	    }
+	    
+	    .flex-item ul li {
+	        list-style-type: none;
+	    }
+
+	    .vertical-line {
+	        border: 1px solid $border-color-light-grey;
+	        min-height: 77px;
+	        width: 1px;
+	    }
+	}
 }
 
 .advert-detail-map {
@@ -221,51 +257,34 @@ hr {
 .advert-detail-services {
 	margin-top: 50px;
 	
-	p {
-		line-height: 30px !important;
-	}
+	.flex-container {
+	    display: flex;
+	    flex-direction: row;
+	    flex-wrap: wrap;
+	    justify-content: space-between;
 
-	.mrglnul {
-		@include breakpoint(small only) { 
-			margin-left: -10px;
-		}
-	}
+	    .flex-item {
+	    	margin: 0;
+	    }
 
-	.mrgrnul {
-		@include breakpoint(small only) { 
-			margin-right: 10px;
-		}
-	}
+	    .flex-item ul {
+	    	margin: 0;
+	    }
+	    
+	    .flex-item ul li {
+	        list-style-type: none;
+	    }
 
-	.border-right {
-		@include breakpoint(small) { 
-			border: none;
-		}
-
-		@include breakpoint(medium) { 
-			border-right: 2px solid $border-color-light-grey;
-		}
-	}
-
-	.border-left {
-		@include breakpoint(small) { 
-			border: none;
-		}
-
-		@include breakpoint(medium) { 
-			border-left: 2px solid $border-color-light-grey;
-		}
+	    .vertical-line {
+	        border: 1px solid $border-color-light-grey;
+	        min-height: 77px;
+	        width: 1px;
+	    }
 	}
 }
 
 .advert-detail-ratings {
 	margin-top: 50px;
-
-	.mrgneg {
-		@include breakpoint(large) { 
-			margin-left: -15px;
-		}
-	}
 
 	.reviewdescription {
 

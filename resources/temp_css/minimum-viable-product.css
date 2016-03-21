@@ -4580,6 +4580,20 @@ hr {
   min-height: 60vh;
   background-color: #4AA0D5;
   z-index: -1; }
+  .advert-detail-header .boeking-button {
+    position: relative;
+    display: block;
+    height: 55px;
+    border-radius: 5px;
+    background-color: #F37A7D;
+    font-family: "open-sans", sans-serif;
+    font-style: regular;
+    font-weight: regular;
+    font-size: 1.25rem;
+    line-height: 3.4375rem;
+    color: #FFFFFF;
+    text-decoration: none;
+    text-align: center; }
   .advert-detail-header .advert-detail-title-container {
     -webkit-align-self: center;
         -ms-flex-item-align: center;
@@ -4726,6 +4740,34 @@ hr {
 .advert-detail-calendar .weekdagen {
   background-color: #F3F3F3 !important; }
 
+.advert-detail-calendar .flex-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+  .advert-detail-calendar .flex-container .flex-item {
+    margin: 0; }
+  .advert-detail-calendar .flex-container .flex-item ul {
+    margin: 0; }
+  .advert-detail-calendar .flex-container .flex-item ul li {
+    list-style-type: none; }
+  .advert-detail-calendar .flex-container .vertical-line {
+    border: 1px solid #C4C4C4;
+    min-height: 77px;
+    width: 1px; }
+
 .advert-detail-map {
   margin-top: 50px; }
   .advert-detail-map p {
@@ -4740,30 +4782,36 @@ hr {
 
 .advert-detail-services {
   margin-top: 50px; }
-  .advert-detail-services p {
-    line-height: 30px !important; }
-  @media screen and (min-width: 0em) and (max-width: 39.9375em) {
-    .advert-detail-services .mrglnul {
-      margin-left: -10px; } }
-  @media screen and (min-width: 0em) and (max-width: 39.9375em) {
-    .advert-detail-services .mrgrnul {
-      margin-right: 10px; } }
-  .advert-detail-services .border-right {
-    border: none; }
-    @media screen and (min-width: 40em) {
-      .advert-detail-services .border-right {
-        border-right: 2px solid #C4C4C4; } }
-  .advert-detail-services .border-left {
-    border: none; }
-    @media screen and (min-width: 40em) {
-      .advert-detail-services .border-left {
-        border-left: 2px solid #C4C4C4; } }
+  .advert-detail-services .flex-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between; }
+    .advert-detail-services .flex-container .flex-item {
+      margin: 0; }
+    .advert-detail-services .flex-container .flex-item ul {
+      margin: 0; }
+    .advert-detail-services .flex-container .flex-item ul li {
+      list-style-type: none; }
+    .advert-detail-services .flex-container .vertical-line {
+      border: 1px solid #C4C4C4;
+      min-height: 77px;
+      width: 1px; }
 
 .advert-detail-ratings {
   margin-top: 50px; }
-  @media screen and (min-width: 64em) {
-    .advert-detail-ratings .mrgneg {
-      margin-left: -15px; } }
   .advert-detail-ratings .reviewdescription {
     min-height: 50px; }
     @media screen and (min-width: 40em) {

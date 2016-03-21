@@ -13,6 +13,8 @@
 	$advert = new Advert();
 	$oneAdvert = $advert->getOne();
 	$advert_information = $oneAdvert->fetch(PDO::FETCH_ASSOC);
+
+	$advert_full_adress = $advert_information['user_adress'].','.$advert_information['user_city'];
 ?>
 
 <!doctype html>
@@ -21,10 +23,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Advertentie-detail</title>
         <link rel="stylesheet" href="../css/minimum-viable-product.min.css">
-        <link href="https://file.myfontastic.com/QxAJVhmfbQ2t7NGCUAnz9P/icons.css" rel="stylesheet">
         <link href="https://file.myfontastic.com/wfY5TXHecmqLMkPUKHzNrK/icons.css" rel="stylesheet">
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCK4od9WLji1WkDzFFyLls-226CbhN8Jl4&callback=initMap"></script>
-        <title>Alle advertenties</title>
 		<script type="text/javascript" src="//code.jquery.com/jquery-2.2.0.min.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function() 
@@ -60,6 +60,7 @@
 	        	<img src=<?php echo $advert_information['user_image_path']; ?> alt="profiel foto" />
 	            <h1 class="advert-detail-title"><?php echo $advert_information["user_firstname"]." ".$advert_information["user_lastname"]; ?></h1>
 	            <h3 class="advert-detail-subtitle">Ouder van Floor en Kilian</h3>
+	            <a class="small-7 medium-5 large-3 small-centered columns boeking-button fav" href="#">Boeking aanvragen</a>
 	        </div>
         </div>
         <div class="row">
@@ -73,26 +74,47 @@
 			    	<h2>Over deze advertentie</h2>
 			    	<hr class="blue-horizontal-line"></hr>
 			    	<p><?php echo $advert_information["advert_description"]; ?></p>
-
-					<div class="small-12 medium-6 large-6 columns">
-			    		<div class="border-right">
-				    		<span data-icon="e"></span>
-				    		<p>Basisschool <?php echo $advert_information["advert_school"]; ?></p>
-				    		<span data-icon="o"></span>
-				    		<p>Plaats voor <?php echo $advert_information["advert_spots"]; ?> kinderen</p>
-			    		</div>
-			    	</div>
-			    	<div class="small-12 medium-6 large-6 columns">
-			    		<span data-icon="m"></span>
-			    		<p>Tussen 5 - <?php echo $advert_information["advert_price"]; ?> euro per uur</p>
-			    		<span data-icon="k"></span>
-			    		<p>Verplaatsing met <?php echo $advert_information["advert_transport"]; ?></p>
-			    	</div>
+					<div class="flex-container">
+						<div class="flex-item">
+							<ul>
+								<li>
+									<span data-icon="e"></span>
+					    			<p>Basisschool <?php echo $advert_information["advert_school"]; ?></p>
+				    			</li>
+								<li>
+									<span data-icon="o"></span>
+					    			<p>Plaats voor <?php echo $advert_information["advert_spots"]; ?> kinderen</p>
+				    			</li>
+							</ul>
+						</div>
+						
+						<div class="vertical-line"></div>
+						
+						<div class="flex-item">
+							<ul>
+								<li>
+									<span data-icon="m"></span>
+				    				<p>Tussen 5 - <?php echo $advert_information["advert_price"]; ?> euro per uur</p>
+				    			</li>
+								<li>
+									<span data-icon="k"></span>
+				    				<p>Verplaatsing met <?php echo $advert_information["advert_transport"]; ?></p>
+				    			</li>
+							</ul>
+						</div>
+					</div>
 			    </div>
+
 			    <div class="small-12 medium-12 large-6 columns">
 			    	<h2 class="mrgtop">Beschikbaarheid</h2>
 			    	<hr class="blue-horizontal-line"></hr>
 			    	
+			    	<div class="availability-datepicker-container">
+						<div class="availability-calendar">
+							<!-- hier wordt met js de kalender geplaatst -->
+						</div>
+					</div>
+				</div>
 			    	
 			    </div>
 		  	</div>
@@ -116,47 +138,75 @@
 			    	</div>
 				</div>
 				<div class="small-12 medium-12 large-9 columns">
-					<!--<iframe
-					  frameborder="0" style="border:0"
-					  src=<?php echo "https://www.google.com/maps/embed/v1/place?key=AIzaSyCK4od9WLji1WkDzFFyLls-226CbhN8Jl4
-					    &q=" . $advert_information["user_adress"] . "," . $advert_information["user_city"];?> allowfullscreen>
-					</iframe>-->
 					<iframe
 					  frameborder="0" style="border:0"
-					  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCK4od9WLji1WkDzFFyLls-226CbhN8Jl4
-					    &q=Mechelsesteenweg+34,Heist-op-den-Berg" allowfullscreen>
+					
+					<?php echo "src='https://www.google.com/maps/embed/v1/place?key=AIzaSyCK4od9WLji1WkDzFFyLls-226CbhN8Jl4&q=".$advert_full_adress."'";?> allowfullscreen>
 					</iframe>	
 				</div>
 			</div>
 		</div>
 
-		<div class="row large-collapse advert-detail-services">
-		    <div class="small-12 medium-12 large-12 columns">
-				<div class="small-12 columns">
-			    	<h2>Aangeboden diensten</h2>
-			    	<hr class="blue-horizontal-line"></hr>
-			    </div>
+		<div class="row advert-detail-services">
+			<div class="large-12 columns">
+			    <h2>Aangeboden diensten</h2>
+			    <hr class="blue-horizontal-line"></hr>
+			    <?php
+					/*$advert_services = $mysqli->prepare("SELECT advert_id, advert_service, fk_advert_id, fk_service_id, service_id, service_name, service_availability 
+						FROM tbl_advert_service 
+						LEFT JOIN tbl_advert ON tbl_advert_service.fk_advert_id=tbl_advert.advert_id 
+						LEFT JOIN tbl_advert_service ON tbl_advert_service.fk_service_id=tbl_service.service_id
+						WHERE tbl_advert.advert_id = '". $advert_information['advert_id'] ."");
+					$advert_services->execute();
+					$advert_services->bind_result($advert_id, $advert_service, $service_id, $service_name, $service_availability);
+
+					echo $advert_services;*/
+				?>
+				<div class="flex-container">
+					<div class="flex-item">
+						<ul>
+							<li>
+								<span class="extra" data-icon="m"></span>
+			    				<p>Opvang in een thuisomgeving</p>
+			    			</li>
+							<li>
+								<span class="extra" data-icon="m"></span>
+			    				<p>Ophalen aan de schoolpoort</p>
+			    			</li>
+						</ul>
+					</div>
+					
+					<div class="vertical-line"></div>
+					
+					<div class="flex-item">
+						<ul>
+							<li>
+								<span class="extra" data-icon="m"></span>
+			    				<p>Vervoer naar thuis na opvang</p>
+			    			</li>
+							<li>
+								<span class="extra" data-icon="m"></span>
+			    				<p>Ophalen aan de schoolpoort</p>
+			    			</li>
+						</ul>
+					</div>
+					
+					<div class="vertical-line"></div>
+					
+					<div class="flex-item">
+						<ul>
+							<li>
+								<span class="extra" data-icon="m"></span>
+			    				<p>Voorzien van een maaltijd</p>
+			    			</li>
+							<li>
+								<span class="extra" data-icon="m"></span>
+			    				<p>Hulp bij huiswerk taken</p>
+			    			</li>
+						</ul>
+					</div>
+				</div>
 			</div>
-			<div class="small-12 medium-12 large-12 columns">
-				<div class="medium-4 large-4 columns">
-			    	<span class="extra" data-icon="m"></span>
-			    	<p>Opvang in een thuisomgeving</p>
-			    	<span class="extra" data-icon="m"></span>
-			    	<p>Ophalen aan de schoolpoort</p>
-				</div>
-				<div class="medium-4 large-4 columns">
-			    	<span class="extra" data-icon="m"></span>
-			    	<p>Vervoer naar thuis na opvang</p>
-			    	<span class="extra" data-icon="m"></span>
-			    	<p>Vervoer naschoolse activiteiten</p>
-				</div>
-				<div class="medium-4 large-4 columns">
-			    	<span class="extra" data-icon="m"></span>
-			    	<p>Voorzien van een maaltijd</p>
-			    	<span class="extra" data-icon="m"></span>
-			    	<p>Hulp bij huiswerk taken</p>
-				</div>
-		    </div>
 		</div>
 
 		<div class="large-collapse row advert-detail-ratings">
