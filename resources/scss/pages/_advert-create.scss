@@ -316,10 +316,123 @@
 	}
 		
 	.advert-availability-input-fields {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		padding: 25px;
+		background-color: $light-grey;
 		height: 317px;
 		overflow-y: auto;
-		background-color: $light-grey-alt;
-		padding-right: 0;
+
+		.availability-slot-duration {
+			@include grid-column(1);
+			padding: 0 !important;
+			margin-top: 30px;
+			text-align: center;
+
+			&:before {
+				font-size: rem-calc(20);
+				color: rgba($text-dark-grey, 0.6);
+			}
+		}
+
+		.availability-slot-remove {
+			@include grid-column(1);
+			padding: 0 !important;
+			margin-top: 30px;
+			text-align: center;
+
+			&:before {
+				font-size: rem-calc(13);
+				color: rgba($text-dark-grey, 0.6);
+			}
+		}
+	}
+
+	// Alternative availability selection
+
+	.advert-availability-slots {
+		@include grid-row;
+		margin-top: 30px;
+		display: block;
+	}
+
+	.availability-slot-container {
+		display: inline-block;
+		margin-bottom: 30px;
+
+		@include breakpoint(small only) {
+			@include grid-column(12);
+		}
+
+		@include breakpoint(medium only) {
+			@include grid-column(4);
+		}
+
+		@include breakpoint(large) {
+			@include grid-column(3);
+		}
+	}
+
+	.availability-slot {
+		display: inline-block;
+		background-color: $light-grey;
+		border: 1px solid $border-color-light-grey;
+		padding: 15px 0 15px 0;
+		width: 100%;
+
+		.remove-availability-slot {
+			@include grid-column(12);
+			text-align: right !important;
+			cursor: pointer !important;
+
+			&:before {
+				font-size: rem-calc(13);
+				color: rgba($text-dark-grey, 0.6);
+			}
+		}
+
+		.selected-date-format {
+			margin-bottom: 20px;
+		}
+
+		.selected-date-format-day, .selected-date-format-month-year {
+			@include font($paragraph-font-family, regular, regular, 18, 24, $text-dark-grey);
+			text-align: center;
+		}
+
+		.selected-date {
+			display: none;
+		}
+
+		.availability-slot-duration {
+			@include grid-column(2);
+			display: inline-block;
+			padding: 0 !important;
+			margin-top: 30px;
+			text-align: center;
+
+			&:before {
+				font-size: rem-calc(20);
+				color: rgba($text-dark-grey, 0.6);
+			}
+		}
+
+		label {
+			@include font($paragraph-font-family, regular, regular, 14, 19, $text-dark-grey);
+			margin-bottom: 10px;
+			text-align: center;
+		}
+
+		input[type="time"] {
+			margin-bottom: 0;
+			text-align: center;
+		}
+
+		input[type="time"]:first-child {
+			padding-right: 30px;
+		}
 	}
 
 	// Styling of the advert-create container

@@ -251,7 +251,7 @@
 						<div class="form-services-container">
 							<h3 class="form-header">Aangeboden diensten</h3>
 							<hr class="blue-horizontal-line"></hr>
-							<p class="form-subheader">Selecteer welke extra diensten je wenst aan te bieden aan andere ouders. Zoals je merkt is het ophalen en tijdelijk opvangen van de kinderen in jouw thuisomgeving standaard inbegrepen.</p>
+							<p class="form-subheader">Selecteer welke extra diensten je wenst aan te bieden aan andere ouders naast het ophalen en tijdelijk opvangen van de kinderen.</p>
 
 							<div class="show-for-large services-container">
 								<div class="service">
@@ -372,39 +372,27 @@
 						<!--<div class="small-12 columns form-availability-container">
 							<h3 class="form-header">Beschikbaarheid</h3>
 							<hr class="blue-horizontal-line"></hr>
-							<p class="form-subheader">Maak je eigen planning en selecteer op welke dagen je opvang wenst aan te bieden. Alle dagen die je niet selecteert worden automatisch op niet beschikbaar geplaatst.</p>
-
-							<div class="advert-availability-input-fields">
-								<div class="small-12 large-4 columns">
-									<label>Datum</label>
-									<input type="date" name="advert-availability-date[]">
-								</div>
-
-								<div class="small-12 large-4 columns">
-									<label>Begin-tijd</label>
-									<input type="time" name="advert-availability-start-time[]">
-								</div>
-
-								<div class="small-12 large-4 columns">
-									<label>Eind-tijd</label>
-									<input type="time" name="advert-availability-end-time[]">
-								</div>
-							</div>
-
-							<button id="create-availability-input">Datum toevoegen</button>
-						</div>-->
-
-						<div class="small-12 columns form-availability-container">
-							<h3 class="form-header">Beschikbaarheid</h3>
-							<hr class="blue-horizontal-line"></hr>
 							<p class="form-subheader">Selecteer welke diensten je wenst aan te bieden aan andere ouders.</p>
 
 							<div class="small-12 large-5 columns availability-datepicker-container">
-								<div class="availability-datepicker"></div>
+								<div id="date"></div>
 							</div>
 
-							<div class="small-12 large-7 columns advert-availability-input-fields"></div>
+							<div class="small-12 large-7 columns advert-availability-input-fields">
+								<div class="advert-availability-message-container">
+									<p>U hebt nog geen opvangdagen toegevoegd.</p>
+								</div>
+							</div>
+						</div>-->
+
+						<div class="form-availability-container">
+							<h3 class="form-header">Beschikbaarheid</h3>
+							<hr class="blue-horizontal-line"></hr>
+							<p class="form-subheader">Selecteer welke diensten je wenst aan te bieden aan andere ouders.</p>
+							<div id="availability-datepicker"></div>
 						</div>
+
+						<div class="advert-availability-slots"></div>
 
 						<div class="small-12 columns">
 							<p class="show-for-large" style="background-color: blue; color: white; padding: 10px;">Large and up</p>
@@ -428,5 +416,134 @@
 		<script src="../js/minimum-viable-product.min.js"></script>
 		<script src="https://use.typekit.net/vnw3zje.js"></script>
 		<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+		<script src="http://multidatespickr.sourceforge.net/jquery-ui.multidatespicker.js"></script>
+		<script>
+			var disabledDates = new Array();
+
+			/*$('#date').multiDatesPicker({
+		        inline: true,
+			    dateFormat: 'yy-mm-dd',
+			    firstDay: 0,
+			    showOtherMonths: true,
+			    monthNames: ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'],
+			    dayNames: ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'],
+			    dayNamesMin: ['Zo', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za'],
+			    onSelect: function (selected) {
+			    	if ($.inArray(selected, disabledDates) > -1) {
+						//alert("Date is in the array: "+disabledDates);
+					}
+					else {
+						$(".advert-availability-message-container").css("display", "none");
+						$(".advert-availability-input-fields").css("display", "block");
+
+						disabledDates.push(selected);
+						$('.advert-availability-input-fields').append("<div class='availability-slot-container-alt'><div class='small-12 large-4 columns selected-date'><label>Datum</label><input type='date' name='advert-availability-date[]' value="+selected+"></div><div class='small-6 large-3 columns'><label>Van</label><input type='text' class='time-input' name='advert-availability-start-time[]' data-time-format='H:i'></div><div class='availability-slot-duration' data-icon='y'></div><div class='small-6 large-3 columns'><label>Tot</label><input type='text' class='time-input' name='advert-availability-end-time[]' data-time-format='H:i'></div><div class='availability-slot-remove' data-icon='n'></div></div>");
+
+			        	$('.time-input').timepicker({
+							'step': 15,
+							'forceRoundTime': true,
+							'useSelect': false,
+							'minTime': '15:30',
+							'orientation': 'b'
+						});
+					}
+			    },
+			    beforeShowDay: function (date) {
+			        var td = date.getDay();
+			        var ret = [(date.getDay() != 0 && date.getDay() != 6),'',(td != 'Za' && td != 'Zo')?'':'only on workday'];
+			        return ret;
+			    }
+		    });
+
+		    $(document).on('click','.availability-slot-remove', function() { 
+		    	$(this).parent('div').remove();
+		    	var selectedDate = $(this).prev().prev().prev().prev('.selected-date').find('input[type="date"]').attr('value');
+		    	
+				var selectedDateInArray = disabledDates.indexOf(selectedDate);
+				if(selectedDateInArray != -1) {
+					disabledDates.splice(selectedDateInArray, 1);
+				}
+		    });*/
+
+		    $(document).ready(function() {
+		    	checkSize();
+			    $(window).resize(checkSize);
+
+				function checkSize() {
+					var currentSize = Foundation.MediaQuery.current;
+					var numberOfMonths = $('#availability-datepicker').datepicker('option', 'numberOfMonths');
+				    if (currentSize == 'small' || currentSize == 'medium') {
+						$('#availability-datepicker').datepicker('option', 'numberOfMonths', 1);
+					}
+					else if (currentSize == 'large' || currentSize == 'xlarge' || currentSize == 'xxlarge') {
+						$('#availability-datepicker').datepicker('option', 'numberOfMonths', [1,2]);
+					}
+				}
+			});
+
+		    $('#availability-datepicker').multiDatesPicker({
+		        inline: true,
+			    dateFormat: 'yy-mm-dd',
+			    firstDay: 0,
+			    showOtherMonths: true,
+			    monthNames: ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'],
+			    dayNames: ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'],
+			    dayNamesMin: ['Zo', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za'],
+			    onSelect: function (selected) {
+			    	if ($.inArray(selected, disabledDates) > -1) {
+						//alert("Date is in the array: "+disabledDates);
+					}
+					else {
+						disabledDates.push(selected);
+						var selected_format = selected.split("-");
+						var selected_day = selected_format[2];
+						var selected_month = selected_format[1];
+						var selected_year = selected_format[0];
+
+						function GetMonthName(selected_month) {
+							var months = ["Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December"];
+							return months[selected_month-1];
+						}
+
+						selected_month = GetMonthName(selected_month);
+
+						$(".advert-availability-slots").append("<div class='availability-slot-container float-left'><div class='availability-slot'><div class='remove-availability-slot' data-icon='n'></div><div class='small-12 columns selected-date-format'><p class='selected-date-format-day'>"+selected_day+"</p><p class='selected-date-format-month-year'>"+selected_month+" "+selected_year+"</p></div><div class='small-12 columns selected-date'><input type='date' name='advert-availability-date[]' value="+selected+"></div><div class='small-5 columns'><label>Van</label><input type='text' class='time-input' name='advert-availability-start-time[]' data-time-format='H:i'></div><div class='availability-slot-duration' data-icon='y'></div><div class='small-5 columns'><label>Tot</label><input type='text' class='time-input' name='advert-availability-end-time[]' data-time-format='H:i'></div></div></div>");
+
+						$('.time-input').timepicker({
+							'step': 15,
+							'forceRoundTime': true,
+							'useSelect': false,
+							'minTime': '15:30',
+							'orientation': 'b'
+						});
+					}
+			    },
+			    beforeShowDay: function (date) {
+			        var td = date.getDay();
+			        var ret = [(date.getDay() != 0 && date.getDay() != 6),'',(td != 'Za' && td != 'Zo')?'':'only on workday'];
+			        return ret;
+			    }
+		    });
+
+		    $(document).on('click','.remove-availability-slot', function() { 
+		    	$(this).parent('div').parent('div').remove();
+		    	var selectedDate = $(this).next().next('.selected-date').find('input[type="date"]').attr('value');
+
+				var selectedDateInArray = disabledDates.indexOf(selectedDate);
+				if(selectedDateInArray != -1) {
+					disabledDates.splice(selectedDateInArray, 1);
+				}
+
+				console.log(disabledDates);
+
+				$('#availability-datepicker tbody td:has(a)').each(function(index) {
+					var date = $.datepicker.formatDate('yy-mm-dd', new Date($(this).data('year'), $(this).data('month'), $(this).text()));
+					if (date === selectedDate) {
+						$(this).find('.ui-state-highlight').removeClass('ui-state-highlight');
+					}
+				});
+		    });
+		</script>
 	</body>
 </html>
