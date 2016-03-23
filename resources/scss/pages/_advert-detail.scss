@@ -183,30 +183,7 @@ hr {
 		@include font($paragraph-font-family, regular, regular, 14, 18.9, rgba($text-dark-grey, 0.8));
 		line-height: 25px !important;
 	}
-
-	.border-right {
-		@include breakpoint(medium) { 
-			//border-right: 2px solid $border-color-light-grey;
-			margin-left: -15px;
-		}
-	}
-
-	table, th, tr, td {
-		@include font($paragraph-font-family, regular, regular, 14, 18.9, rgba($text-dark-grey, 0.8));
-		line-height: 25px !important;
-		font-weight: normal;
-		text-align: center;
-		border: solid 1px $dark-grey;
-	}
-
-	td {
-		background-color: $white;
-	}
-
-	.weekdagen {
-		background-color: $light-grey-alt !important;
-	}
-
+	
 	.flex-container {
 	    display: flex;
 	    flex-direction: row;
@@ -262,6 +239,7 @@ hr {
 	    flex-direction: row;
 	    flex-wrap: wrap;
 	    justify-content: space-between;
+	    align-items: center;
 
 	    .flex-item {
 	    	margin: 0;
