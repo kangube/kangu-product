@@ -4504,7 +4504,7 @@ td.ui-datepicker-week-end {
   .mrgtop {
     margin-top: 30px; } }
 
-span {
+.detail-icon {
   font-size: 25px;
   line-height: 25px;
   color: #454553;

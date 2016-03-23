@@ -51,11 +51,11 @@
 						<div class="flex-item">
 							<ul>
 								<li>
-									<span data-icon="e"></span>
+									<span class="detail-icon" data-icon="e"></span>
 					    			<p>Basisschool <?php echo $advert_information["advert_school"]; ?></p>
 				    			</li>
 								<li>
-									<span data-icon="o"></span>
+									<span class="detail-icon" data-icon="o"></span>
 					    			<p>Plaats voor <?php echo $advert_information["advert_spots"]; ?> kinderen</p>
 				    			</li>
 							</ul>
@@ -66,11 +66,11 @@
 						<div class="flex-item">
 							<ul>
 								<li>
-									<span data-icon="m"></span>
+									<span class="detail-icon" data-icon="m"></span>
 				    				<p>Tussen 5 - <?php echo $advert_information["advert_price"]; ?> euro per uur</p>
 				    			</li>
 								<li>
-									<span data-icon="k"></span>
+									<span class="detail-icon" data-icon="k"></span>
 				    				<p>Verplaatsing met <?php echo $advert_information["advert_transport"]; ?></p>
 				    			</li>
 							</ul>
@@ -78,16 +78,11 @@
 					</div>
 			    </div>
 
-			    <!--<div class="small-12 medium-12 large-6 columns">
+			    <div class="small-12 medium-12 large-6 columns">
 			    	<h2 class="mrgtop">Beschikbaarheid</h2>
 			    	<hr class="blue-horizontal-line"></hr>
-			    	
-				</div>-->
 
-				<div class="small-12 large-6 columns">
 					<div id="availability-datepicker"></div>
-				</div>
-			    	
 			    </div>
 		  	</div>
 		</div>
@@ -97,15 +92,15 @@
 			    	<h2>Contact informatie</h2>
 			    	<hr class="blue-horizontal-line"></hr>
 					<div class="flleft">
-				    	<span data-icon="x"></span>
+				    	<span class="detail-icon" data-icon="x"></span>
 				    	<p><?php echo $advert_information["user_email"]; ?></p>
-				    	<span data-icon="z"></span>
+				    	<span class="detail-icon" data-icon="z"></span>
 				    	<p><?php echo "+32 " . $advert_information["user_mobile_number"]; ?></p>
 			    	</div>
 			    	<div class="flleft">
-				    	<span data-icon="q"></span>
+				    	<span class="detail-icon" data-icon="q"></span>
 				    	<p><?php echo "+32 " . $advert_information["user_home_number"]; ?></p>
-				    	<span class="double-line-height" data-icon="v"></span>
+				    	<span class="detail-icon double-line-height" data-icon="v"></span>
 				    	<p><?php echo $advert_information["user_adress"] . "<br > " . $advert_information["user_city"]; ?></p>
 			    	</div>
 				</div>
@@ -138,11 +133,11 @@
 					<div class="flex-item">
 						<ul>
 							<li>
-								<span class="extra" data-icon="m"></span>
+								<span class="detail-icon extra" data-icon="m"></span>
 			    				<p>Opvang in een thuisomgeving</p>
 			    			</li>
 							<li>
-								<span class="extra" data-icon="m"></span>
+								<span class="detail-icon extra" data-icon="m"></span>
 			    				<p>Ophalen aan de schoolpoort</p>
 			    			</li>
 						</ul>
@@ -153,11 +148,11 @@
 					<div class="flex-item">
 						<ul>
 							<li>
-								<span class="extra" data-icon="m"></span>
+								<span class="detail-icon extra" data-icon="m"></span>
 			    				<p>Vervoer naar thuis na opvang</p>
 			    			</li>
 							<li>
-								<span class="extra" data-icon="m"></span>
+								<span class="detail-icon extra" data-icon="m"></span>
 			    				<p>Ophalen aan de schoolpoort</p>
 			    			</li>
 						</ul>
@@ -168,11 +163,11 @@
 					<div class="flex-item">
 						<ul>
 							<li>
-								<span class="extra" data-icon="m"></span>
+								<span class="detail-icon extra" data-icon="m"></span>
 			    				<p>Voorzien van een maaltijd</p>
 			    			</li>
 							<li>
-								<span class="extra" data-icon="m"></span>
+								<span class="detail-icon extra" data-icon="m"></span>
 			    				<p>Hulp bij huiswerk taken</p>
 			    			</li>
 						</ul>
