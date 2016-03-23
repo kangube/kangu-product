@@ -184,29 +184,42 @@ hr {
 		line-height: 25px !important;
 	}
 	
-	.flex-container {
-	    display: flex;
-	    flex-direction: row;
-	    flex-wrap: wrap;
-	    justify-content: space-between;
+	.description-items-container {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
 
-	    .flex-item {
-	    	margin: 0;
-	    }
+		margin-top: 35px;
 
-	    .flex-item ul {
-	    	margin: 0;
-	    }
-	    
-	    .flex-item ul li {
-	        list-style-type: none;
-	    }
+		.vertical-line {
+			border: 1px solid $border-color-light-grey;
+			min-height: 77px;
+			width: 1px;
+		}
 
-	    .vertical-line {
-	        border: 1px solid $border-color-light-grey;
-	        min-height: 77px;
-	        width: 1px;
-	    }
+		.description-item ul {
+			margin: 0;
+		}
+
+		.description-item ul li:not(:last-child) {
+			margin-bottom: 25px;
+		}
+
+		.description-item ul li {
+			text-align: left;
+			list-style-type: none;
+			color: white;
+			vertical-align: middle;
+		}
+		
+		.description-item ul li label:before {
+			margin-right: 25px;
+			font-size: rem-calc(25);
+			color: $text-dark-grey;
+			vertical-align: middle;
+		}
 	}
 }
 
@@ -232,32 +245,45 @@ hr {
 }
 
 .advert-detail-services {
+	@include grid-row;
 	margin-top: 50px;
 	
-	.flex-container {
-	    display: flex;
-	    flex-direction: row;
-	    flex-wrap: wrap;
-	    justify-content: space-between;
-	    align-items: center;
+	.services-container {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
 
-	    .flex-item {
-	    	margin: 0;
-	    }
+		margin-top: 35px;
 
-	    .flex-item ul {
-	    	margin: 0;
-	    }
-	    
-	    .flex-item ul li {
-	        list-style-type: none;
-	    }
+		.vertical-line {
+			border: 1px solid $border-color-light-grey;
+			min-height: 77px;
+			width: 1px;
+		}
 
-	    .vertical-line {
-	        border: 1px solid $border-color-light-grey;
-	        min-height: 77px;
-	        width: 1px;
-	    }
+		.service ul {
+			margin: 0;
+		}
+
+		.service ul li:not(:last-child) {
+			margin-bottom: 25px;
+		}
+
+		.service ul li {
+			text-align: left;
+			list-style-type: none;
+			color: white;
+			vertical-align: middle;
+		}
+		
+		.service ul li label:before {
+			margin-right: 25px;
+			font-size: rem-calc(25);
+			color: $text-dark-grey;
+			vertical-align: middle;
+		}
 	}
 }
 

@@ -41,51 +41,50 @@
 	        	<a class="small-7 medium-5 large-3 small-centered columns boeking-button" href="#">Boeking aanvragen</a>
 	        </div>
 	    </div>
+
 	    <div class="row advert-detail-calendar">
-	    	<div class="large-12 columns">
-			    <div class="small-12 medium-12 large-6 columns">
-			    	<h2>Over deze advertentie</h2>
-			    	<hr class="blue-horizontal-line"></hr>
-			    	<p><?php echo $advert_information["advert_description"]; ?></p>
-					<div class="flex-container">
-						<div class="flex-item">
-							<ul>
-								<li>
-									<span class="detail-icon" data-icon="e"></span>
-					    			<p>Basisschool <?php echo $advert_information["advert_school"]; ?></p>
-				    			</li>
-								<li>
-									<span class="detail-icon" data-icon="o"></span>
-					    			<p>Plaats voor <?php echo $advert_information["advert_spots"]; ?> kinderen</p>
-				    			</li>
-							</ul>
-						</div>
-						
-						<div class="vertical-line"></div>
-						
-						<div class="flex-item">
-							<ul>
-								<li>
-									<span class="detail-icon" data-icon="m"></span>
-				    				<p>Tussen 5 - <?php echo $advert_information["advert_price"]; ?> euro per uur</p>
-				    			</li>
-								<li>
-									<span class="detail-icon" data-icon="k"></span>
-				    				<p>Verplaatsing met <?php echo $advert_information["advert_transport"]; ?></p>
-				    			</li>
-							</ul>
-						</div>
+		    <div class="small-12 medium-12 large-6 columns">
+		    	<h2>Over deze advertentie</h2>
+		    	<hr class="blue-horizontal-line"></hr>
+		    	<p><?php echo $advert_information["advert_description"]; ?></p>
+
+				<div class="description-items-container">
+					<div class="description-item">
+						<ul>
+							<li>
+				    			<label data-icon="e">Basisschool <?php echo $advert_information["advert_school"]; ?></label>
+			    			</li>
+
+							<li>
+				    			<label data-icon="o">Plaats voor <?php echo $advert_information["advert_spots"]; ?> kinderen</label>
+			    			</li>
+						</ul>
 					</div>
-			    </div>
+					
+					<div class="vertical-line"></div>
+					
+					<div class="description-item">
+						<ul>
+							<li>
+			    				<label data-icon="m">Tussen 5 - <?php echo $advert_information["advert_price"]; ?> euro per uur</label>
+			    			</li>
 
-			    <div class="small-12 medium-12 large-6 columns">
-			    	<h2 class="mrgtop">Beschikbaarheid</h2>
-			    	<hr class="blue-horizontal-line"></hr>
+							<li>
+			    				<label data-icon="k">Verplaatsing met <?php echo $advert_information["advert_transport"]; ?></label>
+			    			</li>
+						</ul>
+					</div>
+				</div>
+		    </div>
 
-					<div id="availability-datepicker"></div>
-			    </div>
-		  	</div>
+		    <div class="small-12 medium-12 large-6 columns">
+		    	<h2 class="mrgtop">Beschikbaarheid</h2>
+		    	<hr class="blue-horizontal-line"></hr>
+
+				<div id="availability-datepicker"></div>
+		    </div>
 		</div>
+
 		<div class="row advert-detail-map">
 			<div class="large-12 columns">
 				<div class="small-12 medium-12 large-3 columns">
@@ -113,63 +112,50 @@
 				</div>
 			</div>
 		</div>
-
-		<div class="row advert-detail-services">
-			<div class="large-12 columns">
-			    <h2>Aangeboden diensten</h2>
+		
+		<div class="advert-detail-services">
+			<div class="small-12 columns">
+				<h2>Aangeboden diensten</h2>
 			    <hr class="blue-horizontal-line"></hr>
-			    <?php
-					/*$advert_services = $mysqli->prepare("SELECT advert_id, advert_service, fk_advert_id, fk_service_id, service_id, service_name, service_availability 
-						FROM tbl_advert_service 
-						LEFT JOIN tbl_advert ON tbl_advert_service.fk_advert_id=tbl_advert.advert_id 
-						LEFT JOIN tbl_advert_service ON tbl_advert_service.fk_service_id=tbl_service.service_id
-						WHERE tbl_advert.advert_id = '". $advert_information['advert_id'] ."");
-					$advert_services->execute();
-					$advert_services->bind_result($advert_id, $advert_service, $service_id, $service_name, $service_availability);
 
-					echo $advert_services;*/
-				?>
-				<div class="flex-container">
-					<div class="flex-item">
+				<div class="services-container">
+					<div class="service">
 						<ul>
 							<li>
-								<span class="detail-icon extra" data-icon="m"></span>
-			    				<p>Opvang in een thuisomgeving</p>
-			    			</li>
+								<label for="opvang-thuisomgeving" data-icon="m"><span></span>Opvang in een thuisomgeving</label>
+							</li>
+
 							<li>
-								<span class="detail-icon extra" data-icon="m"></span>
-			    				<p>Ophalen aan de schoolpoort</p>
-			    			</li>
+								<label for="ophalen-schoolpoort" data-icon="m"><span></span>Ophalen aan de schoolpoort</label>
+							</li>
 						</ul>
 					</div>
-					
+
 					<div class="vertical-line"></div>
-					
-					<div class="flex-item">
+
+					<div class="service">
 						<ul>
 							<li>
-								<span class="detail-icon extra" data-icon="m"></span>
-			    				<p>Vervoer naar thuis na opvang</p>
-			    			</li>
+								<label for="vervoer-thuis" data-icon="m"><span></span>Vervoer naar thuis na opvang</label>
+							</li>
+
 							<li>
-								<span class="detail-icon extra" data-icon="m"></span>
-			    				<p>Ophalen aan de schoolpoort</p>
-			    			</li>
+								<label for="vervoer-activiteiten" data-icon="m"><span></span>Vervoer naschoolse activiteiten</label>
+							</li>
 						</ul>
 					</div>
-					
+
 					<div class="vertical-line"></div>
-					
-					<div class="flex-item">
+
+					<div class="service">
 						<ul>
 							<li>
-								<span class="detail-icon extra" data-icon="m"></span>
-			    				<p>Voorzien van een maaltijd</p>
-			    			</li>
+								<label for="voorzien-maaltijd" data-icon="m"><span></span>Voorzien van een maaltijd</label>
+							</li>
+
 							<li>
-								<span class="detail-icon extra" data-icon="m"></span>
-			    				<p>Hulp bij huiswerk taken</p>
-			    			</li>
+								<label for="hulp-huiswerk" data-icon="m"><span></span>Hulp bij huiswerktaken</label>
+							</li>
 						</ul>
 					</div>
 				</div>

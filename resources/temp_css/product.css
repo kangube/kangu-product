@@ -4686,7 +4686,7 @@ hr {
   color: rgba(69, 69, 83, 0.8);
   line-height: 25px !important; }
 
-.advert-detail-calendar .flex-container {
+.advert-detail-calendar .description-items-container {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4702,17 +4702,30 @@ hr {
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
-          justify-content: space-between; }
-  .advert-detail-calendar .flex-container .flex-item {
-    margin: 0; }
-  .advert-detail-calendar .flex-container .flex-item ul {
-    margin: 0; }
-  .advert-detail-calendar .flex-container .flex-item ul li {
-    list-style-type: none; }
-  .advert-detail-calendar .flex-container .vertical-line {
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 35px; }
+  .advert-detail-calendar .description-items-container .vertical-line {
     border: 1px solid #C4C4C4;
     min-height: 77px;
     width: 1px; }
+  .advert-detail-calendar .description-items-container .description-item ul {
+    margin: 0; }
+  .advert-detail-calendar .description-items-container .description-item ul li:not(:last-child) {
+    margin-bottom: 25px; }
+  .advert-detail-calendar .description-items-container .description-item ul li {
+    text-align: left;
+    list-style-type: none;
+    color: white;
+    vertical-align: middle; }
+  .advert-detail-calendar .description-items-container .description-item ul li label:before {
+    margin-right: 25px;
+    font-size: 1.5625rem;
+    color: #454553;
+    vertical-align: middle; }
 
 .advert-detail-map {
   margin-top: 50px; }
@@ -4727,8 +4740,16 @@ hr {
         margin-bottom: 0px; } }
 
 .advert-detail-services {
+  max-width: 75rem;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 50px; }
-  .advert-detail-services .flex-container {
+  .advert-detail-services::before, .advert-detail-services::after {
+    content: ' ';
+    display: table; }
+  .advert-detail-services::after {
+    clear: both; }
+  .advert-detail-services .services-container {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -4748,17 +4769,26 @@ hr {
     -webkit-box-align: center;
     -webkit-align-items: center;
         -ms-flex-align: center;
-            align-items: center; }
-    .advert-detail-services .flex-container .flex-item {
-      margin: 0; }
-    .advert-detail-services .flex-container .flex-item ul {
-      margin: 0; }
-    .advert-detail-services .flex-container .flex-item ul li {
-      list-style-type: none; }
-    .advert-detail-services .flex-container .vertical-line {
+            align-items: center;
+    margin-top: 35px; }
+    .advert-detail-services .services-container .vertical-line {
       border: 1px solid #C4C4C4;
       min-height: 77px;
       width: 1px; }
+    .advert-detail-services .services-container .service ul {
+      margin: 0; }
+    .advert-detail-services .services-container .service ul li:not(:last-child) {
+      margin-bottom: 25px; }
+    .advert-detail-services .services-container .service ul li {
+      text-align: left;
+      list-style-type: none;
+      color: white;
+      vertical-align: middle; }
+    .advert-detail-services .services-container .service ul li label:before {
+      margin-right: 25px;
+      font-size: 1.5625rem;
+      color: #454553;
+      vertical-align: middle; }
 
 .advert-detail-ratings {
   margin-top: 50px; }
