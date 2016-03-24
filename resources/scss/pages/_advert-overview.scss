@@ -186,6 +186,17 @@
 	}
 }
 
+.no-search-results-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
+	p {
+		@include font($paragraph-font-family, regular, regular, 14, 19, red);
+	}
+}
+
 // Styling of the search form used for medium screens and smaller
 
 #mobile-search-form-button {

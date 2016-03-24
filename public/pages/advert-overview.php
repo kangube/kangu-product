@@ -1,7 +1,8 @@
 <?php
 	require_once("../php-assets/class.session.php");
-	require_once("../php-assets/class.user.php");
+	include_once("../php-assets/class.user.php");
 	include_once("../php-assets/class.advert.php");
+
 	$auth_user = new USER();
 	$user_id = $_SESSION['user_session'];
 	$stmt = $auth_user->runQuery("SELECT * FROM tbl_user WHERE user_id=:user_id");
@@ -40,7 +41,7 @@
 	            <h3 class="advert-overview-subheader">Deze header wordt vergezeld van een subheader met bijbehorende informatie over de pagina</h3>
 	        </div>
 
-        	<form action="advert-overview.php" method="post" name="search" class="advert-search-form">
+        	<form action="advert-overview.php" method="get" name="search" class="advert-search-form">
     			<input class="search-region" type="text" placeholder="Binnen welke school zoekt u een opvangbiedende ouder?" name="school" required>
     			<input class="search-price" type="text" placeholder="Prijs (max.)" name="price" required>
     			<select class="search-spots" name="number-children" required>
@@ -67,7 +68,7 @@
 			    </div>
 
 			    <div class="mobile-search-form">
-			    	<form action="advert-overview.php" method="post" name="search" class="advert-search-form-mobile">
+			    	<form action="advert-overview.php" method="get" name="search" class="advert-search-form-mobile">
 			    		<input type="text" placeholder="Binnen welke school zoekt u een opvangouder?" name="school" required>
 			    		<select class="search-spots" name="number-children" required>
 							<option value="1" selected>1 kind</option> 
@@ -75,7 +76,7 @@
 							<option value="3">3 kinderen</option>
 							<option value="3">4 kinderen</option>
 						</select>
-						<input class="search-price" type="text" placeholder="Prijs (max.)" name="price" required>	
+						<input class="search-price" type="text" placeholder="Prijs (max.)" name="price" required>
 						<input class="search-submit" type="submit" name="search" value="Zoeken">
 			    	</form>
 			    </div>
@@ -84,15 +85,15 @@
 
 	    <div class="large-collapse advert-overview-container">
 	    	<div class="large-12 columns">
-			    <div class="large-9 columns">
+			    <div class="large-10 columns">
 			    	<h2>Advertenties</h2>
 			    	<hr class="blue-horizontal-line"></hr>
 			    </div>
 
-			    <div class="large-3 columns">
+			    <div class="large-2 columns">
 			    	<form action="advert-overview.php" method="post">
 						<select class="advert-overview-filter" name='advert-overview-filter' onchange="this.form.submit()">
-							<option selected="selected">Filter resultaten</option>
+							<option selected="selected">Filter advertenties</option>
 							<option value="recent">Meest recent</option>
 							<option value="popular">Meest populair</option>
 							<option value="descending">Prijs hoog - laag</option>
@@ -113,12 +114,12 @@
 				}
 				mysqli_select_db($con,"test");
 
-				if(!isset($_POST['advert-overview-filter']) )
+				if(!isset($_POST['advert-overview-filter']))
 				{
 					//Standaard, Display all results
-					echo "<div id='results'></div><div id='searchresults'></div>";
+					echo "<div id='results'></div>";
 				}
-				else if (isset($_POST['advert-overview-filter'])){
+				else if (isset($_POST['advert-overview-filter'])) {
 					switch($_POST['advert-overview-filter']){
 						// Display the most popular adverts
 						case 'popular':
@@ -142,7 +143,7 @@
 
 						// Display all adverts
 						default:
-						echo "<div id='results'></div><div id='searchresults'></div>";
+						echo "<div id='results'></div>";
 					}
 
 					$advert_results->execute();
@@ -191,77 +192,6 @@
 					    	</div>";
 					}
 				}
-
-				if(isset($_POST['search']))
-				{
-
-				    $school = $_POST['school'];
-				    $price = $_POST['price']; 
-				    $children = $_POST['number-children'];
-				     
-				    $min_length = 1;
-				     
-				    if(strlen($school) >= $min_length) {
-				         
-				        $school = htmlspecialchars($school); 
-				        $price = htmlspecialchars($price);
-				        $school = mysqli_real_escape_string($con, $school);
-				        
-				        $raw_results = mysqli_query($con, "SELECT * FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id WHERE advert_school LIKE '%".$school."%' AND advert_price <= $price AND advert_spots >= $children");
-				         
-				        if(mysqli_num_rows($raw_results) > 0) {
-				            while($results = mysqli_fetch_array($raw_results)) {
-
-				            	$shorten = strpos($results['advert_description'], ' ', 145);
-								$final_advert_description = substr($results['advert_description'], 0, $shorten)." ...";
-
-					            echo "<div class='advert-container end'>
-			    					  	<a href='advert-detail.php?id=".$results['advert_id']."' class='advert-link'>
-			    							<div class='advert'>
-								    			<div class='small-12 columns'>
-									    			<div class='small-2 columns'>
-									    				<img class='advert-profile-image' src='".$results['user_image_path']."'>
-									    			</div>
-									    			
-									    			<div class='small-10 columns'>
-										    			<ul class='advert-information-list'>
-										    				<li>".$results['user_firstname'].' '.$results['user_lastname']."</li>
-										    				<li data-icon='d'>".$results['user_city']."</li>
-										    			</ul>
-									    			</div>
-								    			</div>
-
-				    							<p class='advert-description'>".$final_advert_description."</p>
-				    			
-								    			<div class='small-6 columns'>
-									    			<div class='advert-price'>
-										    			<p>".$results['advert_price']."</p>
-										    			<p>p/u</p>
-									    			</div>
-									    		</div>
-
-									    		<div class='small-6 columns'>
-									    			<div class='advert-spots'>
-									    				<p>".$results['advert_spots']."</p>
-										    			<p>plaatsen</p>
-									    			</div>
-									    		</div>
-						    	
-									    		<p class='advert-school' data-icon='e'>Basisschool ".$results['advert_school']."</p>
-								    		</div>
-								    	</a>
-							    	</div>";
-				            }
-				        }
-				        else {
-				            echo "Geen resultaten gevonden.";
-				        }
-				         
-				    }
-				    else { 
-				    	echo "Je hebt niet alle velden correct ingevuld.<br/>Er zijn geen resultaten gevonden.";
-				    }
-				}
 				?>
 		    </div>
 		</div>
@@ -269,5 +199,28 @@
 		<script src="../js/minimum-viable-product.min.js"></script>
 	    <script src="https://use.typekit.net/vnw3zje.js"></script>
 	    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+	    <script>
+	    	$(document).ready(function() {
+				$(".advert-search-form, .advert-search-form-mobile").on("submit", function (e) {
+					e.preventDefault();
+					var school = $('.search-region').val();
+		    		var price = $('.search-price').val();
+		    		var spots = $('.search-spots').val();
+
+					$.ajax({
+						type: 'GET',
+						dataType: 'html',
+						url: 'search.php',
+						data: {school:school, price:price, spots:spots},
+						cache: false,
+						success: function(response) {
+							$("#results").css("display", "none");
+							$(".advert-overview-container" ).html(response);
+						}
+					});
+				});
+			});
+	    </script>
     </body>
 </html>
