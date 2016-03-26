@@ -13,7 +13,7 @@ mysqli_select_db($con,"test");
 if(!empty($_GET)) {
     $school = htmlspecialchars($_GET['school']); 
     $price = htmlspecialchars($_GET['price']);
-    $children = htmlspecialchars($_GET['number-children']);
+    $spots = htmlspecialchars($_GET['spots']);
     
     $raw_results = mysqli_query($con, "SELECT * FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id WHERE advert_school LIKE '%".$school."%' AND advert_price <= '".$price."' AND advert_spots >= '".$spots."'");
      
@@ -28,7 +28,7 @@ if(!empty($_GET)) {
 
 				    <div class='large-2 columns'>
 				    	<form action='advert-overview.php' method='post'>
-							<select class='advert-overview-filter' name='advert-overview-filter' onchange='this.form.submit()'>
+							<select class='search-advert-overview-filter' name='advert-overview-filter' onchange='this.form.submit()'>
 								<option selected='selected'>Filter advertenties</option>
 								<option value='recent'>Meest recent</option>
 								<option value='popular'>Meest populair</option>

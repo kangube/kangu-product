@@ -302,7 +302,7 @@
 
 // Styling of the advert overview container
 
-.advert-overview-container {
+.advert-overview-container, .search-advert-overview-container {
 	@include grid-row;
 	margin-top: 40px;
 }

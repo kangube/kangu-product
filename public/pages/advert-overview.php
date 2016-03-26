@@ -83,117 +83,8 @@
 			</div>
 	    </div>
 
-	    <div class="large-collapse advert-overview-container">
-	    	<div class="large-12 columns">
-			    <div class="large-10 columns">
-			    	<h2>Advertenties</h2>
-			    	<hr class="blue-horizontal-line"></hr>
-			    </div>
-
-			    <div class="large-2 columns">
-			    	<form action="advert-overview.php" method="post">
-						<select class="advert-overview-filter" name='advert-overview-filter' onchange="this.form.submit()">
-							<option selected="selected">Filter advertenties</option>
-							<option value="recent">Meest recent</option>
-							<option value="popular">Meest populair</option>
-							<option value="descending">Prijs hoog - laag</option>
-							<option value="ascending">Prijs laag - hoog</option>
-						</select>
-					</form>
-			    </div>
-			</div>
-
-			<div class="large-12 columns">
-
-				<?php
-
-				$con = mysqli_connect("localhost","root","root","kangu-product");
-				if (mysqli_connect_errno())
-				{
-				  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-				}
-				mysqli_select_db($con,"test");
-
-				if(!isset($_POST['advert-overview-filter']))
-				{
-					//Standaard, Display all results
-					echo "<div id='results'></div>";
-				}
-				else if (isset($_POST['advert-overview-filter'])) {
-					switch($_POST['advert-overview-filter']){
-						// Display the most popular adverts
-						case 'popular':
-							$advert_results = $mysqli->prepare("SELECT advert_id, fk_user_id, advert_description, advert_price, advert_spots, advert_school, user_image_path, user_firstname, user_lastname, user_city FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id ORDER BY advert_number_bookings DESC");
-						break;
-
-						// Display the most recently created adverts
-						case 'recent':
-							$advert_results = $mysqli->prepare("SELECT advert_id, fk_user_id, advert_description, advert_price, advert_spots, advert_school, user_image_path, user_firstname, user_lastname, user_city FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id ORDER BY advert_id DESC");
-						break;
-
-						// Display all adverts while ordering by an ascending price
-						case 'ascending':
-							$advert_results = $mysqli->prepare("SELECT advert_id, fk_user_id, advert_description, advert_price, advert_spots, advert_school, user_image_path, user_firstname, user_lastname, user_city FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id ORDER BY advert_price ASC");
-						break;
-
-						// Display all adverts while ordering by an descending price
-						case 'descending':
-							$advert_results = $mysqli->prepare("SELECT advert_id, fk_user_id, advert_description, advert_price, advert_spots, advert_school, user_image_path, user_firstname, user_lastname, user_city FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id ORDER BY advert_price DESC");
-						break;
-
-						// Display all adverts
-						default:
-						echo "<div id='results'></div>";
-					}
-
-					$advert_results->execute();
-					$advert_results->bind_result($advert_id, $advert_creator, $advert_description, $advert_price, $advert_spots, $advert_school, $user_profile_image, $user_first_name, $user_last_name, $user_city);
-
-					while($advert_results->fetch()) 
-					{
-						$shorten = strpos($advert_description, ' ', 145);
-						$final_advert_description = substr($advert_description, 0, $shorten)." ...";
-
-						echo "<div class='advert-container end'>
-							  	<a href='advert-detail.php?id=".$advert_id."' class='advert-link'>
-									<div class='advert'>
-						    			<div class='small-12 columns'>
-							    			<div class='small-2 columns'>
-							    				<img class='advert-profile-image' src='".$user_profile_image."'>
-							    			</div>
-							    			
-							    			<div class='small-10 columns'>
-								    			<ul class='advert-information-list'>
-								    				<li>".$user_first_name.' '.$user_last_name."</li>
-								    				<li data-icon='d'>".$user_city."</li>
-								    			</ul>
-							    			</div>
-						    			</div>
-
-										<p class='advert-description'>".$final_advert_description."</p>
-						
-						    			<div class='small-6 columns'>
-							    			<div class='advert-price'>
-								    			<p>".$advert_price."</p>
-								    			<p>p/u</p>
-							    			</div>
-							    		</div>
-
-							    		<div class='small-6 columns'>
-							    			<div class='advert-spots'>
-							    				<p>".$advert_spots."</p>
-								    			<p>plaatsen</p>
-							    			</div>
-							    		</div>
-				    	
-							    		<p class='advert-school' data-icon='e'>Basisschool ".$advert_school."</p>
-						    		</div>
-						    	</a>
-					    	</div>";
-					}
-				}
-				?>
-		    </div>
+	    <div class="large-collapse advert-overview-container"></div>
+	    <div class="large-collapse search-advert-overview-container"></div>
 		</div>
 
 		<script src="../js/minimum-viable-product.min.js"></script>
@@ -209,16 +100,26 @@
 		    		var spots = $('.search-spots').val();
 
 					$.ajax({
-						type: 'GET',
+						type: 'post',
 						dataType: 'html',
-						url: 'search.php',
+						url: '../php-assets/class.search.php',
 						data: {school:school, price:price, spots:spots},
 						cache: false,
 						success: function(response) {
-							$("#results").css("display", "none");
-							$(".advert-overview-container" ).html(response);
+							$(".advert-overview-container").css("display", "none");
+							$(".search-advert-overview-container" ).html(response);
 						}
 					});
+				});
+
+				$(".search-advert-overview-container").on("click", ".pagination a", function (e) {
+					e.preventDefault();
+					var school = $('.search-region').val();
+		    		var price = $('.search-price').val();
+		    		var spots = $('.search-spots').val();
+
+					var page = $(this).attr("data-page");
+					$(".search-advert-overview-container").load("../php-assets/class.search.php", {page:page, school:school, price:price, spots:spots});
 				});
 			});
 	    </script>
