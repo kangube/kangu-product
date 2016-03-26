@@ -4500,6 +4500,10 @@ td.ui-datepicker-week-end {
     float: left;
     width: 50%; } }
 
+@media screen and (min-width: 0em) and (max-width: 39.9375em) {
+  .mrgtop {
+    margin-top: -15px; } }
+
 @media screen and (min-width: 40em) and (max-width: 63.9375em) {
   .mrgtop {
     margin-top: 30px; } }
@@ -4727,8 +4731,71 @@ hr {
     color: #454553;
     vertical-align: middle; }
 
+@media screen and (min-width: 0em) and (max-width: 39.9375em) {
+  .advert-detail-calendar .description-container-mobile ul {
+    margin-left: 0px !important; }
+  .advert-detail-calendar .description-container-mobile ul li {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    width: 100%;
+    float: left;
+    list-style-type: none;
+    border: 1px solid #C4C4C4;
+    padding: 15px !important; } }
+  @media screen and (min-width: 0em) and (max-width: 39.9375em) and (min-width: 40em) {
+    .advert-detail-calendar .description-container-mobile ul li {
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem; } }
+
+@media screen and (min-width: 0em) and (max-width: 39.9375em) {
+    .advert-detail-calendar .description-container-mobile ul li:last-child:not(:first-child) {
+      float: right; }
+  .advert-detail-calendar .description-container-mobile ul li:nth-child(even) {
+    border-top: none;
+    border-bottom: none; }
+  .advert-detail-calendar .description-container-mobile ul li:last-child {
+    border-bottom: 1px solid #C4C4C4; }
+  .advert-detail-calendar .description-container-mobile ul li label:before {
+    margin-right: 25px;
+    font-size: 1.5625rem;
+    color: #454553;
+    vertical-align: middle; } }
+
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+  .advert-detail-calendar .description-container-mobile ul {
+    margin-left: 0px !important; }
+  .advert-detail-calendar .description-container-mobile ul li {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    width: 50%;
+    float: left;
+    list-style-type: none;
+    border: 1px solid #C4C4C4;
+    padding: 15px !important; } }
+  @media screen and (min-width: 40em) and (max-width: 63.9375em) and (min-width: 40em) {
+    .advert-detail-calendar .description-container-mobile ul li {
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem; } }
+
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+    .advert-detail-calendar .description-container-mobile ul li:last-child:not(:first-child) {
+      float: right; }
+  .advert-detail-calendar .description-container-mobile ul li:nth-child(odd) {
+    border-right: none; }
+  .advert-detail-calendar .description-container-mobile ul li:nth-child(-n+2) {
+    border-bottom: none; }
+  .advert-detail-calendar .description-container-mobile ul li label:before {
+    margin-right: 25px;
+    font-size: 1.5625rem;
+    color: #454553;
+    vertical-align: middle; } }
+
+@media screen and (min-width: 0em) and (max-width: 39.9375em) {
+  .advert-detail-calendar .datepicker-small {
+    margin-top: 50px; } }
+
 .advert-detail-map {
-  margin-top: 50px; }
+  margin-top: 30px; }
   .advert-detail-map p {
     line-height: 25px !important; }
   .advert-detail-map iframe {
@@ -4738,17 +4805,87 @@ hr {
     @media screen and (min-width: 40em) {
       .advert-detail-map iframe {
         margin-bottom: 0px; } }
+  @media screen and (min-width: 0em) and (max-width: 39.9375em) {
+    .advert-detail-map ul {
+      margin: 0;
+      margin-bottom: 20px; }
+    .advert-detail-map ul li {
+      padding-left: 0.625rem;
+      padding-right: 0.625rem;
+      width: 100%;
+      float: left;
+      list-style-type: none;
+      border: 1px solid #C4C4C4;
+      padding: 15px; } }
+  @media screen and (min-width: 0em) and (max-width: 39.9375em) and (min-width: 40em) {
+    .advert-detail-map ul li {
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem; } }
+  @media screen and (min-width: 0em) and (max-width: 39.9375em) {
+      .advert-detail-map ul li:last-child:not(:first-child) {
+        float: right; }
+    .advert-detail-map ul li:nth-child(-n+4) {
+      border-bottom: none; }
+    .advert-detail-map ul li:nth-child(-n+3) {
+      border: 1px solid #C4C4C4; }
+    .advert-detail-map ul li:nth-child(even) {
+      border-top: none; }
+    .advert-detail-map ul li:last-child {
+      border-bottom: 1px solid #C4C4C4; }
+    .advert-detail-map ul li label:before {
+      margin-right: 25px;
+      font-size: 1.5625rem;
+      color: #454553;
+      vertical-align: middle; }
+    .advert-detail-map iframe {
+      margin-top: 20px; } }
+  @media screen and (min-width: 40em) and (max-width: 63.9375em) {
+    .advert-detail-map ul {
+      margin: 0; }
+    .advert-detail-map ul li {
+      padding-left: 0.625rem;
+      padding-right: 0.625rem;
+      width: 50%;
+      float: left;
+      list-style-type: none;
+      border: 1px solid #C4C4C4;
+      padding: 15px; } }
+  @media screen and (min-width: 40em) and (max-width: 63.9375em) and (min-width: 40em) {
+    .advert-detail-map ul li {
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem; } }
+  @media screen and (min-width: 40em) and (max-width: 63.9375em) {
+      .advert-detail-map ul li:last-child:not(:first-child) {
+        float: right; }
+    .advert-detail-map ul li:nth-child(odd) {
+      border-right: none; }
+    .advert-detail-map ul li:nth-child(-n+2) {
+      border-bottom: none; }
+    .advert-detail-map ul li:nth-child(-n+3) {
+      border-bottom: none; }
+    .advert-detail-map ul li:nth-child(-n+4) {
+      border-bottom: none; }
+    .advert-detail-map ul li label:before {
+      margin-right: 25px;
+      font-size: 1.5625rem;
+      color: #454553;
+      vertical-align: middle; }
+    .advert-detail-map iframe {
+      margin-top: 20px; } }
 
 .advert-detail-services {
   max-width: 75rem;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 50px; }
+  margin-top: 30px; }
   .advert-detail-services::before, .advert-detail-services::after {
     content: ' ';
     display: table; }
   .advert-detail-services::after {
     clear: both; }
+  @media screen and (min-width: 0em) and (max-width: 39.9375em) {
+    .advert-detail-services {
+      margin-top: 0px; } }
   .advert-detail-services .services-container {
     display: -webkit-box;
     display: -webkit-flex;
@@ -4789,6 +4926,69 @@ hr {
       font-size: 1.5625rem;
       color: #454553;
       vertical-align: middle; }
+
+@media screen and (min-width: 0em) and (max-width: 39.9375em) {
+  .service-container-mobile ul {
+    margin: 0;
+    margin-bottom: 30px; }
+  .service-container-mobile ul li {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    width: 100%;
+    float: left;
+    list-style-type: none;
+    border: 1px solid #C4C4C4;
+    padding: 15px; } }
+  @media screen and (min-width: 0em) and (max-width: 39.9375em) and (min-width: 40em) {
+    .service-container-mobile ul li {
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem; } }
+
+@media screen and (min-width: 0em) and (max-width: 39.9375em) {
+    .service-container-mobile ul li:last-child:not(:first-child) {
+      float: right; }
+  .service-container-mobile ul li:nth-child(even) {
+    border-top: none;
+    border-bottom: none; }
+  .service-container-mobile ul li:last-child {
+    border-bottom: 1px solid #C4C4C4; }
+  .service-container-mobile ul li label:before {
+    margin-right: 25px;
+    font-size: 1.5625rem;
+    color: #454553;
+    vertical-align: middle; } }
+
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+  .service-container-mobile ul {
+    margin: 0;
+    margin-bottom: 30px; }
+  .service-container-mobile ul li {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    width: 50%;
+    float: left;
+    list-style-type: none;
+    border: 1px solid #C4C4C4;
+    padding: 15px; } }
+  @media screen and (min-width: 40em) and (max-width: 63.9375em) and (min-width: 40em) {
+    .service-container-mobile ul li {
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem; } }
+
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+    .service-container-mobile ul li:last-child:not(:first-child) {
+      float: right; }
+  .service-container-mobile ul li:nth-child(odd) {
+    border-right: none; }
+  .service-container-mobile ul li:nth-child(-n+2) {
+    border-bottom: none; }
+  .service-container-mobile ul li:nth-last-child(-n+2) {
+    border-top: none; }
+  .service-container-mobile ul li label:before {
+    margin-right: 25px;
+    font-size: 1.5625rem;
+    color: #454553;
+    vertical-align: middle; } }
 
 .advert-detail-ratings {
   margin-top: 50px; }

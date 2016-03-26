@@ -1,0 +1,517 @@
+// Styling of the introductory header
+
+.full-width-advert-create {
+	min-width: 100vw;
+	height: auto;
+}
+
+.full-height-gradient {
+	min-width: 100vw;
+	min-height: 100vh;
+	display: flex;
+	background: linear-gradient(-225deg, #57B9F6 0%, $dark-blue 100%);
+	left: 0;
+	top: 0;
+	position: absolute;
+	z-index: -1;
+}
+
+.advert-create-container {
+	@include grid-row;
+
+	.advert-create-header {
+		@include font($header-font-family, regular, regular, 45, 54, $text-white);
+		text-align: center;
+		margin-bottom: 30px;
+	}
+
+	.advert-create-subheader {
+		@include font($header-font-family, regular, regular, 30, 36, $light-blue);
+		text-align: center;
+	}
+}
+
+.advert-create-introductory-header {
+	@include grid-column(12);
+	margin-top: 120px;
+	margin-bottom: 120px;
+}
+
+// Styling of the advert create form and all of its components
+
+.advert-create-form-container {
+	width: 90%;
+	display: flex;
+	margin: 0 auto 0 auto;
+	background-color: $white;
+	border-radius: 3px;
+	box-shadow: 0px 19px 38px 0px rgba(0,0,0,0.2);
+
+	.advert-create-form {
+		padding: 60px 20px 60px 20px;
+	}
+
+	// Styling for all form containers
+
+	.form-description-container, .form-number-children-container,
+	.form-contact-information-container, .form-transportation-container,
+	.form-services-container, .form-availability-container {
+		@include grid-column(12);
+		margin-bottom: 50px;
+	}
+
+	@include breakpoint(large) {
+		.form-description-container, .form-contact-information-container {
+			@include grid-column(7);
+		}
+
+		.form-number-children-container, .form-transportation-container {
+			@include grid-column(5);
+		}
+	}
+
+	.form-header {
+		@include font($header-font-family, regular, regular, 24, 30, $text-dark-grey);
+	}
+
+	.blue-horizontal-line {
+		margin-bottom: 25px;
+	}
+
+	.form-subheader {
+		@include font($paragraph-font-family, regular, regular, 14, 22, rgba($text-dark-grey, 0.8));
+		margin-bottom: 25px;
+	}
+
+	.form-error {
+		margin-top: 20px !important;
+	}
+
+	// Styling of the description container
+
+	.form-description-container textarea {
+		margin-bottom: 0;
+	}
+
+	// Styling of the number children container
+
+	.form-number-children-radio-buttons {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.form-number-children-container label {
+		@include font($header-font-family, regular, regular, 17, 17, rgba($text-dark-grey, 0.6));
+		width: 35px;
+		height: 35px;
+		background-color: rgba($dark-grey, 0.1);
+		padding-top: 8px;
+		margin-right: 20px;
+		margin-top: 15px;
+
+		&:hover {
+			background-color: rgba($dark-grey, 0.6);
+			color: $text-white;
+		}
+	}
+
+	input[type="radio"] {
+		margin-bottom: 0;
+		padding: 0;
+		display: none;
+	}
+
+	.radio-selected {
+		background-color: rgba($dark-grey, 0.6) !important;
+		color: $text-white !important;
+	}
+
+	// Styling of the contact information container
+
+	.form-contact-information-container .form-icon-input-field {
+		margin-bottom: 30px;
+	}
+
+	.form-icon-input-container {
+		border: none;    
+		display: flex;
+		flex-direction: row;
+
+		input {
+			margin-bottom: 0;
+		}
+
+		.form-icon {
+			font-size: rem-calc(25);
+			color: rgba($text-dark-grey, 0.6);
+			padding: 6px 0 0 0;
+			margin-right: 20px;
+		}
+
+		.form-input {
+			flex: 1;
+		}
+	}
+
+	// Styling of the transportation container
+
+	.form-transportation-container ul {
+		margin: 0;
+	}
+
+	.transportation-container {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
+	
+		.vertical-line {
+			border: 1px solid $border-color-light-grey;
+			min-height: 95px;
+			width: 1px;
+		}
+
+		.transportation ul {
+			margin: 0;
+		}
+
+		.transportation ul li {
+			text-align: left;
+			list-style-type: none;
+			padding: 7px 0 7px 0!important;
+		}
+
+		.transportation ul li:not(:last-child) {
+			margin-bottom: 30px;
+		}
+	}
+
+	@include breakpoint(small only) {
+		.transportation-container-mobile ul li {
+			@include grid-column(12);
+			list-style-type: none;
+			border: 1px solid $border-color-light-grey;
+			padding: 15px !important;
+		}
+
+		.transportation-container-mobile ul li:nth-child(even) {
+			border-top: none;
+			border-bottom: none;
+		}
+
+		.transportation-container-mobile ul li:last-child {
+			border-bottom: 1px solid $border-color-light-grey;
+		}
+	}
+
+	@include breakpoint(medium only) {
+		.transportation-container-mobile ul li {
+			@include grid-column(6);
+			list-style-type: none;
+			border: 1px solid $border-color-light-grey;
+			padding: 15px !important;
+		}
+
+		.transportation-container-mobile ul li:nth-child(odd) {
+			border-right: none;
+		}
+
+		.transportation-container-mobile ul li:nth-child(-n+2) {
+			border-bottom: none;
+		}
+	}
+
+	// Styling of the services container for large and up screens
+
+	.services-container {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
+
+		margin-top: 35px;
+
+		.vertical-line {
+			border: 1px solid $border-color-light-grey;
+			min-height: 77px;
+			width: 1px;
+		}
+
+		.service ul {
+			margin: 0;
+		}
+
+		.service ul li:not(:last-child) {
+			margin-bottom: 25px;
+		}
+
+		.service ul li {
+			text-align: left;
+			list-style-type: none;
+			color: white;
+		}
+
+		.checkbox label span {
+			margin-right: 25px;
+		}
+	}
+
+	// Styling of the services container for medium and smaller screens
+
+	@include breakpoint(small only) {
+		.services-container-mobile ul {
+			margin: 0;
+		}
+
+		.services-container-mobile ul li {
+			@include grid-column(12);
+			list-style-type: none;
+			border: 1px solid $border-color-light-grey;
+			padding: 15px;
+		}
+
+		.services-container-mobile ul li:nth-child(even) {
+			border-top: none;
+			border-bottom: none;
+		}
+
+		.services-container-mobile ul li:last-child {
+			border-bottom: 1px solid $border-color-light-grey;
+		}
+	}
+
+	@include breakpoint(medium only) {
+		.services-container-mobile ul {
+			margin: 0;
+		}
+
+		.services-container-mobile ul li {
+			@include grid-column(6);
+			list-style-type: none;
+			border: 1px solid $border-color-light-grey;
+			padding: 15px;
+		}
+
+		.services-container-mobile ul li:nth-child(odd) {
+			border-right: none;
+		}
+
+		.services-container-mobile ul li:nth-child(-n+2) {
+			border-bottom: none;
+		}
+
+		.services-container-mobile ul li:nth-last-child(-n+2) {
+			border-top: none;
+		}
+	}
+
+	// Styling of the advert-availability container
+
+	.availability-datepicker-container {
+		padding-left: 0;
+	}
+		
+	.advert-availability-input-fields {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		padding: 25px;
+		background-color: $light-grey;
+		height: 317px;
+		overflow-y: auto;
+
+		.availability-slot-duration {
+			@include grid-column(1);
+			padding: 0 !important;
+			margin-top: 30px;
+			text-align: center;
+
+			&:before {
+				font-size: rem-calc(20);
+				color: rgba($text-dark-grey, 0.6);
+			}
+		}
+
+		.availability-slot-remove {
+			@include grid-column(1);
+			padding: 0 !important;
+			margin-top: 30px;
+			text-align: center;
+
+			&:before {
+				font-size: rem-calc(13);
+				color: rgba($text-dark-grey, 0.6);
+			}
+		}
+	}
+
+	// Alternative availability selection
+
+	.advert-availability-slots {
+		@include grid-row;
+		margin-top: 30px;
+		display: block;
+	}
+
+	.availability-slot-container {
+		display: inline-block;
+		margin-bottom: 30px;
+
+		@include breakpoint(small only) {
+			@include grid-column(12);
+		}
+
+		@include breakpoint(medium only) {
+			@include grid-column(4);
+		}
+
+		@include breakpoint(large) {
+			@include grid-column(3);
+		}
+	}
+
+	.availability-slot {
+		display: inline-block;
+		background-color: $light-grey;
+		border: 1px solid $border-color-light-grey;
+		padding: 15px 0 15px 0;
+		width: 100%;
+
+		.remove-availability-slot {
+			@include grid-column(12);
+			text-align: right !important;
+			cursor: pointer !important;
+
+			&:before {
+				font-size: rem-calc(13);
+				color: rgba($text-dark-grey, 0.6);
+			}
+		}
+
+		.selected-date-format {
+			margin-bottom: 20px;
+		}
+
+		.selected-date-format-day, .selected-date-format-month-year {
+			@include font($paragraph-font-family, regular, regular, 18, 24, $text-dark-grey);
+			text-align: center;
+		}
+
+		.selected-date {
+			display: none;
+		}
+
+		.availability-slot-duration {
+			@include grid-column(2);
+			display: inline-block;
+			padding: 0 !important;
+			margin-top: 30px;
+			text-align: center;
+
+			&:before {
+				font-size: rem-calc(20);
+				color: rgba($text-dark-grey, 0.6);
+			}
+		}
+
+		label {
+			@include font($paragraph-font-family, regular, regular, 14, 19, $text-dark-grey);
+			margin-bottom: 10px;
+			text-align: center;
+		}
+
+		input[type="time"] {
+			margin-bottom: 0;
+			text-align: center;
+		}
+
+		input[type="time"]:first-child {
+			padding-right: 30px;
+		}
+	}
+
+	// Styling of the advert-create container
+
+	#advert-create-button {
+		@include button($light-red, 3px);
+	}
+}
+
+// Responsiveness
+
+@include breakpoint(small only) {
+	.advert-create-introductory-header {
+		margin-top: 90px;
+		margin-bottom: 90px;
+	}
+
+	.advert-create-container .advert-create-header {
+		@include font($header-font-family, regular, regular, 28, 37, $text-white);
+		margin-bottom: 30px;
+	}
+
+	.advert-create-container .advert-create-subheader {
+		@include font($header-font-family, regular, regular, 20, 24, $light-blue);
+	}
+
+	.advert-create-form-container {
+		.form-subheader {
+			margin-bottom: 30px;
+		}
+
+		.form-icon-input-field {
+			padding-left: 0;
+			margin-bottom: 40px;
+		}
+
+		.form-icon-input-field:last-of-type {
+			margin-bottom: 0;
+		}
+
+		.transportation-checkbox:nth-of-type(1), .transportation-checkbox:nth-of-type(3)  {
+			padding-left: 0;
+		}
+
+		.transportation-checkbox:nth-of-type(2), .transportation-checkbox:nth-of-type(4)  {
+			padding-right: 0;
+		}
+	}
+}
+
+@include breakpoint(medium only) {
+	.advert-create-form-container {
+		.form-subheader {
+			margin-bottom: 30px;
+		}
+
+		.form-icon-input-field {
+			padding-left: 0;
+			margin-bottom: 40px;
+		}
+	}
+}
+
+@include breakpoint(xlarge) {
+	.advert-create-form-container {
+		.form-icon-input-field:nth-of-type(1), .form-icon-input-field:nth-of-type(3) {
+			padding-left: 0;
+		}
+
+		.form-icon-input-field:nth-of-type(2), .form-icon-input-field:nth-of-type(4) {
+			padding-right: 0;
+		}
+
+		.form-icon-input-field:nth-of-type(3), .form-icon-input-field:last-of-type {
+			margin-bottom: 0;
+		}
+
+		.transportation-checkbox:nth-of-type(3), .transportation-checkbox:nth-of-type(4)  {
+			margin-bottom: 0;
+		}
+	}
+}

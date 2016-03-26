@@ -7,6 +7,10 @@
 }
 
 .mrgtop {
+	
+	@include breakpoint(small only) {
+		margin-top: -15px;
+	}
 
 	@include breakpoint(medium only) {
 		margin-top: 30px;
@@ -221,10 +225,73 @@ hr {
 			vertical-align: middle;
 		}
 	}
+
+	@include breakpoint(small only) {
+		.description-container-mobile ul {
+			margin-left: 0px !important;
+		}
+
+		.description-container-mobile ul li {
+			@include grid-column(12);
+			list-style-type: none;
+			border: 1px solid $border-color-light-grey;
+			padding: 15px !important;
+		}
+
+		.description-container-mobile ul li:nth-child(even) {
+			border-top: none;
+			border-bottom: none;
+		}
+
+		.description-container-mobile ul li:last-child {
+			border-bottom: 1px solid $border-color-light-grey;
+		}
+
+		.description-container-mobile ul li label:before {
+			margin-right: 25px;
+			font-size: rem-calc(25);
+			color: $text-dark-grey;
+			vertical-align: middle;
+		}
+	}
+
+	@include breakpoint(medium only) {
+		.description-container-mobile ul {
+			margin-left: 0px !important;
+		}
+
+		.description-container-mobile ul li {
+			@include grid-column(6);
+			list-style-type: none;
+			border: 1px solid $border-color-light-grey;
+			padding: 15px !important;
+		}
+
+		.description-container-mobile ul li:nth-child(odd) {
+			border-right: none;
+		}
+
+		.description-container-mobile ul li:nth-child(-n+2) {
+			border-bottom: none;
+		}
+
+		.description-container-mobile ul li label:before {
+			margin-right: 25px;
+			font-size: rem-calc(25);
+			color: $text-dark-grey;
+			vertical-align: middle;
+		}
+	}
+
+	.datepicker-small {
+		@include breakpoint(small only) {
+			margin-top: 50px;
+		}
+	}
 }
 
 .advert-detail-map {
-	margin-top: 50px;
+	margin-top: 30px;
 	
 	p {
 		line-height: 25px !important;
@@ -242,11 +309,96 @@ hr {
 			margin-bottom: 0px;
 		}
 	}
+
+	@include breakpoint(small only) {
+		ul {
+			margin: 0;
+			margin-bottom: 20px;
+		}
+
+		ul li {
+			@include grid-column(12);
+			list-style-type: none;
+			border: 1px solid $border-color-light-grey;
+			padding: 15px;
+		}
+
+		ul li:nth-child(-n+4) {
+			border-bottom: none;
+		}
+
+		ul li:nth-child(-n+3) {
+			border: 1px solid $border-color-light-grey;
+		}
+
+		ul li:nth-child(even) {
+			border-top: none;
+		}
+
+		ul li:last-child {
+			border-bottom: 1px solid $border-color-light-grey;
+		}
+
+		ul li label:before {
+			margin-right: 25px;
+			font-size: rem-calc(25);
+			color: $text-dark-grey;
+			vertical-align: middle;
+		}
+
+		iframe {
+			margin-top: 20px;
+		}
+	}
+
+	@include breakpoint(medium only) {
+		ul {
+			margin: 0;
+		}
+
+		ul li {
+			@include grid-column(6);
+			list-style-type: none;
+			border: 1px solid $border-color-light-grey;
+			padding: 15px;
+		}
+
+		ul li:nth-child(odd) {
+			border-right: none;
+		}
+
+		ul li:nth-child(-n+2) {
+			border-bottom: none;
+		}
+
+		ul li:nth-child(-n+3) {
+			border-bottom: none;
+		}
+
+		ul li:nth-child(-n+4) {
+			border-bottom: none;
+		}
+
+		ul li label:before {
+			margin-right: 25px;
+			font-size: rem-calc(25);
+			color: $text-dark-grey;
+			vertical-align: middle;
+		}
+
+		iframe {
+			margin-top: 20px;
+		}
+	}
 }
 
 .advert-detail-services {
 	@include grid-row;
-	margin-top: 50px;
+	margin-top: 30px;
+
+	@include breakpoint(small only) {
+		margin-top: 0px;
+	}
 	
 	.services-container {
 		display: flex;
@@ -286,6 +438,70 @@ hr {
 		}
 	}
 }
+
+@include breakpoint(small only) {
+	.service-container-mobile ul {
+		margin: 0;
+		margin-bottom: 30px;
+	}
+
+	.service-container-mobile ul li {
+		@include grid-column(12);
+		list-style-type: none;
+		border: 1px solid $border-color-light-grey;
+		padding: 15px;
+	}
+
+	.service-container-mobile ul li:nth-child(even) {
+		border-top: none;
+		border-bottom: none;
+	}
+
+	.service-container-mobile ul li:last-child {
+		border-bottom: 1px solid $border-color-light-grey;
+	}
+
+	.service-container-mobile ul li label:before {
+		margin-right: 25px;
+		font-size: rem-calc(25);
+		color: $text-dark-grey;
+		vertical-align: middle;
+	}
+}
+
+@include breakpoint(medium only) {
+	.service-container-mobile ul {
+		margin: 0;
+		margin-bottom: 30px;
+	}
+
+	.service-container-mobile ul li {
+		@include grid-column(6);
+		list-style-type: none;
+		border: 1px solid $border-color-light-grey;
+		padding: 15px;
+	}
+
+	.service-container-mobile ul li:nth-child(odd) {
+		border-right: none;
+	}
+
+	.service-container-mobile ul li:nth-child(-n+2) {
+		border-bottom: none;
+	}
+
+	.service-container-mobile ul li:nth-last-child(-n+2) {
+		border-top: none;
+	}
+
+	.service-container-mobile ul li label:before {
+		margin-right: 25px;
+		font-size: rem-calc(25);
+		color: $text-dark-grey;
+		vertical-align: middle;
+	}
+}
+
 
 .advert-detail-ratings {
 	margin-top: 50px;

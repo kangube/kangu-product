@@ -43,12 +43,12 @@
 	    </div>
 
 	    <div class="row advert-detail-calendar">
-		    <div class="small-12 medium-12 large-6 columns">
+		    <div class="hide-for-small show-for-large large-6 columns">
 		    	<h2>Over deze advertentie</h2>
 		    	<hr class="blue-horizontal-line"></hr>
 		    	<p><?php echo $advert_information["advert_description"]; ?></p>
 
-				<div class="description-items-container">
+				<div class="show-for-large description-items-container">
 					<div class="description-item">
 						<ul>
 							<li>
@@ -75,50 +75,111 @@
 						</ul>
 					</div>
 				</div>
-		    </div>
+			</div>
 
-		    <div class="small-12 medium-12 large-6 columns">
+		    <div class="show-for-small hide-for-large small-12 medium-12 large-6 columns">
+		    	<div class="small-12 columns">
+			    	<h2>Over deze advertentie</h2>
+			    	<hr class="blue-horizontal-line"></hr>
+			    	<p><?php echo $advert_information["advert_description"]; ?></p>
+
+				<div class="description-container-mobile">
+						<ul>
+							<li>
+				    			<label data-icon="e">Basisschool <?php echo $advert_information["advert_school"]; ?></label>
+			    			</li>
+
+							<li>
+				    			<label data-icon="o">Plaats voor <?php echo $advert_information["advert_spots"]; ?> kinderen</label>
+			    			</li>
+			    			<li>
+			    				<label data-icon="m">Tussen 5 - <?php echo $advert_information["advert_price"]; ?> euro per uur</label>
+			    			</li>
+
+							<li>
+			    				<label data-icon="k">Verplaatsing met <?php echo $advert_information["advert_transport"]; ?></label>
+			    			</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+		    <div class="hide-for-small show-for-large small-12 large-6 columns datepicker-small">
 		    	<h2 class="mrgtop">Beschikbaarheid</h2>
 		    	<hr class="blue-horizontal-line"></hr>
 
 				<div id="availability-datepicker"></div>
 		    </div>
+
+		    <div class="show-for-small hide-for-large small-12 columns datepicker-small">
+		    	<div class="small-12 columns">
+			    	<h2 class="mrgtop">Beschikbaarheid</h2>
+			    	<hr class="blue-horizontal-line"></hr>
+
+					<div id="availability-datepicker-2"></div>
+				</div>
+		    </div>
 		</div>
 
 		<div class="row advert-detail-map">
-			<div class="large-12 columns">
-				<div class="small-12 medium-12 large-3 columns">
-			    	<h2>Contact informatie</h2>
-			    	<hr class="blue-horizontal-line"></hr>
-					<div class="flleft">
-				    	<span class="detail-icon" data-icon="x"></span>
-				    	<p><?php echo $advert_information["user_email"]; ?></p>
-				    	<span class="detail-icon" data-icon="z"></span>
-				    	<p><?php echo "+32 " . $advert_information["user_mobile_number"]; ?></p>
-			    	</div>
-			    	<div class="flleft">
-				    	<span class="detail-icon" data-icon="q"></span>
-				    	<p><?php echo "+32 " . $advert_information["user_home_number"]; ?></p>
-				    	<span class="detail-icon double-line-height" data-icon="v"></span>
-				    	<p><?php echo $advert_information["user_adress"] . "<br > " . $advert_information["user_city"]; ?></p>
-			    	</div>
-				</div>
-				<div class="small-12 medium-12 large-9 columns">
+			<div class="small-12 large-3 columns">
+		    	<h2 class="hide-for-small show-for-large">Contact informatie</h2>
+		    	<hr class="hide-for-small show-for-large blue-horizontal-line"></hr>
+				<div class="hide-for-small show-for-large flleft">
+			    	<span class="detail-icon" data-icon="x"></span>
+			    	<p><?php echo $advert_information["user_email"]; ?></p>
+			    	<span class="detail-icon" data-icon="z"></span>
+			    	<p><?php echo $advert_information["user_mobile_number"]; ?></p>
+		    	</div>
+		    	<div class="hide-for-small show-for-large flleft">
+			    	<span class="detail-icon" data-icon="q"></span>
+			    	<p><?php echo $advert_information["user_home_number"]; ?></p>
+			    	<span class="detail-icon double-line-height" data-icon="v"></span>
+			    	<p><?php echo $advert_information["user_adress"] . "<br > " . $advert_information["user_city"]; ?></p>
+		    	</div>
+
+		    	<ul class="show-for-small hide-for-large small-12 columns">
+		    	<h2>Contact informatie</h2>
+		    	<hr class="blue-horizontal-line"></hr>
+					<li>
+						<label for="opvang-thuisomgeving" data-icon="x"><span></span><?php echo $advert_information["user_email"]; ?></label>
+					</li>
+
+					<li>
+						<label for="ophalen-schoolpoort" data-icon="z"><span></span><?php echo $advert_information["user_mobile_number"]; ?></label>
+					</li>
+					<li>
+						<label for="vervoer-thuis" data-icon="q"><span></span><?php echo $advert_information["user_home_number"]; ?></label>
+					</li>
+
+					<li>
+						<label for="vervoer-activiteiten" data-icon="v"><span></span><?php echo $advert_information["user_adress"] . ", " . $advert_information["user_city"]; ?></label>
+					</li>
+
 					<iframe
 					  frameborder="0" style="border:0"
 					
 					<?php echo "src='https://www.google.com/maps/embed/v1/place?key=AIzaSyCK4od9WLji1WkDzFFyLls-226CbhN8Jl4&q=".$advert_full_adress."'";?> allowfullscreen>
-					</iframe>	
-				</div>
+					</iframe>
+				</ul>
+			</div>
+
+			<div class="hide-for-small show-for-large small-12 large-9 columns">
+				<iframe
+				  frameborder="0" style="border:0"
+				
+				<?php echo "src='https://www.google.com/maps/embed/v1/place?key=AIzaSyCK4od9WLji1WkDzFFyLls-226CbhN8Jl4&q=".$advert_full_adress."'";?> allowfullscreen>
+				</iframe>	
 			</div>
 		</div>
 		
-		<div class="advert-detail-services">
+		<div class="row advert-detail-services">
 			<div class="small-12 columns">
-				<h2>Aangeboden diensten</h2>
-			    <hr class="blue-horizontal-line"></hr>
+				<h2 class="hide-for-small show-for-large">Aangeboden diensten</h2>
+				<hr class="hide-for-small show-for-large blue-horizontal-line"></hr>
 
-				<div class="services-container">
+				<div class="show-for-large services-container">
+
 					<div class="service">
 						<ul>
 							<li>
@@ -161,6 +222,38 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="show-for-small hide-for-large small-12 columns service-container-mobile">
+			<div class="small-12 columns">
+				<h2>Aangeboden diensten</h2>
+				<hr class="blue-horizontal-line"></hr>
+			</div>
+
+			<ul class="small-12 columns">
+				<li>
+					<label for="opvang-thuisomgeving" data-icon="m"><span></span>Opvang in een thuisomgeving</label>
+				</li>
+
+				<li>
+					<label for="ophalen-schoolpoort" data-icon="m"><span></span>Ophalen aan de schoolpoort</label>
+				</li>
+				<li>
+					<label for="vervoer-thuis" data-icon="m"><span></span>Vervoer naar thuis na opvang</label>
+				</li>
+
+				<li>
+					<label for="vervoer-activiteiten" data-icon="m"><span></span>Vervoer naschoolse activiteiten</label>
+				</li>
+				<li>
+					<label for="voorzien-maaltijd" data-icon="m"><span></span>Voorzien van een maaltijd</label>
+				</li>
+
+				<li>
+					<label for="hulp-huiswerk" data-icon="m"><span></span>Hulp bij huiswerktaken</label>
+				</li>
+			</ul>
+		</div>
+
 
 		<div class="large-collapse row advert-detail-ratings">
 		    <div class="large-12 columns">
@@ -269,6 +362,20 @@
 	    <script src="http://multidatespickr.sourceforge.net/jquery-ui.multidatespicker.js"></script>
 	    <script>
 	    	$('#availability-datepicker').multiDatesPicker({
+		        inline: true,
+			    dateFormat: 'yy-mm-dd',
+			    firstDay: 0,
+			    showOtherMonths: true,
+			    monthNames: ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'],
+			    dayNames: ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'],
+			    dayNamesMin: ['Zo', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za'],
+			    beforeShowDay: function (date) {
+			        var td = date.getDay();
+			        var ret = [(date.getDay() != 0 && date.getDay() != 6),'',(td != 'Za' && td != 'Zo')?'':'only on workday'];
+			        return ret;
+			    }
+		    });
+		    $('#availability-datepicker-2').multiDatesPicker({
 		        inline: true,
 			    dateFormat: 'yy-mm-dd',
 			    firstDay: 0,
