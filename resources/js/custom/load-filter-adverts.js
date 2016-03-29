@@ -1,12 +1,14 @@
-$(document).ready(function(e) {
+$(document).ready(function() {
 	var filter = "";
+
+	$(".advert-overview-container").load("../php-assets/class.adverts.pagination.php");
 
 	$(".advert-overview-container").on("change", ".advert-overview-filter", function(e) {
 		e.preventDefault();
 		filter = $(this).val();
 
 		$.ajax({
-			type: 'get',
+			type: 'post',
 			dataType: 'html',
 			url: '../php-assets/class.adverts.pagination.php',
 			data: {chosenFilter:filter},
@@ -16,21 +18,17 @@ $(document).ready(function(e) {
 				$(".advert-overview-filter").val(filter);
 			}
 		});
-
-		$(".advert-overview-container").on("click", ".pagination a", function (e) {
-			e.preventDefault();
-			var page = $(this).attr("data-page");
-			$(".advert-overview-container").load("../php-assets/class.adverts.pagination.php?chosenFilter="+filter+"", {page:page});
-		});
 	});
 
-	if (!filter) {
-	    $(".advert-overview-container").load( "../php-assets/class.adverts.pagination.php");
+	$(".advert-overview-container").on("click", ".pagination a", function (e) {
+		e.preventDefault();
+		var page = $(this).attr("data-page");
 
-	    $(".advert-overview-container").on("click", ".pagination a", function (e) {
-			e.preventDefault();
-			var page = $(this).attr("data-page");
+		if (!filter) {
 			$(".advert-overview-container").load("../php-assets/class.adverts.pagination.php", {page:page});
-		});
-	}
+		}
+		else if (filter) {
+			$(".advert-overview-container").load("../php-assets/class.adverts.pagination.php", {page:page, chosenFilter:filter});
+		}
+	});
 });

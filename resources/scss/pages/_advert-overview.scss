@@ -307,7 +307,7 @@
 	margin-top: 40px;
 }
 
-.advert-overview-filter {
+.advert-overview-filter, .search-advert-overview-filter {
 	@include font($paragraph-font-family, regular, regular, 14, 14, $text-dark-grey);
 	background-color: $light-grey;
 	border: 1px solid $border-color-light-grey;

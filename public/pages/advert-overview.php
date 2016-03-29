@@ -85,43 +85,9 @@
 
 	    <div class="large-collapse advert-overview-container"></div>
 	    <div class="large-collapse search-advert-overview-container"></div>
-		</div>
 
 		<script src="../js/minimum-viable-product.min.js"></script>
 	    <script src="https://use.typekit.net/vnw3zje.js"></script>
 	    <script>try{Typekit.load({ async: true });}catch(e){}</script>
-
-	    <script>
-	    	$(document).ready(function() {
-				$(".advert-search-form, .advert-search-form-mobile").on("submit", function (e) {
-					e.preventDefault();
-					var school = $('.search-region').val();
-		    		var price = $('.search-price').val();
-		    		var spots = $('.search-spots').val();
-
-					$.ajax({
-						type: 'post',
-						dataType: 'html',
-						url: '../php-assets/class.search.php',
-						data: {school:school, price:price, spots:spots},
-						cache: false,
-						success: function(response) {
-							$(".advert-overview-container").css("display", "none");
-							$(".search-advert-overview-container" ).html(response);
-						}
-					});
-				});
-
-				$(".search-advert-overview-container").on("click", ".pagination a", function (e) {
-					e.preventDefault();
-					var school = $('.search-region').val();
-		    		var price = $('.search-price').val();
-		    		var spots = $('.search-spots').val();
-
-					var page = $(this).attr("data-page");
-					$(".search-advert-overview-container").load("../php-assets/class.search.php", {page:page, school:school, price:price, spots:spots});
-				});
-			});
-	    </script>
     </body>
 </html>

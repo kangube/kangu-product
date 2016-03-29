@@ -25,7 +25,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 			    </div>
 
 			    <div class='large-2 columns'>
-			    	<form class='advert-filter-form' action='advert-overview.php' method='get'>
+			    	<form class='advert-filter-form' action='advert-overview.php' method='post'>
 						<select class='advert-overview-filter' name='advert-overview-filter'>
 							<option selected='selected'>Filter advertenties</option>
 							<option value='recent'>Meest recent</option>
@@ -39,12 +39,12 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 
 			<div class='large-12 columns'>";
 	
-	if(!isset($_GET['chosenFilter']))
+	if(!isset($_POST['chosenFilter']))
 	{
 		$advert_results = $mysqli->prepare("SELECT advert_id, fk_user_id, advert_description, advert_price, advert_spots, advert_school, user_image_path, user_firstname, user_lastname, user_city FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id ORDER BY advert_id ASC LIMIT $page_position, $item_per_page");
 	}
-	else if (isset($_GET['chosenFilter'])) {
-		switch($_GET['chosenFilter']) {
+	else if (isset($_POST['chosenFilter'])) {
+		switch($_POST['chosenFilter']) {
 			// Display the most recently created adverts
 			case 'recent':
 				$advert_results = $mysqli->prepare("SELECT advert_id, fk_user_id, advert_description, advert_price, advert_spots, advert_school, user_image_path, user_firstname, user_lastname, user_city FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id ORDER BY advert_id DESC LIMIT $page_position, $item_per_page");

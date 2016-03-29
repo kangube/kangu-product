@@ -4,19 +4,15 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 	
 	include("../php-assets/class.dbconfig.php");
 
-	// Setting up the required connection    
-	$con = mysqli_connect("localhost","root","root","kangu-product");
-
-	if (mysqli_connect_errno()) {
-		echo "Failed to connect to MySQL: " . mysqli_connect_error();
-	}
-
-	mysqli_select_db($con,"test");
-
 	// Collecting all given search variables
 	$school = htmlspecialchars($_POST['school']); 
     $price = htmlspecialchars($_POST['price']);
     $spots = htmlspecialchars($_POST['spots']);
+
+    // Collecting all given search variables with filter
+	$filter_school = htmlspecialchars($_POST['filterSchool']); 
+    $filter_price = htmlspecialchars($_POST['filterPrice']);
+    $filter_spots = htmlspecialchars($_POST['filterSpots']);
   	
   	// Gathering the page numer if pagination element has been clicked
 	if(isset($_POST["page"])) {
@@ -28,14 +24,52 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 		$page_number = 1;
 	}
 	
-	// Calculating the number of pages and the current page position
-	$search_results = $mysqli->query("SELECT COUNT(*) FROM tbl_advert WHERE advert_school LIKE '%".$school."%' AND advert_price <= '".$price."' AND advert_spots >= '".$spots."'");
-	$get_total_rows = $search_results->fetch_row();
-	$total_pages = ceil($get_total_rows[0]/$item_per_page);
-	$page_position = (($page_number-1) * $item_per_page);
-	
-    // Executing the search query
-    $raw_results = mysqli_query($con, "SELECT * FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id WHERE advert_school LIKE '%".$school."%' AND advert_price <= '".$price."' AND advert_spots >= '".$spots."' ORDER BY advert_id DESC LIMIT $page_position, $item_per_page");
+
+    if(!isset($_POST['chosenFilter'])) {	
+		// Calculating the number of pages and the current page position
+		$search_results = $mysqli->query("SELECT COUNT(*) FROM tbl_advert WHERE advert_school LIKE '%".$school."%' AND advert_price <= '".$price."' AND advert_spots >= '".$spots."'");
+		$get_total_rows = $search_results->fetch_row();
+		$total_pages = ceil($get_total_rows[0]/$item_per_page);
+		$page_position = (($page_number-1) * $item_per_page);
+
+		$search_results = $mysqli->prepare("SELECT advert_id, fk_user_id, advert_description, advert_price, advert_spots, advert_school, user_image_path, user_firstname, user_lastname, user_city FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id WHERE advert_school LIKE '%".$school."%' AND advert_price <= '".$price."' AND advert_spots >= '".$spots."' ORDER BY advert_id ASC LIMIT $page_position, $item_per_page");
+	}
+	else if (isset($_POST['chosenFilter'])) {
+		// Calculating the number of pages and the current page position
+		$search_results = $mysqli->query("SELECT COUNT(*) FROM tbl_advert WHERE advert_school LIKE '%".$filter_school."%' AND advert_price <= '".$filter_price."' AND advert_spots >= '".$filter_spots."'");
+		$get_total_rows = $search_results->fetch_row();
+		$total_pages = ceil($get_total_rows[0]/$item_per_page);
+		$page_position = (($page_number-1) * $item_per_page);
+
+		switch($_POST['chosenFilter']) {
+			// Display the most recently created adverts
+			case 'recent':
+				$search_results = $mysqli->prepare("SELECT advert_id, fk_user_id, advert_description, advert_price, advert_spots, advert_school, user_image_path, user_firstname, user_lastname, user_city FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id WHERE advert_school LIKE '%".$filter_school."%' AND advert_price <= '".$filter_price."' AND advert_spots >= '".$filter_spots."' ORDER BY advert_id DESC LIMIT $page_position, $item_per_page");
+			break;
+
+			// Display the most popular adverts
+			case 'popular':
+				$search_results = $mysqli->prepare("SELECT advert_id, fk_user_id, advert_description, advert_price, advert_spots, advert_school, user_image_path, user_firstname, user_lastname, user_city FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id WHERE advert_school LIKE '%".$filter_school."%' AND advert_price <= '".$filter_price."' AND advert_spots >= '".$filter_spots."' ORDER BY advert_number_bookings DESC LIMIT $page_position, $item_per_page");
+			break;
+
+			// Display all adverts while ordering by an ascending price
+			case 'ascending':
+				$search_results = $mysqli->prepare("SELECT advert_id, fk_user_id, advert_description, advert_price, advert_spots, advert_school, user_image_path, user_firstname, user_lastname, user_city FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id WHERE advert_school LIKE '%".$filter_school."%' AND advert_price <= '".$filter_price."' AND advert_spots >= '".$filter_spots."' ORDER BY advert_price ASC LIMIT $page_position, $item_per_page");
+			break;
+
+			// Display all adverts while ordering by an descending price
+			case 'descending':
+				$search_results = $mysqli->prepare("SELECT advert_id, fk_user_id, advert_description, advert_price, advert_spots, advert_school, user_image_path, user_firstname, user_lastname, user_city FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id WHERE advert_school LIKE '%".$filter_school."%' AND advert_price <= '".$filter_price."' AND advert_spots >= '".$filter_spots."' ORDER BY advert_price DESC LIMIT $page_position, $item_per_page");
+			break;
+
+			// Display all adverts
+			default:
+			$search_results = $mysqli->prepare("SELECT advert_id, fk_user_id, advert_description, advert_price, advert_spots, advert_school, user_image_path, user_firstname, user_lastname, user_city FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id WHERE advert_school LIKE '%".$filter_school."%' AND advert_price <= '".$filter_price."' AND advert_spots >= '".$filter_spots."' ORDER BY advert_id ASC LIMIT $page_position, $item_per_page");
+		}
+	}
+
+	$search_results->execute();
+	$search_results->bind_result($advert_id, $advert_creator, $advert_description, $advert_price, $advert_spots, $advert_school, $user_profile_image, $user_first_name, $user_last_name, $user_city);
 
     // Displaying all adverts that match the defined query
     if($get_total_rows[0] > 0) {
@@ -47,7 +81,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 
 				    <div class='large-2 columns'>
 				    	<form action='advert-overview.php' method='post'>
-							<select class='search-advert-overview-filter' name='advert-overview-filter' onchange='this.form.submit()'>
+							<select class='search-advert-overview-filter' name='search-advert-overview-filter'>
 								<option selected='selected'>Filter advertenties</option>
 								<option value='recent'>Meest recent</option>
 								<option value='popular'>Meest populair</option>
@@ -56,25 +90,27 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 							</select>
 						</form>
 				    </div>
-				</div>";
+				</div> 
 
-        while($results = mysqli_fetch_array($raw_results)) {
+				<div class='large-12 columns'>";
 
-        	$shorten = strpos($results['advert_description'], ' ', 145);
-			$final_advert_description = substr($results['advert_description'], 0, $shorten)." ...";
+	        while($search_results->fetch()) {
 
-            echo "<div class='advert-container end'>
-				  	<a href='advert-detail.php?id=".$results['advert_id']."' class='advert-link'>
+			$shorten = strpos($advert_description, ' ', 145);
+			$final_advert_description = substr($advert_description, 0, $shorten)." ...";
+
+			echo "<div class='advert-container end'>
+				  	<a href='advert-detail.php?id=".$advert_id."' class='advert-link'>
 						<div class='advert'>
 			    			<div class='small-12 columns'>
 				    			<div class='small-2 columns'>
-				    				<img class='advert-profile-image' src='".$results['user_image_path']."'>
+				    				<img class='advert-profile-image' src='".$user_profile_image."'>
 				    			</div>
 				    			
 				    			<div class='small-10 columns'>
 					    			<ul class='advert-information-list'>
-					    				<li>".$results['user_firstname'].' '.$results['user_lastname']."</li>
-					    				<li data-icon='d'>".$results['user_city']."</li>
+					    				<li>".$user_first_name.' '.$user_last_name."</li>
+					    				<li data-icon='d'>".$user_city."</li>
 					    			</ul>
 				    			</div>
 			    			</div>
@@ -83,34 +119,33 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 			
 			    			<div class='small-6 columns'>
 				    			<div class='advert-price'>
-					    			<p>".$results['advert_price']."</p>
+					    			<p>".$advert_price."</p>
 					    			<p>p/u</p>
 				    			</div>
 				    		</div>
 
 				    		<div class='small-6 columns'>
 				    			<div class='advert-spots'>
-				    				<p>".$results['advert_spots']."</p>
+				    				<p>".$advert_spots."</p>
 					    			<p>plaatsen</p>
 				    			</div>
 				    		</div>
 	    	
-				    		<p class='advert-school' data-icon='e'>Basisschool ".$results['advert_school']."</p>
+				    		<p class='advert-school' data-icon='e'>Basisschool ".$advert_school."</p>
 			    		</div>
 			    	</a>
 		    	</div>";
-        }
+		}
+
+		echo '<div class="large-12 columns">';
+		echo paginate_function($item_per_page, $page_number, $get_total_rows[0], $total_pages);
+		echo '</div>';
+
+		exit;
     }
     else {
         echo "<div class='no-search-results-container'><p>Er zijn geen advertenties gevonden</p></div>";
     }
-
-    // Creating the pagination element
-	echo '<div class="large-12 columns">';
-	echo paginate_function($item_per_page, $page_number, $get_total_rows[0], $total_pages);
-	echo '</div>';
-
-	exit;
 
 }
 
