@@ -8,6 +8,9 @@ class advert
 	private $m_sDescription;
 	private $m_iPrice;
 	private $m_iNumberChildren;
+	private $m_sChildFirstName;
+	private $m_sChildLastName;
+	private $m_sChildClass;
 	private $m_sSchool;
 	private $m_iMobileNumber;
 	private $m_iHomeNumber;
@@ -45,6 +48,18 @@ class advert
 
 			case 'NumberChildren':
 				$this->m_iNumberChildren = $p_sValue;
+				break;
+
+			case 'ChildFirstName':
+				$this->m_sChildFirstName = $p_sValue;
+				break;
+
+			case 'ChildLastName':
+				$this->m_sChildLastName = $p_sValue;
+				break;
+
+			case 'ChildClass':
+				$this->m_sChildClass = $p_sValue;
 				break;
 
 			case 'School':
@@ -112,6 +127,18 @@ class advert
 				return $this->m_iNumberChildren;
 				break;
 
+			case 'ChildFirstName':
+				return $this->m_sChildFirstName;
+				break;
+
+			case 'ChildLastName':
+				return $this->m_sChildLastName;
+				break;
+
+			case 'ChildClass':
+				return $this->m_sChildClass;
+				break;
+
 			case 'School':
 				return $this->m_sSchool;
 				break;
@@ -164,7 +191,7 @@ class advert
 		$advert_query .= "UPDATE tbl_user SET user_mobile_number = '$this->MobileNumber', user_home_number = '$this->HomeNumber', user_adress = '$this->HomeAdress', user_city = '$this->HomeCity' WHERE user_id = '$this->UserId';";
 
 	   	$statement = $conn->prepare($advert_query);
-		$statement->execute();
+		//$statement->execute();
 		$last_created_id = $conn->lastInsertId();
 
 		$services_dates_query .= "INSERT INTO tbl_service(fk_advert_id, service_name) VALUES ";
@@ -185,14 +212,26 @@ class advert
 
 	    $services_dates_query .= "INSERT INTO tbl_availability(fk_advert_id, availability_date, availability_time_start, availability_time_end) VALUES ";
 
-		foreach($this->AvailableDates as $key => $d) 
+		foreach($this->AvailableDates as $key => $d)
 		{
 			$services_dates_query .= "('$last_created_id', '".$d."', '".$this->AvailableStartTimes[$key]."', '".$this->AvailableEndTimes[$key]."'), ";
 		}
 
 		$services_dates_query = rtrim($services_dates_query,', ').";";
 	   	$statement = $conn->prepare($services_dates_query);
-		$statement->execute();
+		//$statement->execute();
+
+	   	$children_information_query .= "INSERT INTO tbl_child(child_first_name, child_last_name, child_school, child_class) VALUES ";
+
+		foreach($this->ChildFirstName as $key => $c)
+		{
+			$children_information_query .= "('".$c."', '".$this->ChildLastName[$key]."', '".$this->School."', '".$this->ChildClass[$key]."'), ";
+		}
+
+		$children_information_query = rtrim($children_information_query,', ').";";
+	   	$statement = $conn->prepare($children_information_query);
+	   	//$statement->execute();
+		echo $advert_query."</br>".$services_dates_query."</br>".$children_information_query;
 	}
 	
 	public function getAll() {

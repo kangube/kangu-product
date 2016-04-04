@@ -23,6 +23,13 @@ input:not([type=submit]):not([type=file]), textarea {
 	}
 }
 
+// Removes the background and border-color from input fields on error
+
+.is-invalid-input:not(:focus) {
+    background-color: transparent !important;
+    border-color: rgba($dark-grey, 0.4);
+}
+
 // Removes the background color of autofill feature in browsers
 
 input:-webkit-autofill,

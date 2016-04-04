@@ -54,11 +54,22 @@
 			$services = $_POST['advert-services'];
 			$advert_price = 0;
 
-			foreach($services as $key => $service) {
+			foreach(array_unique($services) as $key => $service) {
 				if (!isset($prices[$service])) {
 					continue;
 				}
 				$advert_price += $prices[$service];
+			}
+
+			// Processing the given children information
+			$children_names = $_POST['advert-child-name'];
+			$children_first_names = array();
+			$children_last_names = array();
+
+			foreach ($children_names as $name) {
+				$child_full_name = explode(' ', $name, 2);
+				$children_first_names[] = $child_full_name[0];
+				$children_last_names[] = $child_full_name[1];
 			}
 
 			// Passing data to the advert class for processing
@@ -66,7 +77,10 @@
 			$advert->Description = $_POST['advert-description'];
 			$advert->Price = $advert_price;
 			$advert->NumberChildren = $_POST['advert-spots'];
-			$advert->School = 'Heilig-hartcollege';
+			$advert->ChildFirstName = $children_first_names;
+			$advert->ChildLastName = $children_last_names;
+			$advert->ChildClass = $_POST['advert-child-class'];
+			$advert->School = $_POST['advert-school'];
 			$advert->MobileNumber = $mobile_phone_number;
 			$advert->HomeNumber = $home_phone_number;
 			$advert->Email = $_POST['advert-email'];
@@ -108,65 +122,93 @@
 				</div>
 			
 				<div class="advert-create-form-container">
-					<form class="advert-create-form" method="post">
+					<form class="advert-create-form" method="post" data-abide novalidate>
 						<div class="form-description-container">
 							<h3 class="form-header">Over deze advertentie</h3>
 							<hr class="blue-horizontal-line"></hr>
 							<p class="form-subheader">Presenteer jouw advertentie op de best mogelijke manier aan de hand van een gepersonaliseerde beschrijving van jezelf en jouw motivatie.</p>
-							<textarea placeholder="Geef een korte beschrijving van jezelf en waarom je opvang wil aanbieden." name="advert-description" rows="2" required></textarea>
-							<div class="form-error">Het is verplicht om een beschrijving te geven aan je advertentie.</div>
+							<textarea placeholder="Geef een korte beschrijving van jezelf en waarom je opvang wil aanbieden." name="advert-description" rows="6" cols="10" required></textarea>
 						</div>
 
 						<div class="form-number-children-container">
+							<h3 class="form-header">Over jouw kinderen</h3>
+							<hr class="blue-horizontal-line"></hr>
+							<p class="form-subheader">Voorzie jouw advertentie van praktische informatie over je kinderen zodat andere ouders je makkelijker kunnen herkennen.</p>
+
+							<div class="number-children-container">
+								<div class="form-icon-input-field">
+									<div class="form-icon-input-container">
+										<span class="form-icon" data-icon="o"></span>
+										<input class="form-input" type="text" name="advert-child-name[]" placeholder="Voor- en achternaam van jouw kind" required>
+									</div>
+								</div>
+
+								<div class="form-icon-input-field">
+									<div class="form-icon-input-container">
+										<span class="form-icon" data-icon="e"></span>
+										<input class="form-input" type="text" name="advert-child-class[]" placeholder="Klasnummer van jouw kind" required>
+									</div>
+								</div>
+							</div>
+
+							<a class="advert-add-child-button">Kind toevoegen</a>
+						</div>
+
+						<div class="form-number-spots-container">
 							<h3 class="form-header">Beschikbare plaatsen</h3>
 							<hr class="blue-horizontal-line"></hr>
-							<p class="form-subheader">Selecteer het maximum aantal kinderen waarvoor je opvang wenst aan te bieden.</p>
-							<div class="number-children-radio-buttons">
-								<label class="badge radio-button"><input type="radio" name="advert-spots" value="1">1</label>
+							<p class="form-subheader">Selecteer het maximum aantal kinderen dat je wil opvangen.</p>
+							<div class="number-spots-radio-buttons">
+								<label class="badge radio-button"><input type="radio" name="advert-spots" value="1" required>1</label>
 								<label class="badge radio-button"><input type="radio" name="advert-spots" value="2">2</label>
 								<label class="badge radio-button"><input type="radio" name="advert-spots" value="3">3</label>
 								<label class="badge radio-button"><input type="radio" name="advert-spots" value="4">4</label>
 								<label class="badge radio-button"><input type="radio" name="advert-spots" value="5">5</label>
 								<label class="badge radio-button"><input type="radio" name="advert-spots" value="6">6</label>
 							</div>
-							<div class="form-error">Geef aan hoeveel kinderen u maximum wenst op te vangen.</div>
+						</div>
+
+						<div class="form-school-container">
+							<h3 class="form-header">Basisschool</h3>
+							<hr class="blue-horizontal-line"></hr>
+							<p class="form-subheader">Geef aan naar welke school je kinderen gaan zodat andere ouders weten op welke school je opvang aanbiedt.</p>
+							<div class="form-icon-input-container">
+								<span class="form-icon" data-icon="e"></span>
+								<input class="form-input" type="text" name="advert-school" placeholder="de basisschool van jouw kinderen" required>
+							</div>
 						</div>
 
 						<div class="form-contact-information-container">
-							<h3 class="form-header">Contact informatie</h3>
+							<h3 class="form-header">Contact-informatie</h3>
 							<hr class="blue-horizontal-line"></hr>
 							<p class="form-subheader">Voorzie jouw advertentie van de nodige contact-informatie zodat andere ouders je kunnen contacteren.</p>
 
-							<div class="small-12 medium-6 large-6 columns form-icon-input-field">
+							<div class="form-icon-input-field">
 								<div class="form-icon-input-container">
 									<span class="form-icon" data-icon="z"></span>
 									<input class="form-input" type="tel" name="advert-mobile-number" placeholder="jouw gsm-nummer" required>
 								</div>
-								<div class="form-error">Dit is geen geldig gsm-nummer.</div>
 							</div>
 
-							<div class="small-12 medium-6 large-6 columns form-icon-input-field">
+							<div class="form-icon-input-field">
 								<div class="form-icon-input-container">
 									<span class="form-icon" data-icon="q"></span>
 									<input class="form-input" type="tel" name="advert-home-number" placeholder="jouw huistelefoonnummer" required>
 								</div>
-								<div class="form-error">Dit is geen geldig huistelefoonnummer.</div>
 							</div>
 
-							<div class="small-12 medium-6 large-6 columns form-icon-input-field">
+							<div class="form-icon-input-field">
 								<div class="form-icon-input-container">
 									<span class="form-icon" data-icon="x"></span>
 									<input class="form-input" type="email" name="advert-email" placeholder="jouw e-mail adres" required>
 								</div>
-								<div class="form-error">Dit is geen geldig e-mail adres.</div>
 							</div>
 
-							<div class="small-12 medium-6 large-6 columns form-icon-input-field">
+							<div class="form-icon-input-field">
 								<div class="form-icon-input-container">
 									<span class="form-icon" data-icon="v"></span>
 									<input class="form-input" type="text" name="advert-home-adress" placeholder="jouw adres, jouw gemeente" required>
 								</div>
-								<div class="form-error">voorbeeld: bosstraat 2, Heist-op-den-Berg</div>
 							</div>
 						</div>
 
@@ -251,7 +293,7 @@
 						<div class="form-services-container">
 							<h3 class="form-header">Aangeboden diensten</h3>
 							<hr class="blue-horizontal-line"></hr>
-							<p class="form-subheader">Selecteer welke extra diensten je wenst aan te bieden aan andere ouders naast het ophalen en tijdelijk opvangen van de kinderen.</p>
+							<p class="form-subheader">Selecteer welke extra diensten je wenst aan te bieden aan andere ouders naast het ophalen en tijdelijk opvangen van de kinderen. (Meerdere opties zijn mogelijk)</p>
 
 							<div class="show-for-large services-container">
 								<div class="service">
@@ -262,6 +304,8 @@
 													   value="opvang-thuisomgeving" disabled checked>
 				  								<label for="opvang-thuisomgeving"><span></span>Opvang in een thuisomgeving</label>
 			  								</div>
+
+			  								<input type="hidden" name="advert-services[]" value="opvang-thuisomgeving">
 			  							</li>
 
 			  							<li>
@@ -270,6 +314,8 @@
 				  									   value="ophalen-schoolpoort" disabled checked>
 				  								<label for="ophalen-schoolpoort"><span></span>Ophalen aan de schoolpoort</label>
 			  								</div>
+
+			  								<input type="hidden" name="advert-services[]" value="ophalen-schoolpoort">
 			  							</li>
 									</ul>
 								</div>
@@ -325,6 +371,8 @@
 												   value="opvang-thuisomgeving" disabled checked>
 			  								<label for="opvang-thuisomgeving-mobile"><span></span>Opvang in een thuisomgeving</label>
 		  								</div>
+
+		  								<input type="hidden" name="advert-services[]" value="opvang-thuisomgeving">
 		  							</li>
 
 		  							<li>
@@ -333,6 +381,8 @@
 			  									   value="ophalen-schoolpoort" disabled checked>
 			  								<label for="ophalen-schoolpoort-mobile"><span></span>Ophalen aan de schoolpoort</label>
 		  								</div>
+
+		  								<input type="hidden" name="advert-services[]" value="ophalen-schoolpoort">
 		  							</li>
 								
 									<li>
@@ -388,11 +438,10 @@
 						<div class="form-availability-container">
 							<h3 class="form-header">Beschikbaarheid</h3>
 							<hr class="blue-horizontal-line"></hr>
-							<p class="form-subheader">Selecteer welke diensten je wenst aan te bieden aan andere ouders.</p>
+							<p class="form-subheader">Stel je eigen opvangplanning op door de dagen te selecteren waarop je opvang wil aanbieden. De dagen die je niet geselecteerd hebt zullen automatisch op niet beschikbaar gezet worden.</p>
 							<div id="availability-datepicker"></div>
+							<div class="advert-availability-slots"></div>
 						</div>
-
-						<div class="advert-availability-slots"></div>
 
 						<div class="small-12 columns">
 							<p class="show-for-large" style="background-color: blue; color: white; padding: 10px;">Large and up</p>
@@ -400,7 +449,11 @@
 							<p class="show-for-small-only" style="background-color: blue; color: white; padding: 10px;">Small</p>
 						</div>
 
-						<div class="small-12 columns">
+						<div class="small-12 columns form-error-container" data-abide-error>
+							<p>Er zitten enkele fouten in het formulier. Kijk na of alles is ingevuld en probeer het vervolgens nogmaals.</p>
+						</div>
+
+						<div class="form-submit-container">
 							<p>Door deze advertentie aan te maken ga je akkoord met onze <a href="#">termen en condities</a></p>
 							<input id="advert-create-button" type="submit" name="advert-create-button" value="Advertentie aanmaken"/>
 						</div>
@@ -496,27 +549,7 @@
 					}
 					else {
 						disabledDates.push(selected);
-						var selected_format = selected.split("-");
-						var selected_day = selected_format[2];
-						var selected_month = selected_format[1];
-						var selected_year = selected_format[0];
-
-						function GetMonthName(selected_month) {
-							var months = ["Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December"];
-							return months[selected_month-1];
-						}
-
-						selected_month = GetMonthName(selected_month);
-
-						$(".advert-availability-slots").append("<div class='availability-slot-container float-left'><div class='availability-slot'><div class='remove-availability-slot' data-icon='n'></div><div class='small-12 columns selected-date-format'><p class='selected-date-format-day'>"+selected_day+"</p><p class='selected-date-format-month-year'>"+selected_month+" "+selected_year+"</p></div><div class='small-12 columns selected-date'><input type='date' name='advert-availability-date[]' value="+selected+"></div><div class='small-5 columns'><label>Van</label><input type='text' class='time-input' name='advert-availability-start-time[]' data-time-format='H:i'></div><div class='availability-slot-duration' data-icon='y'></div><div class='small-5 columns'><label>Tot</label><input type='text' class='time-input' name='advert-availability-end-time[]' data-time-format='H:i'></div></div></div>");
-
-						$('.time-input').timepicker({
-							'step': 15,
-							'forceRoundTime': true,
-							'useSelect': false,
-							'minTime': '15:30',
-							'orientation': 'b'
-						});
+						$(".advert-availability-slots").append("<div class='availability-slot-created'></div>");
 					}
 			    },
 			    beforeShowDay: function (date) {
@@ -526,16 +559,66 @@
 			    }
 		    });
 
+
+		    $(".advert-availability-slots").arrive(".availability-slot-created", function() {
+				var date_sort_asc = function (date1, date2) {
+					if (date1 > date2) {
+						return 1;
+					}
+					else if (date1 < date2) {
+						return -1;
+					}
+
+					return 0;
+				};
+
+				disabledDates.sort(date_sort_asc);
+				$(".advert-availability-slots .advert-availability-dates").contents().remove();
+
+				for (var i = 0; i < disabledDates.length; i++) {
+					var date_format = disabledDates[i].split("-");
+					var date_day = date_format[2];
+					var date_month = date_format[1];
+					var date_year = date_format[0];
+
+					function GetShortMonthName(date_month) {
+						var months = ["Jan.", "Feb.", "Mrt.", "Apr.", "Mei", "Jun.", "Jul.", "Aug.", "Sep.", "Okt.", "Nov.", "Dec."];
+						return months[date_month-1];
+					}
+
+					function GetFullMonthName(date_month) {
+						var months = ["Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December"];
+						return months[date_month-1];
+					}
+
+					date_month_short = GetShortMonthName(date_month);
+					date_month_full = GetFullMonthName(date_month);
+					format_date_month = date_format[1].replace(/^0+/, '');
+
+					if ($(".advert-availability-month[data-availability-format='"+format_date_month+'-'+date_year+"']").length === 0) {
+						$(".advert-availability-slots").append("<div class='advert-availability-month' data-availability-format="+format_date_month+'-'+date_year+"><div class='small-12 columns date-month'><p>"+date_month_full+'-'+date_year+"</p></div><div class='advert-availability-dates'></div></div>");
+					}
+
+					$(".advert-availability-month[data-availability-format='"+format_date_month+'-'+date_year+"'] .advert-availability-dates").append("<div class='small-6 columns availability-slot-container float-left'><div class='availability-slot'><div class='small-2 columns selected-date'><p>"+date_day+"</p><p>"+date_month_short+"</p><input type='date' name='advert-availability-date[]' value="+disabledDates[i]+" readonly></div><div class='small-4 columns'><input type='text' class='time-input' name='advert-availability-start-time[]' placeholder='Van' data-time-format='H:i'></div><div class='small-1 columns availability-slot-duration' data-icon='y'></div><div class='small-4 columns'><input type='text' class='time-input' name='advert-availability-end-time[]' placeholder='Tot' data-time-format='H:i'></div><div class='small-1 columns remove-availability-slot' data-icon='n'></div></div></div>");
+
+					$('.time-input').timepicker({
+						'step': 15,
+						'forceRoundTime': true,
+						'useSelect': false,
+						'minTime': '15:30',
+						'orientation': 'b'
+					});
+				}
+			});
+
 		    $(document).on('click','.remove-availability-slot', function() { 
 		    	$(this).parent('div').parent('div').remove();
-		    	var selectedDate = $(this).next().next('.selected-date').find('input[type="date"]').attr('value');
+		    	var selectedDate = $(this).prev().prev().prev().prev('.selected-date').find('input[type="date"]').attr('value');
 
 				var selectedDateInArray = disabledDates.indexOf(selectedDate);
 				if(selectedDateInArray != -1) {
 					disabledDates.splice(selectedDateInArray, 1);
 				}
-
-				console.log(disabledDates);
 
 				$('#availability-datepicker tbody td:has(a)').each(function(index) {
 					var date = $.datepicker.formatDate('yy-mm-dd', new Date($(this).data('year'), $(this).data('month'), $(this).text()));
@@ -544,6 +627,12 @@
 					}
 				});
 		    });
+		</script>
+
+		<script>
+			$(".advert-add-child-button").on("click", function() {
+				$(".number-children-container").append("<div class='form-icon-input-field'><div class='form-icon-input-container'><span class='form-icon' data-icon='o'></span><input class='form-input' type='text' name='advert-child-name[]' placeholder='Voor- en achternaam van jouw kind' required></div></div><div class='form-icon-input-field'><div class='form-icon-input-container'><span class='form-icon' data-icon='e'></span><input class='form-input' type='text' name='advert-child-class[]' placeholder='Klasnummer van jouw kind' required></div></div>");
+			});
 		</script>
 	</body>
 </html>
