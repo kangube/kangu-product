@@ -94,6 +94,8 @@
 		    </div>
 		</div>
 
+		<?php include('../php-includes/footer.php'); ?>
+
 		<script src="../js/minimum-viable-product.min.js"></script>
 	    <script src="https://use.typekit.net/vnw3zje.js"></script>
 	    <script>try{Typekit.load({ async: true });}catch(e){}</script>

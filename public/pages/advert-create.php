@@ -157,11 +157,11 @@
 						<div class="form-number-spots-container">
 							<h3 class="form-header">Beschikbare plaatsen</h3>
 							<hr class="blue-horizontal-line"></hr>
-							<p class="form-subheader">Selecteer het maximum aantal kinderen dat je wil opvangen.</p>
+							<p class="form-subheader">Selecteer het maximum aantal kinderen waarvoor je per dag opvang wil aanbieden.</p>
 							<div class="number-spots-radio-buttons">
-								<label class="badge radio-button"><input type="radio" name="advert-spots" value="1" required>1</label>
+								<label class="badge radio-button"><input type="radio" name="advert-spots" value="1">1</label>
 								<label class="badge radio-button"><input type="radio" name="advert-spots" value="2">2</label>
-								<label class="badge radio-button"><input type="radio" name="advert-spots" value="3">3</label>
+								<label class="badge radio-button"><input type="radio" name="advert-spots" value="3" required>3</label>
 								<label class="badge radio-button"><input type="radio" name="advert-spots" value="4">4</label>
 								<label class="badge radio-button"><input type="radio" name="advert-spots" value="5">5</label>
 								<label class="badge radio-button"><input type="radio" name="advert-spots" value="6">6</label>
@@ -181,7 +181,7 @@
 						<div class="form-contact-information-container">
 							<h3 class="form-header">Contact-informatie</h3>
 							<hr class="blue-horizontal-line"></hr>
-							<p class="form-subheader">Voorzie jouw advertentie van de nodige contact-informatie zodat andere ouders je kunnen contacteren.</p>
+							<p class="form-subheader">Voorzie jouw advertentie van de nodige contact-informatie zodat andere ouders je kunnen contacteren indien nodig.</p>
 
 							<div class="form-icon-input-field">
 								<div class="form-icon-input-container">
@@ -215,7 +215,7 @@
 						<div class="form-transportation-container">
 							<h3 class="form-header">Verplaatsingsmogelijkheden</h3>
 							<hr class="blue-horizontal-line"></hr>
-							<p class="form-subheader">Geef aan op welke manier je de kinderen van en naar school voert. (Meerdere opties zijn mogelijk)</p>
+							<p class="form-subheader">Geef aan op welke manier(en) je de kinderen van en naar school voert. (Meerdere opties zijn mogelijk)</p>
 
 							<div class="show-for-large transportation-container">
 								<div class="transportation">
@@ -419,22 +419,6 @@
 							</div>
 						</div>
 
-						<!--<div class="small-12 columns form-availability-container">
-							<h3 class="form-header">Beschikbaarheid</h3>
-							<hr class="blue-horizontal-line"></hr>
-							<p class="form-subheader">Selecteer welke diensten je wenst aan te bieden aan andere ouders.</p>
-
-							<div class="small-12 large-5 columns availability-datepicker-container">
-								<div id="date"></div>
-							</div>
-
-							<div class="small-12 large-7 columns advert-availability-input-fields">
-								<div class="advert-availability-message-container">
-									<p>U hebt nog geen opvangdagen toegevoegd.</p>
-								</div>
-							</div>
-						</div>-->
-
 						<div class="form-availability-container">
 							<h3 class="form-header">Beschikbaarheid</h3>
 							<hr class="blue-horizontal-line"></hr>
@@ -443,14 +427,8 @@
 							<div class="advert-availability-slots"></div>
 						</div>
 
-						<div class="small-12 columns">
-							<p class="show-for-large" style="background-color: blue; color: white; padding: 10px;">Large and up</p>
-							<p class="show-for-medium-only" style="background-color: blue; color: white; padding: 10px;">Medium</p>
-							<p class="show-for-small-only" style="background-color: blue; color: white; padding: 10px;">Small</p>
-						</div>
-
 						<div class="small-12 columns form-error-container" data-abide-error>
-							<p>Er zitten enkele fouten in het formulier. Kijk na of alles is ingevuld en probeer het vervolgens nogmaals.</p>
+							<p>Er zitten enkele fouten in het formulier, kijk na of alles is ingevuld en probeer het vervolgens nogmaals.</p>
 						</div>
 
 						<div class="form-submit-container">
@@ -462,9 +440,7 @@
 			</div>
 		</div>
 
-		<footer>
-			<div style="width: 100vw; background-color: red; padding: 20px 0 20px 0; text-align: center; margin-top: 100px;"><p>Footer bro!</p></div>
-		</footer>
+		<?php include('../php-includes/footer.php'); ?>
 
 		<script src="../js/minimum-viable-product.min.js"></script>
 		<script src="https://use.typekit.net/vnw3zje.js"></script>
@@ -473,51 +449,6 @@
 		<script src="http://multidatespickr.sourceforge.net/jquery-ui.multidatespicker.js"></script>
 		<script>
 			var disabledDates = new Array();
-
-			/*$('#date').multiDatesPicker({
-		        inline: true,
-			    dateFormat: 'yy-mm-dd',
-			    firstDay: 0,
-			    showOtherMonths: true,
-			    monthNames: ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'],
-			    dayNames: ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'],
-			    dayNamesMin: ['Zo', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za'],
-			    onSelect: function (selected) {
-			    	if ($.inArray(selected, disabledDates) > -1) {
-						//alert("Date is in the array: "+disabledDates);
-					}
-					else {
-						$(".advert-availability-message-container").css("display", "none");
-						$(".advert-availability-input-fields").css("display", "block");
-
-						disabledDates.push(selected);
-						$('.advert-availability-input-fields').append("<div class='availability-slot-container-alt'><div class='small-12 large-4 columns selected-date'><label>Datum</label><input type='date' name='advert-availability-date[]' value="+selected+"></div><div class='small-6 large-3 columns'><label>Van</label><input type='text' class='time-input' name='advert-availability-start-time[]' data-time-format='H:i'></div><div class='availability-slot-duration' data-icon='y'></div><div class='small-6 large-3 columns'><label>Tot</label><input type='text' class='time-input' name='advert-availability-end-time[]' data-time-format='H:i'></div><div class='availability-slot-remove' data-icon='n'></div></div>");
-
-			        	$('.time-input').timepicker({
-							'step': 15,
-							'forceRoundTime': true,
-							'useSelect': false,
-							'minTime': '15:30',
-							'orientation': 'b'
-						});
-					}
-			    },
-			    beforeShowDay: function (date) {
-			        var td = date.getDay();
-			        var ret = [(date.getDay() != 0 && date.getDay() != 6),'',(td != 'Za' && td != 'Zo')?'':'only on workday'];
-			        return ret;
-			    }
-		    });
-
-		    $(document).on('click','.availability-slot-remove', function() { 
-		    	$(this).parent('div').remove();
-		    	var selectedDate = $(this).prev().prev().prev().prev('.selected-date').find('input[type="date"]').attr('value');
-		    	
-				var selectedDateInArray = disabledDates.indexOf(selectedDate);
-				if(selectedDateInArray != -1) {
-					disabledDates.splice(selectedDateInArray, 1);
-				}
-		    });*/
 
 		    $(document).ready(function() {
 		    	checkSize();
@@ -549,7 +480,7 @@
 					}
 					else {
 						disabledDates.push(selected);
-						$(".advert-availability-slots").append("<div class='availability-slot-created'></div>");
+						$(".advert-availability-slots").css("display", "block").append("<div class='availability-slot-created'></div>");
 					}
 			    },
 			    beforeShowDay: function (date) {
@@ -573,6 +504,7 @@
 				};
 
 				disabledDates.sort(date_sort_asc);
+				$(".advert-availability-slots").contents('.availability-slot-created').remove();
 				$(".advert-availability-slots .advert-availability-dates").contents().remove();
 
 				for (var i = 0; i < disabledDates.length; i++) {
@@ -613,11 +545,21 @@
 
 		    $(document).on('click','.remove-availability-slot', function() { 
 		    	$(this).parent('div').parent('div').remove();
-		    	var selectedDate = $(this).prev().prev().prev().prev('.selected-date').find('input[type="date"]').attr('value');
+		    	selectedDate = $(this).prev().prev().prev().prev('.selected-date').find('input[type="date"]').attr('value');
 
-				var selectedDateInArray = disabledDates.indexOf(selectedDate);
+		    	selectedDateFormat = selectedDate.split("-");
+				selectedDateDay = selectedDateFormat[2];
+				selectedDateMonth = selectedDateFormat[1].replace(/^0+/, '');
+				selectedDateYear = selectedDateFormat[0];
+
+				selectedDateInArray = disabledDates.indexOf(selectedDate);
 				if(selectedDateInArray != -1) {
 					disabledDates.splice(selectedDateInArray, 1);
+				}
+
+				if ($(".advert-availability-month .advert-availability-dates").children('.availability-slot-container').length === 0) {
+					$(".advert-availability-month[data-availability-format='"+selectedDateMonth+'-'+selectedDateYear+"']").remove();
+					$(".advert-availability-slots").css("display", "none");
 				}
 
 				$('#availability-datepicker tbody td:has(a)').each(function(index) {

@@ -40,12 +40,19 @@
 // Styling of the advert create form and all of its components
 
 .advert-create-form-container {
-	width: 90%;
 	display: flex;
 	margin: 0 auto 0 auto;
 	background-color: $white;
 	border-radius: 3px;
 	box-shadow: 0px 19px 38px 0px rgba(0,0,0,0.2);
+
+	@include breakpoint(small) {
+		width: 95%;
+	}
+
+	@include breakpoint(large) {
+		width: 90%;
+	}
 
 	.advert-create-form {
 		padding: 60px 20px 60px 20px;
@@ -384,11 +391,14 @@
 
 	.advert-availability-slots {
 		background-color: $light-grey;
+		border-radius: 3px;
 		margin-top: 30px;
 		padding-top: 30px;
 		min-width: 100%;
 		max-height: 500px;
-		overflow: auto;
+		overflow-y: auto;
+		overflow-x: hidden;
+		display: none;
 	}
 
 	.availability-slot-container {
@@ -445,21 +455,31 @@
 			padding: 0 !important;
 			margin-top: 20px;
 			text-align: center;
+		}
 
-			&:before {
-				font-size: rem-calc(20);
-				color: rgba($text-dark-grey, 0.6);
-			}
+		.availability-slot-duration::before {
+			font-size: rem-calc(20);
+			color: rgba($text-dark-grey, 0.6);
 		}
 
 		.remove-availability-slot {
 			cursor: pointer !important;
 			margin-top: 9px;
+		}
 
-			&:before {
-				font-size: rem-calc(13);
-				color: rgba($text-dark-grey, 0.6);
-			}
+		.remove-availability-slot::before {
+			font-size: rem-calc(13);
+			color: rgba($text-dark-grey, 0.6);
+		}
+	}
+
+	.advert-availability-month .date-month {
+		margin-bottom: 25px;
+		margin-left: 2px;
+
+		p {
+			@include font($header-font-family, regular, regular, 20, 20, rgba($text-dark-grey, 0.8));
+			margin-bottom: 0;
 		}
 	}
 
@@ -479,6 +499,11 @@
 
 	.form-submit-container {
 		margin-bottom: 0;
+
+		p {
+			@include font($paragraph-font-family, regular, regular, 14, 14, $text-dark-grey);
+			margin-bottom: 30px;
+		}
 
 		#advert-create-button {
 			@include button($light-red, 3px);
