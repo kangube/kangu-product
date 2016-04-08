@@ -2,7 +2,6 @@
 @import '../../bower_components/foundation-sites/scss/foundation';
 @include foundation-everything($flex: false);
 
-
 // Importing all modules
 @import 'modules/colors';
 @import 'modules/functions';
@@ -13,6 +12,7 @@
 @import 'components/navigation';
 @import 'components/footer';
 @import 'components/advert';
+@import 'components/animate';
 
 // Importing all partials
 @import 'partials/input-fields';
@@ -24,6 +24,7 @@
 @import 'partials/timepicker';
 
 // Importing all pages
+@import 'pages/promotional';
 @import 'pages/registration';
 @import 'pages/login';
 @import 'pages/advert-overview';
