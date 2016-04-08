@@ -30,6 +30,9 @@
 					echo "Spots left: ".$advert["advert_spots"]."<br />";
 					echo "Advert school: ".$advert["advert_school"]."<br />";
 					echo "Advert transport: ".$advert["advert_transport"]."<br />";
+					echo "<br/>";
+					//Voor te boeken, unieke link per advert
+					echo "<a href='book.php?id=".$advert["advert_id"]."' class='advert-link'>Boek mij</a>";
 				}
 			?>	
 		</div>
