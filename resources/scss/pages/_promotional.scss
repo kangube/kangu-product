@@ -1,0 +1,539 @@
+// Styling of the introductory header and its background
+
+.full-width {
+	min-width: 100vw;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.full-height-gradient {
+	min-width: 100vw;
+	min-height: 100vh;
+	display: flex;
+	background: linear-gradient(-225deg, #57B9F6 0%, $dark-blue 100%);
+	left: 0;
+	top: 0;
+	position: absolute;
+	z-index: -1;
+}
+
+.header {
+	@include grid-row;
+	margin-top: 40px;
+
+	h2 {
+		@include breakpoint(small) {
+			@include font($header-font-family, regular, bold, 28, 34, $text-white);
+		}
+
+		@include breakpoint(medium) {
+			@include font($header-font-family, regular, bold, 34, 32, $text-white);
+		}
+	}
+
+	.register-button {
+		@include button(rgba($light-blue, 0.2), 30px);
+		border: 1px solid $light-blue;
+		text-decoration: none;
+		text-align: center;
+		margin-top: 0;
+
+		&:hover, &:focus, &:active {
+			background: darken(rgba($light-blue, 0.2), 20%);
+		}
+	}
+
+	.index-header {
+		@include font($header-font-family, regular, regular, 45, 54, $text-white);
+		margin: 120px 0 30px 0;
+	}
+
+	.index-subheader {
+		@include font($header-font-family, regular, regular, 30, 37, $light-blue);
+		margin-bottom: 120px;
+	}
+
+	.advert-overview-preview {
+		position: relative;
+		z-index: 1;
+		-webkit-box-shadow: 0 0 80px rgba(0, 0, 0, 0.3);
+		-moz-box-shadow: 0 0 80px rgba(0, 0, 0, 0.3);
+		box-shadow: 0 0 80px rgba(0, 0, 0, 0.3);
+	}
+}
+
+// Styling of the features
+
+.features {
+	@include grid-row;
+	margin-top: 120px;
+	margin-bottom: 120px;
+
+	.feature-header {
+		@include font($header-font-family, regular, regular, 28, 37, $text-dark-grey);
+		text-align: center;
+		margin-bottom: 120px;
+	}
+
+	.feature-item {
+		margin-bottom: 5%;
+		
+		img {
+			margin-top: 5px;
+		}
+
+		h3 {
+			@include font($header-font-family, regular, regular, 22, 26.4, $text-dark-grey);
+		}
+
+		hr {
+			margin-bottom: 20px;
+		}
+
+		p {
+			@include font($paragraph-font-family, regular, regular, 14, 19, rgba($text-dark-grey, 0.4));
+			margin-bottom: 0;
+		}
+	}
+}
+
+// Styling of the functionalities
+
+.functionalities {
+	@include grid-row;
+	margin-bottom: 120px;
+
+	.functionality-header {
+		@include font($header-font-family, regular, regular, 28, 37, $text-dark-grey);
+		text-align: center;
+		margin-bottom: 25px;
+	}
+
+	.red-horizontal-line {
+		text-align: center !important;
+		display: inline-block;
+	}
+
+	.functionality-subheader {
+		@include font($header-font-family, regular, regular, 20, 24, rgba($text-dark-grey, 0.4));
+		text-align: center;
+		margin-bottom: 100px;
+	}
+
+	.functionality-item-header {
+		@include font($header-font-family, regular, regular, 24, 29, $text-dark-grey);
+	}
+
+	section {
+		margin-bottom: 40px;
+
+		.functionality-item-subheader {
+			@include font($header-font-family, regular, regular, 18, 23, $text-dark-grey);
+			margin-bottom: 15px;
+		}
+
+		p {
+			@include font($paragraph-font-family, regular, regular, 14, 19, rgba($text-dark-grey, 0.4));
+		}
+	}
+
+	.functionalities-button-group {
+		@include grid-column(10);
+		@include grid-column-position(center);
+		@include button-group-expand('.button');
+
+		.button {
+			background-color: transparent;
+			border: 1px solid $dark-blue;
+			text-decoration: none;
+			color: $dark-blue;
+		}
+
+		.button:first-child {
+			border-radius: 3px 0 0 3px;
+			border-right: none;
+		}
+
+		.button:last-child {
+			border-radius: 0 3px 3px 0;
+		}
+
+		.button:hover, .button:focus, .button:active {
+			background-color: $dark-blue;
+			transition: all 0.3s ease;
+			color: $text-white;
+		}
+
+		.selected {
+			background-color: $dark-blue;
+			color: $text-white;
+		}
+	}
+
+	.functionalities-search-container, .functionalities-offer-container {
+		@include grid-column(12);
+		text-align: center !important;
+		margin-top: 60px;
+	}
+
+	.functionalities-offer-container {
+		display: none;
+	}
+}
+
+// Styling of the beta registration form
+
+.beta-registration-full-width {
+	min-width: 100vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.beta-registration-gradient {
+	min-width: 100vw;
+	background: linear-gradient(-225deg, #57B9F6 0%, $dark-blue 100%);
+	padding: 90px 0 90px 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.beta-registration {
+	@include grid-row;
+
+	.beta-registration-header {
+		@include font($header-font-family, regular, regular, 30, 45, $text-white);
+		text-align: center;
+		margin-bottom: 85px;
+	}
+
+	.subscribe-button {
+		@include button(rgba($light-blue, 0.2), 3px);
+		border: 1px solid $light-blue;
+		text-decoration: none;
+		text-align: center;
+		margin-top: 0;
+		width: 100%;
+
+		&:hover, &:focus, &:active {
+			background: darken(rgba($light-blue, 0.2), 20%);
+		}
+	}
+
+	input:not([type=submit]):not([type=file]) {
+		@include font($paragraph-font-family, italic, regular, 16, 16, $white);
+		text-decoration: none;
+		background-color: none;
+		border-bottom: 1px solid $white;
+		padding: 0 50px 0 0;
+		margin-bottom: 0;
+
+		&::-webkit-input-placeholder {
+			color: $white;
+			margin-bottom: 20px;
+		}
+
+		&::-moz-placeholder {
+			color: $white;
+		}
+	}
+}
+
+// Styling of the footer
+
+footer {
+	@include grid-row;
+	margin-top: 50px;
+	margin-bottom: 50px;
+
+	.platform-links, .social-media-links {
+		list-style-type: none;
+		margin: 0;
+		
+		li {
+			display: inline;
+			margin: 0 10px 0 10px;
+		}
+
+		li:first-child {
+			margin-left: 0;
+		}
+
+		li:last-child {
+			margin-right: 0;
+		}
+
+		a {
+			@include font($header-font-family, regular, regular, 18, 24, $text-dark-grey);
+			text-decoration: none;
+		}
+	}
+
+	.copyright-claim-large {
+		@include grid-column(2);
+		@include hide-for-only(medium);
+	}
+}
+
+// Responsiveness
+
+@include breakpoint(small only) {
+	.header {
+		.index-header {
+			@include font($header-font-family, regular, regular, 30, 36, $text-white);
+			margin: 90px 0 30px 0;
+		}
+
+		.index-subheader {
+			@include font($header-font-family, regular, regular, 20, 24, $light-blue);
+			margin-bottom: 90px;
+		}
+	}
+
+	.features {
+		margin-top: 90px;
+		margin-bottom: 90px;
+
+		.feature-header {
+			@include font($header-font-family, regular, regular, 22, 30, $text-dark-grey);
+			margin-bottom: 90px;
+		}
+
+		.feature-item h3 {
+			@include font($header-font-family, regular, regular, 20, 20, $text-dark-grey);
+		}
+
+		.feature-item {
+			margin-bottom: 40px;
+		}
+
+		.feature-item:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.functionalities {
+		margin-bottom: 90px;
+
+		.functionality-header {
+			@include font($header-font-family, regular, regular, 22, 30, $text-dark-grey);
+		}
+
+		.functionality-subheader {
+			@include font($header-font-family, regular, regular, 16, 21.6, rgba($text-dark-grey, 0.4));
+			margin-bottom: 60px;
+		}
+	}
+
+	.beta-registration {
+		.beta-registration-header {
+			@include font($header-font-family, regular, regular, 22, 30, $text-white);
+			margin-bottom: 85px;
+
+			br {
+				margin-top: 20px;
+			}
+		}
+
+		input:not([type=submit]):not([type=file]) {
+			margin-bottom: 35px;
+		}
+	}
+
+	footer {
+		margin-top: 0;
+		margin-bottom: 20px;
+	}
+
+	.platform-links-mobile {
+		list-style-type: none;
+		margin: 0;
+
+		li {
+			padding: 20px 0 20px 0;
+			border-top: 1px solid $border-color-light-grey;
+
+			&:hover, &:focus, &:active {
+				background-color: rgba($text-dark-grey, 0.05);
+			}
+		}
+
+		li:first-child {
+			border-top: none;
+		}
+
+		li:last-child {
+			border-bottom: 1px solid $border-color-light-grey;
+		}
+
+		a {
+			@include font($header-font-family, regular, regular, 18, 24, $text-dark-grey);
+			text-decoration :none;
+		}
+	}
+
+	.social-media-links-mobile {
+		list-style-type: none;
+		margin: 40px 0 20px 0;
+
+		li {
+			display: inline;
+		}
+
+		li:first-child {
+			margin-right: 15px;
+		}
+
+		a {
+			text-decoration: none;
+			font-size: rem-calc(35);
+			color: $text-dark-grey;
+		}
+	}
+}
+
+@include breakpoint(medium only) {
+	.header {
+		.index-header {
+			@include font($header-font-family, regular, regular, 35, 42, $text-white);
+			margin: 120px 0 30px 0;
+		}
+
+		.index-subheader {
+			@include font($header-font-family, regular, regular, 24, 28.8, $light-blue);
+		}
+	}
+
+	.features {
+		margin-top: 90px;
+		margin-bottom: 90px;
+
+		.feature-header {
+			@include font($header-font-family, regular, regular, 24, 28.8, $text-dark-grey);
+			margin-bottom: 90px;
+		}
+
+		.feature-item h3 {
+			@include font($header-font-family, regular, regular, 20, 20, $text-dark-grey);
+		}
+
+		.feature-item:nth-last-child(-n+2) {
+		    margin-bottom: 0;
+		}
+	}
+
+	.functionalities {
+		margin-bottom: 90px;
+
+		.functionalities-button-group {
+			@include grid-column(8);
+			@include grid-column-position(center);
+		}
+
+		.functionality-header {
+			@include font($header-font-family, regular, regular, 24, 28.8, $text-dark-grey);
+		}
+
+		.functionality-subheader {
+			@include font($header-font-family, regular, regular, 16, 21.6, rgba($text-dark-grey, 0.4));
+			margin-bottom: 60px;
+		}
+
+		.vertical-timeline {
+			display: none;
+		}
+
+		section {
+			margin-bottom: 9%;
+		}
+
+		section .functionality-item-subheader {
+			@include font($header-font-family, regular, regular, 18, 23, $text-dark-grey);
+		}
+	}
+
+	.beta-registration {
+		.beta-registration-header {
+			@include font($header-font-family, regular, regular, 24, 31, $text-white);
+		}
+
+		input:not([type=submit]):not([type=file]) {
+			margin-bottom: 0;
+		}
+	}
+
+	footer {
+		margin: 40px 0 40px 0;
+
+		.platform-links-container {
+			text-align: left;
+			margin-bottom: 25px;
+			padding-bottom: 25px;
+			border-bottom: 1px solid $border-color-light-grey;
+		}
+
+		.social-media-links-container {
+			text-align: right;
+		}
+
+		.platform-links li, .social-media-links li {
+			margin: 0 15px 0 15px;
+		}
+
+		.copyright-claim-medium {
+			@include grid-column(8);
+			@include show-for-only(medium);
+			text-align: left !important;
+		}
+	}
+}
+
+@include breakpoint(large only) {
+	.header {
+		.index-header {
+			@include font($header-font-family, regular, regular, 40, 48, $text-white);
+			margin: 120px 0 30px 0;
+		}
+
+		.index-subheader {
+			@include font($header-font-family, regular, regular, 28, 37, $light-blue);
+		}
+	}
+
+	.features {
+		margin-top: 120px;
+		margin-bottom: 120px;
+
+		.feature-header {
+			@include font($header-font-family, regular, regular, 28, 37, $text-dark-grey);
+			margin-bottom: 90px;
+		}
+
+		.feature-item h3 {
+			@include font($header-font-family, regular, regular, 20, 26.4, $text-dark-grey);
+		}
+
+		.feature-item:nth-last-child(-n+3) {
+		    margin-bottom: 0;
+		}
+	}
+
+	.beta-registration {
+		.beta-registration-header {
+			@include font($header-font-family, regular, regular, 28, 45, $text-white);
+		}
+
+		input:not([type=submit]):not([type=file]) {
+			margin-bottom: 0;
+		}
+	}
+}
+
+@include breakpoint(xlarge) {
+	.feature-item:nth-last-child(-n+3) {
+	    margin-bottom: 0;
+	}
+}
