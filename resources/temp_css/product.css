@@ -4926,6 +4926,8 @@ hr {
       font-size: 1.5625rem;
       color: #454553;
       vertical-align: middle; }
+    .advert-detail-services .services-container .service ul li .not-selected {
+      color: #888 !important; }
 
 @media screen and (min-width: 0em) and (max-width: 39.9375em) {
   .service-container-mobile ul {

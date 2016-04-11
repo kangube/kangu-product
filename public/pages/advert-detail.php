@@ -129,11 +129,11 @@
 			    	<span class="detail-icon" data-icon="x"></span>
 			    	<p><?php echo $advert_information["user_email"]; ?></p>
 			    	<span class="detail-icon" data-icon="z"></span>
-			    	<p><?php echo $advert_information["user_mobile_number"]; ?></p>
+			    	<p>+32 <?php echo $advert_information["user_mobile_number"]; ?></p>
 		    	</div>
 		    	<div class="hide-for-small show-for-large flleft">
 			    	<span class="detail-icon" data-icon="q"></span>
-			    	<p><?php echo $advert_information["user_home_number"]; ?></p>
+			    	<p>+32 <?php echo $advert_information["user_home_number"]; ?></p>
 			    	<span class="detail-icon double-line-height" data-icon="v"></span>
 			    	<p><?php echo $advert_information["user_adress"] . "<br > " . $advert_information["user_city"]; ?></p>
 		    	</div>
@@ -177,17 +177,39 @@
 			<div class="small-12 columns">
 				<h2 class="hide-for-small show-for-large">Aangeboden diensten</h2>
 				<hr class="hide-for-small show-for-large blue-horizontal-line"></hr>
+				
+				<?php
+					/*$service_results = $mysqli->prepare("SELECT advert_id, service_id, service_omgeving, service_poort, service_vervoerthuis, service_activiteiten, service_maaltijd, service_huiswerk, fk_advert_id FROM tbl_service LEFT JOIN tbl_advert ON tbl_service.fk_advert_id=tbl_advert.advert_id WHERE tbl_service.fk_advert_id = ". $advert_information['advert_id']);
+					$service_results->execute();
+					$service_results->bind_result($advert_id, $service_id, $service_omgeving, $service_poort, $service_vervoerthuis, $service_activiteiten, $service_maaltijd, $service_huiswerk, $fk_advert_id);*/
+				?>
 
 				<div class="show-for-large services-container">
 
 					<div class="service">
 						<ul>
 							<li>
-								<label for="opvang-thuisomgeving" data-icon="m"><span></span>Opvang in een thuisomgeving</label>
+								<?php
+									if ($service_omgeving == 'ja') {
+
+									   	echo '<label for="opvang-thuisomgeving" data-icon="m"><span></span>Opvang in een thuisomgeving</label>';
+
+									}else{
+									    echo '<label class="not-selected" for="opvang-thuisomgeving" data-icon="m"><span></span>Opvang in een thuisomgeving</label>';
+									}
+								?>
 							</li>
 
 							<li>
-								<label for="ophalen-schoolpoort" data-icon="m"><span></span>Ophalen aan de schoolpoort</label>
+								<?php
+									if ($service_poort == 'ja') {
+
+									   	echo '<label for="ophalen-schoolpoort" data-icon="m"><span></span>Ophalen aan de schoolpoort</label>';
+
+									}else{
+									    echo '<label class="not-selected" for="ophalen-schoolpoort" data-icon="m"><span></span>Ophalen aan de schoolpoort</label>';
+									}
+								?>
 							</li>
 						</ul>
 					</div>
@@ -197,11 +219,27 @@
 					<div class="service">
 						<ul>
 							<li>
-								<label for="vervoer-thuis" data-icon="m"><span></span>Vervoer naar thuis na opvang</label>
+								<?php
+									if ($service_vervoerthuis == 'ja') {
+
+									    echo '<label for="vervoer-thuis" data-icon="m"><span></span>Vervoer naar thuis na opvang</label>';
+
+									}else{
+									    echo '<label class="not-selected" for="vervoer-thuis" data-icon="m"><span></span>Vervoer naar thuis na opvang</label>';
+									}
+								?>
 							</li>
 
 							<li>
-								<label for="vervoer-activiteiten" data-icon="m"><span></span>Vervoer naschoolse activiteiten</label>
+								<?php
+									if ($service_activiteiten == 'ja') {
+
+									   	echo '<label for="vervoer-activiteiten" data-icon="m"><span></span>Vervoer naschoolse activiteiten</label>';
+
+									}else{
+									    echo '<label class="not-selected" for="vervoer-activiteiten" data-icon="m"><span></span>Vervoer naschoolse activiteiten</label>';
+									}
+								?>
 							</li>
 						</ul>
 					</div>
@@ -211,11 +249,27 @@
 					<div class="service">
 						<ul>
 							<li>
-								<label for="voorzien-maaltijd" data-icon="m"><span></span>Voorzien van een maaltijd</label>
+								<?php
+									if ($service_maaltijd == 'ja') {
+
+									    echo '<label for="voorzien-maaltijd" data-icon="m"><span></span>Voorzien van een maaltijd</label>';
+
+									}else{
+									    echo '<label class="not-selected" for="voorzien-maaltijd" data-icon="m"><span></span>Voorzien van een maaltijd</label>';
+									}
+								?>
 							</li>
 
 							<li>
-								<label for="hulp-huiswerk" data-icon="m"><span></span>Hulp bij huiswerktaken</label>
+								<?php
+									if ($service_huiswerk == 'ja') {
+
+									    echo '<label for="hulp-huiswerk" data-icon="m"><span></span>Hulp bij huiswerktaken</label>';
+
+									}else{
+									    echo '<label class="not-selected" for="hulp-huiswerk" data-icon="m"><span></span>Hulp bij huiswerktaken</label>';
+									}
+								?>
 							</li>
 						</ul>
 					</div>
@@ -231,25 +285,82 @@
 
 			<ul class="small-12 columns">
 				<li>
-					<label for="opvang-thuisomgeving" data-icon="m"><span></span>Opvang in een thuisomgeving</label>
+					<?php
+						if ($service_omgeving == 'ja') {
+
+						   	echo '<label for="opvang-thuisomgeving" data-icon="m"><span></span>Opvang in een thuisomgeving</label>';
+
+						}else{
+						    echo '<label class="not-selected" for="opvang-thuisomgeving" data-icon="m"><span></span>Opvang in een thuisomgeving</label>';
+						}
+					?>
 				</li>
 
 				<li>
-					<label for="ophalen-schoolpoort" data-icon="m"><span></span>Ophalen aan de schoolpoort</label>
+					<?php
+						if ($service_poort == 'ja') {
+
+						   	echo '<label for="ophalen-schoolpoort" data-icon="m"><span></span>Ophalen aan de schoolpoort</label>';
+
+						}else{
+						    echo '<label class="not-selected" for="ophalen-schoolpoort" data-icon="m"><span></span>Ophalen aan de schoolpoort</label>';
+						}
+					?>
 				</li>
 				<li>
-					<label for="vervoer-thuis" data-icon="m"><span></span>Vervoer naar thuis na opvang</label>
+					<?php
+						if ($service_vervoerthuis == 'ja') {
+
+						    echo '<label for="vervoer-thuis" data-icon="m"><span></span>Vervoer naar thuis na opvang</label>';
+
+						}else{
+						    echo '<label class="not-selected" for="vervoer-thuis" data-icon="m"><span></span>Vervoer naar thuis na opvang</label>';
+						}
+					?>
 				</li>
 
 				<li>
-					<label for="vervoer-activiteiten" data-icon="m"><span></span>Vervoer naschoolse activiteiten</label>
+					<?php
+						if ($service_activiteiten == 'ja') {
+
+						   	echo '<label for="vervoer-activiteiten" data-icon="m"><span></span>Vervoer naschoolse activiteiten</label>';
+
+						}else{
+						    echo '<label class="not-selected" for="vervoer-activiteiten" data-icon="m"><span></span>Vervoer naschoolse activiteiten</label>';
+						}
+					?>
 				</li>
 				<li>
-					<label for="voorzien-maaltijd" data-icon="m"><span></span>Voorzien van een maaltijd</label>
+					<?php
+						if ($service_maaltijd == 'ja') {
+
+						    echo '<label for="voorzien-maaltijd" data-icon="m"><span></span>Voorzien van een maaltijd</label>';
+
+						}else{
+						    echo '<label class="not-selected" for="voorzien-maaltijd" data-icon="m"><span></span>Voorzien van een maaltijd</label>';
+						}
+					?>
 				</li>
 
 				<li>
-					<label for="hulp-huiswerk" data-icon="m"><span></span>Hulp bij huiswerktaken</label>
+					<?php
+						if ($service_poort == 'ja') {
+
+						   	echo '<label for="ophalen-schoolpoort" data-icon="m"><span></span>Ophalen aan de schoolpoort</label>';
+
+						}else{
+						    echo '<label class="not-selected" for="ophalen-schoolpoort" data-icon="m"><span></span>Ophalen aan de schoolpoort</label>';
+						}
+					?>
+					<?php
+						if ($service_huiswerk == 0) {
+
+						    echo '<label for="hulp-huiswerk" data-icon="m"><span></span>Hulp bij huiswerktaken</label>';
+
+						}else{
+						    echo '<label class="not-selected" for="hulp-huiswerk" data-icon="m"><span></span>Hulp bij huiswerktaken</label>';
+						}
+					?>
 				</li>
 			</ul>
 		</div>

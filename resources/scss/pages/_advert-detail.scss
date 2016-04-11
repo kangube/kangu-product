@@ -436,6 +436,10 @@ hr {
 			color: $text-dark-grey;
 			vertical-align: middle;
 		}
+		
+		.service ul li .not-selected {
+			color: #888 !important;
+		}
 	}
 }
 
