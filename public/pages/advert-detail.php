@@ -108,9 +108,10 @@
 		    	<h2 class="mrgtop">Beschikbaarheid</h2>
 		    	<hr class="blue-horizontal-line"></hr>
 
-				<div id="availability-datepicker"></div>
+				<div class="availability-datepicker"></div>
 		    </div>
 
+		    <!--
 		    <div class="show-for-small hide-for-large small-12 columns datepicker-small">
 		    	<div class="small-12 columns">
 			    	<h2 class="mrgtop">Beschikbaarheid</h2>
@@ -119,8 +120,8 @@
 					<div id="availability-datepicker-2"></div>
 				</div>
 		    </div>
+		    -->
 		</div>
-
 		<div class="row advert-detail-map">
 			<div class="small-12 large-3 columns">
 		    	<h2 class="hide-for-small show-for-large">Contact informatie</h2>
@@ -439,7 +440,6 @@
 		    </div>
 		</div>
 		</div>
-		
 		<script src="../js/minimum-viable-product.min.js"></script>
 	    <script src="https://use.typekit.net/vnw3zje.js"></script>
 	    <script>try{Typekit.load({ async: true });}catch(e){}</script>
@@ -469,37 +469,5 @@
 				});
 			});
 		</script>
-
-	    <script src="http://multidatespickr.sourceforge.net/jquery-ui.multidatespicker.js"></script>
-	    <script>
-	    	$('#availability-datepicker').multiDatesPicker({
-		        inline: true,
-			    dateFormat: 'yy-mm-dd',
-			    firstDay: 0,
-			    showOtherMonths: true,
-			    monthNames: ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'],
-			    dayNames: ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'],
-			    dayNamesMin: ['Zo', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za'],
-			    beforeShowDay: function (date) {
-			        var td = date.getDay();
-			        var ret = [(date.getDay() != 0 && date.getDay() != 6),'',(td != 'Za' && td != 'Zo')?'':'only on workday'];
-			        return ret;
-			    }
-		    });
-		    $('#availability-datepicker-2').multiDatesPicker({
-		        inline: true,
-			    dateFormat: 'yy-mm-dd',
-			    firstDay: 0,
-			    showOtherMonths: true,
-			    monthNames: ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'],
-			    dayNames: ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'],
-			    dayNamesMin: ['Zo', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za'],
-			    beforeShowDay: function (date) {
-			        var td = date.getDay();
-			        var ret = [(date.getDay() != 0 && date.getDay() != 6),'',(td != 'Za' && td != 'Zo')?'':'only on workday'];
-			        return ret;
-			    }
-		    });
-	    </script>
 	</body>
 </html>

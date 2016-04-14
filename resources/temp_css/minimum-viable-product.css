@@ -4032,6 +4032,25 @@ td.ui-datepicker-week-end {
   width: 100%;
   font-size: 0; }
 
+.availability-date-item > a::after, .availability-datepicker td a::after {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 5px;
+  margin-top: 5px;
+  position: relative;
+  text-align: center !important;
+  left: 49%; }
+
+​
+.availability-datepicker td a::after {
+  background-color: #F37A7D; }
+
+​
+.availability-date-item > a::after {
+  background-color: green !important; }
+
 .half-height-gradient {
   min-width: 100vw;
   min-height: 50vh;
