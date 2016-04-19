@@ -210,11 +210,11 @@ class advert
 
 	    $services_dates_query .= "; ";
 
-	    $services_dates_query .= "INSERT INTO tbl_availability(fk_advert_id, availability_date, availability_time_start, availability_time_end) VALUES ";
+	    $services_dates_query .= "INSERT INTO tbl_availability(fk_advert_id, availability_date, availability_time_start, availability_time_end, availability_spots) VALUES ";
 
 		foreach($this->AvailableDates as $key => $d)
 		{
-			$services_dates_query .= "('$last_created_id', '".$d."', '".$this->AvailableStartTimes[$key]."', '".$this->AvailableEndTimes[$key]."'), ";
+			$services_dates_query .= "('$last_created_id', '".$d."', '".$this->AvailableStartTimes[$key]."', '".$this->AvailableEndTimes[$key]."', '".$this->NumberChildren."'), ";
 		}
 
 		$services_dates_query = rtrim($services_dates_query,', ').";";
@@ -231,7 +231,7 @@ class advert
 		$children_information_query = rtrim($children_information_query,', ').";";
 	   	$statement = $conn->prepare($children_information_query);
 	   	//$statement->execute();
-		echo $advert_query."</br>".$services_dates_query."</br>".$children_information_query;
+		//echo $advert_query."</br>".$services_dates_query."</br>".$children_information_query;
 	}
 	
 	public function getAll() {

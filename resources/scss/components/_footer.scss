@@ -2,9 +2,10 @@
 
 .mobile-up-footer {
 	@include hide-for-only(small);
-	width: 100vw;
+	min-width: 100vw;
 	height: auto;
 	margin-top: 120px;
+	margin-bottom: 0;
 	padding: 50px 0 50px 0;
 	border-top: 1px solid darken($light-grey, 5%);
 	background-color: $light-grey;
@@ -20,10 +21,6 @@
 	}
 
 	// Styling of the footer-item elements
-
-	.footer-item-container, .footer-copyright-container {
-		@include-grid-column(12);
-	}
 
 	.footer-item {
 		p {

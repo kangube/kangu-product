@@ -49,7 +49,7 @@
 				<div class="top-bar-right">
 					<ul class="vertical medium-horizontal menu">
 						<li><a href="../pages/advert-create.php" class="provide-services-button">Opvang aanbieden</a></li>
-						<li><a href="#">Advertenties</a></li>
+						<li><a href="../pages/advert-overview.php">Advertenties</a></li>
 						<li><a href="#">Schema</a></li>
 						<li><a href="#">Transacties</a></li>
 						<li><a href="#" class="show-for-medium" data-icon="g"></a></li>

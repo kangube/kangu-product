@@ -1,0 +1,54 @@
+// Styling of the advert confirmation page
+
+.full-width-advert-confirmation {
+	min-width: 100vw;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	.advert-confirmation-gradient {
+		min-width: 100vw;
+		min-height: 50vh;
+		display: flex;
+		background: linear-gradient(-225deg, #57B9F6 0%, $dark-blue 100%);
+		position: absolute;
+		z-index: -1;
+	}
+
+	/*.advert-confirmation-container {
+		@include grid-column(6);
+		@include grid-column-position(center);
+	}*/
+
+	.advert-confirmation-header {
+		padding: 30px;
+		background-color: $white;
+		border-radius: 3px;
+		box-shadow: 0px 19px 38px 0px rgba(0,0,0,0.2);
+		text-align: center;
+
+		.confirmation-icon {
+			font-size: rem-calc(55);
+			color: rgba($text-dark-grey, 0.6);
+		}
+
+		h3 {
+			@include font($header-font-family, regular, regular, 17, 17, rgba($text-dark-grey, 0.6));
+			margin: 20px 0 40px 0;
+		}
+
+		p {
+			@include font($paragraph-font-family, regular, regular, 14, 21, rgba($text-dark-grey, 0.6));
+			text-align: left;
+			margin-bottom: 10px;
+		}
+
+		.confirmation-button {
+			margin-top: 40px;
+			@include button($light-red, 3px);
+			text-decoration: none;
+			display: block;
+		}
+	}
+}

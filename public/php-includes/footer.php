@@ -2,7 +2,7 @@
 	<div class="footer-full-width-container"></div>
 
 	<div class="footer-parent-container">
-		<div class="small-12 columns footer-item-container">
+		<div class="footer-item-container">
 			<div class="footer-item" data-equalizer-watch>
 				<h3>Over het platform</h3>
 				<hr class="horizontal-line"></hr>
@@ -50,17 +50,15 @@
 		</div>
 
 		<div class="copyright-social-container">
-			<div class="small-12 columns">
-				<hr class="bottom-horizontal-line"></hr>
+			<hr class="bottom-horizontal-line"></hr>
 
-				<div class="copyright-claim">
-					<p>&copy; 2016 kangu</p>
-				</div>
+			<div class="copyright-claim">
+				<p>&copy; 2016 kangu</p>
+			</div>
 
-				<div class="social">
-					<a href="https://www.facebook.com/Kangu-1659271094353142/">Facebook</a>
-					<a href="https://twitter.com/kangu_be">Twitter</a>
-				</div>
+			<div class="social">
+				<a href="https://www.facebook.com/Kangu-1659271094353142/">Facebook</a>
+				<a href="https://twitter.com/kangu_be">Twitter</a>
 			</div>
 		</div>
 	</div>
