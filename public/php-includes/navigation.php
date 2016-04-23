@@ -29,7 +29,7 @@
 		<div><span>Jouw profiel</span></div>
 		<ul>
 			<li><a href="#">Mijn account</a></li>
-			<li><a href="../pages/logout.php">Afmelden</a></li>
+			<li><a href="#">Afmelden</a></li>
 		</ul>
 	</div>
 </div>
