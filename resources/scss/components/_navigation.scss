@@ -1,5 +1,10 @@
 // Styling of the top-bar used for small and medium screens
 
+.full-width-navigation {
+	width: 100vw;
+	background-color: $white;
+}
+
 .top-bar-mobile {
 	@include hide-for(large);
 	display: flex;
@@ -11,6 +16,10 @@
 	background-color: $white;
 	position: relative;
 	z-index: 0;
+
+	#top-bar-mobile-menu-button {
+		cursor: pointer;
+	}
 
 	span:first-child, span:last-child, span:nth-child(2) {
 		align-self: center;
