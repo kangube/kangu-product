@@ -5,12 +5,6 @@
 	require_once("../php-assets/class.user.php");
 
 	$auth_user = new USER();
-
-	if($auth_user->is_loggedin()!="")
-	{
-		$auth_user->redirect('login.php');
-	}
-
 	$user_id = $_SESSION['user_session'];
 	$stmt = $auth_user->runQuery("SELECT * FROM tbl_user WHERE user_id=:user_id");
 	$stmt->execute(array(":user_id"=>$user_id));
