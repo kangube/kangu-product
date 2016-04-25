@@ -64,5 +64,20 @@ class advert
 		$oneAdvert = $conn->query("SELECT * FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id WHERE tbl_advert.advert_id=$advertNumber");
 		return $oneAdvert;
 	}
+
+	public function getOneDate() {
+		$conn = Db::getInstance();
+		$advertNumber = $_GET['id'];
+		$oneDate = $conn->query("SELECT * FROM tbl_availability LEFT JOIN tbl_advert ON tbl_advert.advert_id=tbl_availability.fk_advert_id WHERE tbl_advert.advert_id=$advertNumber");
+		return $oneDate;
+	}
+
+	public function getOneService() {
+		$conn = Db::getInstance();
+		$advertNumber = $_GET['id'];
+		$oneAdvert = $conn->query("SELECT * FROM tbl_service LEFT JOIN tbl_advert ON tbl_advert.advert_id=tbl_service.fk_advert_id WHERE tbl_service.fk_advert_id=$advertNumber");
+		return $oneAdvert;
+	}
+
 }
 ?>
