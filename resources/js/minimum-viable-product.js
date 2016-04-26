@@ -14,4 +14,185 @@ $("#registration-form").on("invalid.zf.abide", function(ev, el) {
 	var elem = new Foundation.Equalizer($('.registration-panel'));
 	elem.applyHeight();
 })
-new WOW().init();
+// Opening and closing of the appropiate functionality containers
+$(".functionalities-button-group .button:first-child").on("click", function() {
+    $('.functionalities-button-group .button:last-child').removeClass("selected");
+    $('.functionalities-button-group .button:first-child').addClass("selected");
+    $('.functionalities-offer-container').css("display", "none");
+    $('.functionalities-search-container').css("display", "block");
+    $('.functionalities-search-container').addClass("animated fadeInLeft");
+});
+
+$(".functionalities-button-group .button:last-child").on("click", function() {
+    $('.functionalities-button-group .button:first-child').removeClass("selected");
+    $('.functionalities-button-group .button:last-child').addClass("selected");
+    $('.functionalities-search-container').css("display", "none");
+    $('.functionalities-offer-container').css("display", "block");
+    $('.functionalities-offer-container').addClass("animated fadeInRight");
+});
+$(document).ready(function() {
+	var filter = "";
+
+	$(".advert-overview-container").load("../php-assets/class.adverts.pagination.php");
+
+	$(".advert-overview-container").on("change", ".advert-overview-filter", function(e) {
+		e.preventDefault();
+		filter = $(this).val();
+
+		$.ajax({
+			type: 'post',
+			dataType: 'html',
+			url: '../php-assets/class.adverts.pagination.php',
+			data: {chosenFilter:filter},
+			cache: false,
+			success: function(response) {
+				$(".advert-overview-container").html(response);
+				$(".advert-overview-filter").val(filter);
+			}
+		});
+	});
+
+	$(".advert-overview-container").on("click", ".pagination a", function (e) {
+		e.preventDefault();
+		var page = $(this).attr("data-page");
+
+		if (!filter) {
+			$(".advert-overview-container").load("../php-assets/class.adverts.pagination.php", {page:page});
+		}
+		else if (filter) {
+			$(".advert-overview-container").load("../php-assets/class.adverts.pagination.php", {page:page, chosenFilter:filter});
+		}
+	});
+});
+$(document).ready(function() {
+	var filter = "";
+
+	$(".advert-search-form, .advert-search-form-mobile").on("submit", function (e) {
+		e.preventDefault();
+		var school = $('.search-region').val();
+		var price = $('.search-price').val();
+		var spots = $('.search-spots').val();
+
+		$.ajax({
+			type: 'post',
+			dataType: 'html',
+			url: '../php-assets/class.search.php',
+			data: {school:school, price:price, spots:spots},
+			cache: false,
+			success: function(response) {
+				$(".advert-overview-container").css("display", "none");
+				$(".search-advert-overview-container" ).html(response);
+			}
+		});
+	});
+
+	$(".search-advert-overview-container").on("change", ".search-advert-overview-filter", function(e) {
+		filter = $(this).val();
+		var school = $('.search-region').val();
+		var price = $('.search-price').val();
+		var spots = $('.search-spots').val();
+
+		$.ajax({
+			type: 'post',
+			dataType: 'html',
+			url: '../php-assets/class.search.php',
+			data: {chosenFilter:filter, filterSchool:school, filterPrice:price, filterSpots:spots},
+			cache: false,
+			success: function(response) {
+				$(".advert-overview-container").css("display", "none");
+				$(".search-advert-overview-container").html(response);
+				$(".search-advert-overview-filter").val(filter);
+			}
+		});
+	});
+
+	$(".search-advert-overview-container").on("click", ".pagination a", function (e) {
+		e.preventDefault();
+		var school = $('.search-region').val();
+		var price = $('.search-price').val();
+		var spots = $('.search-spots').val();
+		var page = $(this).attr("data-page");
+
+		if (!filter) {
+			$(".search-advert-overview-container").load("../php-assets/class.search.php", {page:page, school:school, price:price, spots:spots});
+		}
+		else if (filter) {
+    		//alert("chosen filter: "+filter+", school: "+school+", price: "+price+", spots: "+spots+".");
+			$(".search-advert-overview-container").load("../php-assets/class.search.php", {page:page, chosenFilter:filter, filterSchool:school, filterPrice:price, filterSpots:spots});
+		}
+	});
+});
+// Opening and closing the mobile search form
+$("#mobile-search-form-button").on("click", function() {
+	if ($('.mobile-search-form-container').hasClass('animate-fade-out')) 
+	{
+		$('.mobile-search-form-container').removeClass('animate-fade-out');  
+		$('.mobile-search-form-container').addClass('animate-fade-in');
+		$('.mobile-search-form-container').css("display", "block");
+	} else {
+		$('.mobile-search-form-container').addClass('animate-fade-in');
+		$('.mobile-search-form-container').css("display", "block");
+	}
+
+	$('html, body').css('overflow', 'hidden');
+});
+
+$("#search-form-close-button").on("click", function() {
+	if ($('.mobile-search-form-container').hasClass('animate-fade-in')) 
+	{
+		$('.mobile-search-form-container').removeClass('animate-fade-in');  
+		$('.mobile-search-form-container').addClass('animate-fade-out');
+		$('.mobile-search-form-container').css("display", "none"); 
+	}
+
+	$('html, body').css('overflow', 'auto');
+});
+// Opening and closing the mobile menu panel
+$("#top-bar-mobile-menu-button").on("click", function() {
+	if ($('.mobile-menu-panel').hasClass('animate-slide-left')) 
+	{
+		$('.mobile-menu-panel').removeClass('animate-slide-left');  
+		$('.mobile-menu-panel').addClass('animate-slide-right');  
+	} else {
+		$('.mobile-menu-panel').addClass('animate-slide-right');  
+	}
+
+	if ($('.mobile-menu-background').hasClass('animate-fade-out')) 
+	{
+		$('.mobile-menu-background').removeClass('animate-fade-out');
+		$('.mobile-menu-background').addClass('animate-fade-in');
+		$('.mobile-menu-background').css("display", "block");
+	} else {
+		$('.mobile-menu-background').addClass('animate-fade-in');
+		$('.mobile-menu-background').css("display", "block");  
+	}
+
+	$('html, body').css('overflow', 'hidden');
+});
+
+$("#mobile-menu-close-button").on("click", function() {
+	if ($('.mobile-menu-panel').hasClass('animate-slide-right')) 
+	{
+		$('.mobile-menu-panel').removeClass('animate-slide-right');  
+		$('.mobile-menu-panel').addClass('animate-slide-left');  
+	}
+
+	if ($('.mobile-menu-background').hasClass('animate-fade-in')) 
+	{
+		$('.mobile-menu-background').removeClass('animate-fade-in'); 
+		$('.mobile-menu-background').addClass('animate-fade-out');
+		$('.mobile-menu-background').css("display", "none");
+	}
+
+	$('html, body').css('overflow', 'auto');
+});
+var wow = new WOW({
+	boxClass:     'wow',
+	animateClass: 'animated',
+	offset:       0,
+	mobile:       true,
+	live:         true,
+	callback:     function(box) {},
+	scrollContainer: null
+});
+wow.init();

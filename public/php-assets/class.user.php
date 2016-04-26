@@ -83,12 +83,5 @@ class USER
 	{
 		header("Location: $url");
 	}
-	
-	public function doLogout()
-	{
-		session_destroy();
-		unset($_SESSION['user_session']);
-		return true;
-	}
 }
 ?>
