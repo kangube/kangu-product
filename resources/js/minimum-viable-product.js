@@ -2450,7 +2450,7 @@ $(document).ready(function() {
 		};
 ​
 		var events = [];
-		$.getJSON('availability-dates.php?id="'+advert_id+'"', function(data) {
+		$.getJSON('availability-datepicker.php?id="'+advert_id+'"', function(data) {
             $.each(data, function(key, val) {
                 availability_date_item = val.availability_date.replace(/-/g, '/');
                 events[new Date(availability_date_item)] = new Event("availability-date-item");
