@@ -56,6 +56,10 @@ function JavascriptCompile(cb) {
         ('bower_components/foundation-sites/dist/foundation.min.js'),
         ('bower_components/what-input/what-input.min.js'),
         ('bower_components/wow/dist/wow.min.js'),
+        ('bower_components/jquery-ui/ui/core.js'),
+        ('bower_components/jquery-ui/ui/datepicker.js'),
+        ('bower_components/jt.timepicker/jquery.timepicker.js'),
+        ('bower_components/arrive/minified/arrive.min.js'),
         ('resources/js/custom/*')
       ]).pipe(plumber())
         .pipe(concat('minimum-viable-product.js'))

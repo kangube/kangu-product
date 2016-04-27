@@ -93,40 +93,12 @@ class booking
 				break;
 		}
 	}
-
-	/*if(strlen($addres) > 10)
-	{
-  		
-	}else 
-	{
-	
-	}*/
-
 	
 	public function Save() {
 		$conn = Db::getInstance();
-		$statement = $conn->prepare("INSERT INTO tbl_booking(
-			fk_advert_id,
-			fk_booker_user_id,
-			fk_renter_user_id, 
-			booking_extra_information,
-			booking_price,
-			booking_number_spots)
-			VALUES 
-			(:advertID, :bookerID, :renterID, :extrainformation, :booking_price, :booking_number_spots)");
-		$statement->bindValue(
-			':advertID', $this->Advert_ID);
-		$statement->bindValue(
-			':bookerID', $this->Booker_user_ID);
-		$statement->bindValue(
-			':renterID', $this->Renter_user_ID);
-		$statement->bindValue(
-			':extrainformation', $this->Booking_Extra_Information);
-		$statement->bindValue(
-			':booking_price', $this->Booking_Price);
-		$statement->bindValue(
-			':booking_number_spots', $this->Booking_Number_Spots);
-		$statement->execute();
+		$statement = $conn->prepare("INSERT INTO tbl_booking(fk_advert_id, fk_booker_user_id, fk_renter_user_id, booking_extra_information, booking_price, booking_number_spots) VALUES ('$this->Advert_ID', '$this->Booker_user_ID', '$this->Renter_user_ID', '$this->Booking_Extra_Information', '$this->Booking_Price', '$this->Booking_Number_Spots')");
+		//$statement->execute();
+		echo "INSERT INTO tbl_booking(fk_advert_id, fk_booker_user_id, fk_renter_user_id, booking_extra_information, booking_price, booking_number_spots) VALUES ('$this->Advert_ID', '$this->Booker_user_ID', '$this->Renter_user_ID', '$this->Booking_Extra_Information', '$this->Booking_Price', '$this->Booking_Number_Spots')";
 	}
 
 	public function SaveDate() {
