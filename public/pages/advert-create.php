@@ -10,6 +10,11 @@
 	$stmt->execute(array(":user_id"=>$user_id));
 	$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
+	$check_user_has_advert = $auth_user->hasAdvert($userRow['user_id']);
+	if($check_user_has_advert === true) {
+		$auth_user->redirect('advert-overview.php');
+	}
+
 	$a1 = new Advert();
 
 	if(!empty($_POST))
