@@ -191,7 +191,7 @@ class advert
 		$advert_query .= "UPDATE tbl_user SET user_mobile_number = '$this->MobileNumber', user_home_number = '$this->HomeNumber', user_adress = '$this->HomeAdress', user_city = '$this->HomeCity' WHERE user_id = '$this->UserId';";
 
 	   	$statement = $conn->prepare($advert_query);
-		//$statement->execute();
+		$statement->execute();
 		$last_created_id = $conn->lastInsertId();
 
 		$services_dates_query .= "INSERT INTO tbl_service(fk_advert_id, service_name) VALUES ";
@@ -219,7 +219,7 @@ class advert
 
 		$services_dates_query = rtrim($services_dates_query,', ').";";
 	   	$statement = $conn->prepare($services_dates_query);
-		//$statement->execute();
+		$statement->execute();
 
 	   	$children_information_query .= "INSERT INTO tbl_child(child_first_name, child_last_name, child_school, child_class) VALUES ";
 
@@ -230,8 +230,7 @@ class advert
 
 		$children_information_query = rtrim($children_information_query,', ').";";
 	   	$statement = $conn->prepare($children_information_query);
-	   	//$statement->execute();
-		//echo $advert_query."</br>".$services_dates_query."</br>".$children_information_query;
+	   	$statement->execute();
 	}
 	
 	public function getAll() {

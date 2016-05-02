@@ -31,7 +31,7 @@
 						<p>Binnenkort zal je gecontacteerd worden door één van onze medewerkers om samen jouw advertentie te evalueren.</p>
 						<p>Met het uitvoeren van deze maatregel willen we het de veiligheid op het platform vrijwaren door mensen met slechte bedoelingen geen onmiddelijke toegang tot het platform te geven. Verder kunnen we op deze manier ook de identiteit iedere opvangbiedende ouder authenticeren.</p>
 						<p>Tot je advertentie geëvalueerd is blijft deze nog in voorbehoud en zal deze nog niet op het platform geplaatst worden.</p>
-						<a class="confirmation-button" href="">Ik begrijp het</a>
+						<a class="confirmation-button" href="advert-overview.php">Ik begrijp het</a>
 					</div>
 				</div>
 			</div>
