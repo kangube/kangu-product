@@ -1,7 +1,7 @@
 // Styling of the top-bar used for small and medium screens
 
 .full-width-navigation {
-	width: 100vw;
+	width: 100%;
 	background-color: $white;
 }
 
@@ -51,8 +51,8 @@
 }
 
 .mobile-menu-background {
-	min-width: 100vw;
-	min-height: 100vh;
+	min-width: 100%;
+	min-height: 100%;
 	background-color: rgba($dark-grey, 0.5);
 	position: fixed;
 	opacity: 0;
@@ -230,6 +230,11 @@
 }
 
 // Styling of the top-bar used for large and xlarge screens
+
+.menu-panel {
+	width: 100%;
+	background-color: $white !important;
+}
 
 .top-bar {
 	@include show-for(large);

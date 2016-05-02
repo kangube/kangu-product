@@ -437,7 +437,7 @@
 						<div class="small-12 columns availability-events"></div>
 
 						<?php
-							$db_username = 'root';
+							/*$db_username = 'root';
 							$db_password = 'root';
 							$db_name = 'kangu-product';
 							$db_host = 'localhost';
@@ -463,12 +463,6 @@
 						        $servicesArray[] = $row['service_name'];
 						    }
 
-						    /*$comparison_result = array_intersect($services, $servicesArray);
-							
-							print "<pre>";
-							print_r($comparison_result);
-							print "</pre>";*/
-
 							if (in_array("opvang-thuisomgeving", $servicesArray))
 							{
 							    echo "<p>opvang thuisomgeving is gekozen</p>";
@@ -492,8 +486,7 @@
 							
 							if (in_array("hulp-huiswerktaken", $servicesArray)) {
 								echo "<p>hulp bij huiswerktaken is gekozen</p>";
-							}
-
+							}*/
 						?>
 
 						<div class="small-12 columns form-error-container" data-abide-error>
