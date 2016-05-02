@@ -1,16 +1,18 @@
 // Styling of the introductory header and its background
 
 .full-width {
-	min-width: 100vw;
-	min-height: 100vh;
+	min-width: 100%;
+	min-height: 100%;
+	max-width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
 .full-height-gradient {
-	min-width: 100vw;
-	min-height: 100vh;
+	min-width: 100%;
+	min-height: 100%;
+	max-width: 100%;
 	display: flex;
 	background: linear-gradient(-225deg, #57B9F6 0%, $dark-blue 100%);
 	left: 0;
@@ -186,14 +188,16 @@
 // Styling of the beta registration form
 
 .beta-registration-full-width {
-	min-width: 100vw;
+	min-width: 100%;
+	max-width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
 .beta-registration-gradient {
-	min-width: 100vw;
+	min-width: 100%;
+	max-width: 100%;
 	background: linear-gradient(-225deg, #57B9F6 0%, $dark-blue 100%);
 	padding: 90px 0 90px 0;
 	display: flex;

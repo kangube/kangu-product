@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 24, 2016 at 06:09 PM
+-- Generation Time: Apr 19, 2016 at 09:46 AM
 -- Server version: 5.5.42
 -- PHP Version: 5.6.10
 
@@ -47,7 +47,7 @@ INSERT INTO `tbl_advert` (`advert_id`, `fk_user_id`, `advert_description`, `adve
 (9, 9, 'Ik heb in het verleden vooral voor mijn kleine neefjes en nichtjes gezorgd, maar nu ze wat ouder worden zoek ik een nieuw gezin waar ik kan instaan voor de zorg van de kinderen wanneer het nodig is. Ik ben een heel vrolijk persoon, en doe niets liever dan spelen en ravotte met kinderen. Als student in de bio-ingenieurswetenschappen kan ik zeker ook helpen met huiswerk indien nodig.', 7, 2, 'Heilig-hartcollege', 'auto', 0),
 (10, 10, 'Binnenkort ga ik Gent verkennen door me er te settelen en een job te zoeken. \r\nNaast het vele vrijwilligerswerk met kinderen en het werken in de horeca, rondde ik mijn studies af als opvoeder/begeleider. Door het gevarieerde vrijwilligerswerk dat ik met plezier deed vanaf mijn vijftiende, leerde ik veel bij. Belangrijk vind ik dat kinderen naast de schooluren zich kunnen ontspannen in een familiale en liefdevolle omgeving. \r\nOok supporter ik de eigen ontwikkeling van het kind naar de weg van zelfstandigheid (meehelpen, laten ontdekken, huiswerk,...). Afhankelijk van de leeftijd, de mogelijkheden van het kind en in samenspraak met de ouders. Via deze kinderopvang wil ik mijn favoriete bezigheid verderzetten en samen met jullie, als gezin, nieuwe dingen ontdekken.', 5, 2, 'Heilig-hartcollege', 'auto', 0),
 (11, 11, 'Tijdens de week werk ik als leerkracht in het secundair aan het Stedelijk Lyceum Lamoriniere. Graag wil ik na mijn uren een bijverdienste als kinderoppas, zo kan ik mijn schoolwerk en sociaal leven nog steeds goed combineren. \r\nIk ben afgestudeerd als leerkracht verzorgende wat maakt dat ik soms stagebegeleiding geef aan 6 en 7 kinderzorg. Kinderen van verscheidene leeftijden zijn dus geen enkel probleem. ', 6, 2, 'Heilig-hartcollege', 'auto', 0),
-(12, 12, 'Ik ben afgestudeerd als maatschappelijk assistente en doe nu de banaba buitengewoon onderwijs. \r\nMijn droom is om met kinderen te werken. Ik heb meestal snel een vertrouwensband met kinderen. Ook ben ik graag creatief bezig met kinderen en vind ik het belangrijk om hen iets bij te brengen. ', 5, 1, 'Heilig-hartcollege', 'auto', 0),
+(12, 12, 'Ik ben afgestudeerd als maatschappelijk assistente en doe nu de banaba buitengewoon onderwijs. Mijn droom is om met kinderen te werken. Ik heb snel een vertrouwensband met kinderen. Ook ben ik graag creatief bezig met kinderen en vind ik het belangrijk om hen iets bij te brengen. ', 5, 1, 'Heilig-hartcollege', 'auto', 0),
 (13, 13, 'Tijdens de week werk ik als leerkracht in het secundair aan het Stedelijk Lyceum Lamoriniere. Graag wil ik na mijn uren een bijverdienste als kinderoppas, zo kan ik mijn schoolwerk en sociaal leven nog steeds goed combineren. \r\nIk ben afgestudeerd als leerkracht verzorgende wat maakt dat ik soms stagebegeleiding geef aan 6 en 7 kinderzorg. Kinderen van verscheidene leeftijden zijn dus geen enkel probleem. ', 8, 1, 'Heilig-hartcollege', 'auto, wandelend', 0),
 (14, 14, 'Beste ouders, naast het vele vrijwilligerswerk met kinderen en het werken in de horeca, rondde ik mijn studies af als opvoeder/begeleider. Door het gevarieerde vrijwilligerswerk dat ik met plezier deed vanaf mijn vijftiende, leerde ik veel bij. Belangrijk vind ik dat kinderen naast de schooluren zich kunnen ontspannen in een familiale en liefdevolle omgeving. \r\nOok supporter ik de eigen ontwikkeling van het kind naar de weg van zelfstandigheid (meehelpen, laten ontdekken, huiswerk,...). Afhankelijk van de leeftijd, de mogelijkheden van het kind en in samenspraak met de ouders. Via deze kinderopvang wil ik mijn favoriete bezigheid verderzetten en samen met jullie, als gezin, nieuwe dingen ontdekken.', 9, 2, 'Heilig-hartcollege', 'auto, fiets', 0),
 (15, 15, 'Hallo, Ik ben Marlies, ik ben mama van 2 kindjes, ik ben opzoek baar werk als onthaalouder want ik ben verzot op kindjes en heb een attest behaald van kennismakings module voor onthaalouders. Ik heb namelijk ook een attest behaald van levensreddend handelen.\r\n', 9, 2, 'Heilig-hartcollege', 'auto, fiets', 0),
@@ -73,27 +73,28 @@ CREATE TABLE `tbl_availability` (
   `fk_advert_id` int(11) NOT NULL,
   `availability_date` date NOT NULL,
   `availability_time_start` time NOT NULL,
-  `availability_time_end` time NOT NULL
+  `availability_time_end` time NOT NULL,
+  `availability_spots` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `tbl_availability`
 --
 
-INSERT INTO `tbl_availability` (`availability_id`, `fk_advert_id`, `availability_date`, `availability_time_start`, `availability_time_end`) VALUES
-(7, 0, '2016-03-24', '15:00:00', '19:00:00'),
-(8, 0, '2016-03-31', '15:30:00', '20:00:00'),
-(9, 0, '2016-03-29', '15:00:00', '17:00:00'),
-(10, 13, '2016-03-09', '15:30:00', '19:00:00'),
-(11, 13, '2016-03-10', '15:30:00', '20:00:00'),
-(12, 13, '2016-03-11', '15:30:00', '17:00:00'),
-(13, 14, '2016-03-18', '15:30:00', '19:00:00'),
-(14, 14, '2016-03-31', '15:30:00', '18:00:00'),
-(15, 15, '2016-03-18', '15:30:00', '19:00:00'),
-(16, 15, '2016-03-31', '15:30:00', '18:00:00'),
-(17, 16, '2016-03-18', '15:30:00', '19:00:00'),
-(18, 16, '2016-03-31', '15:30:00', '18:00:00'),
-(19, 17, '2016-03-31', '15:30:00', '19:00:00');
+INSERT INTO `tbl_availability` (`availability_id`, `fk_advert_id`, `availability_date`, `availability_time_start`, `availability_time_end`, `availability_spots`) VALUES
+(7, 0, '2016-03-24', '15:00:00', '19:00:00', 0),
+(8, 0, '2016-03-31', '15:30:00', '20:00:00', 0),
+(9, 0, '2016-03-29', '15:00:00', '17:00:00', 0),
+(10, 13, '2016-03-09', '15:30:00', '19:00:00', 0),
+(11, 13, '2016-03-10', '15:30:00', '20:00:00', 0),
+(12, 13, '2016-03-11', '15:30:00', '17:00:00', 0),
+(13, 14, '2016-03-18', '15:30:00', '19:00:00', 0),
+(14, 14, '2016-03-31', '15:30:00', '18:00:00', 0),
+(15, 15, '2016-03-18', '15:30:00', '19:00:00', 0),
+(16, 15, '2016-03-31', '15:30:00', '18:00:00', 0),
+(17, 16, '2016-03-18', '15:30:00', '19:00:00', 0),
+(18, 16, '2016-03-31', '15:30:00', '18:00:00', 0),
+(19, 17, '2016-03-31', '15:30:00', '19:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -108,7 +109,20 @@ CREATE TABLE `tbl_booking` (
   `fk_renter_user_id` int(11) NOT NULL,
   `booking_number_spots` int(11) NOT NULL,
   `booking_price` int(11) NOT NULL,
-  `booking_extra_information` mediumtext COLLATE utf8_unicode_ci NOT NULL
+  `booking_extra_information` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+  `booking_status` varchar(11) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'pending'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_booking_dates`
+--
+
+CREATE TABLE `tbl_booking_dates` (
+  `booking_date_id` int(11) NOT NULL,
+  `fk_booking_id` int(11) NOT NULL,
+  `booking_date_format` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -160,6 +174,20 @@ CREATE TABLE `tbl_friend` (
   `friend_id` int(11) NOT NULL,
   `friend_first_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `friend_last_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_notifications`
+--
+
+CREATE TABLE `tbl_notifications` (
+  `notification_id` int(11) NOT NULL,
+  `fk_user_id` int(11) NOT NULL,
+  `notification_date` datetime NOT NULL,
+  `notification_message` text COLLATE utf8_unicode_ci NOT NULL,
+  `notification_status` varchar(6) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'unread'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -251,7 +279,7 @@ CREATE TABLE `tbl_user` (
   `user_facebook_id` int(30) NOT NULL,
   `user_home_number` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `user_mobile_number` varchar(20) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `tbl_user`
@@ -282,7 +310,8 @@ INSERT INTO `tbl_user` (`user_id`, `user_image_path`, `user_firstname`, `user_la
 (22, '../assets/user-profile-images/charles-guysmans.png', 'Charles', 'Guysmans', 'Male', 32, 'Houwstraat 34', 'Beerzel', 'Hallo ik ben Charles!', 'chales.guysmans@gmail.com', '$2y$10$TEavI40SFkJDvWqZqJQdTeMkni46t7kmGBqqHZZZb.5OAH.5Gij.q', 0, '+32 015 24 08 12', '+32 0477 798 301'),
 (23, '../assets/user-profile-images/veronique-moermans.png', 'Veronique', 'Moermans', 'Female', 35, 'Broekweg 17', 'Melkouwen', 'Hallo ik ben Veronique!', 'veronique.moermans@gmail.com', '$2y$10$bSESzfXLnI0Smr7yWlWFRuXrtiMtmZ4i9sCD8qJQHBbf6.YscCdOW', 0, '+32 015 24 01 31', '+32 0477 701 932'),
 (24, '../assets/user-profile-images/sandra-verpoortere.png', 'Sandra', 'Verpoortere', 'Female', 26, 'Nijlense steenweg 67', 'Herenthout', 'Hallo ik ben Sandra!', 'sandra.verpoortere@gmail.com', '$2y$10$72je9.tsdB4rJSCtglLYbuKqLlanQ.f3dqWIFBvZpHoNXN4RYaHVa', 0, '+32 015 24 01 32', '+32 0477 744 092'),
-(25, '../assets/user-profile-images/charline-messermans.png', 'Charline', 'Messermans', 'Female', 28, 'Heuvelstraat 32', 'Heist-op-den-Berg', 'Hallo ik ben Charline!', 'charline.messermans@gmail.com', '$2y$10$Or6U71IS.dU4HQ10xXAoeewnhyX4foTVF.sc/ulvysB4u/ikUVxyG', 0, '+32 015 28 01 92', '+32 0479 912 394');
+(25, '../assets/user-profile-images/charline-messermans.png', 'Charline', 'Messermans', 'Female', 28, 'Heuvelstraat 32', 'Heist-op-den-Berg', 'Hallo ik ben Charline!', 'charline.messermans@gmail.com', '$2y$10$Or6U71IS.dU4HQ10xXAoeewnhyX4foTVF.sc/ulvysB4u/ikUVxyG', 0, '+32 015 28 01 92', '+32 0479 912 394'),
+(26, '', 'Walter', 'Decroone', '', 0, '', '', '', 'walter.decroone@gmail.com', '$2y$10$5ot8jx5HsTkwS9ieOP82W.dQewd/YvlmSBVf2aG2A/X2el4VZDQki', 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -319,6 +348,12 @@ ALTER TABLE `tbl_booking`
   ADD PRIMARY KEY (`booking_id`);
 
 --
+-- Indexes for table `tbl_booking_dates`
+--
+ALTER TABLE `tbl_booking_dates`
+  ADD PRIMARY KEY (`booking_date_id`);
+
+--
 -- Indexes for table `tbl_child`
 --
 ALTER TABLE `tbl_child`
@@ -341,6 +376,12 @@ ALTER TABLE `tbl_favorite_advert`
 --
 ALTER TABLE `tbl_friend`
   ADD PRIMARY KEY (`friend_id`);
+
+--
+-- Indexes for table `tbl_notifications`
+--
+ALTER TABLE `tbl_notifications`
+  ADD PRIMARY KEY (`notification_id`);
 
 --
 -- Indexes for table `tbl_review`
@@ -392,6 +433,11 @@ ALTER TABLE `tbl_availability`
 ALTER TABLE `tbl_booking`
   MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `tbl_booking_dates`
+--
+ALTER TABLE `tbl_booking_dates`
+  MODIFY `booking_date_id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `tbl_child`
 --
 ALTER TABLE `tbl_child`
@@ -412,6 +458,11 @@ ALTER TABLE `tbl_favorite_advert`
 ALTER TABLE `tbl_friend`
   MODIFY `friend_id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `tbl_notifications`
+--
+ALTER TABLE `tbl_notifications`
+  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `tbl_review`
 --
 ALTER TABLE `tbl_review`
@@ -430,7 +481,7 @@ ALTER TABLE `tbl_upvote`
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `tbl_user_child`
 --
