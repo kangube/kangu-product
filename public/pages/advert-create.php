@@ -12,6 +12,11 @@
 
 	$advert = new Advert();
 
+	$check_user_has_advert = $auth_user->hasAdvert($userRow['user_id']);
+	if($check_user_has_advert === true) {
+		$auth_user->redirect('advert-overview.php');
+	}
+
 	if(isset($_POST['advert-create-button']))
 	{
 		try 
