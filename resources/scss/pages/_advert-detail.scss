@@ -1,3 +1,5 @@
+// Styling of the advert-detail page
+
 .flleft {
 
 	@include breakpoint(medium only) {
@@ -443,69 +445,7 @@ hr {
 	}
 }
 
-@include breakpoint(small only) {
-	.service-container-mobile ul {
-		margin: 0;
-		margin-bottom: 30px;
-	}
-
-	.service-container-mobile ul li {
-		@include grid-column(12);
-		list-style-type: none;
-		border: 1px solid $border-color-light-grey;
-		padding: 15px;
-	}
-
-	.service-container-mobile ul li:nth-child(even) {
-		border-top: none;
-		border-bottom: none;
-	}
-
-	.service-container-mobile ul li:last-child {
-		border-bottom: 1px solid $border-color-light-grey;
-	}
-
-	.service-container-mobile ul li label:before {
-		margin-right: 25px;
-		font-size: rem-calc(25);
-		color: $text-dark-grey;
-		vertical-align: middle;
-	}
-}
-
-@include breakpoint(medium only) {
-	.service-container-mobile ul {
-		margin: 0;
-		margin-bottom: 30px;
-	}
-
-	.service-container-mobile ul li {
-		@include grid-column(6);
-		list-style-type: none;
-		border: 1px solid $border-color-light-grey;
-		padding: 15px;
-	}
-
-	.service-container-mobile ul li:nth-child(odd) {
-		border-right: none;
-	}
-
-	.service-container-mobile ul li:nth-child(-n+2) {
-		border-bottom: none;
-	}
-
-	.service-container-mobile ul li:nth-last-child(-n+2) {
-		border-top: none;
-	}
-
-	.service-container-mobile ul li label:before {
-		margin-right: 25px;
-		font-size: rem-calc(25);
-		color: $text-dark-grey;
-		vertical-align: middle;
-	}
-}
-
+// Stling of the ratings and reviews
 
 .advert-detail-ratings {
 	margin-top: 50px;
@@ -582,9 +522,6 @@ hr {
 	}
 }
 
-.test {
-	background-color: $light-grey-alt;
-}
 .advert-detail-container {
 	padding-top: 40px;
 	padding-bottom: 40px;
@@ -596,5 +533,70 @@ hr {
 
 	.advert-price, .advert-spots {
 		border: 1px solid $border-color-light-grey;
+	}
+}
+
+// Responsiveness
+
+@include breakpoint(small only) {
+	.service-container-mobile ul {
+		margin: 0;
+		margin-bottom: 30px;
+	}
+
+	.service-container-mobile ul li {
+		@include grid-column(12);
+		list-style-type: none;
+		border: 1px solid $border-color-light-grey;
+		padding: 15px;
+	}
+
+	.service-container-mobile ul li:nth-child(even) {
+		border-top: none;
+		border-bottom: none;
+	}
+
+	.service-container-mobile ul li:last-child {
+		border-bottom: 1px solid $border-color-light-grey;
+	}
+
+	.service-container-mobile ul li label:before {
+		margin-right: 25px;
+		font-size: rem-calc(25);
+		color: $text-dark-grey;
+		vertical-align: middle;
+	}
+}
+
+@include breakpoint(medium only) {
+	.service-container-mobile ul {
+		margin: 0;
+		margin-bottom: 30px;
+	}
+
+	.service-container-mobile ul li {
+		@include grid-column(6);
+		list-style-type: none;
+		border: 1px solid $border-color-light-grey;
+		padding: 15px;
+	}
+
+	.service-container-mobile ul li:nth-child(odd) {
+		border-right: none;
+	}
+
+	.service-container-mobile ul li:nth-child(-n+2) {
+		border-bottom: none;
+	}
+
+	.service-container-mobile ul li:nth-last-child(-n+2) {
+		border-top: none;
+	}
+
+	.service-container-mobile ul li label:before {
+		margin-right: 25px;
+		font-size: rem-calc(25);
+		color: $text-dark-grey;
+		vertical-align: middle;
 	}
 }

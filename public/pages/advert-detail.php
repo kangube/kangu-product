@@ -1,7 +1,7 @@
 <?php
+	include_once("../php-assets/class.advert.php");
 	require_once("../php-assets/class.session.php");
 	require_once("../php-assets/class.user.php");
-	require_once("../php-assets/class.advert.php");
 	require_once("../php-assets/class.pagination-reviews.php");
 
 	$auth_user = new USER();
@@ -36,6 +36,7 @@
 	            <h3 class="advert-detail-subtitle">Ouder van Floor en Kilian</h3>
 	        </div>
         </div>
+
         <div class="row">
 	        <div class="small-12 columns advert-detail-button-container">
 	        	<a class="small-7 medium-5 large-3 small-centered columns boeking-button" href="#">Boeking aanvragen</a>
@@ -108,20 +109,10 @@
 		    	<h2 class="mrgtop">Beschikbaarheid</h2>
 		    	<hr class="blue-horizontal-line"></hr>
 
-				<div class="availability-datepicker"></div>
+				<div class="availability-events"></div>
 		    </div>
-
-		    <!--
-		    <div class="show-for-small hide-for-large small-12 columns datepicker-small">
-		    	<div class="small-12 columns">
-			    	<h2 class="mrgtop">Beschikbaarheid</h2>
-			    	<hr class="blue-horizontal-line"></hr>
-
-					<div id="availability-datepicker-2"></div>
-				</div>
-		    </div>
-		    -->
 		</div>
+
 		<div class="row advert-detail-map">
 			<div class="small-12 large-3 columns">
 		    	<h2 class="hide-for-small show-for-large">Contact informatie</h2>
@@ -130,11 +121,11 @@
 			    	<span class="detail-icon" data-icon="x"></span>
 			    	<p><?php echo $advert_information["user_email"]; ?></p>
 			    	<span class="detail-icon" data-icon="z"></span>
-			    	<p>+32 <?php echo $advert_information["user_mobile_number"]; ?></p>
+			    	<p><?php echo $advert_information["user_mobile_number"]; ?></p>
 		    	</div>
 		    	<div class="hide-for-small show-for-large flleft">
 			    	<span class="detail-icon" data-icon="q"></span>
-			    	<p>+32 <?php echo $advert_information["user_home_number"]; ?></p>
+			    	<p><?php echo $advert_information["user_home_number"]; ?></p>
 			    	<span class="detail-icon double-line-height" data-icon="v"></span>
 			    	<p><?php echo $advert_information["user_adress"] . "<br > " . $advert_information["user_city"]; ?></p>
 		    	</div>
@@ -180,9 +171,31 @@
 				<hr class="hide-for-small show-for-large blue-horizontal-line"></hr>
 				
 				<?php
-					/*$service_results = $mysqli->prepare("SELECT advert_id, service_id, service_omgeving, service_poort, service_vervoerthuis, service_activiteiten, service_maaltijd, service_huiswerk, fk_advert_id FROM tbl_service LEFT JOIN tbl_advert ON tbl_service.fk_advert_id=tbl_advert.advert_id WHERE tbl_service.fk_advert_id = ". $advert_information['advert_id']);
-					$service_results->execute();
-					$service_results->bind_result($advert_id, $service_id, $service_omgeving, $service_poort, $service_vervoerthuis, $service_activiteiten, $service_maaltijd, $service_huiswerk, $fk_advert_id);*/
+					$db_username = 'root';
+					$db_password = 'root';
+					$db_name = 'kangu-product';
+					$db_host = 'localhost';
+
+					$mysqli_connection = new mysqli($db_host, $db_username, $db_password, $db_name);
+					if ($mysqli_connection->connect_error) {
+					    die('Error : ('. $mysqli_connection->connect_errno .') '. $mysqli_connection->connect_error);
+					}
+
+					$results = $mysqli_connection->query("SELECT service_name from tbl_service WHERE fk_advert_id=".$_GET['id']."");
+
+					$services = array(
+						'opvang-thuisomgeving',
+						'ophalen-schoolpoort',
+						'vervoer-thuis',
+						'vervoer-naschoolse-activiteiten',
+						'voorzien-maaltijd',
+						'hulp-huiswerktaken'
+					);
+
+					$servicesArray = array();
+				    while($row = $results->fetch_array(MYSQLI_ASSOC)) {
+				        $servicesArray[] = $row['service_name'];
+				    }
 				?>
 
 				<div class="show-for-large services-container">
@@ -191,11 +204,9 @@
 						<ul>
 							<li>
 								<?php
-									if ($service_omgeving == 'ja') {
-
+									if (in_array("opvang-thuisomgeving", $servicesArray)) {
 									   	echo '<label for="opvang-thuisomgeving" data-icon="m"><span></span>Opvang in een thuisomgeving</label>';
-
-									}else{
+									} else {
 									    echo '<label class="not-selected" for="opvang-thuisomgeving" data-icon="m"><span></span>Opvang in een thuisomgeving</label>';
 									}
 								?>
@@ -203,11 +214,9 @@
 
 							<li>
 								<?php
-									if ($service_poort == 'ja') {
-
+									if (in_array("ophalen-schoolpoort", $servicesArray)) {
 									   	echo '<label for="ophalen-schoolpoort" data-icon="m"><span></span>Ophalen aan de schoolpoort</label>';
-
-									}else{
+									} else {
 									    echo '<label class="not-selected" for="ophalen-schoolpoort" data-icon="m"><span></span>Ophalen aan de schoolpoort</label>';
 									}
 								?>
@@ -221,11 +230,9 @@
 						<ul>
 							<li>
 								<?php
-									if ($service_vervoerthuis == 'ja') {
-
+									if (in_array("vervoer-thuis", $servicesArray)) {
 									    echo '<label for="vervoer-thuis" data-icon="m"><span></span>Vervoer naar thuis na opvang</label>';
-
-									}else{
+									} else {
 									    echo '<label class="not-selected" for="vervoer-thuis" data-icon="m"><span></span>Vervoer naar thuis na opvang</label>';
 									}
 								?>
@@ -233,11 +240,9 @@
 
 							<li>
 								<?php
-									if ($service_activiteiten == 'ja') {
-
+									if (in_array("vervoer-naschoolse-activiteiten", $servicesArray)) {
 									   	echo '<label for="vervoer-activiteiten" data-icon="m"><span></span>Vervoer naschoolse activiteiten</label>';
-
-									}else{
+									} else {
 									    echo '<label class="not-selected" for="vervoer-activiteiten" data-icon="m"><span></span>Vervoer naschoolse activiteiten</label>';
 									}
 								?>
@@ -251,11 +256,9 @@
 						<ul>
 							<li>
 								<?php
-									if ($service_maaltijd == 'ja') {
-
+									if (in_array("voorzien-maaltijd", $servicesArray)) {
 									    echo '<label for="voorzien-maaltijd" data-icon="m"><span></span>Voorzien van een maaltijd</label>';
-
-									}else{
+									} else {
 									    echo '<label class="not-selected" for="voorzien-maaltijd" data-icon="m"><span></span>Voorzien van een maaltijd</label>';
 									}
 								?>
@@ -263,11 +266,9 @@
 
 							<li>
 								<?php
-									if ($service_huiswerk == 'ja') {
-
+									if (in_array("hulp-huiswerktaken", $servicesArray)) {
 									    echo '<label for="hulp-huiswerk" data-icon="m"><span></span>Hulp bij huiswerktaken</label>';
-
-									}else{
+									} else {
 									    echo '<label class="not-selected" for="hulp-huiswerk" data-icon="m"><span></span>Hulp bij huiswerktaken</label>';
 									}
 								?>
@@ -287,11 +288,10 @@
 			<ul class="small-12 columns">
 				<li>
 					<?php
-						if ($service_omgeving == 'ja') {
-
+						if (in_array("opvang-thuisomgeving", $servicesArray)) {
 						   	echo '<label for="opvang-thuisomgeving" data-icon="m"><span></span>Opvang in een thuisomgeving</label>';
 
-						}else{
+						} else {
 						    echo '<label class="not-selected" for="opvang-thuisomgeving" data-icon="m"><span></span>Opvang in een thuisomgeving</label>';
 						}
 					?>
@@ -299,22 +299,18 @@
 
 				<li>
 					<?php
-						if ($service_poort == 'ja') {
-
+						if (in_array("ophalen-schoolpoort", $servicesArray)) {
 						   	echo '<label for="ophalen-schoolpoort" data-icon="m"><span></span>Ophalen aan de schoolpoort</label>';
-
-						}else{
+						} else {
 						    echo '<label class="not-selected" for="ophalen-schoolpoort" data-icon="m"><span></span>Ophalen aan de schoolpoort</label>';
 						}
 					?>
 				</li>
 				<li>
 					<?php
-						if ($service_vervoerthuis == 'ja') {
-
+						if (in_array("vervoer-thuis", $servicesArray)) {
 						    echo '<label for="vervoer-thuis" data-icon="m"><span></span>Vervoer naar thuis na opvang</label>';
-
-						}else{
+						} else {
 						    echo '<label class="not-selected" for="vervoer-thuis" data-icon="m"><span></span>Vervoer naar thuis na opvang</label>';
 						}
 					?>
@@ -322,22 +318,18 @@
 
 				<li>
 					<?php
-						if ($service_activiteiten == 'ja') {
-
+						if (in_array("vervoer-naschoolse-activiteiten", $servicesArray)) {
 						   	echo '<label for="vervoer-activiteiten" data-icon="m"><span></span>Vervoer naschoolse activiteiten</label>';
-
-						}else{
+						} else {
 						    echo '<label class="not-selected" for="vervoer-activiteiten" data-icon="m"><span></span>Vervoer naschoolse activiteiten</label>';
 						}
 					?>
 				</li>
 				<li>
 					<?php
-						if ($service_maaltijd == 'ja') {
-
+						if (in_array("voorzien-maaltijd", $servicesArray)) {
 						    echo '<label for="voorzien-maaltijd" data-icon="m"><span></span>Voorzien van een maaltijd</label>';
-
-						}else{
+						} else {
 						    echo '<label class="not-selected" for="voorzien-maaltijd" data-icon="m"><span></span>Voorzien van een maaltijd</label>';
 						}
 					?>
@@ -345,20 +337,9 @@
 
 				<li>
 					<?php
-						if ($service_poort == 'ja') {
-
-						   	echo '<label for="ophalen-schoolpoort" data-icon="m"><span></span>Ophalen aan de schoolpoort</label>';
-
-						}else{
-						    echo '<label class="not-selected" for="ophalen-schoolpoort" data-icon="m"><span></span>Ophalen aan de schoolpoort</label>';
-						}
-					?>
-					<?php
-						if ($service_huiswerk == 0) {
-
+						if (in_array("hulp-huiswerktaken", $servicesArray)) {
 						    echo '<label for="hulp-huiswerk" data-icon="m"><span></span>Hulp bij huiswerktaken</label>';
-
-						}else{
+						} else {
 						    echo '<label class="not-selected" for="hulp-huiswerk" data-icon="m"><span></span>Hulp bij huiswerktaken</label>';
 						}
 					?>
@@ -380,7 +361,6 @@
 			</div>
 		</div>
 
-		<div class="test">
 		<div class="row large-collapse advert-detail-container">
 	    	<div class="large-12 columns">
 			    <div class="large-12 columns">
@@ -388,7 +368,7 @@
 			    	<hr class="red-horizontal-line"></hr>
 			    </div>
 			    <?php
-					$advert_results = $mysqli->prepare("SELECT advert_id, fk_user_id, advert_description, advert_price, advert_spots, advert_school, user_image_path, user_firstname, user_lastname, user_city FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id WHERE tbl_advert.advert_school = '". $advert_information['advert_school']."' LIMIT 3");
+					$advert_results = $mysqli->prepare("SELECT advert_id, fk_user_id, advert_description, advert_price, advert_spots, advert_school, user_image_path, user_firstname, user_lastname, user_city FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id WHERE tbl_advert.advert_school = '". $advert_information['advert_school']."' LIMIT 4");
 					$advert_results->execute();
 					$advert_results->bind_result($advert_id, $advert_creator, $advert_description, $advert_price, $advert_spots, $advert_school, $user_profile_image, $user_first_name, $user_last_name, $user_city);
 
@@ -439,32 +419,84 @@
 				?>
 		    </div>
 		</div>
-		</div>
+
+		<?php include('../php-includes/footer.php'); ?>
+
 		<script src="../js/minimum-viable-product.min.js"></script>
 	    <script src="https://use.typekit.net/vnw3zje.js"></script>
 	    <script>try{Typekit.load({ async: true });}catch(e){}</script>
-	
-		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCK4od9WLji1WkDzFFyLls-226CbhN8Jl4&callback=initMap"></script>
-		<script type="text/javascript">
-			$(document).ready(function() 
-			{
 
-				//-----------
-				$("#reviews" ).load( "../php-assets/class.pagination-reviews.php"); //load initial records
+	    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCK4od9WLji1WkDzFFyLls-226CbhN8Jl4&v=3"></script>
+
+	    <script>
+			$(document).ready(function() {
+				var getUrlParameter = function getUrlParameter(sParam) {
+				    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+				        sURLVariables = sPageURL.split('&'),
+				        sParameterName,
+				        i;
+
+				    for (i = 0; i < sURLVariables.length; i++) {
+				        sParameterName = sURLVariables[i].split('=');
+
+				        if (sParameterName[0] === sParam) {
+				            return sParameterName[1] === undefined ? true : sParameterName[1];
+				        }
+				    }
+				};
+
+				var advert_id = getUrlParameter('id');
+
+				if (typeof advert_id !== 'undefined') {
+	                var Event = function(className) {
+				    	this.className = className;
+					};
+
+					var events = [];
+					$.getJSON('availability-dates.php?id="'+advert_id+'"', function(data) {
+	                    $.each(data, function(key, val) {
+	                        availability_date_item = val.availability_date.replace(/-/g, '/');
+	                        events[new Date(availability_date_item)] = new Event("availability-date-item");
+	                    });
+	                });
+
+					$('.availability-events').datepicker({
+				        inline: true,
+					    firstDay: 0,
+					    showOtherMonths: true,
+					    monthNames: ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'],
+					    dayNames: ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'],
+					    dayNamesMin: ['Zo', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za'],
+					    beforeShowDay: function(date) {
+					        var event = events[date];
+
+					        if (event) {
+					            return [true, event.className];
+					        }
+					        else {
+					            return [true, ''];
+					        }
+					    }
+					});
+				}
+			});
+		</script>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#reviews" ).load( "../php-assets/class.pagination-reviews.php");
 
 	    		$("#hide").click(function(e) {
 	        		$("#reviews").hide();
 
 	    		});
-				//executes code below when user click on pagination links
-				$("#reviews").on( "click", ".pagination a", function (e)
-				{
+				
+				$("#reviews").on( "click", ".pagination a", function (e) {
 					e.preventDefault();
-					$(".loading-div").show(); //show loading element
-					var page = $(this).attr("data-page"); //get page number from link
-					$("#reviews").load("../php-assets/class.pagination-reviews.php",{"page":page}, function()
-					{ //get content from PHP page
-						$(".loading-div").hide(); //once done, hide loading element
+					$(".loading-div").show();
+					var page = $(this).attr("data-page");
+					$("#reviews").load("../php-assets/class.pagination-reviews.php",{"page":page}, function() {
+						$(".loading-div").hide();
 					});
 				});
 			});
