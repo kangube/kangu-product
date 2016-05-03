@@ -5,7 +5,7 @@ body {
 }
 
 .advert-detail-description-calendar-container, .advert-detail-contact-map-container,
-.advert-detail-services-container {
+.advert-detail-services-container, .advert-ratings-reviews-container {
 	@include grid-row;
 }
 
@@ -13,10 +13,6 @@ body {
 	.mobile-container {
 		@include grid-column(12);
 	}
-}
-
-hr {
-	width: 45px !important;
 }
 
 .extra {
@@ -412,13 +408,13 @@ hr {
 		width: 100%;
 		height: 100%;
 
-		@include breakpoint(small) { 
+		@include breakpoint(small only) { 
 			margin: 30px 0 30px 0;
 			height: 250px;
 		}
 
-		@include breakpoint(medium) { 
-			margin-bottom: 0px;
+		@include breakpoint(medium only) { 
+			margin: 30px 0 0 0;
 			height: 250px;
 		}
 	}
@@ -582,91 +578,106 @@ hr {
 
 // Styling of the ratings and reviews
 
-.advert-detail-ratings {
+.advert-ratings-reviews-container {
 	margin-top: 50px;
 
-	.reviewdescription {
+	.advert-detail-review {
+		margin: 40px 0 40px 0;
 
-		@include breakpoint(small) { 
-			min-height: 50px;
+		ul {
+			margin: 0;
 		}
 
-		@include breakpoint(medium) { 
-			min-height: 70px;
+		ul li {
+			list-style-type: none;
+			display: inline-block;
 		}
 
-		@include breakpoint(large) { 
-			min-height: 120px;
-			max-height: 120px;
+		.review-profile-image {
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			margin-right: 15px;
 		}
-	}
 
-	img {
-		width: 40px;
-		height: 40px;
-		border-radius: 50%;
-	}
+		.review-profile-name {
+			@include font($paragraph-font-family, regular, regular, 14, 14, $text-dark-grey);
+		}
 
-	.lhplus {
-		line-height: 40px;
-	}
+		.review-description {
+			@include font($paragraph-font-family, regular, regular, 14, 21, rgba($text-dark-grey, 0.6));
+			margin: 20px 0 20px 0;
+			min-height: 105px;
+		}
 
-	i {
-		color: $border-color-light-grey;
-		line-height: 28px;
-	}
+		.review-vote-button {
+			padding: 1px 15px 2px 15px;
+			border-radius: 3px;
+			background-color: $light-grey;
+			border: 1px solid $border-color-light-grey;
+		}
 
-	.rate-button {
-		width: 125px;
-		height: 28px;
-		text-decoration: none;
-		background-color: $light-grey-alt;
-		border-radius: 3px;
-		text-align: center;
+		.review-vote-button ul {
+			margin: 0;
+		}
 
-		&:hover {
-			background-color: darken($light-grey-alt, 5%);
+		.review-vote-button ul li {
+			list-style-type: none;
+			display: inline-block;
+		}
+
+		.review-vote-button ul li:before {
+			font-size: 12px;
+			color: rgba($text-dark-grey, 0.8);
+			margin-right: 5px;
+			vertical-align: middle;
+		}
+
+		.review-vote-button ul li:last-child {
+			@include font($paragraph-font-family, regular, regular, 12, 16, rgba($text-dark-grey, 0.6));
+			vertical-align: middle !important;
+		}
+
+		.review-vote-button:hover {
+			background-color: darken($light-grey, 5%);
 			transition: all 0.3s ease;
 		}
 
-		&:active {
-			background-color: darken($light-grey-alt, 5%);
+		.review-vote-button:active {
+			background-color: darken($light-grey, 5%);
 		}
 
-		span {
-			font-size: 16px;
-			line-height: 28px;
-			width: 16px;
-			margin-left: 20px;
-			margin-right: -15px;
+		.review-date {
+			@include font($paragraph-font-family, italic, regular, 14, 14, rgba($text-dark-grey, 0.6));
+			margin-top: 8px;
+			margin-bottom: 0;
+			vertical-align: middle;
 		}
-
-		p {
-			font-size: 10px;
-			line-height: 28px;
-		}
-	}
-
-	.mbot {
-		margin-bottom: 30px;
 	}
 
 	.pagination-style {
 		float: left;
-		margin-left: -10px;
+
+		.first {
+			margin-left: 0;
+		}
 	}
 }
 
+// Styling of the similar adverts
+
 .advert-detail-container {
 	padding-top: 40px;
-	padding-bottom: 40px;
 
+	.advert-container {
+		margin-bottom: 0;
 
-	.advert, .advert-price, .advert-spots {
-		background-color: $white !important;
-	}
+		.advert, .advert-price, .advert-spots {
+			background-color: $white !important;
+		}
 
-	.advert-price, .advert-spots {
-		border: 1px solid $border-color-light-grey;
+		.advert-price, .advert-spots {
+			border: 1px solid $border-color-light-grey;
+		}
 	}
 }

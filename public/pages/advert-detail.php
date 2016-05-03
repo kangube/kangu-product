@@ -183,17 +183,96 @@
 		</div>
 		
 		<div class="advert-detail-services-container">
-			<div class="small-12 columns">
-				<h2>Aangeboden diensten</h2>
-				<hr class="blue-horizontal-line"></hr>
+			<div class="mobile-container">
+				<div class="small-12 columns">
+					<h2>Aangeboden diensten</h2>
+					<hr class="blue-horizontal-line"></hr>
 
-				<div class="show-for-large services-container">
-					<div class="service">
-						<ul>
+					<div class="show-for-large services-container">
+						<div class="service">
+							<ul>
+								<li>
+									<?php
+										if (in_array("opvang-thuisomgeving", $servicesArray)) {
+										   	echo '<label for="opvang-thuisomgeving" data-icon="m">Opvang in een thuisomgeving</label>';
+										} else {
+										    echo '<label class="not-selected" for="opvang-thuisomgeving" data-icon="m">Opvang in een thuisomgeving</label>';
+										}
+									?>
+								</li>
+
+								<li>
+									<?php
+										if (in_array("ophalen-schoolpoort", $servicesArray)) {
+										   	echo '<label for="ophalen-schoolpoort" data-icon="m">Ophalen aan de schoolpoort</label>';
+										} else {
+										    echo '<label class="not-selected" for="ophalen-schoolpoort" data-icon="m">Ophalen aan de schoolpoort</label>';
+										}
+									?>
+								</li>
+							</ul>
+						</div>
+
+						<div class="vertical-line"></div>
+
+						<div class="service">
+							<ul>
+								<li>
+									<?php
+										if (in_array("vervoer-thuis", $servicesArray)) {
+										    echo '<label for="vervoer-thuis" data-icon="m">Vervoer naar thuis na opvang</label>';
+										} else {
+										    echo '<label class="not-selected" for="vervoer-thuis" data-icon="m">Vervoer naar thuis na opvang</label>';
+										}
+									?>
+								</li>
+
+								<li>
+									<?php
+										if (in_array("vervoer-naschoolse-activiteiten", $servicesArray)) {
+										   	echo '<label for="vervoer-activiteiten" data-icon="m">Vervoer naschoolse activiteiten</label>';
+										} else {
+										    echo '<label class="not-selected" for="vervoer-activiteiten" data-icon="m">Vervoer naschoolse activiteiten</label>';
+										}
+									?>
+								</li>
+							</ul>
+						</div>
+
+						<div class="vertical-line"></div>
+
+						<div class="service">
+							<ul>
+								<li>
+									<?php
+										if (in_array("voorzien-maaltijd", $servicesArray)) {
+										    echo '<label for="voorzien-maaltijd" data-icon="m">Voorzien van een maaltijd</label>';
+										} else {
+										    echo '<label class="not-selected" for="voorzien-maaltijd" data-icon="m">Voorzien van een maaltijd</label>';
+										}
+									?>
+								</li>
+
+								<li>
+									<?php
+										if (in_array("hulp-huiswerktaken", $servicesArray)) {
+										    echo '<label for="hulp-huiswerk" data-icon="m">Hulp bij huiswerktaken</label>';
+										} else {
+										    echo '<label class="not-selected" for="hulp-huiswerk" data-icon="m">Hulp bij huiswerktaken</label>';
+										}
+									?>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="show-for-small hide-for-large services-container-mobile">
+						<ul class="services-mobile-list">
 							<li>
 								<?php
 									if (in_array("opvang-thuisomgeving", $servicesArray)) {
 									   	echo '<label for="opvang-thuisomgeving" data-icon="m">Opvang in een thuisomgeving</label>';
+
 									} else {
 									    echo '<label class="not-selected" for="opvang-thuisomgeving" data-icon="m">Opvang in een thuisomgeving</label>';
 									}
@@ -209,13 +288,6 @@
 									}
 								?>
 							</li>
-						</ul>
-					</div>
-
-					<div class="vertical-line"></div>
-
-					<div class="service">
-						<ul>
 							<li>
 								<?php
 									if (in_array("vervoer-thuis", $servicesArray)) {
@@ -235,13 +307,6 @@
 									}
 								?>
 							</li>
-						</ul>
-					</div>
-
-					<div class="vertical-line"></div>
-
-					<div class="service">
-						<ul>
 							<li>
 								<?php
 									if (in_array("voorzien-maaltijd", $servicesArray)) {
@@ -264,82 +329,17 @@
 						</ul>
 					</div>
 				</div>
-
-				<div class="show-for-small hide-for-large services-container-mobile">
-					<ul class="small-12 columns services-mobile-list">
-						<li>
-							<?php
-								if (in_array("opvang-thuisomgeving", $servicesArray)) {
-								   	echo '<label for="opvang-thuisomgeving" data-icon="m">Opvang in een thuisomgeving</label>';
-
-								} else {
-								    echo '<label class="not-selected" for="opvang-thuisomgeving" data-icon="m">Opvang in een thuisomgeving</label>';
-								}
-							?>
-						</li>
-
-						<li>
-							<?php
-								if (in_array("ophalen-schoolpoort", $servicesArray)) {
-								   	echo '<label for="ophalen-schoolpoort" data-icon="m">Ophalen aan de schoolpoort</label>';
-								} else {
-								    echo '<label class="not-selected" for="ophalen-schoolpoort" data-icon="m">Ophalen aan de schoolpoort</label>';
-								}
-							?>
-						</li>
-						<li>
-							<?php
-								if (in_array("vervoer-thuis", $servicesArray)) {
-								    echo '<label for="vervoer-thuis" data-icon="m">Vervoer naar thuis na opvang</label>';
-								} else {
-								    echo '<label class="not-selected" for="vervoer-thuis" data-icon="m">Vervoer naar thuis na opvang</label>';
-								}
-							?>
-						</li>
-
-						<li>
-							<?php
-								if (in_array("vervoer-naschoolse-activiteiten", $servicesArray)) {
-								   	echo '<label for="vervoer-activiteiten" data-icon="m">Vervoer naschoolse activiteiten</label>';
-								} else {
-								    echo '<label class="not-selected" for="vervoer-activiteiten" data-icon="m">Vervoer naschoolse activiteiten</label>';
-								}
-							?>
-						</li>
-						<li>
-							<?php
-								if (in_array("voorzien-maaltijd", $servicesArray)) {
-								    echo '<label for="voorzien-maaltijd" data-icon="m">Voorzien van een maaltijd</label>';
-								} else {
-								    echo '<label class="not-selected" for="voorzien-maaltijd" data-icon="m">Voorzien van een maaltijd</label>';
-								}
-							?>
-						</li>
-
-						<li>
-							<?php
-								if (in_array("hulp-huiswerktaken", $servicesArray)) {
-								    echo '<label for="hulp-huiswerk" data-icon="m">Hulp bij huiswerktaken</label>';
-								} else {
-								    echo '<label class="not-selected" for="hulp-huiswerk" data-icon="m">Hulp bij huiswerktaken</label>';
-								}
-							?>
-						</li>
-					</ul>
-				</div>
 			</div>
 		</div>
 
-		<div class="large-collapse row advert-detail-ratings">
+		<div class="large-collapse advert-ratings-reviews-container">
 		    <div class="large-12 columns">
 				<div class="large-12 columns">
 			    	<h2>Ratings &amp; reviews</h2>
 			    	<hr class="blue-horizontal-line"></hr>
 			    </div>
 
-			    <div class="large-12 columns">
-			    	<div id="reviews"></div>
-			    </div>
+		    	<div id="reviews"></div>
 			</div>
 		</div>
 

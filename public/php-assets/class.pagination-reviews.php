@@ -29,20 +29,41 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 
 
 		while($review_results->fetch()) {
+			// Processing and shortening the review description
+			$shorten = strpos($review_description, ' ', 350);
+			$final_review_description = substr($review_description, 0, $shorten)." ...";
+
+			// Processing and reformating the review-date from numbers to string
+			$processed_review_date = explode("-", $review_date);
+			$review_date_year = $processed_review_date[0];
+			$review_date_month = $processed_review_date[1];
+			$review_date_day = $processed_review_date[2];
+
+			$review_date_month = date('F', mktime(0, 0, 0, $review_date_month, 10));
+			$months = array('Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December');
+			$months_alt = array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Oktober', 'November', 'December');
+			$review_date_month = str_ireplace($months_alt, $months, $review_date_month);
 
 			echo "
 
-				<div class='small-12 medium-12 large-6 columns mrgneg'>
-		    		<span><img src='".$user_image_path."' alt='review profiel foto'/></span>
-		    		<p class='lhplus'>".$user_firstname." ".$user_lastname."</p>
+				<div class='small-12 large-6 columns advert-detail-review-container'>
+					<div class='advert-detail-review'>
+						<ul>
+							<li class='review-profile-image'><img src='".$user_image_path."' alt='profiel-foto van de ouder'/></li>
+			    			<li class='review-profile-name'>".$user_firstname." ".$user_lastname."</li>
+		    			</ul>
 
-		    		<p class='reviewdescription'>".$review_description."</p>
+			    		<p class='review-description'>".$review_description."</p>
 
-		    		<p class='float-left'><i>".$review_date."</i></p>
-		    		<a class='rate-button float-right' href='#''>
-		    			<span data-icon='r'></span>
-		    			<p>Behulpzaam</p>
-		    		</a>
+			    		<p class='review-date float-left'>".$review_date_day." ".$review_date_month." ".$review_date_year."</p>
+
+			    		<button class='review-vote-button float-right'>
+			    			<ul>
+				    			<li data-icon='r'></li>
+				    			<li>Behulpzaam</li>
+			    			</ul>
+			    		</button>
+				    </div>
 			    </div>
 			";
 		}
