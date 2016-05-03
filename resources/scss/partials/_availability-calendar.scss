@@ -1,0 +1,48 @@
+// Styling of the availability calendar
+
+/*.availability-date-item > a::after, .availability-calendar td a::after {
+	content: '';
+	display: block;
+	width: 5px;
+	height: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	margin-top: 5px;
+	position: relative;
+	text-align: center !important;
+	left: 49%;
+}
+
+.availability-calendar td a::after {
+	background-color: $light-red;
+}
+
+.availability-date-item > a::after {
+	background-color: green !important;
+}*/
+
+.availability-date-item > a::after, .availability-calendar td a::after {
+	content: '';
+	display: inline;
+	width: 5px;
+	height: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	position: absolute;
+	margin-top: 5px;
+	margin-left: 10px;
+}
+
+.availability-calendar td a::after {
+	background-color: $light-red;
+}
+
+.availability-date-item > a::after {
+	background-color: green !important;
+}
+
+.availability-calendar td:not(:last-child) {
+    padding: 15px;
+}

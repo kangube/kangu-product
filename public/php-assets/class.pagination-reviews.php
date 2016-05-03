@@ -23,9 +23,9 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 	$review_exist = 'true';
 	if ($review_exist == 'true') 
 	{	
-		$review_results = $mysqli->prepare("SELECT review_id, review_description, review_date, fk_user_id, user_firstname, user_lastname, user_image_path FROM tbl_review LEFT JOIN tbl_user ON tbl_review.fk_user_id=tbl_user.user_id LIMIT $page_position, $item_per_page_reviews");
+		$review_results = $mysqli->prepare("SELECT review_id, review_description, review_date, fk_advert_id, fk_user_id, user_firstname, user_lastname, user_image_path FROM tbl_review LEFT JOIN tbl_user ON tbl_review.fk_user_id=tbl_user.user_id WHERE tbl_review.fk_advert_id=".$_GET['id']." LIMIT $page_position, $item_per_page_reviews");
 		$review_results->execute();
-		$review_results->bind_result($review_id, $review_description, $review_date, $fk_user_id, $user_firstname, $user_lastname, $user_image_path);
+		$review_results->bind_result($review_id, $review_description, $review_date, $fk_advert_id, $fk_user_id, $user_firstname, $user_lastname, $user_image_path);
 
 
 		while($review_results->fetch()) {
@@ -33,12 +33,12 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 			echo "
 
 				<div class='small-12 medium-12 large-6 columns mrgneg'>
-		    		<span><img src='" . $user_image_path . "' alt='review profiel foto' /></span>
-		    		<p class='lhplus'>" . $user_firstname . " " . $user_lastname . "</p>
+		    		<span><img src='".$user_image_path."' alt='review profiel foto'/></span>
+		    		<p class='lhplus'>".$user_firstname." ".$user_lastname."</p>
 
-		    		<p class='reviewdescription'>" . $review_description . "</p>
+		    		<p class='reviewdescription'>".$review_description."</p>
 
-		    		<p class='float-left'><i>". $review_date . "</i></p>
+		    		<p class='float-left'><i>".$review_date."</i></p>
 		    		<a class='rate-button float-right' href='#''>
 		    			<span data-icon='r'></span>
 		    			<p>Behulpzaam</p>
@@ -65,9 +65,7 @@ function paginate_function($item_per_page_reviews, $current_page, $total_records
     if($total_pages > 0 && $total_pages != 1 && $current_page <= $total_pages) {
         $pagination .= '<ul class="pagination pagination-style" role="navigation" aria-label="Pagination">';
         
-        $right_links    = $current_page + 4; 
-        $previous       = $current_page - 1;
-        $next           = $current_page + 1;
+        $right_links    = $current_page + 4;
         $first_link     = true;
 
         // Page links

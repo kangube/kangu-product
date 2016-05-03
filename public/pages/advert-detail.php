@@ -14,7 +14,35 @@
 	$oneAdvert = $advert->getOne();
 	$advert_information = $oneAdvert->fetch(PDO::FETCH_ASSOC);
 
+	// Processing and creating the full adress for usage in the google maps api
 	$advert_full_adress = $advert_information['user_adress'].','.$advert_information['user_city'];
+
+	// Processing all of the provided services
+	$db_username = 'root';
+	$db_password = 'root';
+	$db_name = 'kangu-product';
+	$db_host = 'localhost';
+
+	$mysqli_connection = new mysqli($db_host, $db_username, $db_password, $db_name);
+	if ($mysqli_connection->connect_error) {
+	    die('Error : ('. $mysqli_connection->connect_errno .') '. $mysqli_connection->connect_error);
+	}
+
+	$results = $mysqli_connection->query("SELECT service_name from tbl_service WHERE fk_advert_id=".$_GET['id']."");
+
+	$services = array(
+		'opvang-thuisomgeving',
+		'ophalen-schoolpoort',
+		'vervoer-thuis',
+		'vervoer-naschoolse-activiteiten',
+		'voorzien-maaltijd',
+		'hulp-huiswerktaken'
+	);
+
+	$servicesArray = array();
+    while($row = $results->fetch_array(MYSQLI_ASSOC)) {
+        $servicesArray[] = $row['service_name'];
+    }
 ?>
 
 <!doctype html>
@@ -39,52 +67,46 @@
 
         <div class="row">
 	        <div class="small-12 columns advert-detail-button-container">
-	        	<a class="small-7 medium-5 large-3 small-centered columns boeking-button" href="#">Boeking aanvragen</a>
+	        	<a class="small-7 medium-5 large-3 small-centered columns boeking-button" href="#">Opvang aanvragen</a>
 	        </div>
 	    </div>
 
-	    <div class="row advert-detail-calendar">
-		    <div class="hide-for-small show-for-large large-6 columns">
-		    	<h2>Over deze advertentie</h2>
-		    	<hr class="blue-horizontal-line"></hr>
-		    	<p><?php echo $advert_information["advert_description"]; ?></p>
-
-				<div class="show-for-large description-items-container">
-					<div class="description-item">
-						<ul>
-							<li>
-				    			<label data-icon="e">Basisschool <?php echo $advert_information["advert_school"]; ?></label>
-			    			</li>
-
-							<li>
-				    			<label data-icon="o">Plaats voor <?php echo $advert_information["advert_spots"]; ?> kinderen</label>
-			    			</li>
-						</ul>
-					</div>
-					
-					<div class="vertical-line"></div>
-					
-					<div class="description-item">
-						<ul>
-							<li>
-			    				<label data-icon="m">Tussen 5 - <?php echo $advert_information["advert_price"]; ?> euro per uur</label>
-			    			</li>
-
-							<li>
-			    				<label data-icon="k">Verplaatsing met <?php echo $advert_information["advert_transport"]; ?></label>
-			    			</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-
-		    <div class="show-for-small hide-for-large small-12 medium-12 large-6 columns">
-		    	<div class="small-12 columns">
+	    <div class="advert-detail-description-calendar-container" data-equalizer="description-calendar" data-equalize-on="large">
+	    	<div class="mobile-container">
+			    <div class="small-12 large-6 columns description-container" data-equalizer-watch="description-calendar">
 			    	<h2>Over deze advertentie</h2>
 			    	<hr class="blue-horizontal-line"></hr>
-			    	<p><?php echo $advert_information["advert_description"]; ?></p>
+			    	<p class="advert-detail-description"><?php echo $advert_information["advert_description"]; ?></p>
 
-				<div class="description-container-mobile">
+					<div class="hide-for-small show-for-large description-details">
+						<div class="description-item">
+							<ul>
+								<li>
+					    			<label data-icon="e">Basisschool <?php echo $advert_information["advert_school"]; ?></label>
+				    			</li>
+
+								<li>
+					    			<label data-icon="o">Plaats voor <?php echo $advert_information["advert_spots"]; ?> kinderen</label>
+				    			</li>
+							</ul>
+						</div>
+						
+						<div class="vertical-line"></div>
+						
+						<div class="description-item">
+							<ul>
+								<li>
+				    				<label data-icon="m">Tussen 5 - <?php echo $advert_information["advert_price"]; ?> credits per kind</label>
+				    			</li>
+
+								<li>
+				    				<label data-icon="k">Verplaatsing met <?php echo $advert_information["advert_transport"]; ?></label>
+				    			</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="show-for-small hide-for-large description-details-mobile">
 						<ul>
 							<li>
 				    			<label data-icon="e">Basisschool <?php echo $advert_information["advert_school"]; ?></label>
@@ -94,7 +116,7 @@
 				    			<label data-icon="o">Plaats voor <?php echo $advert_information["advert_spots"]; ?> kinderen</label>
 			    			</li>
 			    			<li>
-			    				<label data-icon="m">Tussen 5 - <?php echo $advert_information["advert_price"]; ?> euro per uur</label>
+			    				<label data-icon="m">Tussen 5 - <?php echo $advert_information["advert_price"]; ?> credits per kind</label>
 			    			</li>
 
 							<li>
@@ -103,111 +125,77 @@
 						</ul>
 					</div>
 				</div>
-			</div>
 
-		    <div class="hide-for-small show-for-large small-12 large-6 columns datepicker-small">
-		    	<h2 class="mrgtop">Beschikbaarheid</h2>
-		    	<hr class="blue-horizontal-line"></hr>
+			    <div class="large-6 columns datepicker-small" data-equalizer-watch="description-calendar">
+			    	<h2 class="mrgtop">Beschikbaarheid</h2>
+			    	<hr class="blue-horizontal-line"></hr>
 
-				<div class="availability-events"></div>
+					<div class="availability-calendar"></div>
+			    </div>
 		    </div>
 		</div>
 
-		<div class="row advert-detail-map">
-			<div class="small-12 large-3 columns">
-		    	<h2 class="hide-for-small show-for-large">Contact informatie</h2>
-		    	<hr class="hide-for-small show-for-large blue-horizontal-line"></hr>
-				<div class="hide-for-small show-for-large flleft">
-			    	<span class="detail-icon" data-icon="x"></span>
-			    	<p><?php echo $advert_information["user_email"]; ?></p>
-			    	<span class="detail-icon" data-icon="z"></span>
-			    	<p><?php echo $advert_information["user_mobile_number"]; ?></p>
-		    	</div>
-		    	<div class="hide-for-small show-for-large flleft">
-			    	<span class="detail-icon" data-icon="q"></span>
-			    	<p><?php echo $advert_information["user_home_number"]; ?></p>
-			    	<span class="detail-icon double-line-height" data-icon="v"></span>
-			    	<p><?php echo $advert_information["user_adress"] . "<br > " . $advert_information["user_city"]; ?></p>
-		    	</div>
+		<div class="advert-detail-contact-map-container" data-equalizer="contact-map" data-equalize-on="large">
+			<div class="mobile-container">
+				<div class="small-12 large-3 columns" data-equalizer-watch="contact-map">
+			    	<h2>Contact informatie</h2>
+			    	<hr class="blue-horizontal-line"></hr>
 
-		    	<ul class="show-for-small hide-for-large small-12 columns">
-		    	<h2>Contact informatie</h2>
-		    	<hr class="blue-horizontal-line"></hr>
-					<li>
-						<label for="opvang-thuisomgeving" data-icon="x"><span></span><?php echo $advert_information["user_email"]; ?></label>
-					</li>
+					<div class="hide-for-small show-for-large advert-detail-contact-container">
+				    	<span class="contact-item-icon" data-icon="x"></span>
+				    	<p><?php echo $advert_information["user_email"]; ?></p>
 
-					<li>
-						<label for="ophalen-schoolpoort" data-icon="z"><span></span><?php echo $advert_information["user_mobile_number"]; ?></label>
-					</li>
-					<li>
-						<label for="vervoer-thuis" data-icon="q"><span></span><?php echo $advert_information["user_home_number"]; ?></label>
-					</li>
+				    	<span class="contact-item-icon" data-icon="z"></span>
+				    	<p><?php echo $advert_information["user_mobile_number"]; ?></p>
 
-					<li>
-						<label for="vervoer-activiteiten" data-icon="v"><span></span><?php echo $advert_information["user_adress"] . ", " . $advert_information["user_city"]; ?></label>
-					</li>
+				    	<span class="contact-item-icon" data-icon="q"></span>
+				    	<p><?php echo $advert_information["user_home_number"]; ?></p>
 
-					<iframe
-					  frameborder="0" style="border:0"
-					
-					<?php echo "src='https://www.google.com/maps/embed/v1/place?key=AIzaSyCK4od9WLji1WkDzFFyLls-226CbhN8Jl4&q=".$advert_full_adress."'";?> allowfullscreen>
-					</iframe>
-				</ul>
-			</div>
+				    	<span class="contact-item-icon double-line-height" data-icon="v"></span>
+				    	<p><?php echo $advert_information["user_adress"]."</br>".$advert_information["user_city"]; ?></p>
+			    	</div>
 
-			<div class="hide-for-small show-for-large small-12 large-9 columns">
-				<iframe
-				  frameborder="0" style="border:0"
-				
-				<?php echo "src='https://www.google.com/maps/embed/v1/place?key=AIzaSyCK4od9WLji1WkDzFFyLls-226CbhN8Jl4&q=".$advert_full_adress."'";?> allowfullscreen>
-				</iframe>	
+			    	<div class="show-for-small hide-for-large advert-detail-contact-container-mobile">
+				    	<ul>
+							<li>
+								<label for="opvang-thuisomgeving" data-icon="x"><?php echo $advert_information["user_email"]; ?></label>
+							</li>
+
+							<li>
+								<label for="ophalen-schoolpoort" data-icon="z"><?php echo $advert_information["user_mobile_number"]; ?></label>
+							</li>
+							<li>
+								<label for="vervoer-thuis" data-icon="q"><?php echo $advert_information["user_home_number"]; ?></label>
+							</li>
+
+							<li>
+								<label for="vervoer-activiteiten" data-icon="v"><?php echo $advert_information["user_adress"] . ", " . $advert_information["user_city"]; ?></label>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="large-9 columns" data-equalizer-watch="contact-map">
+					<iframe frameborder="0" style="border:0" src="<?php echo "https://www.google.com/maps/embed/v1/place?key=AIzaSyCK4od9WLji1WkDzFFyLls-226CbhN8Jl4&q=".$advert_full_adress."";?>" allowfullscreen>
+					</iframe>	
+				</div>
 			</div>
 		</div>
 		
-		<div class="row advert-detail-services">
+		<div class="advert-detail-services-container">
 			<div class="small-12 columns">
-				<h2 class="hide-for-small show-for-large">Aangeboden diensten</h2>
-				<hr class="hide-for-small show-for-large blue-horizontal-line"></hr>
-				
-				<?php
-					$db_username = 'root';
-					$db_password = 'root';
-					$db_name = 'kangu-product';
-					$db_host = 'localhost';
-
-					$mysqli_connection = new mysqli($db_host, $db_username, $db_password, $db_name);
-					if ($mysqli_connection->connect_error) {
-					    die('Error : ('. $mysqli_connection->connect_errno .') '. $mysqli_connection->connect_error);
-					}
-
-					$results = $mysqli_connection->query("SELECT service_name from tbl_service WHERE fk_advert_id=".$_GET['id']."");
-
-					$services = array(
-						'opvang-thuisomgeving',
-						'ophalen-schoolpoort',
-						'vervoer-thuis',
-						'vervoer-naschoolse-activiteiten',
-						'voorzien-maaltijd',
-						'hulp-huiswerktaken'
-					);
-
-					$servicesArray = array();
-				    while($row = $results->fetch_array(MYSQLI_ASSOC)) {
-				        $servicesArray[] = $row['service_name'];
-				    }
-				?>
+				<h2>Aangeboden diensten</h2>
+				<hr class="blue-horizontal-line"></hr>
 
 				<div class="show-for-large services-container">
-
 					<div class="service">
 						<ul>
 							<li>
 								<?php
 									if (in_array("opvang-thuisomgeving", $servicesArray)) {
-									   	echo '<label for="opvang-thuisomgeving" data-icon="m"><span></span>Opvang in een thuisomgeving</label>';
+									   	echo '<label for="opvang-thuisomgeving" data-icon="m">Opvang in een thuisomgeving</label>';
 									} else {
-									    echo '<label class="not-selected" for="opvang-thuisomgeving" data-icon="m"><span></span>Opvang in een thuisomgeving</label>';
+									    echo '<label class="not-selected" for="opvang-thuisomgeving" data-icon="m">Opvang in een thuisomgeving</label>';
 									}
 								?>
 							</li>
@@ -215,9 +203,9 @@
 							<li>
 								<?php
 									if (in_array("ophalen-schoolpoort", $servicesArray)) {
-									   	echo '<label for="ophalen-schoolpoort" data-icon="m"><span></span>Ophalen aan de schoolpoort</label>';
+									   	echo '<label for="ophalen-schoolpoort" data-icon="m">Ophalen aan de schoolpoort</label>';
 									} else {
-									    echo '<label class="not-selected" for="ophalen-schoolpoort" data-icon="m"><span></span>Ophalen aan de schoolpoort</label>';
+									    echo '<label class="not-selected" for="ophalen-schoolpoort" data-icon="m">Ophalen aan de schoolpoort</label>';
 									}
 								?>
 							</li>
@@ -231,9 +219,9 @@
 							<li>
 								<?php
 									if (in_array("vervoer-thuis", $servicesArray)) {
-									    echo '<label for="vervoer-thuis" data-icon="m"><span></span>Vervoer naar thuis na opvang</label>';
+									    echo '<label for="vervoer-thuis" data-icon="m">Vervoer naar thuis na opvang</label>';
 									} else {
-									    echo '<label class="not-selected" for="vervoer-thuis" data-icon="m"><span></span>Vervoer naar thuis na opvang</label>';
+									    echo '<label class="not-selected" for="vervoer-thuis" data-icon="m">Vervoer naar thuis na opvang</label>';
 									}
 								?>
 							</li>
@@ -241,9 +229,9 @@
 							<li>
 								<?php
 									if (in_array("vervoer-naschoolse-activiteiten", $servicesArray)) {
-									   	echo '<label for="vervoer-activiteiten" data-icon="m"><span></span>Vervoer naschoolse activiteiten</label>';
+									   	echo '<label for="vervoer-activiteiten" data-icon="m">Vervoer naschoolse activiteiten</label>';
 									} else {
-									    echo '<label class="not-selected" for="vervoer-activiteiten" data-icon="m"><span></span>Vervoer naschoolse activiteiten</label>';
+									    echo '<label class="not-selected" for="vervoer-activiteiten" data-icon="m">Vervoer naschoolse activiteiten</label>';
 									}
 								?>
 							</li>
@@ -257,9 +245,9 @@
 							<li>
 								<?php
 									if (in_array("voorzien-maaltijd", $servicesArray)) {
-									    echo '<label for="voorzien-maaltijd" data-icon="m"><span></span>Voorzien van een maaltijd</label>';
+									    echo '<label for="voorzien-maaltijd" data-icon="m">Voorzien van een maaltijd</label>';
 									} else {
-									    echo '<label class="not-selected" for="voorzien-maaltijd" data-icon="m"><span></span>Voorzien van een maaltijd</label>';
+									    echo '<label class="not-selected" for="voorzien-maaltijd" data-icon="m">Voorzien van een maaltijd</label>';
 									}
 								?>
 							</li>
@@ -267,86 +255,80 @@
 							<li>
 								<?php
 									if (in_array("hulp-huiswerktaken", $servicesArray)) {
-									    echo '<label for="hulp-huiswerk" data-icon="m"><span></span>Hulp bij huiswerktaken</label>';
+									    echo '<label for="hulp-huiswerk" data-icon="m">Hulp bij huiswerktaken</label>';
 									} else {
-									    echo '<label class="not-selected" for="hulp-huiswerk" data-icon="m"><span></span>Hulp bij huiswerktaken</label>';
+									    echo '<label class="not-selected" for="hulp-huiswerk" data-icon="m">Hulp bij huiswerktaken</label>';
 									}
 								?>
 							</li>
 						</ul>
 					</div>
 				</div>
+
+				<div class="show-for-small hide-for-large services-container-mobile">
+					<ul class="small-12 columns services-mobile-list">
+						<li>
+							<?php
+								if (in_array("opvang-thuisomgeving", $servicesArray)) {
+								   	echo '<label for="opvang-thuisomgeving" data-icon="m">Opvang in een thuisomgeving</label>';
+
+								} else {
+								    echo '<label class="not-selected" for="opvang-thuisomgeving" data-icon="m">Opvang in een thuisomgeving</label>';
+								}
+							?>
+						</li>
+
+						<li>
+							<?php
+								if (in_array("ophalen-schoolpoort", $servicesArray)) {
+								   	echo '<label for="ophalen-schoolpoort" data-icon="m">Ophalen aan de schoolpoort</label>';
+								} else {
+								    echo '<label class="not-selected" for="ophalen-schoolpoort" data-icon="m">Ophalen aan de schoolpoort</label>';
+								}
+							?>
+						</li>
+						<li>
+							<?php
+								if (in_array("vervoer-thuis", $servicesArray)) {
+								    echo '<label for="vervoer-thuis" data-icon="m">Vervoer naar thuis na opvang</label>';
+								} else {
+								    echo '<label class="not-selected" for="vervoer-thuis" data-icon="m">Vervoer naar thuis na opvang</label>';
+								}
+							?>
+						</li>
+
+						<li>
+							<?php
+								if (in_array("vervoer-naschoolse-activiteiten", $servicesArray)) {
+								   	echo '<label for="vervoer-activiteiten" data-icon="m">Vervoer naschoolse activiteiten</label>';
+								} else {
+								    echo '<label class="not-selected" for="vervoer-activiteiten" data-icon="m">Vervoer naschoolse activiteiten</label>';
+								}
+							?>
+						</li>
+						<li>
+							<?php
+								if (in_array("voorzien-maaltijd", $servicesArray)) {
+								    echo '<label for="voorzien-maaltijd" data-icon="m">Voorzien van een maaltijd</label>';
+								} else {
+								    echo '<label class="not-selected" for="voorzien-maaltijd" data-icon="m">Voorzien van een maaltijd</label>';
+								}
+							?>
+						</li>
+
+						<li>
+							<?php
+								if (in_array("hulp-huiswerktaken", $servicesArray)) {
+								    echo '<label for="hulp-huiswerk" data-icon="m">Hulp bij huiswerktaken</label>';
+								} else {
+								    echo '<label class="not-selected" for="hulp-huiswerk" data-icon="m">Hulp bij huiswerktaken</label>';
+								}
+							?>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
-
-		<div class="show-for-small hide-for-large small-12 columns service-container-mobile">
-			<div class="small-12 columns">
-				<h2>Aangeboden diensten</h2>
-				<hr class="blue-horizontal-line"></hr>
-			</div>
-
-			<ul class="small-12 columns">
-				<li>
-					<?php
-						if (in_array("opvang-thuisomgeving", $servicesArray)) {
-						   	echo '<label for="opvang-thuisomgeving" data-icon="m"><span></span>Opvang in een thuisomgeving</label>';
-
-						} else {
-						    echo '<label class="not-selected" for="opvang-thuisomgeving" data-icon="m"><span></span>Opvang in een thuisomgeving</label>';
-						}
-					?>
-				</li>
-
-				<li>
-					<?php
-						if (in_array("ophalen-schoolpoort", $servicesArray)) {
-						   	echo '<label for="ophalen-schoolpoort" data-icon="m"><span></span>Ophalen aan de schoolpoort</label>';
-						} else {
-						    echo '<label class="not-selected" for="ophalen-schoolpoort" data-icon="m"><span></span>Ophalen aan de schoolpoort</label>';
-						}
-					?>
-				</li>
-				<li>
-					<?php
-						if (in_array("vervoer-thuis", $servicesArray)) {
-						    echo '<label for="vervoer-thuis" data-icon="m"><span></span>Vervoer naar thuis na opvang</label>';
-						} else {
-						    echo '<label class="not-selected" for="vervoer-thuis" data-icon="m"><span></span>Vervoer naar thuis na opvang</label>';
-						}
-					?>
-				</li>
-
-				<li>
-					<?php
-						if (in_array("vervoer-naschoolse-activiteiten", $servicesArray)) {
-						   	echo '<label for="vervoer-activiteiten" data-icon="m"><span></span>Vervoer naschoolse activiteiten</label>';
-						} else {
-						    echo '<label class="not-selected" for="vervoer-activiteiten" data-icon="m"><span></span>Vervoer naschoolse activiteiten</label>';
-						}
-					?>
-				</li>
-				<li>
-					<?php
-						if (in_array("voorzien-maaltijd", $servicesArray)) {
-						    echo '<label for="voorzien-maaltijd" data-icon="m"><span></span>Voorzien van een maaltijd</label>';
-						} else {
-						    echo '<label class="not-selected" for="voorzien-maaltijd" data-icon="m"><span></span>Voorzien van een maaltijd</label>';
-						}
-					?>
-				</li>
-
-				<li>
-					<?php
-						if (in_array("hulp-huiswerktaken", $servicesArray)) {
-						    echo '<label for="hulp-huiswerk" data-icon="m"><span></span>Hulp bij huiswerktaken</label>';
-						} else {
-						    echo '<label class="not-selected" for="hulp-huiswerk" data-icon="m"><span></span>Hulp bij huiswerktaken</label>';
-						}
-					?>
-				</li>
-			</ul>
-		</div>
-
 
 		<div class="large-collapse row advert-detail-ratings">
 		    <div class="large-12 columns">
@@ -460,7 +442,7 @@
 	                    });
 	                });
 
-					$('.availability-events').datepicker({
+					$('.availability-calendar').datepicker({
 				        inline: true,
 					    firstDay: 0,
 					    showOtherMonths: true,
@@ -484,20 +466,30 @@
 
 		<script type="text/javascript">
 			$(document).ready(function() {
-				$("#reviews" ).load( "../php-assets/class.pagination-reviews.php");
+				var getUrlParameter = function getUrlParameter(sParam) {
+				    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+				        sURLVariables = sPageURL.split('&'),
+				        sParameterName,
+				        i;
 
-	    		$("#hide").click(function(e) {
-	        		$("#reviews").hide();
+				    for (i = 0; i < sURLVariables.length; i++) {
+				        sParameterName = sURLVariables[i].split('=');
 
-	    		});
+				        if (sParameterName[0] === sParam) {
+				            return sParameterName[1] === undefined ? true : sParameterName[1];
+				        }
+				    }
+				};
+
+				var advert_id = getUrlParameter('id');
+
+				$("#reviews" ).load( "../php-assets/class.pagination-reviews.php?id="+advert_id+"");
 				
 				$("#reviews").on( "click", ".pagination a", function (e) {
 					e.preventDefault();
-					$(".loading-div").show();
+
 					var page = $(this).attr("data-page");
-					$("#reviews").load("../php-assets/class.pagination-reviews.php",{"page":page}, function() {
-						$(".loading-div").hide();
-					});
+					$("#reviews").load("../php-assets/class.pagination-reviews.php",{"page":page});
 				});
 			});
 		</script>

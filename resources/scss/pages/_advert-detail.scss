@@ -1,30 +1,18 @@
 // Styling of the advert-detail page
 
-.flleft {
-
-	@include breakpoint(medium only) {
-		float: left;
-		width: 50%;
-	}
+body {
+	background-color: $white;
 }
 
-.mrgtop {
-	
-	@include breakpoint(small only) {
-		margin-top: -15px;
-	}
-
-	@include breakpoint(medium only) {
-		margin-top: 30px;
-	}
+.advert-detail-description-calendar-container, .advert-detail-contact-map-container,
+.advert-detail-services-container {
+	@include grid-row;
 }
 
-.detail-icon {
-	font-size: 25px;
-	line-height: 25px;
-	color: $text-dark-grey;
-	margin-right: 25px;
-	float: left;
+@include breakpoint(medium down) {
+	.mobile-container {
+		@include grid-column(12);
+	}
 }
 
 hr {
@@ -42,6 +30,8 @@ hr {
 .double-line-height {
 	line-height: 50px;
 }
+
+// Styling of the introductory header
 
 .advert-detail-header {
 	display: flex;
@@ -148,6 +138,8 @@ hr {
 	}
 }
 
+// Styling of the booking button
+
 .advert-detail-button-container {
 	display: flex;
 	@include grid-row;
@@ -183,21 +175,26 @@ hr {
 	}
 }
 
-.advert-detail-calendar {
+// Styling of the description, details and calendar container
 
-	p {
-		@include font($paragraph-font-family, regular, regular, 14, 18.9, rgba($text-dark-grey, 0.8));
-		line-height: 25px !important;
+.advert-detail-description-calendar-container {
+	margin-bottom: 60px;
+
+	.advert-detail-description {
+		@include font($paragraph-font-family, regular, regular, 14, 25, rgba($text-dark-grey, 0.8));
+		margin-bottom: 0;
+		min-height: 200px;
 	}
+
+	// Advert details for large and up screens
 	
-	.description-items-container {
+	.description-details {
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: space-between;
 		align-items: center;
-
-		margin-top: 35px;
+		margin-top: 45px;
 
 		.vertical-line {
 			border: 1px solid $border-color-light-grey;
@@ -206,6 +203,7 @@ hr {
 		}
 
 		.description-item ul {
+			@include font($paragraph-font-family, regular, regular, 14, 25, rgba($text-dark-grey, 0.8));
 			margin: 0;
 		}
 
@@ -216,71 +214,83 @@ hr {
 		.description-item ul li {
 			text-align: left;
 			list-style-type: none;
-			color: white;
 			vertical-align: middle;
+		}
+
+		.description-item ul li label, .description-item ul li label:before {
+			color: rgba($text-dark-grey, 0.8);
 		}
 		
 		.description-item ul li label:before {
 			margin-right: 25px;
 			font-size: rem-calc(25);
-			color: $text-dark-grey;
 			vertical-align: middle;
 		}
 	}
 
+	// Advert details for medium and smaller screens
+
 	@include breakpoint(small only) {
-		.description-container-mobile ul {
+		.description-details-mobile ul {
+			@include font($paragraph-font-family, regular, regular, 14, 25, rgba($text-dark-grey, 0.8));
 			margin-left: 0px !important;
 		}
 
-		.description-container-mobile ul li {
+		.description-details-mobile ul li {
 			@include grid-column(12);
 			list-style-type: none;
 			border: 1px solid $border-color-light-grey;
 			padding: 15px !important;
 		}
 
-		.description-container-mobile ul li:nth-child(even) {
+		.description-details-mobile ul li:nth-child(even) {
 			border-top: none;
 			border-bottom: none;
 		}
 
-		.description-container-mobile ul li:last-child {
+		.description-details-mobile ul li:last-child {
 			border-bottom: 1px solid $border-color-light-grey;
 		}
 
-		.description-container-mobile ul li label:before {
+		.description-details-mobile ul li label, .description-details-mobile ul li label:before {
+			color: rgba($text-dark-grey, 0.8);
+		}
+
+		.description-details-mobile ul li label:before {
 			margin-right: 25px;
 			font-size: rem-calc(25);
-			color: $text-dark-grey;
 			vertical-align: middle;
 		}
 	}
 
 	@include breakpoint(medium only) {
-		.description-container-mobile ul {
+		.description-details-mobile ul {
+			@include font($paragraph-font-family, regular, regular, 14, 25, rgba($text-dark-grey, 0.8));
 			margin-left: 0px !important;
 		}
 
-		.description-container-mobile ul li {
+		.description-details-mobile ul li {
 			@include grid-column(6);
 			list-style-type: none;
 			border: 1px solid $border-color-light-grey;
 			padding: 15px !important;
 		}
 
-		.description-container-mobile ul li:nth-child(odd) {
+		.description-details-mobile ul li:nth-child(odd) {
 			border-right: none;
 		}
 
-		.description-container-mobile ul li:nth-child(-n+2) {
+		.description-details-mobile ul li:nth-child(-n+2) {
 			border-bottom: none;
 		}
 
-		.description-container-mobile ul li label:before {
+		.description-details-mobile ul li label, .description-details-mobile ul li label:before {
+			color: rgba($text-dark-grey, 0.8);
+		}
+
+		.description-details-mobile ul li label:before {
 			margin-right: 25px;
 			font-size: rem-calc(25);
-			color: $text-dark-grey;
 			vertical-align: middle;
 		}
 	}
@@ -292,110 +302,131 @@ hr {
 	}
 }
 
-.advert-detail-map {
+// Styling of the contact-information and map container
+
+.advert-detail-contact-map-container {
 	margin-top: 30px;
-	
-	p {
-		line-height: 25px !important;
-	}
 
-	iframe {
-		width: 100%;
-		height: 260px;
+	// Contact-information for larger and up screens
 
-		@include breakpoint(small) { 
-			margin-bottom: 30px;
+	.advert-detail-contact-container {
+		.contact-item-icon {
+			font-size: 25px;
+			line-height: 25px;
+			margin-right: 25px;
+			color: rgba($text-dark-grey, 0.8);
+			vertical-align: middle;
+			float: left;
 		}
 
-		@include breakpoint(medium) { 
-			margin-bottom: 0px;
+		p {
+			@include font($paragraph-font-family, regular, regular, 14, 25, rgba($text-dark-grey, 0.8));
+		}
+
+		p:last-of-type {
+			margin-bottom: 0;
 		}
 	}
+
+	// Contact-information for medium and smaller screens
 
 	@include breakpoint(small only) {
-		ul {
-			margin: 0;
-			margin-bottom: 20px;
+		.advert-detail-contact-container-mobile ul {
+			margin: 0 0 20px 0;
 		}
 
-		ul li {
+		.advert-detail-contact-container-mobile ul li {
 			@include grid-column(12);
 			list-style-type: none;
 			border: 1px solid $border-color-light-grey;
 			padding: 15px;
 		}
 
-		ul li:nth-child(-n+4) {
-			border-bottom: none;
-		}
-
-		ul li:nth-child(-n+3) {
+		.advert-detail-contact-container-mobile ul li:nth-child(-n+3) {
 			border: 1px solid $border-color-light-grey;
 		}
 
-		ul li:nth-child(even) {
+		.advert-detail-contact-container-mobile ul li:nth-child(even) {
 			border-top: none;
+			border-bottom: none;
 		}
 
-		ul li:last-child {
+		.advert-detail-contact-container-mobile ul li:last-child {
 			border-bottom: 1px solid $border-color-light-grey;
 		}
 
-		ul li label:before {
+		.advert-detail-contact-container-mobile ul li label {
+			@include font($paragraph-font-family, regular, regular, 14, 25, rgba($text-dark-grey, 0.8));
+		}
+
+		.advert-detail-contact-container-mobile ul li label:before {
 			margin-right: 25px;
 			font-size: rem-calc(25);
-			color: $text-dark-grey;
 			vertical-align: middle;
 		}
 
-		iframe {
-			margin-top: 20px;
+		.advert-detail-contact-container-mobile ul li label:before, .advert-detail-contact-container-mobile ul li label {
+			color: rgba($text-dark-grey, 0.8);
 		}
+
 	}
 
 	@include breakpoint(medium only) {
-		ul {
+		.advert-detail-contact-container-mobile ul {
 			margin: 0;
 		}
 
-		ul li {
+		.advert-detail-contact-container-mobile ul li {
 			@include grid-column(6);
 			list-style-type: none;
 			border: 1px solid $border-color-light-grey;
 			padding: 15px;
 		}
 
-		ul li:nth-child(odd) {
+		.advert-detail-contact-container-mobile ul li:nth-child(odd) {
 			border-right: none;
 		}
 
-		ul li:nth-child(-n+2) {
+		.advert-detail-contact-container-mobile ul li:nth-child(-n+2) {
 			border-bottom: none;
 		}
 
-		ul li:nth-child(-n+3) {
-			border-bottom: none;
+		.advert-detail-contact-container-mobile ul li label {
+			@include font($paragraph-font-family, regular, regular, 14, 25, rgba($text-dark-grey, 0.8));
 		}
 
-		ul li:nth-child(-n+4) {
-			border-bottom: none;
-		}
-
-		ul li label:before {
+		.advert-detail-contact-container-mobile ul li label:before {
 			margin-right: 25px;
 			font-size: rem-calc(25);
-			color: $text-dark-grey;
 			vertical-align: middle;
 		}
 
-		iframe {
-			margin-top: 20px;
+		.advert-detail-contact-container-mobile ul li label:before, .advert-detail-contact-container-mobile ul li label {
+			color: rgba($text-dark-grey, 0.8);
+		}
+	}
+
+	// Google map for all screens
+
+	iframe {
+		width: 100%;
+		height: 100%;
+
+		@include breakpoint(small) { 
+			margin: 30px 0 30px 0;
+			height: 250px;
+		}
+
+		@include breakpoint(medium) { 
+			margin-bottom: 0px;
+			height: 250px;
 		}
 	}
 }
 
-.advert-detail-services {
-	@include grid-row;
+// Styling of the services for large and up screens
+
+.advert-detail-services-container {
 	margin-top: 30px;
 
 	@include breakpoint(small only) {
@@ -428,24 +459,128 @@ hr {
 		.service ul li {
 			text-align: left;
 			list-style-type: none;
-			color: white;
 			vertical-align: middle;
 		}
 		
+		// Services that are provided
+
 		.service ul li label:before {
 			margin-right: 25px;
 			font-size: rem-calc(25);
-			color: $text-dark-grey;
+			color: rgba($text-dark-grey, 0.8);
 			vertical-align: middle;
 		}
+
+		.service ul li label {
+			color: rgba($text-dark-grey, 0.8);
+		}
+
+		// Services that are not provided
 		
-		.service ul li .not-selected {
-			color: #888 !important;
+		.service ul li .not-selected, .not-selected:before {
+			color: rgba($text-dark-grey, 0.4) !important;
 		}
 	}
 }
 
-// Stling of the ratings and reviews
+// Styling of the services for medium and smaller screens
+
+@include breakpoint(small only) {
+	.services-mobile-list {
+		@include grid-column(12);
+	}
+
+	.services-container-mobile {
+		ul {
+			margin: 0;
+			margin-bottom: 30px;
+		}
+
+		ul li {
+			@include grid-column(12);
+			list-style-type: none;
+			border: 1px solid $border-color-light-grey;
+			padding: 15px;
+		}
+
+		ul li:nth-child(even) {
+			border-top: none;
+			border-bottom: none;
+		}
+
+		ul li:last-child {
+			border-bottom: 1px solid $border-color-light-grey;
+		}
+
+		// Services that are provided
+
+		ul li label:before {
+			margin-right: 25px;
+			font-size: rem-calc(25);
+			color: rgba($text-dark-grey, 0.8);
+			vertical-align: middle;
+		}
+
+		// Services that are not provided
+
+		ul li label {
+			color: rgba($text-dark-grey, 0.8);
+		}
+
+		ul li .not-selected, .not-selected:before {
+			color: rgba($text-dark-grey, 0.4) !important;
+		}
+	}
+}
+
+@include breakpoint(medium only) {
+	.services-container-mobile {
+		ul {
+			margin: 0;
+			margin-bottom: 30px;
+		}
+
+		ul li {
+			@include grid-column(6);
+			list-style-type: none;
+			border: 1px solid $border-color-light-grey;
+			padding: 15px;
+		}
+
+		ul li:nth-child(odd) {
+			border-right: none;
+		}
+
+		ul li:nth-child(-n+2) {
+			border-bottom: none;
+		}
+
+		ul li:nth-last-child(-n+2) {
+			border-top: none;
+		}
+
+		// Services that are provided
+
+		ul li label:before {
+			margin-right: 25px;
+			font-size: rem-calc(25);
+			color: rgba($text-dark-grey, 0.8);
+			vertical-align: middle;
+		}
+
+		// Services that are not provided
+
+		ul li label {
+			color: rgba($text-dark-grey, 0.8);
+		}
+
+		ul li .not-selected, .not-selected:before {
+			color: rgba($text-dark-grey, 0.4) !important;
+		}
+	}
+}
+
+// Styling of the ratings and reviews
 
 .advert-detail-ratings {
 	margin-top: 50px;
@@ -533,70 +668,5 @@ hr {
 
 	.advert-price, .advert-spots {
 		border: 1px solid $border-color-light-grey;
-	}
-}
-
-// Responsiveness
-
-@include breakpoint(small only) {
-	.service-container-mobile ul {
-		margin: 0;
-		margin-bottom: 30px;
-	}
-
-	.service-container-mobile ul li {
-		@include grid-column(12);
-		list-style-type: none;
-		border: 1px solid $border-color-light-grey;
-		padding: 15px;
-	}
-
-	.service-container-mobile ul li:nth-child(even) {
-		border-top: none;
-		border-bottom: none;
-	}
-
-	.service-container-mobile ul li:last-child {
-		border-bottom: 1px solid $border-color-light-grey;
-	}
-
-	.service-container-mobile ul li label:before {
-		margin-right: 25px;
-		font-size: rem-calc(25);
-		color: $text-dark-grey;
-		vertical-align: middle;
-	}
-}
-
-@include breakpoint(medium only) {
-	.service-container-mobile ul {
-		margin: 0;
-		margin-bottom: 30px;
-	}
-
-	.service-container-mobile ul li {
-		@include grid-column(6);
-		list-style-type: none;
-		border: 1px solid $border-color-light-grey;
-		padding: 15px;
-	}
-
-	.service-container-mobile ul li:nth-child(odd) {
-		border-right: none;
-	}
-
-	.service-container-mobile ul li:nth-child(-n+2) {
-		border-bottom: none;
-	}
-
-	.service-container-mobile ul li:nth-last-child(-n+2) {
-		border-top: none;
-	}
-
-	.service-container-mobile ul li label:before {
-		margin-right: 25px;
-		font-size: rem-calc(25);
-		color: $text-dark-grey;
-		vertical-align: middle;
 	}
 }
