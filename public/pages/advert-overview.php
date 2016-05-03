@@ -1,7 +1,8 @@
 <?php
 	require_once("../php-assets/class.session.php");
-	require_once("../php-assets/class.user.php");
+	include_once("../php-assets/class.user.php");
 	include_once("../php-assets/class.advert.php");
+
 	$auth_user = new USER();
 	$user_id = $_SESSION['user_session'];
 	$stmt = $auth_user->runQuery("SELECT * FROM tbl_user WHERE user_id=:user_id");
@@ -40,7 +41,7 @@
 	            <h3 class="advert-overview-subheader">Deze header wordt vergezeld van een subheader met bijbehorende informatie over de pagina</h3>
 	        </div>
 
-        	<form action="search.php" method="GET" name="search" class="advert-search-form">
+        	<form action="advert-overview.php" method="get" name="search" class="advert-search-form">
     			<input class="search-region" type="text" placeholder="Binnen welke school zoekt u een opvangbiedende ouder?" name="school" required>
     			<input class="search-price" type="text" placeholder="Prijs (max.)" name="price" required>
     			<select class="search-spots" name="number-children" required>
@@ -49,7 +50,7 @@
 					<option value="3">3 kinderen</option>
 					<option value="4">4 kinderen</option>
 				</select>
-    			<input id="search-submit-button" class="search-submit" type="submit" value="Zoeken">
+    			<input id="search-submit-button" class="search-submit" type="submit" value="Zoeken" name="search">
         	</form>
 
         	<button id="mobile-search-form-button" data-icon="h">Zoek opvang</button>
@@ -67,7 +68,7 @@
 			    </div>
 
 			    <div class="mobile-search-form">
-			    	<form action="search.php" method="GET" name="search" class="advert-search-form-mobile">
+			    	<form action="advert-overview.php" method="get" name="search" class="advert-search-form-mobile">
 			    		<input type="text" placeholder="Binnen welke school zoekt u een opvangouder?" name="school" required>
 			    		<select class="search-spots" name="number-children" required>
 							<option value="1" selected>1 kind</option> 
@@ -75,24 +76,17 @@
 							<option value="3">3 kinderen</option>
 							<option value="3">4 kinderen</option>
 						</select>
-						<input class="search-price" type="text" placeholder="Prijs (max.)" name="price" required>	
-						<input class="search-submit" type="submit" value="Zoeken">
+						<input class="search-price" type="text" placeholder="Prijs (max.)" name="price" required>
+						<input class="search-submit" type="submit" name="search" value="Zoeken">
 			    	</form>
 			    </div>
 			</div>
 	    </div>
 
-	    <div class="large-collapse advert-overview-container">
-	    	<div class="large-12 small-centered columns">
-			    <div class="large-12 columns">
-			    	<h2>Advertenties</h2>
-			    	<hr class="blue-horizontal-line"></hr>
-			    </div>
+	    <div class="large-collapse advert-overview-container"></div>
+	    <div class="large-collapse search-advert-overview-container"></div>
 
-				<div id="results"></div>
-				<div id="searchresults"></div>
-		    </div>
-		</div>
+		<?php include('../php-includes/footer.php'); ?>
 
 		<script src="../js/minimum-viable-product.min.js"></script>
 	    <script src="https://use.typekit.net/vnw3zje.js"></script>

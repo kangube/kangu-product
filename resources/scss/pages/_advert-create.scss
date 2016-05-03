@@ -1,13 +1,35 @@
 // Styling of the introductory header
 
+.availability-date-item > a::after, .availability-events td a::after {
+	content: '';
+	display: block;
+	width: 5px;
+	height: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	margin-top: 5px;
+	position: relative;
+	text-align: center !important;
+	left: 49%;
+}
+
+.availability-events td a::after {
+	background-color: $light-red;
+}
+
+.availability-date-item > a::after {
+	background-color: green !important;
+}
+
 .full-width-advert-create {
-	min-width: 100vw;
+	min-width: 100%;
 	height: auto;
 }
 
 .full-height-gradient {
-	min-width: 100vw;
-	min-height: 100vh;
+	min-width: 100%;
+	min-height: 100%;
 	display: flex;
 	background: linear-gradient(-225deg, #57B9F6 0%, $dark-blue 100%);
 	left: 0;
@@ -40,12 +62,19 @@
 // Styling of the advert create form and all of its components
 
 .advert-create-form-container {
-	width: 90%;
 	display: flex;
 	margin: 0 auto 0 auto;
 	background-color: $white;
 	border-radius: 3px;
 	box-shadow: 0px 19px 38px 0px rgba(0,0,0,0.2);
+
+	@include breakpoint(small) {
+		width: 94%;
+	}
+
+	@include breakpoint(large) {
+		width: 97.3%;
+	}
 
 	.advert-create-form {
 		padding: 60px 20px 60px 20px;
@@ -53,19 +82,28 @@
 
 	// Styling for all form containers
 
-	.form-description-container, .form-number-children-container,
+	.form-description-container, .form-number-spots-container,
 	.form-contact-information-container, .form-transportation-container,
-	.form-services-container, .form-availability-container {
+	.form-services-container, .form-availability-container, .form-error-container,
+	.form-submit-container, .form-school-container, .form-number-children-container {
 		@include grid-column(12);
 		margin-bottom: 50px;
 	}
 
 	@include breakpoint(large) {
-		.form-description-container, .form-contact-information-container {
+		/*.form-description-container, .form-contact-information-container {
 			@include grid-column(7);
 		}
 
-		.form-number-children-container, .form-transportation-container {
+		.form-number-spots-container, .form-transportation-container {
+			@include grid-column(5);
+		}*/
+
+		.form-number-spots-container, .form-description-container, .form-contact-information-container {
+			@include grid-column(7);
+		}
+
+		.form-number-children-container, .form-transportation-container, .form-school-container {
 			@include grid-column(5);
 		}
 	}
@@ -87,6 +125,18 @@
 		margin-top: 20px !important;
 	}
 
+	.form-icon-input-field {
+		margin-bottom: 30px;
+
+		@include breakpoint(small) {
+			@include grid-column(12);
+		}
+
+		@include breakpoint(medium) {
+			@include grid-column(6);
+		}
+	}
+
 	// Styling of the description container
 
 	.form-description-container textarea {
@@ -95,14 +145,27 @@
 
 	// Styling of the number children container
 
-	.form-number-children-radio-buttons {
+	.advert-add-child-button {
+		@include button(transparent, 3px);
+		border: 1px solid rgba($text-dark-grey, 0.4);
+		color: rgba($text-dark-grey, 0.6);
+		text-align: center;
+		padding: 12px;
+		text-decoration: none;
+		display: inline-block;
+		width: 100%;
+	}
+
+	// Styling of the number spots container
+
+	.form-number-spots-radio-buttons {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		justify-content: space-between;
 	}
 
-	.form-number-children-container label {
+	.form-number-spots-container label {
 		@include font($header-font-family, regular, regular, 17, 17, rgba($text-dark-grey, 0.6));
 		width: 35px;
 		height: 35px;
@@ -129,10 +192,6 @@
 	}
 
 	// Styling of the contact information container
-
-	.form-contact-information-container .form-icon-input-field {
-		margin-bottom: 30px;
-	}
 
 	.form-icon-input-container {
 		border: none;    
@@ -353,92 +412,125 @@
 	// Alternative availability selection
 
 	.advert-availability-slots {
-		@include grid-row;
+		background-color: $light-grey;
+		border-radius: 3px;
 		margin-top: 30px;
-		display: block;
+		padding-top: 30px;
+		min-width: 100%;
+		max-height: 500px;
+		overflow-y: auto;
+		overflow-x: hidden;
+		display: none;
 	}
 
 	.availability-slot-container {
-		display: inline-block;
 		margin-bottom: 30px;
 
-		@include breakpoint(small only) {
+		@include breakpoint(small) {
 			@include grid-column(12);
 		}
 
-		@include breakpoint(medium only) {
-			@include grid-column(4);
-		}
-
 		@include breakpoint(large) {
-			@include grid-column(3);
+			@include grid-column(6);
 		}
 	}
 
 	.availability-slot {
 		display: inline-block;
-		background-color: $light-grey;
-		border: 1px solid $border-color-light-grey;
-		padding: 15px 0 15px 0;
+		background-color: $white;
+		border: 1px solid rgba($dark-grey, 0.4);
+		border-radius: 3px;
 		width: 100%;
 
-		.remove-availability-slot {
-			@include grid-column(12);
-			text-align: right !important;
-			cursor: pointer !important;
-
-			&:before {
-				font-size: rem-calc(13);
-				color: rgba($text-dark-grey, 0.6);
-			}
+		div {
+			padding-top: 10px;
+			padding-bottom: 10px;
 		}
 
-		.selected-date-format {
-			margin-bottom: 20px;
+		input {
+			margin-bottom: 0;
+			padding-bottom: 5px;
 		}
 
-		.selected-date-format-day, .selected-date-format-month-year {
-			@include font($paragraph-font-family, regular, regular, 18, 24, $text-dark-grey);
-			text-align: center;
-		}
-
-		.selected-date {
+		input[type="date"] {
 			display: none;
 		}
 
-		.availability-slot-duration {
-			@include grid-column(2);
-			display: inline-block;
-			padding: 0 !important;
-			margin-top: 30px;
-			text-align: center;
-
-			&:before {
-				font-size: rem-calc(20);
-				color: rgba($text-dark-grey, 0.6);
-			}
+		.selected-date {
+			border-right: 1px solid rgba($dark-grey, 0.4);
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
 		}
 
-		label {
-			@include font($paragraph-font-family, regular, regular, 14, 19, $text-dark-grey);
+		.selected-date p:first-of-type {
 			margin-bottom: 10px;
-			text-align: center;
 		}
 
-		input[type="time"] {
+		.selected-date p {
+			@include font($paragraph-font-family, regular, regular, 14, 18, $text-dark-grey);
 			margin-bottom: 0;
+		}
+
+		.availability-slot-duration {
+			padding: 0 !important;
+			margin-top: 20px;
 			text-align: center;
 		}
 
-		input[type="time"]:first-child {
-			padding-right: 30px;
+		.availability-slot-duration::before {
+			font-size: rem-calc(20);
+			color: rgba($text-dark-grey, 0.6);
+		}
+
+		.remove-availability-slot {
+			cursor: pointer !important;
+			margin-top: 9px;
+		}
+
+		.remove-availability-slot::before {
+			font-size: rem-calc(13);
+			color: rgba($text-dark-grey, 0.6);
 		}
 	}
 
-	// Styling of the advert-create container
+	.advert-availability-month .date-month {
+		margin-bottom: 25px;
+		margin-left: 2px;
 
-	#advert-create-button {
-		@include button($light-red, 3px);
+		p {
+			@include font($header-font-family, regular, regular, 20, 20, rgba($text-dark-grey, 0.8));
+			margin-bottom: 0;
+		}
+	}
+
+	// Styling of the error container
+
+	.form-error-container {
+		display: none;
+		
+		p {
+			background-color: rgba($light-red, 0.2);
+			border: 1px solid lighten($light-red, 10%);
+			padding: 15px;
+			margin-bottom: 0;
+		}
+	}
+
+	// Styling of the submit container
+
+	.form-submit-container {
+		margin-bottom: 0;
+
+		p {
+			@include font($paragraph-font-family, regular, regular, 14, 14, $text-dark-grey);
+			margin-bottom: 30px;
+		}
+
+		#advert-create-button {
+			@include button($light-red, 3px);
+		}
 	}
 }
 
@@ -498,6 +590,12 @@
 
 @include breakpoint(xlarge) {
 	.advert-create-form-container {
+		.transportation-checkbox:nth-of-type(3), .transportation-checkbox:nth-of-type(4)  {
+			margin-bottom: 0;
+		}
+	}
+
+	.form-contact-information-container {
 		.form-icon-input-field:nth-of-type(1), .form-icon-input-field:nth-of-type(3) {
 			padding-left: 0;
 		}
@@ -509,9 +607,15 @@
 		.form-icon-input-field:nth-of-type(3), .form-icon-input-field:last-of-type {
 			margin-bottom: 0;
 		}
+	}
 
-		.transportation-checkbox:nth-of-type(3), .transportation-checkbox:nth-of-type(4)  {
-			margin-bottom: 0;
+	.number-children-container {
+		.form-icon-input-field:nth-of-type(odd) {
+			padding-left: 0;
+		}
+
+		.form-icon-input-field:nth-of-type(even) {
+			padding-right: 0;
 		}
 	}
 }

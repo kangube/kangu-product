@@ -1,0 +1,267 @@
+// Styling of the footer for medium and up screens
+
+.mobile-up-footer {
+	@include hide-for-only(small);
+	min-width: 100vw;
+	height: auto;
+	margin-top: 120px;
+	margin-bottom: 0;
+	padding: 50px 0 50px 0;
+	border-top: 1px solid darken($light-grey, 5%);
+	background-color: $light-grey;
+
+	.footer-full-width-container {
+		width: 100vw;
+		max-width: 100vw;
+		background-color: $light-grey;
+	}
+
+	.footer-parent-container {
+		@include grid-row;
+	}
+
+	// Styling of the footer-item elements
+
+	.footer-item {
+		p {
+			@include font($paragraph-font-family, regular, regular, 13, 22, rgba($text-dark-grey, 0.8));
+			margin-bottom: 20px;
+		}
+
+		h3 {
+			@include font($header-font-family, regular, regular, 20, 20, rgba($text-dark-grey, 0.8));
+			margin-bottom: 20px;
+		}
+
+		.horizontal-line {
+			border: 1px solid rgba($text-dark-grey, 0.6);
+			border-radius: 3px;
+			margin: 0 0 20px 0;
+			width: 20%;
+		}
+	}
+
+	.footer-item-list {
+		margin: 0;
+
+		li {
+			list-style-type: none;
+			padding: 5px 0 5px 0;
+		}
+
+		li a {
+			@include font($paragraph-font-family, regular, regular, 14, 19, rgba($text-dark-grey, 0.6));
+			text-decoration: none;
+		}
+
+		li a:hover {
+			color: rgba($text-dark-grey, 0.8);
+			text-decoration: underline;
+		}
+	}
+
+	// Styling of the newsletter form
+
+	.footer-newsletter-form input[type="email"], .footer-newsletter-form input[type="email"]:hover,
+	.footer-newsletter-form input[type="email"]:focus, .footer-newsletter-form input[type="email"]:active {
+		background-color: $white;
+		border: 1px solid $border-color-light-grey;
+		border-radius: 3px;
+		padding: 15px;
+		margin-bottom: 15px;
+	}
+
+	.footer-newsletter-form input[type="submit"] {
+		@include button($light-red, 3px);
+		width: 100%;
+	}
+
+	// Styling of the copyright and legal elements
+
+	.copyright-social-container {
+		@include grid-column(12);
+		padding: 0 16px 0 16px;
+		margin: 40px 0 0 0;
+
+		.bottom-horizontal-line {
+			width: 100%;
+			border-bottom: 1px solid $border-color-light-grey;
+			margin: 0 0 20px 0;
+		}
+
+		p {
+			@include font($header-font-family, regular, regular, 14, 14, rgba($text-dark-grey, 0.6));
+			margin-bottom: 0;
+			display: inline;
+		}
+
+		.copyright-claim {
+			float: left;
+		}
+
+		.social {
+			float: right;
+		}
+
+		.social a {
+			@include font($header-font-family, regular, regular, 14, 14, rgba($text-dark-grey, 0.6));
+			text-decoration: none;
+			margin: 0 5px 0 5px;
+		}
+
+		.social a:last-child {
+			margin-right: 0;
+		}
+
+		.social a:hover {
+			color: rgba($text-dark-grey, 0.8);
+			text-decoration: underline;
+		}
+	}
+}
+
+// Styling of the footer for mobile screens
+
+.mobile-only-footer {
+	@include show-for-only(small);
+	width: 100vw;
+	background-color: $light-grey;
+	margin-top: 100px;
+	padding-bottom: 30px;
+
+	// Styling of the accordion elements
+
+	.accordion {
+		margin-top: 80px 0 0 0;
+
+		.accordion-title, .accordion-title:hover, .accordion-title:focus, .accordion-title:active {
+			@include font($header-font-family, regular, regular, 16, 16, rgba($text-dark-grey, 0.8));
+			text-decoration: none;
+		}
+
+		.accordion-item, .accordion-content {
+			background-color: $light-grey;
+		}
+
+		.is-active {
+			background-color: darken($light-grey, 5%) !important;
+		}
+
+		.accordion-content-list {
+			width: 100%;
+			margin: 0;
+			list-style-type: none;
+		}
+
+		.accordion-content {
+			padding: 0;
+		}
+
+		.accordion-content-list li {
+			padding: 20px 16px 20px 16px;
+		}
+
+		.accordion-content-list li:nth-of-type(even) {
+			border-top: 1px solid darken($light-grey, 5%);
+			border-bottom: 1px solid darken($light-grey, 5%);
+		}
+
+		.accordion-content-list li:last-of-type {
+			border-bottom: none;
+		}
+
+		.accordion-content-list li a {
+			@include font($paragraph-font-family, regular, regular, 14, 14, rgba($text-dark-grey, 0.6));
+			text-decoration: none;
+		}
+
+		.accordion-content-list li a:hover {
+			color: rgba($text-dark-grey, 0.8);
+			text-decoration: underline;
+		}
+	}
+
+	// Styling of the newsletter form
+
+	.newsletter-form {
+		padding: 0 16px 0 16px;
+		margin: 20px 0 0 0;
+
+		h3 {
+			@include font($header-font-family, regular, regular, 16, 16, rgba($text-dark-grey, 0.8));
+			margin: 0 0 15px 0;
+		}
+
+		p {
+			@include font($paragraph-font-family, regular, regular, 14, 19, rgba($text-dark-grey, 0.6));
+		}
+
+		.footer-newsletter-form input[type="email"], .footer-newsletter-form input[type="email"]:hover,
+		.footer-newsletter-form input[type="email"]:focus, .footer-newsletter-form input[type="email"]:active {
+			background-color: $white;
+			border: 1px solid $border-color-light-grey;
+			border-radius: 3px 3px 0 0;
+			padding: 20px;
+			margin-bottom: 0;
+			border-bottom: none;
+		}
+
+		.footer-newsletter-form input[type="submit"] {
+			@include button($light-red, 3px);
+			width: 100%;
+			border-radius: 0 0 3px 3px;
+		}
+	}
+
+	// Styling of the copyright and legal elements
+
+	.copyright-social-container {
+		@include grid-column(12);
+		padding: 0 16px 0 16px;
+		margin: 20px 0 20px 0;
+
+		p {
+			@include font($header-font-family, regular, regular, 14, 14, rgba($text-dark-grey, 0.6));
+			margin-bottom: 0;
+			display: inline;
+		}
+
+		.copyright-claim {
+			float: left;
+		}
+
+		.social {
+			float: right;
+		}
+
+		.social a {
+			@include font($header-font-family, regular, regular, 14, 14, rgba($text-dark-grey, 0.6));
+			text-decoration: none;
+			margin: 0 5px 0 5px;
+		}
+
+		.social a:last-child {
+			margin-right: 0;
+		}
+
+		.social a:hover {
+			color: rgba($text-dark-grey, 0.8);
+			text-decoration: underline;
+		}
+	}
+}
+
+// Responsiveness
+
+@include breakpoint(medium only) {
+	.footer-item {
+		@include grid-column(6);
+		margin-bottom: 50px;
+	}
+}
+
+@include breakpoint(large) {
+	.footer-item {
+		@include grid-column(3);
+	}
+}

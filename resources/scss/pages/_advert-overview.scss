@@ -6,8 +6,8 @@
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
-	min-width: 100vw;
-	min-height: 80vh;
+	min-width: 100%;
+	min-height: 80%;
 
 	background-repeat: no-repeat;
 	background-position: center;
@@ -186,6 +186,17 @@
 	}
 }
 
+.no-search-results-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
+	p {
+		@include font($paragraph-font-family, regular, regular, 14, 19, red);
+	}
+}
+
 // Styling of the search form used for medium screens and smaller
 
 #mobile-search-form-button {
@@ -210,8 +221,8 @@
 }
 
 .mobile-search-form-container {
-	width: 100vw;
-	height: 100vh;
+	width: 100%;
+	height: 100%;
 	top: 0;
 	left: 0;
 	position: fixed;
@@ -291,7 +302,14 @@
 
 // Styling of the advert overview container
 
-.advert-overview-container {
+.advert-overview-container, .search-advert-overview-container {
 	@include grid-row;
 	margin-top: 40px;
+}
+
+.advert-overview-filter, .search-advert-overview-filter {
+	@include font($paragraph-font-family, regular, regular, 14, 14, $text-dark-grey);
+	background-color: $light-grey;
+	border: 1px solid $border-color-light-grey;
+	border-radius: 3px;
 }

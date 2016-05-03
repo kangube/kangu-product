@@ -108,7 +108,7 @@
     }
 
     .ui-datepicker-today {
-        background-color: rgba($dark-grey, 0.1) !important;
+        background-color: darken($light-grey, 5%) !important;
 
         a {
             background-color: transparent !important;
@@ -117,7 +117,7 @@
     }
      
     .ui-datepicker-other-month .ui-state-default { 
-        color: rgba($text-dark-grey, 0.35);
+        color: rgba($text-dark-grey, 0.15);
     }
 }
 
@@ -184,4 +184,12 @@ td.ui-datepicker-week-end {
     clear: both;
     width: 100%;
     font-size: 0;
+}
+
+.ui-datepicker-group-first .ui-datepicker-title {
+    border-right: 1px solid $border-color-light-grey;
+}
+
+.ui-datepicker-group-last {
+
 }

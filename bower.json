@@ -1,0 +1,20 @@
+{
+  "name": "kangu-product-version-0.1",
+  "description": "The kangu platform",
+  "main": "gulpfile.js",
+  "authors": [
+    "Kangu <info@kangu.be>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/kangube/kangu-product",
+  "moduleType": [],
+  "dependencies": {
+    "foundation-sites": "^6.1.2",
+    "animate-sass": "^0.6.6",
+    "motion-ui": "~1.1.1",
+    "jquery-ui": "jquery.ui#^1.11.4",
+    "wow": "wowjs#~1.1.2",
+    "jt.timepicker": "timepicker#^1.8.10",
+    "arrive": "^2.3.1"
+  }
+}
