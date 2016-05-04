@@ -27,52 +27,21 @@ body {
 	line-height: 50px;
 }
 
-// Styling of the introductory header
+// Styling of the detail and header container
 
-.advert-detail-header {
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: center;
-	min-width: 100vw;
-	min-height: 60vh;
-	background-color: $dark-blue;
-	z-index: -1;
+.advert-detail-header-container {
+	background: linear-gradient(-225deg, #57B9F6 0%, $dark-blue 100%);
+	min-width: 100%;
+	height: auto;
+	padding: 80px 0 80px 0;
 
-	.boeking-button {
+	// Styling of the introductory header
+
+	.header-information-container {
+		@include grid-row;
+		text-align: center;
 		position: relative;
-		display: block;
-		height: 55px;
-		border-radius: 5px;
-		background-color: $light-red;
-		@include font($paragraph-font-family, regular, regular, 20, 55, $text-white);
-		text-decoration: none;
-		text-align: center;
-	}
-
-	.advert-detail-title-container {
-		align-self: center;
-		text-align: center;
-		margin-top: 5%;
-		margin-bottom: 5%;
-		width: 60%;
-
-		@include breakpoint(medium down) {
-			width: 95%;
-		}
-
-		@include breakpoint(large) {
-			width: 70%;
-		}
-
-		@include breakpoint(105em) { 
-			width: 50%;
-		}
-
-		@include breakpoint(120em) { 
-			width: 50%;
-		}
+		z-index: 0;
 
 		img {
 			width: 120px;
@@ -80,101 +49,87 @@ body {
 			border-radius: 50%;
 			margin-bottom: 3%;
 		}
+
+
+		.advert-detail-title, .advert-detail-subtitle {
+			@include font($header-font-family, regular, regular, 36, 46.8, $text-white);
+			text-align: center;
+		}
+
+		.advert-detail-title {
+			margin-bottom: 15px;
+
+			@include breakpoint(small) { 
+				font-size: rem-calc(22);
+				line-height: rem-calc(24);
+			}
+
+			@include breakpoint(medium) { 
+				font-size: rem-calc(25);
+				line-height: rem-calc(30);
+			}
+
+			@include breakpoint(120em) { 
+				font-size: rem-calc(33);
+				line-height: rem-calc(42);
+			}
+		}
+
+		.advert-detail-subtitle {
+			
+			@include breakpoint(small) { 
+				font-size: rem-calc(18);
+				line-height: rem-calc(22);
+				margin-bottom: 25px;
+			}
+
+			@include breakpoint(medium) { 
+				font-size: rem-calc(18);
+				line-height: rem-calc(22);
+				margin-bottom: 10px;
+			}
+
+			@include breakpoint(large) {
+				font-size: rem-calc(18);
+				line-height: rem-calc(22);
+				margin-bottom: 0px;
+			}
+
+			@include breakpoint(120em) { 
+				font-size: rem-calc(20);
+				line-height: rem-calc(24);
+				margin-bottom: 0px;
+			}
+		}
 	}
 
-	.advert-detail-title, .advert-detail-subtitle {
-		@include font($header-font-family, regular, regular, 36, 46.8, $text-white);
-		text-align: center;
+	// Styling of the request button
+
+	.request-button-container {
+		position: absolute;
+		z-index: 1;
+		left: 0;
+	    right: 0;
+	    margin-left: auto;
+	    margin-right: auto;
+		top: 420px;
 	}
 
-	.advert-detail-title {
-		margin-bottom: 15px;
-
-		@include breakpoint(small) { 
-			font-size: rem-calc(22);
-			line-height: rem-calc(24);
-		}
-
-		@include breakpoint(medium) { 
-			font-size: rem-calc(25);
-			line-height: rem-calc(30);
-		}
-
-		@include breakpoint(120em) { 
-			font-size: rem-calc(33);
-			line-height: rem-calc(42);
-		}
-	}
-
-	.advert-detail-subtitle {
-		
-		@include breakpoint(small) { 
-			font-size: rem-calc(18);
-			line-height: rem-calc(22);
-			margin-bottom: 25px;
-		}
-
-		@include breakpoint(medium) { 
-			font-size: rem-calc(18);
-			line-height: rem-calc(22);
-			margin-bottom: 10px;
-		}
-
-		@include breakpoint(large) {
-			font-size: rem-calc(18);
-			line-height: rem-calc(22);
-			margin-bottom: 0px;
-		}
-
-		@include breakpoint(120em) { 
-			font-size: rem-calc(20);
-			line-height: rem-calc(24);
-			margin-bottom: 0px;
-		}
-	}
-}
-
-// Styling of the booking button
-
-.advert-detail-button-container {
-	display: flex;
-	@include grid-row;
-
-	.boeking-button {
-		display: block;
-		height: 55px;
-		margin-top: -27.5px;
-		margin-bottom: 70px;
-		border-radius: 5px;
-		background-color: $light-red;
-		@include font($paragraph-font-family, regular, regular, 20, 55, $text-white);
+	.advert-detail-request-button {
+		@include button($light-red, 3px);
+		@include font($paragraph-font-family, regular, regular, 15, 15, $text-white);
 		text-decoration: none;
+		display: block;
 		text-align: center;
-		z-index: 0;
-
-		&:hover {
-			background-color: darken($light-red, 5%);
-			transition: all 0.3s ease;
-		}
-
-		&:active {
-			background-color: darken($light-red, 5%);
-		}
-
-		@include breakpoint(small) { 
-			@include font($paragraph-font-family, regular, regular, 16, 55, $text-white);
-		}
-
-		@include breakpoint(medium) { 
-			@include font($paragraph-font-family, regular, regular, 20, 55, $text-white);
-		}
+		padding-top: 15px;
+		padding-bottom: 15px;
 	}
 }
 
 // Styling of the description, details and calendar container
 
 .advert-detail-description-calendar-container {
-	margin-bottom: 60px;
+	margin-top: 80px;
 
 	.advert-detail-description {
 		@include font($paragraph-font-family, regular, regular, 14, 25, rgba($text-dark-grey, 0.8));
@@ -301,7 +256,7 @@ body {
 // Styling of the contact-information and map container
 
 .advert-detail-contact-map-container {
-	margin-top: 30px;
+	margin-top: 60px;
 
 	// Contact-information for larger and up screens
 
@@ -423,7 +378,7 @@ body {
 // Styling of the services for large and up screens
 
 .advert-detail-services-container {
-	margin-top: 30px;
+	margin-top: 60px;
 
 	@include breakpoint(small only) {
 		margin-top: 0px;
@@ -445,6 +400,7 @@ body {
 		}
 
 		.service ul {
+			@include font($paragraph-font-family, regular, regular, 14, 25, rgba($text-dark-grey, 0.8));
 			margin: 0;
 		}
 
@@ -482,12 +438,9 @@ body {
 // Styling of the services for medium and smaller screens
 
 @include breakpoint(small only) {
-	.services-mobile-list {
-		@include grid-column(12);
-	}
-
 	.services-container-mobile {
 		ul {
+			@include font($paragraph-font-family, regular, regular, 14, 25, rgba($text-dark-grey, 0.8));
 			margin: 0;
 			margin-bottom: 30px;
 		}
@@ -532,6 +485,7 @@ body {
 @include breakpoint(medium only) {
 	.services-container-mobile {
 		ul {
+			@include font($paragraph-font-family, regular, regular, 14, 25, rgba($text-dark-grey, 0.8));
 			margin: 0;
 			margin-bottom: 30px;
 		}
@@ -579,11 +533,38 @@ body {
 // Styling of the ratings and reviews
 
 .advert-ratings-reviews-container {
-	margin-top: 50px;
+	margin-top: 60px;
+
+	.advert-detail-counter-container {
+		margin: 0 0 40px 0;
+
+		.advert-detail-counter-reviews {
+			@include font($paragraph-font-family, regular, regular, 14, 25, rgba($text-dark-grey, 0.8));
+			margin-bottom: 0;
+		}
+
+		.advert-detail-counter-reviews:before {
+			font-size: rem-calc(25);
+			vertical-align: middle;
+			margin-right: 15px;
+		}
+	}
+
+	.advert-detail-review-container {
+		margin: 0 0 60px 0;
+	}
+
+	@include breakpoint(large) {
+		.advert-detail-review-container {
+			margin-bottom: 0;
+		}
+
+		.advert-detail-review-container:nth-of-type(2),  .advert-detail-review-container:nth-of-type(3) {
+			margin: 0 0 60px 0;
+		}
+	}
 
 	.advert-detail-review {
-		margin: 40px 0 40px 0;
-
 		ul {
 			margin: 0;
 		}
@@ -610,6 +591,8 @@ body {
 			min-height: 105px;
 		}
 
+		// Styling of the review vote button in normal state
+
 		.review-vote-button {
 			padding: 1px 15px 2px 15px;
 			border-radius: 3px;
@@ -628,7 +611,7 @@ body {
 
 		.review-vote-button ul li:before {
 			font-size: 12px;
-			color: rgba($text-dark-grey, 0.8);
+			color: rgba($text-dark-grey, 0.6);
 			margin-right: 5px;
 			vertical-align: middle;
 		}
@@ -647,6 +630,21 @@ body {
 			background-color: darken($light-grey, 5%);
 		}
 
+		// Styling of the review vote button in disabled state
+
+		.review-vote-button:disabled {
+			padding: 1px 15px 2px 15px;
+			border-radius: 3px;
+			background-color: darken($light-grey, 5%);
+			border: 1px solid $border-color-light-grey;
+		}
+
+		.review-vote-button:disabled:hover, .review-vote-button:disabled:active {
+			background-color: darken($light-grey, 5%);
+		}
+
+		// Styling of the review date
+
 		.review-date {
 			@include font($paragraph-font-family, italic, regular, 14, 14, rgba($text-dark-grey, 0.6));
 			margin-top: 8px;
@@ -655,7 +653,7 @@ body {
 		}
 	}
 
-	.pagination-style {
+	.advert-detail-pagination {
 		float: left;
 
 		.first {
@@ -667,17 +665,12 @@ body {
 // Styling of the similar adverts
 
 .advert-detail-container {
-	padding-top: 40px;
+	margin-top: 60px;
 
 	.advert-container {
-		margin-bottom: 0;
 
-		.advert, .advert-price, .advert-spots {
-			background-color: $white !important;
-		}
-
-		.advert-price, .advert-spots {
-			border: 1px solid $border-color-light-grey;
+		@include breakpoint(large) {
+			margin-bottom: 0;
 		}
 	}
 }

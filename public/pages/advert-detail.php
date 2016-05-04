@@ -1,5 +1,6 @@
 <?php
 	include_once("../php-assets/class.advert.php");
+	include_once("../php-assets/class.vote.php");
 	require_once("../php-assets/class.session.php");
 	require_once("../php-assets/class.user.php");
 	require_once("../php-assets/class.pagination-reviews.php");
@@ -10,6 +11,7 @@
 	$stmt->execute(array(":user_id"=>$user_id));
 	$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
+	// Creating a new advert and processing all of it's information
 	$advert = new Advert();
 	$oneAdvert = $advert->getOne();
 	$advert_information = $oneAdvert->fetch(PDO::FETCH_ASSOC);
@@ -18,17 +20,7 @@
 	$advert_full_adress = $advert_information['user_adress'].','.$advert_information['user_city'];
 
 	// Processing all of the provided services
-	$db_username = 'root';
-	$db_password = 'root';
-	$db_name = 'kangu-product';
-	$db_host = 'localhost';
-
-	$mysqli_connection = new mysqli($db_host, $db_username, $db_password, $db_name);
-	if ($mysqli_connection->connect_error) {
-	    die('Error : ('. $mysqli_connection->connect_errno .') '. $mysqli_connection->connect_error);
-	}
-
-	$results = $mysqli_connection->query("SELECT service_name from tbl_service WHERE fk_advert_id=".$_GET['id']."");
+	$results = $mysqli->query("SELECT service_name from tbl_service WHERE fk_advert_id=".$_GET['id']."");
 
 	$services = array(
 		'opvang-thuisomgeving',
@@ -40,9 +32,39 @@
 	);
 
 	$servicesArray = array();
-    while($row = $results->fetch_array(MYSQLI_ASSOC)) {
-        $servicesArray[] = $row['service_name'];
+    while($services_row = $results->fetch_array(MYSQLI_ASSOC)) {
+        $servicesArray[] = $services_row['service_name'];
     }
+
+    // Processing all of the children corresponding to the creator of the advert
+    $children_results = $mysqli->query("SELECT child_first_name from tbl_user_child LEFT JOIN tbl_child ON tbl_user_child.fk_child_id=tbl_child.child_id WHERE fk_user_id=".$advert_information['user_id']."");
+
+    while($children_row = $children_results->fetch_array(MYSQLI_ASSOC)) {
+        $formatted_children_names .= $children_row['child_first_name'].' en ';
+    }
+
+    $formatted_children_names = preg_replace('/\W\w+\s*(\W*)$/', '$1', $formatted_children_names);
+
+    // Processing user vote on a review
+    $vote = new Vote();
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+		try
+		{	
+			// Passing data to the vote class for processing
+			$vote->UserId = $userRow['user_id'];
+			$vote->ReviewId = $_POST['review-id'];
+			$has_voted = $vote->HasVoted();
+
+			if ($has_voted === false) {
+				$vote->Vote();
+			}
+		}
+		catch(Exception $e)
+		{
+			$error = $e->getMessage();
+		}
+	}
 ?>
 
 <!doctype html>
@@ -57,18 +79,21 @@
 	<body>
 		<?php include('../php-includes/navigation.php'); ?>
 
-		<div class="small-12 columns advert-detail-header">
-	        <div class="advert-detail-title-container">
-	        	<img src=<?php echo $advert_information['user_image_path']; ?> alt="profiel foto" />
-	            <h1 class="advert-detail-title"><?php echo $advert_information["user_firstname"]." ".$advert_information["user_lastname"]; ?></h1>
-	            <h3 class="advert-detail-subtitle">Ouder van Floor en Kilian</h3>
-	        </div>
-        </div>
+	    <div class="advert-detail-header-container">
+		    <div class="header-information-container">
+			    <div class="small-12 columns">
+			    	<img src=<?php echo $advert_information['user_image_path']; ?> alt="profiel foto"/>
+		            <h1 class="advert-detail-title">
+		            	<?php echo $advert_information["user_firstname"]." ".$advert_information["user_lastname"]; ?>
+		            </h1>
+		            <h3 class="advert-detail-subtitle"><?php echo 'Ouder van '.$formatted_children_names; ?></h3>
+		            <input class="header-user-id" type="hidden" value="<?php echo $userRow['user_id']; ?>">
+			    </div>
+		    </div>
 
-        <div class="row">
-	        <div class="small-12 columns advert-detail-button-container">
-	        	<a class="small-7 medium-5 large-3 small-centered columns boeking-button" href="#">Opvang aanvragen</a>
-	        </div>
+			<div class="small-7 medium-5 large-3 small-centered columns request-button-container">
+		    	<a class="advert-detail-request-button" href="advert-book.php?id=<?php echo $_GET['id']; ?>">Opvang aanvragen</a>
+		    </div>
 	    </div>
 
 	    <div class="advert-detail-description-calendar-container" data-equalizer="description-calendar" data-equalize-on="large">
@@ -138,7 +163,7 @@
 		<div class="advert-detail-contact-map-container" data-equalizer="contact-map" data-equalize-on="large">
 			<div class="mobile-container">
 				<div class="small-12 large-3 columns" data-equalizer-watch="contact-map">
-			    	<h2>Contact informatie</h2>
+			    	<h2>Contact-informatie</h2>
 			    	<hr class="blue-horizontal-line"></hr>
 
 					<div class="hide-for-small show-for-large advert-detail-contact-container">
@@ -409,89 +434,5 @@
 	    <script>try{Typekit.load({ async: true });}catch(e){}</script>
 
 	    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCK4od9WLji1WkDzFFyLls-226CbhN8Jl4&v=3"></script>
-
-	    <script>
-			$(document).ready(function() {
-				var getUrlParameter = function getUrlParameter(sParam) {
-				    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-				        sURLVariables = sPageURL.split('&'),
-				        sParameterName,
-				        i;
-
-				    for (i = 0; i < sURLVariables.length; i++) {
-				        sParameterName = sURLVariables[i].split('=');
-
-				        if (sParameterName[0] === sParam) {
-				            return sParameterName[1] === undefined ? true : sParameterName[1];
-				        }
-				    }
-				};
-
-				var advert_id = getUrlParameter('id');
-
-				if (typeof advert_id !== 'undefined') {
-	                var Event = function(className) {
-				    	this.className = className;
-					};
-
-					var events = [];
-					$.getJSON('availability-dates.php?id="'+advert_id+'"', function(data) {
-	                    $.each(data, function(key, val) {
-	                        availability_date_item = val.availability_date.replace(/-/g, '/');
-	                        events[new Date(availability_date_item)] = new Event("availability-date-item");
-	                    });
-	                });
-
-					$('.availability-calendar').datepicker({
-				        inline: true,
-					    firstDay: 0,
-					    showOtherMonths: true,
-					    monthNames: ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'],
-					    dayNames: ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'],
-					    dayNamesMin: ['Zo', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za'],
-					    beforeShowDay: function(date) {
-					        var event = events[date];
-
-					        if (event) {
-					            return [true, event.className];
-					        }
-					        else {
-					            return [true, ''];
-					        }
-					    }
-					});
-				}
-			});
-		</script>
-
-		<script type="text/javascript">
-			$(document).ready(function() {
-				var getUrlParameter = function getUrlParameter(sParam) {
-				    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-				        sURLVariables = sPageURL.split('&'),
-				        sParameterName,
-				        i;
-
-				    for (i = 0; i < sURLVariables.length; i++) {
-				        sParameterName = sURLVariables[i].split('=');
-
-				        if (sParameterName[0] === sParam) {
-				            return sParameterName[1] === undefined ? true : sParameterName[1];
-				        }
-				    }
-				};
-
-				var advert_id = getUrlParameter('id');
-
-				$("#reviews" ).load( "../php-assets/class.pagination-reviews.php?id="+advert_id+"");
-				
-				$("#reviews").on( "click", ".pagination a", function (e) {
-					e.preventDefault();
-
-					var page = $(this).attr("data-page");
-					$("#reviews").load("../php-assets/class.pagination-reviews.php",{"page":page});
-				});
-			});
-		</script>
 	</body>
 </html>
