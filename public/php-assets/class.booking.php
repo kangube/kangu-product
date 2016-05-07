@@ -93,15 +93,6 @@ class booking
 				break;
 		}
 	}
-
-	/*if(strlen($addres) > 10)
-	{
-  		
-	}else 
-	{
-	
-	}*/
-
 	
 	public function Save() {
 		$conn = Db::getInstance();
