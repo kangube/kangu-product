@@ -22,7 +22,7 @@
 	<body>	
 		<?php include('../php-includes/navigation.php'); ?>
 	
-		<div class="hide-for-small show-for-large small-12 large-6 columns datepicker-small" style="height: 250px">
+		<div class="large-12 columns datepicker-small">
 		    	<h2 class="mrgtop">Boekingen</h2>
 		    	<br/>
 		    	<h3>Advertenties die ik geboekt heb</h3>
@@ -52,7 +52,7 @@
 				?>
 		</div>
 		
-		<div class="hide-for-small show-for-large small-12 large-6 columns datepicker-small" style="height: 250px">
+		<div class="large-12 columns datepicker-small">
 		    	<h2 class="mrgtop">Datums van boekingen</h2>
 		    	<br/>
 		    	<h3>Datums waarop ik anderen geboekt heb</h3>
@@ -96,7 +96,6 @@
 								$newDateBooked = date("m/d/Y", strtotime($originalDate));
 							}
 						
-
 					//Datums tonen waarop ik geboekt ben
 					$booked_results = $mysqli->prepare("SELECT fk_booking_id, booking_date_format FROM tbl_booking_dates LEFT JOIN tbl_booking ON tbl_booking_dates.fk_booking_id=tbl_booking.booking_id WHERE tbl_booking.fk_booker_user_id = ".$userRow['user_id']."");
 					$booked_results->execute();
@@ -109,65 +108,15 @@
 				?>
 		</div>
 
-	    <div class="hide-for-small show-for-large small-12 large-6 columns datepicker-small">
+	    <!--<div class="large-6 columns datepicker-small">
 		    	<h2 class="mrgtop">Dagen waarop ik geboekt ben</h2>
 		    	<hr class="blue-horizontal-line"></hr>
 
-				<div id="availability-datepicker"></div>
-
-				<input id="altField"></input>
-		</div>
-
-		<div class="hide-for-small show-for-large small-12 large-6 columns datepicker-small">
-		    	<h2 class="mrgtop">Dagen waarop ik anderen geboekt heb</h2>
-		    	<hr class="blue-horizontal-line"></hr>
-
-				<div id="availability-datepicker2"></div>
-
-				<input id="altField2"></input>
-		</div>
+				<div id="planning-events"></div>
+		</div>-->
 
 </body>
 </html>
 
-<script src="../js/minimum-viable-product.min.js"></script>
 <script src="http://multidatespickr.sourceforge.net/jquery-ui.multidatespicker.js"></script>
-<script>
-	var date = new Date();
-	var today = new Date();
-	var y = today.getFullYear();
-
-	$('#availability-datepicker').multiDatesPicker({
-		inline: true,
-		firstDay: 0,
-		showOtherMonths: true,
-		monthNames: ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'],
-		dayNames: ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'],
-		dayNamesMin: ['Zo', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za'],
-		beforeShowDay: function (date) {
-			var td = date.getDay();
-			var ret = [(date.getDay() != 0 && date.getDay() != 6),'',(td != 'Za' && td != 'Zo')?'':'only on workday'];
-			return ret;
-		},
-		altField: '#altField',
-		addDates: ['<?php echo $newDateBooked?>'],
-		maxPicks: 1,
-	});
-
-	$('#availability-datepicker2').multiDatesPicker({
-		inline: true,
-		firstDay: 0,
-		showOtherMonths: true,
-		monthNames: ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'],
-		dayNames: ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'],
-		dayNamesMin: ['Zo', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za'],
-		beforeShowDay: function (date) {
-			var td = date.getDay();
-			var ret = [(date.getDay() != 0 && date.getDay() != 6),'',(td != 'Za' && td != 'Zo')?'':'only on workday'];
-			return ret;
-		},
-		altField: '#altField2',
-		addDates: ['<?php echo $newDateBooking?>'],
-		maxPicks: 1,
-	}); 
-</script>
+<script src="../js/minimum-viable-product.min.js"></script>

@@ -291,6 +291,6 @@ $(document).ready(function() {
 		},
 		altField: '#altField',
 		addDates: ['<?php echo $newDate;?>'],
-		maxPicks: 1,
+		maxPicks: 1
 	}); 
 </script>

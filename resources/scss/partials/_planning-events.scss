@@ -1,0 +1,21 @@
+.planning-date-item > a::after, .planning-events td a::after {
+	content: '';
+	display: block;
+	width: 5px;
+	height: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	margin-top: 5px;
+	position: relative;
+	text-align: center !important;
+	left: 49%;
+}
+​
+.planning-events td a::after {
+	background-color: $light-red;
+}
+​
+.planning-date-item > a::after {
+	background-color: green !important;
+}
