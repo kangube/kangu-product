@@ -24,49 +24,50 @@
         .visible {
         	display: block;
         }
+        .to-boeked, .to-boeken {
+        	list-style: none;
+        }
+        .active-button, .none-active-button{
+        	text-decoration: none;
+        }
+        .active-button {
+        	color: red !important;
+        	font-weight: bold;
+        	cursor: pointer;
+        }
+        .none-active-button {
+        	color: black !important;
+        	font-weight: normal;
+        	cursor: default;
+        }
         </style>
     </head>
 
 	<body>	
 		<?php include('../php-includes/navigation.php'); ?>
-		<ul id="toggle">
-			<li class="to-boeked"><a href="#">boeken</a></li>
-    		<li class="to-boeken"><a href="#">boeked</a></li>
+		<ul class="toggle">
+			<li class="to-boeked"><a class="active-button" href="#">boeken</a></li>
+    		<li class="to-boeken"><a class="none-active-button" href="#">boeked</a></li>
     	</ul>
-    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    	<script>
-	    	$(document).ready(function () {
-			    $('.to-boeked').on('click', function () {
-			    	//Maak boeked visible
-			    	$('.boeked').removeClass('hidden');
-			        $('.boeked').addClass('visible');
-			        //Maak boeken invisible
-			        $('.boeken').removeClass('visible');
-			        $('.boeken').addClass('hidden');
-			    });
-			    $('.to-boeken').on('click', function () {
-			    	//Maak boeken visible
-			    	$('.boeken').removeClass('hidden');
-			        $('.boeken').addClass('visible');
-			        //Maak boeked invisible
-			        $('.boeked').removeClass('visible');
-			        $('.boeked').addClass('hidden');
-			    });
-			});
-    	</script>
 		<div class="boeken visible">
 			<div class="large-12 columns datepicker-small">
 			    	<h3>Datums waarop ik anderen geboekt heb</h3>
 					<?php
 						//Datums tonen waarop ik anderen geboekt heb
-						$booking_results = $mysqli->prepare("SELECT fk_booking_id, booking_date_format, tbl_booking.fk_booker_user_id, tbl_booking.fk_renter_user_id FROM tbl_booking_dates LEFT JOIN tbl_booking ON tbl_booking_dates.fk_booking_id=tbl_booking.booking_id WHERE tbl_booking.fk_renter_user_id = ".$userRow['user_id']."");
+						$booking_results = $mysqli->prepare("SELECT fk_booking_id, booking_date_format, tbl_user.user_firstname, tbl_user.user_lastname, tbl_user.user_email, tbl_user.user_mobile_number  FROM tbl_booking_dates 
+							LEFT JOIN tbl_booking ON tbl_booking_dates.fk_booking_id=tbl_booking.booking_id 
+							LEFT JOIN tbl_user ON tbl_booking.fk_booker_user_id=tbl_user.user_id
+							WHERE tbl_booking.fk_renter_user_id = ".$userRow['user_id']."");
 						$booking_results->execute();
-						$booking_results->bind_result($fk_booking_id, $booking_date_format, $fk_booker_user_id, $fk_renter_user_id);
+						$booking_results->bind_result($fk_booking_id, $booking_date_format, $user_firstname, $user_lastname, $user_email, $user_mobile_number);
 
 						while($booking_results->fetch()) 
 						{
 							echo "Datum: ".$booking_date_format."<br/>";
-							echo "Gehuurde: #".$fk_booker_user_id."<br/><br/>";
+							echo "Voornaam: ".$user_firstname."<br/>";
+							echo "Achternaam: ".$user_lastname."<br/>";
+							echo "Email: ".$user_email."<br/>";
+							echo "GSM: ".$user_mobile_number."<br/>";
 						}
 					?>
 			</div>
@@ -104,5 +105,41 @@
 </body>
 </html>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script src="http://multidatespickr.sourceforge.net/jquery-ui.multidatespicker.js"></script>
 <script src="../js/minimum-viable-product.min.js"></script>
+<script>
+	$(document).ready(function () {
+	    $('.to-boeked').on('click', function () {
+	    	//Verander to-boeked naar none-active
+	    	$('.to-boeked a').removeClass('active-button');
+	        $('.to-boeked a').addClass('none-active-button');
+	        //Verander to-boeken naar active
+	        $('.to-boeken a').removeClass('none-active-button');
+	        $('.to-boeken a').addClass('active-button');
+	    	//Maak boeked visible
+	    	$('.boeked').removeClass('hidden');
+	        $('.boeked').addClass('visible');
+	        //Maak boeken invisible
+	        $('.boeken').removeClass('visible');
+	        $('.boeken').addClass('hidden');
+	    });
+	    $('.to-boeken').on('click', function () {
+	    	//Verander to-boeken naar none-active
+	    	$('.to-boeken a').removeClass('active-button');
+	        $('.to-boeken a').addClass('none-active-button');
+	        //Verander to-boeked naar active
+	        $('.to-boeked a').removeClass('none-active-button');
+	        $('.to-boeked a').addClass('active-button');
+	        //Verander to-boeken naar active
+	        $('.to-boeked').removeClass('none-active-button');
+	        $('.to-boeked').addClass('active-button');
+	    	//Maak boeken visible
+	    	$('.boeken').removeClass('hidden');
+	        $('.boeken').addClass('visible');
+	        //Maak boeked invisible
+	        $('.boeked').removeClass('visible');
+	        $('.boeked').addClass('hidden');
+	    });
+	});
+</script>
