@@ -12,16 +12,21 @@
 		</ul>
 	</div>
 
-	<div class="create-advert">
-		<a href="../pages/advert-create.php">Opvang aanbieden</a>
-	</div>
+	<?php 
+		$check_user_has_advert = $auth_user->hasAdvert($userRow['user_id']);
+		if($check_user_has_advert === true) {
+			$auth_user->redirect('advert-overview.php');
+		}
+		else if ($check_user_has_advert === false) {
+			echo '<div class="create-advert"><a href="../pages/advert-create.php">Opvang aanbieden</a></div>';
+		}
+	?>
 
 	<div class="menu-links">
 		<div><span>Het platform</span></div>
 		<ul>
 			<li><a href="#">Advertenties</a></li>
 			<li><a href="#">Schema</a></li>
-			<li><a href="#">Transacties</a></li>
 		</ul>
 	</div>
 
@@ -29,7 +34,7 @@
 		<div><span>Jouw profiel</span></div>
 		<ul>
 			<li><a href="#">Mijn account</a></li>
-			<li><a href="#">Afmelden</a></li>
+			<li><a href="../pages/logout.php">Afmelden</a></li>
 		</ul>
 	</div>
 </div>
@@ -47,10 +52,19 @@
 
 			<div class="top-bar-right">
 				<ul class="vertical medium-horizontal menu">
-					<li><a href="../pages/advert-create.php" class="provide-services-button">Opvang aanbieden</a></li>
+					<li>
+						<?php 
+							$check_user_has_advert = $auth_user->hasAdvert($userRow['user_id']);
+							if($check_user_has_advert === true) {
+								$auth_user->redirect('advert-overview.php');
+							}
+							else if ($check_user_has_advert === false) {
+								echo '<a href="../pages/advert-create.php" class="provide-services-button">Opvang aanbieden</a>';
+							}
+						?>
+					</li>
 					<li><a href="#">Advertenties</a></li>
 					<li><a href="#">Schema</a></li>
-					<li><a href="#">Transacties</a></li>
 					<li><a href="#" class="show-for-medium" data-icon="g"></a></li>
 					<li>
 						<ul class="dropdown menu user-dropdown-menu" data-dropdown-menu>
@@ -58,7 +72,7 @@
 							<li>
 								<a href="#"><?php echo $userRow['user_firstname'].' '.$userRow['user_lastname']; ?></a>
 								<ul class="vertical menu">
-									<li><a href="#">Afmelden</a></li>
+									<li><a href="../pages/logout.php">Afmelden</a></li>
 								</ul>
 							</li>
 						</ul>
