@@ -3572,9 +3572,9 @@ a {
     padding-right: 0; }
   .top-bar-right .menu li:nth-child(2) a {
     margin-left: 10px; }
-  .top-bar-right .menu li:nth-child(3) a {
-    margin-right: 0; }
   .top-bar-right .menu li:nth-child(4) a {
+    margin-right: 0; }
+  .top-bar-right .menu li:nth-child(5) a {
     font-size: 1.5625rem;
     margin: 0 35px 0 35px; }
   .top-bar-right .menu .user-dropdown-menu li a {
@@ -5111,32 +5111,6 @@ footer {
     margin-top: 20%;
     margin-left: 50%; }
 
-.no-search-results-container {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center; }
-  .no-search-results-container p {
-    font-family: "open-sans", sans-serif;
-    font-style: regular;
-    font-weight: regular;
-    font-size: 0.875rem;
-    line-height: 1.1875rem;
-    color: red; }
-
 #mobile-search-form-button {
   background-color: #F37A7D;
   font-family: "open-sans", sans-serif;
@@ -5268,24 +5242,13 @@ footer {
   border-radius: 3px;
   width: 100%; }
 
-.advert-overview-container, .search-advert-overview-container {
+.advert-overview-container {
   max-width: 75rem;
   margin-left: auto;
   margin-right: auto;
   margin-top: 40px; }
-  .advert-overview-container::before, .advert-overview-container::after, .search-advert-overview-container::before, .search-advert-overview-container::after {
+  .advert-overview-container::before, .advert-overview-container::after {
     content: ' ';
     display: table; }
-  .advert-overview-container::after, .search-advert-overview-container::after {
+  .advert-overview-container::after {
     clear: both; }
-
-.advert-overview-filter, .search-advert-overview-filter {
-  font-family: "open-sans", sans-serif;
-  font-style: regular;
-  font-weight: regular;
-  font-size: 0.875rem;
-  line-height: 0.875rem;
-  color: #454553;
-  background-color: #F9F9F9;
-  border: 1px solid #C4C4C4;
-  border-radius: 3px; }

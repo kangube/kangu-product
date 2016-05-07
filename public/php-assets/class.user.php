@@ -19,25 +19,6 @@ class USER
 		$stmt = $this->conn->prepare($sql);
 		return $stmt;
 	}
-
-	public function hasAdvert($user_id)
-	{
-		try
-		{
-			$user_has_advert = $this->conn->prepare("SELECT advert_id FROM tbl_advert WHERE fk_user_id=:user_id");
-			$user_has_advert->execute(array(":user_id"=>$user_id));
-			if($user_has_advert->rowCount() == 1) {
-				return true;
-			}
-			else {
-				return false;
-			}
-		}
-		catch(PDOException $e)
-		{
-			echo $e->getMessage();
-		}
-	}
 	
 	public function register($user_first_name, $user_last_name, $user_email, $user_password)
 	{
@@ -101,6 +82,13 @@ class USER
 	public function redirect($url)
 	{
 		header("Location: $url");
+	}
+	
+	public function doLogout()
+	{
+		session_destroy();
+		unset($_SESSION['user_session']);
+		return true;
 	}
 }
 ?>

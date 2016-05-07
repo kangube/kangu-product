@@ -4,6 +4,12 @@
 	
 	$user_logout = new USER();
 	
-	session_destroy();
-	$user_logout->redirect('login.php');
-?>
+	if($user_logout->is_loggedin()!="")
+	{
+		$user_logout->redirect('login.php');
+	}
+	if(isset($_GET['logout']) && $_GET['logout']=="true")
+	{
+		$user_logout->doLogout();
+		$user_logout->redirect('login.php');
+	}
