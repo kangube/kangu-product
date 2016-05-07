@@ -1,5 +1,10 @@
 // Styling of the top-bar used for small and medium screens
 
+.full-width-navigation {
+	width: 100%;
+	background-color: $white;
+}
+
 .top-bar-mobile {
 	@include hide-for(large);
 	display: flex;
@@ -11,6 +16,10 @@
 	background-color: $white;
 	position: relative;
 	z-index: 0;
+
+	#top-bar-mobile-menu-button {
+		cursor: pointer;
+	}
 
 	span:first-child, span:last-child, span:nth-child(2) {
 		align-self: center;
@@ -42,8 +51,8 @@
 }
 
 .mobile-menu-background {
-	min-width: 100vw;
-	min-height: 100vh;
+	min-width: 100%;
+	min-height: 100%;
 	background-color: rgba($dark-grey, 0.5);
 	position: fixed;
 	opacity: 0;
@@ -221,6 +230,11 @@
 }
 
 // Styling of the top-bar used for large and xlarge screens
+
+.menu-panel {
+	width: 100%;
+	background-color: $white !important;
+}
 
 .top-bar {
 	@include show-for(large);

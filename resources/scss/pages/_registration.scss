@@ -1,8 +1,8 @@
 // Gradient background
 
 .half-height-gradient {
-	min-width: 100vw;
-	min-height: 50vh;
+	min-width: 100%;
+	min-height: 50%;
 	display: flex;
 	background: linear-gradient(-225deg, #57B9F6 0%, $dark-blue 100%);
 	left: 0;
@@ -14,8 +14,8 @@
 // Registration panel
 
 .full-width {
-	min-width: 100vw;
-	min-height: 100vh;
+	min-width: 100%;
+	min-height: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
