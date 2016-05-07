@@ -71,12 +71,12 @@
 						}
 					?>
 			</div>
-			<!--<div class="large-6 columns datepicker-small">
+			<div class="large-12 columns datepicker-small">
 		    	<h2 class="mrgtop">Dagen waarop ik geboekt ben</h2>
 		    	<hr class="blue-horizontal-line"></hr>
 
 				<div id="planning-events"></div>
-			</div>-->
+			</div>
 		</div>
 		<div class="boeked hidden">
 			<div class="large-12 columns datepicker-small">
@@ -105,9 +105,8 @@
 </body>
 </html>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-<script src="http://multidatespickr.sourceforge.net/jquery-ui.multidatespicker.js"></script>
 <script src="../js/minimum-viable-product.min.js"></script>
+<script src="http://multidatespickr.sourceforge.net/jquery-ui.multidatespicker.js"></script>
 <script>
 	$(document).ready(function () {
 	    $('.to-boeked').on('click', function () {
