@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 06, 2016 at 05:43 PM
+-- Generation Time: May 07, 2016 at 05:17 PM
 -- Server version: 5.5.42
 -- PHP Version: 5.6.10
 
@@ -38,27 +38,27 @@ CREATE TABLE `tbl_advert` (
 INSERT INTO `tbl_advert` (`advert_id`, `fk_user_id`, `advert_description`, `advert_price`, `advert_spots`, `advert_school`, `advert_transport`, `advert_number_bookings`) VALUES
 (1, 1, 'Dag ouders! Ik ben Sanne, een 26 jarige zorgkundige die zo nu en dan wat uurtjes vrij heeft. Ik heb veel ervaring met kinderen, in het verleden heb ik gewerkt in een kinderopvang en een buitenschoolse opvang. Ook met pubers kan ik goed overweg. Ik ben een zachtaardig en lief persoon, maar ik sta wel op mijn strepen. Het uurloon vind ik heel moeilijk, daarom dat ik het liefst tot discussie over laat. Meestal vraag ik geen uurloon maar gewoon een oplet loon. Is het voor enkele uurtjes, dan vind ik 20 euro best, is het voor een lange avond, een hele middag, een ganse dag, dan kan daar wat bij komen.', 6, 2, 'Heilig-hartcollege', 'auto', 0),
 (2, 2, 'Hallo mama en papa zoekt u een ervaren met verantwoordelijks gevoel toffe kinderoppas? Dan bied ik mij graag aan! \r\nIk doe deze leuke job reeds 1 jaar en heb nog tijd over om jullie te helpen met voorschoolse opvang of tijdens de dag. Ik hoop snel iets van jullie te horen! Tot dan! Ainarra.', 8, 3, 'Heilig-hartcollege', 'fiets', 0),
-(3, 3, 'Ik ben een moeder van 4 kinderen die nu volwassen zijn, maar ze wonen niet bij mij en heeft altijd graag kinderopvang. Ik heb slechts een jaar ervaring, maar ik begrijp en ik hou van kinderen. Ik ben een warm en zorgzaam persoon en ik respecteer de aanwijzingen van de ouders. En boven alles heb ik gezond verstand.', 9, 1, 'Heilig-hartcollege', 'fiets', 0),
-(4, 4, 'Hallo, Ik ben een spontane, lieve, enthousiaste kinderoppas. die heel betrouwbaar is en een groot verantwoordelijkheidsgevoel heeft. ik heb al meerdere jaren ervaring voorbeeld als de de ouders 2weken op reis waren heb ik ze voor hun gezorgd dag en nacht zelf oppas ik al meerdere jaren ik ben 19 word bijna 20 ben flexibel kan heel goed met kindjes omgaan vind het super om met de kindjes te knutselen gaan wandel Ik ben ook bereid om eventueel enkele huishoudelijke taken op mij te nemen. \r\nIk doe de job ontzettend graag en pas me aan aan de noden & wensen van de ouders. \r\nIk ben alle dagen beschikbaar mvg groet, Pieters.', 5, 2, 'Heilig-hartcollege', 'auto', 0),
+(3, 3, 'Ik ben een moeder van 4 kinderen die nu volwassen zijn, maar ze wonen niet bij mij en heeft altijd graag kinderopvang. Ik heb slechts een jaar ervaring, maar ik begrijp en ik hou van kinderen. Ik ben een warm en zorgzaam persoon en ik respecteer de aanwijzingen van de ouders. En boven alles heb ik gezond verstand.', 9, 1, 'Sint-Guibertus', 'fiets', 0),
+(4, 4, 'Hallo, Ik ben een spontane, lieve, enthousiaste kinderoppas. die heel betrouwbaar is en een groot verantwoordelijkheidsgevoel heeft. ik heb al meerdere jaren ervaring voorbeeld als de de ouders 2weken op reis waren heb ik ze voor hun gezorgd dag en nacht zelf oppas ik al meerdere jaren ik ben 19 word bijna 20 ben flexibel kan heel goed met kindjes omgaan vind het super om met de kindjes te knutselen gaan wandel Ik ben ook bereid om eventueel enkele huishoudelijke taken op mij te nemen. \r\nIk doe de job ontzettend graag en pas me aan aan de noden & wensen van de ouders. \r\nIk ben alle dagen beschikbaar mvg groet, Pieters.', 5, 2, 'De Groeituin', 'auto', 0),
 (5, 5, 'Hallo, Ik ben 18 jaar en woon in Antwerpen. Ik babysit al van mijn 15 jaar en dit met heel veel liefde en passie. Daarom studeer ik ook Vroedkunde aan Karel de Grote Hogeschool. Ik heb gewerkt in een naschoolse kinderopvang in Antwerpen op woensdagnamiddag als vrijwilliger. 2 jaar geleden heb ik in een pop up kinderopvang gewerkt. In de familie wordt ik ook altijd gevraagd om te babysitten op mijn nichtjes en neefjes. Ik doe niets liever dan voor kinderen te zorgen groot en klein. Het zou fijn zijn dit te kunnen combineren met mijn studies. \r\nHopelijk horen we elkaar snel! ', 6, 3, 'Heilig-hartcollege', 'auto', 0),
 (6, 6, 'Ik ben erg ervaren met kinderen. Ik babysit vanaf mijn 16 jaar bij de gezinsbond. \r\nDaarnaast heb ik twee studies achter de rug in de sociale sector. Ik heb in mijn bachelor orthopedagogie gedaan, dus ik heb veel ervaring met kinderen en daarnaast ook met kinderen met bijzondere noden. \r\nNaast babysitten zou ik ook graag huishoudelijk werk doen.', 8, 2, 'Heilig-hartcollege', 'auto', 0),
-(7, 7, 'Ik ben erg ervaren met kinderen. Ik babysit vanaf mijn 16 jaar bij de gezinsbond. \r\nDaarnaast heb ik twee studies achter de rug in de sociale sector. Ik heb in mijn bachelor orthopedagogie gedaan, dus ik heb veel ervaring met kinderen en daarnaast ook met kinderen met bijzondere noden. \r\nNaast babysitten zou ik ook graag huishoudelijk werk doen.', 9, 1, 'Heilig-hartcollege', 'auto', 0),
-(8, 8, 'Mijn naam is en ik ben momenteel 21 jaar. Ik babysit al een 5-tal jaar en ik heb enkele jaren gewerkt als monitrice op een speelplein. Ik heb ook 6 jaar turnles gegeven maar daar ben ik sinds dit jaar mee gestopt om me meer bezig te kunnen houden met mijn studies. \r\nVooral de jongste kindjes spreken mij enorm aan maar met de ouderen heb ik het tot nu toe ook altijd kunnen vinden. \r\nIk ben in het bezit van een rijbewijs en een auto dus bij het gezin thuis geraken en terug is geen probleem. Indien jullie dit graag willen, kan ik jullie ook altijd een aantal referenties bezorgen. \r\nIk hoop snel iets van jullie te horen! ', 6, 2, 'Heilig-hartcollege', 'openbaar vervoer', 0),
+(7, 7, 'Ik ben erg ervaren met kinderen. Ik babysit vanaf mijn 16 jaar bij de gezinsbond. \r\nDaarnaast heb ik twee studies achter de rug in de sociale sector. Ik heb in mijn bachelor orthopedagogie gedaan, dus ik heb veel ervaring met kinderen en daarnaast ook met kinderen met bijzondere noden. \r\nNaast babysitten zou ik ook graag huishoudelijk werk doen.', 9, 1, 'Sint-Guibertus', 'auto', 0),
+(8, 8, 'Mijn naam is en ik ben momenteel 21 jaar. Ik babysit al een 5-tal jaar en ik heb enkele jaren gewerkt als monitrice op een speelplein. Ik heb ook 6 jaar turnles gegeven maar daar ben ik sinds dit jaar mee gestopt om me meer bezig te kunnen houden met mijn studies. \r\nVooral de jongste kindjes spreken mij enorm aan maar met de ouderen heb ik het tot nu toe ook altijd kunnen vinden. \r\nIk ben in het bezit van een rijbewijs en een auto dus bij het gezin thuis geraken en terug is geen probleem. Indien jullie dit graag willen, kan ik jullie ook altijd een aantal referenties bezorgen. \r\nIk hoop snel iets van jullie te horen! ', 6, 2, 'De Groeituin', 'openbaar vervoer', 0),
 (9, 9, 'Ik heb in het verleden vooral voor mijn kleine neefjes en nichtjes gezorgd, maar nu ze wat ouder worden zoek ik een nieuw gezin waar ik kan instaan voor de zorg van de kinderen wanneer het nodig is. Ik ben een heel vrolijk persoon, en doe niets liever dan spelen en ravotte met kinderen. Als student in de bio-ingenieurswetenschappen kan ik zeker ook helpen met huiswerk indien nodig.', 7, 2, 'Heilig-hartcollege', 'auto', 0),
-(10, 10, 'Binnenkort ga ik Gent verkennen door me er te settelen en een job te zoeken. \r\nNaast het vele vrijwilligerswerk met kinderen en het werken in de horeca, rondde ik mijn studies af als opvoeder/begeleider. Door het gevarieerde vrijwilligerswerk dat ik met plezier deed vanaf mijn vijftiende, leerde ik veel bij. Belangrijk vind ik dat kinderen naast de schooluren zich kunnen ontspannen in een familiale en liefdevolle omgeving. \r\nOok supporter ik de eigen ontwikkeling van het kind naar de weg van zelfstandigheid (meehelpen, laten ontdekken, huiswerk,...). Afhankelijk van de leeftijd, de mogelijkheden van het kind en in samenspraak met de ouders. V', 5, 2, 'Heilig-hartcollege', 'auto', 0),
-(11, 11, 'Tijdens de week werk ik als leerkracht in het secundair aan het Stedelijk Lyceum Lamoriniere. Graag wil ik na mijn uren een bijverdienste als kinderoppas, zo kan ik mijn schoolwerk en sociaal leven nog steeds goed combineren. \r\nIk ben afgestudeerd als leerkracht verzorgende wat maakt dat ik soms stagebegeleiding geef aan 6 en 7 kinderzorg. Kinderen van verscheidene leeftijden zijn dus geen enkel probleem. ', 6, 2, 'Heilig-hartcollege', 'auto', 0),
+(10, 10, 'Binnenkort ga ik Gent verkennen door me er te settelen en een job te zoeken. \r\nNaast het vele vrijwilligerswerk met kinderen en het werken in de horeca, rondde ik mijn studies af als opvoeder/begeleider. Door het gevarieerde vrijwilligerswerk dat ik met plezier deed vanaf mijn vijftiende, leerde ik veel bij. Belangrijk vind ik dat kinderen naast de schooluren zich kunnen ontspannen in een familiale en liefdevolle omgeving. \r\nOok supporter ik de eigen ontwikkeling van het kind naar de weg van zelfstandigheid (meehelpen, laten ontdekken, huiswerk,...). Afhankelijk van de leeftijd, de mogelijkheden van het kind en in samenspraak met de ouders. V', 5, 2, 'Sint-Guibertus', 'auto', 0),
+(11, 11, 'Tijdens de week werk ik als leerkracht in het secundair aan het Stedelijk Lyceum Lamoriniere. Graag wil ik na mijn uren een bijverdienste als kinderoppas, zo kan ik mijn schoolwerk en sociaal leven nog steeds goed combineren. \r\nIk ben afgestudeerd als leerkracht verzorgende wat maakt dat ik soms stagebegeleiding geef aan 6 en 7 kinderzorg. Kinderen van verscheidene leeftijden zijn dus geen enkel probleem. ', 6, 2, 'Sint-Guibertus', 'auto', 0),
 (12, 12, 'Ik ben afgestudeerd als maatschappelijk assistente en doe nu de banaba buitengewoon onderwijs. Mijn droom is om met kinderen te werken. Ik heb snel een vertrouwensband met kinderen. Ook ben ik graag creatief bezig met kinderen en vind ik het belangrijk om hen iets bij te brengen. ', 5, 1, 'Heilig-hartcollege', 'auto', 0),
-(13, 13, 'Tijdens de week werk ik als leerkracht in het secundair aan het Stedelijk Lyceum Lamoriniere. Graag wil ik na mijn uren een bijverdienste als kinderoppas, zo kan ik mijn schoolwerk en sociaal leven nog steeds goed combineren. \r\nIk ben afgestudeerd als leerkracht verzorgende wat maakt dat ik soms stagebegeleiding geef aan 6 en 7 kinderzorg. Kinderen van verscheidene leeftijden zijn dus geen enkel probleem. ', 8, 1, 'Heilig-hartcollege', 'auto, wandelend', 0),
-(14, 14, 'Beste ouders, naast het vele vrijwilligerswerk met kinderen en het werken in de horeca, rondde ik mijn studies af als opvoeder/begeleider. Door het gevarieerde vrijwilligerswerk dat ik met plezier deed vanaf mijn vijftiende, leerde ik veel bij. Belangrijk vind ik dat kinderen naast de schooluren zich kunnen ontspannen in een familiale en liefdevolle omgeving. \r\nOok supporter ik de eigen ontwikkeling van het kind naar de weg van zelfstandigheid (meehelpen, laten ontdekken, huiswerk,...). Afhankelijk van de leeftijd, de mogelijkheden van het kind en in samenspraak met de ouders. Via deze kinderopvang wil ik mijn favoriete bezigheid verderzetten', 9, 2, 'Heilig-hartcollege', 'auto, fiets', 0),
+(13, 13, 'Tijdens de week werk ik als leerkracht in het secundair aan het Stedelijk Lyceum Lamoriniere. Graag wil ik na mijn uren een bijverdienste als kinderoppas, zo kan ik mijn schoolwerk en sociaal leven nog steeds goed combineren. \r\nIk ben afgestudeerd als leerkracht verzorgende wat maakt dat ik soms stagebegeleiding geef aan 6 en 7 kinderzorg. Kinderen van verscheidene leeftijden zijn dus geen enkel probleem. ', 8, 1, 'De Groeituin', 'auto, wandelend', 0),
+(14, 14, 'Beste ouders, naast het vele vrijwilligerswerk met kinderen en het werken in de horeca, rondde ik mijn studies af als opvoeder/begeleider. Door het gevarieerde vrijwilligerswerk dat ik met plezier deed vanaf mijn vijftiende, leerde ik veel bij. Belangrijk vind ik dat kinderen naast de schooluren zich kunnen ontspannen in een familiale en liefdevolle omgeving. \r\nOok supporter ik de eigen ontwikkeling van het kind naar de weg van zelfstandigheid (meehelpen, laten ontdekken, huiswerk,...). Afhankelijk van de leeftijd, de mogelijkheden van het kind en in samenspraak met de ouders. Via deze kinderopvang wil ik mijn favoriete bezigheid verderzetten', 9, 2, 'De Groeituin', 'auto, fiets', 0),
 (15, 15, 'Tijdens de week werk ik als leerkracht in het secundair aan het Stedelijk Lyceum Lamoriniere. Graag wil ik na mijn uren een bijverdienste als kinderoppas, zo kan ik mijn schoolwerk en sociaal leven nog steeds goed combineren. \r\nIk ben afgestudeerd als leerkracht verzorgende wat maakt dat ik soms stagebegeleiding geef aan 6 en 7 kinderzorg. Kinderen van verscheidene leeftijden zijn dus geen enkel probleem. \r\nTijdens de week werk ik als leerkracht in het secundair aan het Stedelijk Lyceum Lamoriniere. Graag wil ik na mijn uren een bijverdienste als kinderoppas, zo kan ik mijn schoolwerk en sociaal leven nog steeds goed combineren.\r\n', 9, 2, 'Heilig-hartcollege', 'auto, fiets', 0),
 (16, 16, 'Mijn naam is Wendy, ik ben 24 jaar en woonachtig te Aartselaar. Ik heb mijn diploma van kinderverzorgster reeds behaald, ik heb ook nog niet zo heel erg lang geleden mijn attest van levens reddend handelen behaald. Ik zou graag als Nanny/kinderverzorgster willen werken omdat mijn hart bij kinderen ligt. Ik zorg echt zeer graag voor kinderen, en met ze spelen doe ik ook super graag. Als ik met kinderen kan werken voel ik mezelf compleet en een gelukkig persoon. De kinderen zullen dus ook nooit iets tekort komen.', 9, 2, 'Heilig-hartcollege', 'auto, fiets', 0),
-(17, 17, 'Hallo, ik ben Karen, single mama van een lief meisje van 6 jaar en fulltime werkzaam in het onderwijs. Ik geef intussen al een aantal jaren les Nederlands aan leerlingen in het middelbaar, maar als student was ik actief in speelpleinwerking en heb ik veel op jonge kinderen gepast. Aangezien ik in de zomermaanden thuis ben en graag met kinderen en jongeren werk, ben ik op zoek naar een job als nanny in de zomer. Eventueel kan dit tijdens het schooljaar ook ''s avonds. Ik ben verantwoordelijk, spontaan en flexibel.', 7, 2, 'Heilig-hartcollege', 'auto', 0),
-(18, 18, 'Ik ben Koen 31 jaar oud. Ik ben betrouwbaar eenvoudig en lieveling mens. Ik denk dat kinderen zijn het allergrootste cadeau dat mens kan krijgen en daarom werk ik graag als babysit. Ik heb al een paar jaar ervaring en heb veel kleine vriendjes gemaakt zoals:Marie 6 jaar in Mortsel,Victor 9 jaar in Berchem,Louise 4 jaar in Wilrijk. Nu ik ben op zoek naar een nieuwe vriendje,hopelijk wordt het uw kind.', 8, 1, 'Heilig-hartcollege', 'auto', 0),
-(19, 19, 'Hallo iedereen! Mijn naam is karel en ik ben 34 jaar oud. Al vanaf jongs af aan nam ik een verantwoordelijkheid voor jongeren kinderen. Later toen ik 15 werd, begon ik op te passen op veel gezinnen. Ik heb dit altijd met heel veel plezier gedaan buiten school, in de avonden en de weekenden. De leeftijd varieerden van 3 maanden oude baby tot pubers. Ik kan met alle leeftijden overweg, en bedenk voor ieder wel wat wils om te doen! Samen spelletjes spelen, koekjes bakken, avontuurlijke dingen buiten doen en noem het maar op! Ik ben de ideale oppas/nanny omdat ik kinderen een veilig en vertrouwd gevoel geef en er alles aan doe om er samen een leu', 7, 2, 'Heilig-hartcollege', 'auto, fiets, wandelend', 0),
+(17, 17, 'Hallo, ik ben Karen, single mama van een lief meisje van 6 jaar en fulltime werkzaam in het onderwijs. Ik geef intussen al een aantal jaren les Nederlands aan leerlingen in het middelbaar, maar als student was ik actief in speelpleinwerking en heb ik veel op jonge kinderen gepast. Aangezien ik in de zomermaanden thuis ben en graag met kinderen en jongeren werk, ben ik op zoek naar een job als nanny in de zomer. Eventueel kan dit tijdens het schooljaar ook ''s avonds. Ik ben verantwoordelijk, spontaan en flexibel.', 7, 2, 'Sint-Guibertus', 'auto', 0),
+(18, 18, 'Ik ben Koen 31 jaar oud. Ik ben betrouwbaar eenvoudig en lieveling mens. Ik denk dat kinderen zijn het allergrootste cadeau dat mens kan krijgen en daarom werk ik graag als babysit. Ik heb al een paar jaar ervaring en heb veel kleine vriendjes gemaakt zoals:Marie 6 jaar in Mortsel,Victor 9 jaar in Berchem,Louise 4 jaar in Wilrijk. Nu ik ben op zoek naar een nieuwe vriendje,hopelijk wordt het uw kind.', 8, 1, 'Sint-Guibertus', 'auto', 0),
+(19, 19, 'Hallo iedereen! Mijn naam is karel en ik ben 34 jaar oud. Al vanaf jongs af aan nam ik een verantwoordelijkheid voor jongeren kinderen. Later toen ik 15 werd, begon ik op te passen op veel gezinnen. Ik heb dit altijd met heel veel plezier gedaan buiten school, in de avonden en de weekenden. De leeftijd varieerden van 3 maanden oude baby tot pubers. Ik kan met alle leeftijden overweg, en bedenk voor ieder wel wat wils om te doen! Samen spelletjes spelen, koekjes bakken, avontuurlijke dingen buiten doen en noem het maar op! Ik ben de ideale oppas/nanny omdat ik kinderen een veilig en vertrouwd gevoel geef en er alles aan doe om er samen een leu', 7, 2, 'De Groeituin', 'auto, fiets', 0),
 (20, 20, 'Hallo mama en papa zoekt u een ervaren met verantwoordelijks gevoel toffe kinderoppas? Dan bied ik mij graag aan! \r\nIk doe deze leuke job reeds 1 jaar en heb nog tijd over om jullie te helpen met voorschoolse opvang of tijdens de dag. Ik hoop snel iets van jullie te horen! Tot dan! Marleen.', 5, 1, 'Heilig-hartcollege', 'auto, wandelend', 0),
 (21, 21, 'Ik ben Lisa 31 jaar oud. Ik ben betrouwbaar eenvoudig en lieveling mens. Ik denk dat kinderen zijn het allergrootste cadeau dat mens kan krijgen en daarom werk ik graag als babysit. Ik heb al een paar jaar ervaring en heb veel kleine vriendjes gemaakt zoals:Marie 6 jaar in Mortsel,Victor 9 jaar in Berchem,Louise 4 jaar in Wilrijk. Nu ik ben op zoek naar een nieuwe vriendje,hopelijk wordt het uw kind.', 9, 3, 'Heilig-hartcollege', 'auto, fiets', 0),
-(22, 22, 'Hallo mama en papa zoekt u een ervaren met verantwoordelijks gevoel toffe kinderoppas? Dan bied ik mij graag aan! \r\nIk doe deze leuke job reeds 1 jaar en heb nog tijd over om jullie te helpen met voorschoolse opvang of tijdens de dag. Ik hoop snel iets van jullie te horen! Tot dan! Charles.', 5, 1, 'Heilig-hartcollege', 'auto, wandelend', 0),
-(23, 23, 'Ik ben een jonge vrouw van 20 jaar, ik woon op mezelf en ik studeer nog. Ik studeer kinderzorg eind juni 2016 ben ik afgestudeerd. Ik babysit al van mijn 13 jaar bij verschillende gezinnen. Ik heb dus heel veel ervaring met kinderen. Voor mij is het heel belangrijk dat de kinderen ook iets van me leren, bij staan in de ontwikkeling van het kind en ondersteuning geven waar nodig. Veel spelen en knutselen hoort daar dus ook bij! Ik zou graag naast mijn studies ook iets willen bij verdienen, als dat iets zou kunnen zijn dat ik met hart en ziel doe zou dit mooi meegenomen zijn. Ik hoop dat ik een mailtje terug krijg zodat ik jullie gezin eens kan', 5, 1, 'Heilig-hartcollege', 'auto, fiets', 0),
+(22, 22, 'Hallo mama en papa zoekt u een ervaren met verantwoordelijks gevoel toffe kinderoppas? Dan bied ik mij graag aan! \r\nIk doe deze leuke job reeds 1 jaar en heb nog tijd over om jullie te helpen met voorschoolse opvang of tijdens de dag. Ik hoop snel iets van jullie te horen! Tot dan! Charles.', 5, 1, 'De Groeituin', 'auto, wandelend', 0),
+(23, 23, 'Ik ben een jonge vrouw van 20 jaar, ik woon op mezelf en ik studeer nog. Ik studeer kinderzorg eind juni 2016 ben ik afgestudeerd. Ik babysit al van mijn 13 jaar bij verschillende gezinnen. Ik heb dus heel veel ervaring met kinderen. Voor mij is het heel belangrijk dat de kinderen ook iets van me leren, bij staan in de ontwikkeling van het kind en ondersteuning geven waar nodig. Veel spelen en knutselen hoort daar dus ook bij! Ik zou graag naast mijn studies ook iets willen bij verdienen, als dat iets zou kunnen zijn dat ik met hart en ziel doe zou dit mooi meegenomen zijn. Ik hoop dat ik een mailtje terug krijg zodat ik jullie gezin eens kan', 5, 1, 'Sint-Guibertus', 'auto, fiets', 0),
 (24, 24, 'Hallo, Ik ben Sandra, ik ben mama van 2 kindjes, ik ben opzoek baar werk als onthaalouder want ik ben verzot op kindjes en heb een attest behaald van kennismakings module voor onthaalouders. Ik heb namelijk ook een attest behaald van levensreddend handelen.', 8, 2, 'Heilig-hartcollege', 'auto, openbaar vervoer', 0),
 (25, 25, 'Mijn naam is Melissa, ik ben 24 jaar en woonachtig te Aartselaar. \r\nIk heb mijn diploma van kinderverzorgster reeds behaald, ik heb ook nog niet zo heel erg lang geleden mijn attest van levens reddend handelen behaald. Ik zou graag als Nanny/kinderverzorgster willen werken omdat mijn hart bij kinderen ligt. Ik zorg echt zeer graag voor kinderen, en met ze spelen doe ik ook super graag. Als ik met kinderen kan werken voel ik mezelf compleet en een gelukkig persoon. De kinderen zullen dus ook nooit iets tekort komen.', 5, 1, 'Heilig-hartcollege', 'auto, wandelend', 0);
 
@@ -216,39 +216,39 @@ INSERT INTO `tbl_child` (`child_id`, `child_first_name`, `child_last_name`, `chi
 (2, 'Jolien', 'Vanderpoel', 9, 'Heilig-hartcollege', '3A'),
 (3, 'Lucas', 'De Jong', 10, 'Heilig-hartcollege', '4A'),
 (4, 'Julia', 'De Jong', 7, 'Heilig-hartcollege', '3B'),
-(5, 'Thijs', 'Claes', 6, 'Heilig-hartcollege', '1A'),
-(6, 'Sophie', 'Goossens', 6, 'Heilig-hartcollege', '1B'),
-(7, 'Ruben', 'Goossens', 11, 'Heilig-hartcollege', '5B'),
+(5, 'Thijs', 'Claes', 6, 'Sint-Guibertus', '1A'),
+(6, 'Sophie', 'Goossens', 6, 'De Groeituin', '1B'),
+(7, 'Ruben', 'Goossens', 11, 'De Groeituin', '5B'),
 (8, 'Lynn', 'Willems', 7, 'Heilig-hartcollege', '2A'),
 (9, 'Fleur', 'Willems', 8, 'Heilig-hartcollege', '3B'),
 (10, 'Thomas', 'Willems', 10, 'Heilig-hartcollege', '4B'),
 (11, 'Daan', 'Mertens', 9, 'Heilig-hartcollege', '3B'),
-(12, 'Saar', 'Dumont', 9, 'Heilig-hartcollege', '3B'),
-(13, 'Sanne', 'Depuypere', 10, 'Heilig-hartcollege', '4B'),
-(14, 'Max', 'Depuypere', 7, 'Heilig-hartcollege', '2B'),
+(12, 'Saar', 'Dumont', 9, 'Sint-Guibertus', '3B'),
+(13, 'Sanne', 'Depuypere', 10, 'De Groeituin', '4B'),
+(14, 'Max', 'Depuypere', 7, 'De Groeituin', '2B'),
 (15, 'Vera', 'Verstraeten', 5, 'Heilig-hartcollege', 'K3A'),
 (16, 'Charlotte', 'Verstraeten', 10, 'Heilig-hartcollege', '4B'),
-(17, 'Stijn', 'Jacobs', 9, 'Heilig-hartcollege', '4B'),
-(18, 'Eline', 'Jacobs', 7, 'Heilig-hartcollege', '2B'),
-(19, 'Lena', 'Hermans', 8, 'Heilig-hartcollege', '3B'),
+(17, 'Stijn', 'Jacobs', 9, 'Sint-Guibertus', '4B'),
+(18, 'Eline', 'Jacobs', 7, 'Sint-Guibertus', '2B'),
+(19, 'Lena', 'Hermans', 8, 'Sint-Guibertus', '3B'),
 (20, 'Hugo', 'Janssens', 8, 'Heilig-hartcollege', '3A'),
-(21, 'Jan', 'De Neef', 8, 'Heilig-hartcollege', '3A'),
-(22, 'Dennis', 'De Neef', 10, 'Heilig-hartcollege', '4B'),
-(23, 'James', 'Adams', 5, 'Heilig-hartcollege', 'K3B'),
+(21, 'Jan', 'De Neef', 8, 'De Groeituin', '3A'),
+(22, 'Dennis', 'De Neef', 10, 'De Groeituin', '4B'),
+(23, 'James', 'Adams', 5, 'De Groeituin', 'K3B'),
 (24, 'Lauren', 'Wijgmans', 8, 'Heilig-hartcollege', '3B'),
 (25, 'Amy', 'Wijgmans', 7, 'Heilig-hartcollege', '2B'),
-(26, 'Sven', 'De Vos', 12, 'Heilig-hartcollege', '6A'),
-(27, 'Elise', 'Verbruggen', 10, 'Heilig-hartcollege', '4B'),
-(28, 'Hannah', 'Verbruggen', 7, 'Heilig-hartcollege', '2A'),
-(29, 'Finn', 'Degrote', 6, 'Heilig-hartcollege', '1B'),
-(30, 'Norah', 'Degrote', 8, 'Heilig-hartcollege', '3B'),
+(26, 'Sven', 'De Vos', 12, 'Sint-Guibertus', '6A'),
+(27, 'Elise', 'Verbruggen', 10, 'Sint-Guibertus', '4B'),
+(28, 'Hannah', 'Verbruggen', 7, 'Sint-Guibertus', '2A'),
+(29, 'Finn', 'Degrote', 6, 'De Groeituin', '1B'),
+(30, 'Norah', 'Degrote', 8, 'De Groeituin', '3B'),
 (31, 'Luuk', 'Degrote', 10, 'Heilig-hartcollege', '4B'),
 (32, 'Fenne', 'Depraetere', 8, 'Heilig-hartcollege', '3B'),
 (33, 'Alexander', 'Hendriks', 6, 'Heilig-hartcollege', '1A'),
 (34, 'Eline', 'Hendriks', 8, 'Heilig-hartcollege', '3B'),
-(35, 'Willem', 'Guysmans', 12, 'Heilig-hartcollege', '6B'),
-(36, 'Lina', 'Vanderaeme', 7, 'Heilig-hartcollege', '2B'),
-(37, 'Eva', 'Vanderaeme', 6, 'Heilig-hartcollege', '2B'),
+(35, 'Willem', 'Guysmans', 12, 'De Groeituin', '6B'),
+(36, 'Lina', 'Vanderaeme', 7, 'Sint-Guibertus', '2B'),
+(37, 'Eva', 'Vanderaeme', 6, 'Sint-Guibertus', '2B'),
 (38, 'Koen', 'Demeyer', 10, 'Heilig-hartcollege', '4B'),
 (39, 'Olivia', 'Moermans', 6, 'Heilig-hartcollege', '1A'),
 (40, 'Jill', 'Moermans', 8, 'Heilig-hartcollege', '3B');
@@ -575,7 +575,7 @@ CREATE TABLE `tbl_user_child` (
   `user_child_id` int(11) NOT NULL,
   `fk_user_id` int(11) NOT NULL,
   `fk_child_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `tbl_user_child`
@@ -598,7 +598,6 @@ INSERT INTO `tbl_user_child` (`user_child_id`, `fk_user_id`, `fk_child_id`) VALU
 (14, 8, 14),
 (15, 9, 15),
 (16, 9, 16),
-(17, 10, 16),
 (18, 10, 17),
 (19, 11, 19),
 (20, 12, 20),
@@ -610,7 +609,6 @@ INSERT INTO `tbl_user_child` (`user_child_id`, `fk_user_id`, `fk_child_id`) VALU
 (26, 17, 26),
 (27, 18, 27),
 (28, 18, 28),
-(29, 19, 28),
 (30, 19, 29),
 (31, 19, 30),
 (32, 20, 32),
@@ -621,7 +619,8 @@ INSERT INTO `tbl_user_child` (`user_child_id`, `fk_user_id`, `fk_child_id`) VALU
 (37, 23, 37),
 (38, 24, 38),
 (39, 25, 39),
-(40, 25, 40);
+(40, 25, 40),
+(41, 10, 18);
 
 --
 -- Indexes for dumped tables
@@ -784,4 +783,4 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_user_child`
 --
 ALTER TABLE `tbl_user_child`
-  MODIFY `user_child_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=41;
+  MODIFY `user_child_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=42;
