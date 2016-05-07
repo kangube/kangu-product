@@ -1,0 +1,767 @@
+// Styling of the advert-detail page
+
+body {
+	background-color: $white;
+}
+
+.advert-detail-description-calendar-container, .advert-detail-contact-map-container,
+.advert-detail-services-container, .advert-ratings-reviews-container {
+	@include grid-row;
+}
+
+@include breakpoint(medium down) {
+	.mobile-container {
+		@include grid-column(12);
+	}
+}
+
+.extra {
+	font-size: 30px;
+}
+
+.tac {
+	text-align: center;
+}
+
+.double-line-height {
+	line-height: 50px;
+}
+
+// Styling of the detail and header container
+
+.advert-detail-header-container {
+	background: linear-gradient(-225deg, #57B9F6 0%, $dark-blue 100%);
+	min-width: 100%;
+	height: auto;
+	padding: 80px 0 80px 0;
+
+	// Styling of the introductory header
+
+	.header-information-container {
+		@include grid-row;
+		text-align: center;
+		position: relative;
+		z-index: 0;
+
+		img {
+			width: 120px;
+			height: 120px;
+			border-radius: 50%;
+			margin-bottom: 3%;
+		}
+
+
+		.advert-detail-title, .advert-detail-subtitle {
+			@include font($header-font-family, regular, regular, 36, 46.8, $text-white);
+			text-align: center;
+		}
+
+		.advert-detail-title {
+			margin-bottom: 15px;
+
+			@include breakpoint(small) { 
+				font-size: rem-calc(22);
+				line-height: rem-calc(24);
+			}
+
+			@include breakpoint(medium) { 
+				font-size: rem-calc(25);
+				line-height: rem-calc(30);
+			}
+
+			@include breakpoint(120em) { 
+				font-size: rem-calc(33);
+				line-height: rem-calc(42);
+			}
+		}
+
+		.advert-detail-subtitle {
+			
+			@include breakpoint(small) { 
+				font-size: rem-calc(18);
+				line-height: rem-calc(22);
+				margin-bottom: 25px;
+			}
+
+			@include breakpoint(medium) { 
+				font-size: rem-calc(18);
+				line-height: rem-calc(22);
+				margin-bottom: 10px;
+			}
+
+			@include breakpoint(large) {
+				font-size: rem-calc(18);
+				line-height: rem-calc(22);
+				margin-bottom: 0px;
+			}
+
+			@include breakpoint(120em) { 
+				font-size: rem-calc(20);
+				line-height: rem-calc(24);
+				margin-bottom: 0px;
+			}
+		}
+	}
+
+	// Styling of the request button
+
+	.request-button-container {
+		position: absolute;
+		z-index: 1;
+		left: 0;
+	    right: 0;
+	    margin-left: auto;
+	    margin-right: auto;
+		top: 420px;
+	}
+
+	.advert-detail-request-button {
+		@include button($light-red, 3px);
+		@include font($paragraph-font-family, regular, regular, 15, 15, $text-white);
+		text-decoration: none;
+		display: block;
+		text-align: center;
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+}
+
+// Styling of the description, details and calendar container
+
+.advert-detail-description-calendar-container {
+	margin-top: 80px;
+
+	@include breakpoint(small only) {
+		.calendar-container {
+			margin-top: 60px;
+		}
+	}
+
+	@include breakpoint(medium only) {
+		.calendar-container {
+			margin-top: 60px;
+		}
+	}
+
+	// Advert description for all screens
+
+	.advert-detail-description {
+		@include font($paragraph-font-family, regular, regular, 14, 25, rgba($text-dark-grey, 0.8));
+		margin-bottom: 0;
+	}
+
+	@include breakpoint(small only) {
+		.advert-detail-description {
+			margin-bottom: 20px;
+		}
+	}
+
+	@include breakpoint(medium only) {
+		.advert-detail-description {
+			margin-bottom: 20px;
+		}
+	}
+
+	@include breakpoint(large) {
+		.advert-detail-description {
+			min-height: 200px;
+		}
+	}
+
+	// Advert details for large and up screens
+	
+	.description-details {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
+		margin-top: 45px;
+
+		.vertical-line {
+			border: 1px solid $border-color-light-grey;
+			min-height: 77px;
+			width: 1px;
+		}
+
+		.description-item ul {
+			@include font($paragraph-font-family, regular, regular, 14, 25, rgba($text-dark-grey, 0.8));
+			margin: 0;
+		}
+
+		.description-item ul li:not(:last-child) {
+			margin-bottom: 25px;
+		}
+
+		.description-item ul li {
+			text-align: left;
+			list-style-type: none;
+			vertical-align: middle;
+		}
+
+		.description-item ul li label, .description-item ul li label:before {
+			color: rgba($text-dark-grey, 0.8);
+		}
+		
+		.description-item ul li label:before {
+			margin-right: 25px;
+			font-size: rem-calc(25);
+			vertical-align: middle;
+		}
+	}
+
+	// Advert details for medium and smaller screens
+
+	@include breakpoint(small only) {
+		.description-details-mobile ul {
+			@include font($paragraph-font-family, regular, regular, 14, 25, rgba($text-dark-grey, 0.8));
+			margin-left: 0px !important;
+		}
+
+		.description-details-mobile ul li {
+			@include grid-column(12);
+			list-style-type: none;
+			border: 1px solid $border-color-light-grey;
+			padding: 15px !important;
+		}
+
+		.description-details-mobile ul li:nth-child(even) {
+			border-top: none;
+			border-bottom: none;
+		}
+
+		.description-details-mobile ul li:last-child {
+			border-bottom: 1px solid $border-color-light-grey;
+		}
+
+		.description-details-mobile ul li label, .description-details-mobile ul li label:before {
+			color: rgba($text-dark-grey, 0.8);
+		}
+
+		.description-details-mobile ul li label:before {
+			margin-right: 25px;
+			font-size: rem-calc(25);
+			vertical-align: middle;
+		}
+	}
+
+	@include breakpoint(medium only) {
+		.description-details-mobile ul {
+			@include font($paragraph-font-family, regular, regular, 14, 25, rgba($text-dark-grey, 0.8));
+			margin-left: 0px !important;
+		}
+
+		.description-details-mobile ul li {
+			@include grid-column(6);
+			list-style-type: none;
+			border: 1px solid $border-color-light-grey;
+			padding: 15px !important;
+		}
+
+		.description-details-mobile ul li:nth-child(odd) {
+			border-right: none;
+		}
+
+		.description-details-mobile ul li:nth-child(-n+2) {
+			border-bottom: none;
+		}
+
+		.description-details-mobile ul li label, .description-details-mobile ul li label:before {
+			color: rgba($text-dark-grey, 0.8);
+		}
+
+		.description-details-mobile ul li label:before {
+			margin-right: 25px;
+			font-size: rem-calc(25);
+			vertical-align: middle;
+		}
+	}
+
+	.datepicker-small {
+		@include breakpoint(small only) {
+			margin-top: 50px;
+		}
+	}
+}
+
+// Styling of the contact-information and map container
+
+.advert-detail-contact-map-container {
+	margin-top: 60px;
+
+	// Contact-information for larger and up screens
+
+	.advert-detail-contact-container {
+		.contact-item-icon {
+			font-size: 25px;
+			line-height: 25px;
+			margin-right: 25px;
+			color: rgba($text-dark-grey, 0.8);
+			vertical-align: middle;
+			float: left;
+		}
+
+		p {
+			@include font($paragraph-font-family, regular, regular, 14, 25, rgba($text-dark-grey, 0.8));
+		}
+
+		p:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+
+	// Contact-information for medium and smaller screens
+
+	@include breakpoint(small only) {
+		.advert-detail-contact-container-mobile ul {
+			margin: 0 0 20px 0;
+		}
+
+		.advert-detail-contact-container-mobile ul li {
+			@include grid-column(12);
+			list-style-type: none;
+			border: 1px solid $border-color-light-grey;
+			padding: 15px;
+		}
+
+		.advert-detail-contact-container-mobile ul li:nth-child(-n+3) {
+			border: 1px solid $border-color-light-grey;
+		}
+
+		.advert-detail-contact-container-mobile ul li:nth-child(even) {
+			border-top: none;
+			border-bottom: none;
+		}
+
+		.advert-detail-contact-container-mobile ul li:last-child {
+			border-bottom: 1px solid $border-color-light-grey;
+		}
+
+		.advert-detail-contact-container-mobile ul li label {
+			@include font($paragraph-font-family, regular, regular, 14, 25, rgba($text-dark-grey, 0.8));
+		}
+
+		.advert-detail-contact-container-mobile ul li label:before {
+			margin-right: 25px;
+			font-size: rem-calc(25);
+			vertical-align: middle;
+		}
+
+		.advert-detail-contact-container-mobile ul li label:before, .advert-detail-contact-container-mobile ul li label {
+			color: rgba($text-dark-grey, 0.8);
+		}
+
+	}
+
+	@include breakpoint(medium only) {
+		.advert-detail-contact-container-mobile ul {
+			margin: 0;
+		}
+
+		.advert-detail-contact-container-mobile ul li {
+			@include grid-column(6);
+			list-style-type: none;
+			border: 1px solid $border-color-light-grey;
+			padding: 15px;
+		}
+
+		.advert-detail-contact-container-mobile ul li:nth-child(odd) {
+			border-right: none;
+		}
+
+		.advert-detail-contact-container-mobile ul li:nth-child(-n+2) {
+			border-bottom: none;
+		}
+
+		.advert-detail-contact-container-mobile ul li label {
+			@include font($paragraph-font-family, regular, regular, 14, 25, rgba($text-dark-grey, 0.8));
+		}
+
+		.advert-detail-contact-container-mobile ul li label:before {
+			margin-right: 25px;
+			font-size: rem-calc(25);
+			vertical-align: middle;
+		}
+
+		.advert-detail-contact-container-mobile ul li label:before, .advert-detail-contact-container-mobile ul li label {
+			color: rgba($text-dark-grey, 0.8);
+		}
+	}
+
+	// Google map for all screens
+
+	iframe {
+		width: 100%;
+		height: 100%;
+
+		@include breakpoint(small only) { 
+			margin: 30px 0 30px 0;
+			height: 250px;
+		}
+
+		@include breakpoint(medium only) { 
+			margin: 30px 0 0 0;
+			height: 250px;
+		}
+	}
+}
+
+// Styling of the services for large and up screens
+
+.advert-detail-services-container {
+	margin-top: 60px;
+
+	@include breakpoint(small only) {
+		margin-top: 0px;
+	}
+	
+	.services-container {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
+
+		margin-top: 35px;
+
+		.vertical-line {
+			border: 1px solid $border-color-light-grey;
+			min-height: 77px;
+			width: 1px;
+		}
+
+		.service ul {
+			@include font($paragraph-font-family, regular, regular, 14, 25, rgba($text-dark-grey, 0.8));
+			margin: 0;
+		}
+
+		.service ul li:not(:last-child) {
+			margin-bottom: 25px;
+		}
+
+		.service ul li {
+			text-align: left;
+			list-style-type: none;
+			vertical-align: middle;
+		}
+		
+		// Services that are provided
+
+		.service ul li label:before {
+			margin-right: 25px;
+			font-size: rem-calc(25);
+			color: rgba($text-dark-grey, 0.8);
+			vertical-align: middle;
+		}
+
+		.service ul li label {
+			color: rgba($text-dark-grey, 0.8);
+		}
+
+		// Services that are not provided
+		
+		.service ul li .not-selected, .not-selected:before {
+			color: rgba($text-dark-grey, 0.4) !important;
+		}
+	}
+}
+
+// Styling of the services for medium and smaller screens
+
+@include breakpoint(small only) {
+	.services-container-mobile {
+		ul {
+			@include font($paragraph-font-family, regular, regular, 14, 25, rgba($text-dark-grey, 0.8));
+			margin: 0;
+			margin-bottom: 30px;
+		}
+
+		ul li {
+			@include grid-column(12);
+			list-style-type: none;
+			border: 1px solid $border-color-light-grey;
+			padding: 15px;
+		}
+
+		ul li:nth-child(even) {
+			border-top: none;
+			border-bottom: none;
+		}
+
+		ul li:last-child {
+			border-bottom: 1px solid $border-color-light-grey;
+		}
+
+		// Services that are provided
+
+		ul li label:before {
+			margin-right: 25px;
+			font-size: rem-calc(25);
+			color: rgba($text-dark-grey, 0.8);
+			vertical-align: middle;
+		}
+
+		// Services that are not provided
+
+		ul li label {
+			color: rgba($text-dark-grey, 0.8);
+		}
+
+		ul li .not-selected, .not-selected:before {
+			color: rgba($text-dark-grey, 0.4) !important;
+		}
+	}
+}
+
+@include breakpoint(medium only) {
+	.services-container-mobile {
+		ul {
+			@include font($paragraph-font-family, regular, regular, 14, 25, rgba($text-dark-grey, 0.8));
+			margin: 0;
+			margin-bottom: 30px;
+		}
+
+		ul li {
+			@include grid-column(6);
+			list-style-type: none;
+			border: 1px solid $border-color-light-grey;
+			padding: 15px;
+		}
+
+		ul li:nth-child(odd) {
+			border-right: none;
+		}
+
+		ul li:nth-child(-n+2) {
+			border-bottom: none;
+		}
+
+		ul li:nth-last-child(-n+2) {
+			border-top: none;
+		}
+
+		// Services that are provided
+
+		ul li label:before {
+			margin-right: 25px;
+			font-size: rem-calc(25);
+			color: rgba($text-dark-grey, 0.8);
+			vertical-align: middle;
+		}
+
+		// Services that are not provided
+
+		ul li label {
+			color: rgba($text-dark-grey, 0.8);
+		}
+
+		ul li .not-selected, .not-selected:before {
+			color: rgba($text-dark-grey, 0.4) !important;
+		}
+	}
+}
+
+// Styling of the ratings and reviews
+
+.advert-ratings-reviews-container {
+	margin-top: 60px;
+
+	.advert-detail-counter-container {
+		margin: 0 0 40px 0;
+
+		.advert-detail-counter-reviews {
+			@include font($paragraph-font-family, regular, regular, 14, 25, rgba($text-dark-grey, 0.8));
+			margin-bottom: 0;
+			margin-top: 10px;
+		}
+
+		.advert-detail-counter-reviews:before {
+			font-size: rem-calc(25);
+			vertical-align: middle;
+			margin-right: 15px;
+		}
+
+		.rating-star {
+			margin-right: 5px;
+			color: #FFB400;
+			vertical-align: middle;
+		}
+
+		.rating-star {
+			width: 15px;
+			height: 15px;
+		}
+
+		.advert-detail-counter-ratings {
+			@include font($paragraph-font-family, regular, regular, 14, 25, rgba($text-dark-grey, 0.8));
+		}
+	}
+
+	.advert-detail-review-container {
+		margin: 0 0 60px 0;
+	}
+
+	@include breakpoint(large) {
+		.advert-detail-review-container {
+			margin-bottom: 0;
+		}
+
+		.advert-detail-review-container:nth-of-type(2),  .advert-detail-review-container:nth-of-type(3) {
+			margin: 0 0 60px 0;
+		}
+	}
+
+	.advert-detail-review {
+		ul {
+			margin: 0;
+		}
+
+		ul li {
+			list-style-type: none;
+			display: inline-block;
+		}
+
+		.review-profile-image {
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			margin-right: 15px;
+		}
+
+		.review-profile-name {
+			@include font($paragraph-font-family, regular, regular, 14, 14, $text-dark-grey);
+		}
+
+		.review-description {
+			@include font($paragraph-font-family, regular, regular, 14, 21, rgba($text-dark-grey, 0.6));
+			margin: 20px 0 20px 0;
+			min-height: 105px;
+		}
+
+		// Styling of the review vote button in normal state
+
+		.review-vote-button {
+			padding: 1px 15px 2px 15px;
+			border-radius: 3px;
+			background-color: $light-grey;
+			border: 1px solid $border-color-light-grey;
+		}
+
+		.review-vote-button ul {
+			margin: 0;
+		}
+
+		.review-vote-button ul li {
+			list-style-type: none;
+			display: inline-block;
+		}
+
+		.review-vote-button ul li:before {
+			font-size: 12px;
+			color: rgba($text-dark-grey, 0.6);
+			margin-right: 5px;
+			vertical-align: middle;
+		}
+
+		.review-vote-button ul li:last-child {
+			@include font($paragraph-font-family, regular, regular, 12, 16, rgba($text-dark-grey, 0.6));
+			vertical-align: middle !important;
+		}
+
+		.review-vote-button:hover {
+			background-color: darken($light-grey, 5%);
+			transition: all 0.3s ease;
+		}
+
+		.review-vote-button:active {
+			background-color: darken($light-grey, 5%);
+		}
+
+		// Styling of the review vote button in disabled state
+
+		.review-vote-button:disabled {
+			padding: 1px 15px 2px 15px;
+			border-radius: 3px;
+			background-color: darken($light-grey, 5%);
+			border: 1px solid $border-color-light-grey;
+		}
+
+		.review-vote-button:disabled:hover, .review-vote-button:disabled:active {
+			background-color: darken($light-grey, 5%);
+		}
+
+		// Styling of the review date
+
+		.review-date {
+			@include font($paragraph-font-family, italic, regular, 14, 14, rgba($text-dark-grey, 0.6));
+			margin-top: 8px;
+			margin-bottom: 0;
+			vertical-align: middle;
+		}
+	}
+
+	// Styling reviews container when there are no reviews
+
+	.advert-detail-no-reviews-container {
+		@include grid-column(12);
+		text-align: center;
+		
+		.no-reviews-container {
+			background-color: $light-grey;
+			padding: 40px;
+			width: 100%;
+		}
+
+		.no-reviews-icon {
+			font-size: rem-calc(90);
+			color: $border-color-dark-grey;
+		}
+
+		.no-reviews-title {
+			@include font($paragraph-font-family, regular, regular, 14, 21, rgba($text-dark-grey, 0.4));
+		}
+	}
+
+	@include breakpoint(small) {
+		.advert-detail-no-reviews-container {
+			.no-reviews-icon {
+				font-size: rem-calc(80);
+			}
+
+			.no-reviews-container {
+				padding: 60px 20px 60px 20px;
+			}
+		}
+	}
+
+	@include breakpoint(large) {
+		.advert-detail-no-reviews-container {
+			.no-reviews-icon {
+				font-size: rem-calc(90);
+			}
+		}
+	}
+
+	// Styling pagination for the review container
+
+	.advert-detail-pagination {
+		float: left;
+
+		.first {
+			margin-left: 0;
+		}
+	}
+}
+
+// Styling of the similar adverts
+
+.advert-detail-container {
+	margin-top: 60px;
+
+	.advert-container {
+
+		@include breakpoint(large) {
+			margin-bottom: 0;
+		}
+	}
+}

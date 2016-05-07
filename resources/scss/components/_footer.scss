@@ -4,7 +4,7 @@
 	@include hide-for-only(small);
 	min-width: 100vw;
 	height: auto;
-	margin-top: 120px;
+	margin-top: 80px;
 	margin-bottom: 0;
 	padding: 50px 0 50px 0;
 	border-top: 1px solid darken($light-grey, 5%);
@@ -84,7 +84,7 @@
 		margin: 40px 0 0 0;
 
 		.bottom-horizontal-line {
-			width: 100%;
+			width: 100% !important;
 			border-bottom: 1px solid $border-color-light-grey;
 			margin: 0 0 20px 0;
 		}

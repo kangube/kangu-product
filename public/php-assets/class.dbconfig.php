@@ -26,32 +26,33 @@ class Database
 }
 
 class Db 
-    {
-        private static $db; //static = wijzigt niet per object
+{
+    private static $db; //static = wijzigt niet per object
 
-        public static function getInstance()
+    public static function getInstance()
+    {
+        //static = geen object nodig om aan te roepen
+        if(self::$db != null)
         {
-            //static = geen object nodig om aan te roepen
-            if(self::$db != null)
-            {
-                return self::$db;
-            }
-            else
-            {
-                self::$db = new PDO('mysql:host=localhost; dbname=kangu-product', 'root', 'root');
-                return self::$db;
-            }
+            return self::$db;
+        }
+        else
+        {
+            self::$db = new PDO('mysql:host=localhost; dbname=kangu-product', 'root', 'root');
+            return self::$db;
         }
     }
+}
 
-$db_username        = 'root'; //database username
-$db_password        = 'root'; //dataabse password
-$db_name            = 'kangu-product'; //database name
-$db_host            = 'localhost'; //hostname or IP
-$item_per_page      = 12; //item to display per page
+$db_username        = 'root';
+$db_password        = 'root';
+$db_name            = 'kangu-product';
+$db_host            = 'localhost';
+$item_per_page      = 12;
+$item_per_page_reviews = 4;
 
 $mysqli = new mysqli($db_host, $db_username, $db_password, $db_name);
-//Output any connection error
+
 if ($mysqli->connect_error) {
     die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
 }
