@@ -100,7 +100,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 		    			<div class='small-6 columns'>
 			    			<div class='advert-price'>
 				    			<p>".$advert_price."</p>
-				    			<p>p/u</p>
+				    			<p>per kind</p>
 			    			</div>
 			    		</div>
 

@@ -131,10 +131,41 @@ body {
 .advert-detail-description-calendar-container {
 	margin-top: 80px;
 
+	@include breakpoint(small only) {
+		.calendar-container {
+			margin-top: 60px;
+		}
+	}
+
+	@include breakpoint(medium only) {
+		.calendar-container {
+			margin-top: 60px;
+		}
+	}
+
+	// Advert description for all screens
+
 	.advert-detail-description {
 		@include font($paragraph-font-family, regular, regular, 14, 25, rgba($text-dark-grey, 0.8));
 		margin-bottom: 0;
-		min-height: 200px;
+	}
+
+	@include breakpoint(small only) {
+		.advert-detail-description {
+			margin-bottom: 20px;
+		}
+	}
+
+	@include breakpoint(medium only) {
+		.advert-detail-description {
+			margin-bottom: 20px;
+		}
+	}
+
+	@include breakpoint(large) {
+		.advert-detail-description {
+			min-height: 200px;
+		}
 	}
 
 	// Advert details for large and up screens
@@ -541,12 +572,28 @@ body {
 		.advert-detail-counter-reviews {
 			@include font($paragraph-font-family, regular, regular, 14, 25, rgba($text-dark-grey, 0.8));
 			margin-bottom: 0;
+			margin-top: 10px;
 		}
 
 		.advert-detail-counter-reviews:before {
 			font-size: rem-calc(25);
 			vertical-align: middle;
 			margin-right: 15px;
+		}
+
+		.rating-star {
+			margin-right: 5px;
+			color: #FFB400;
+			vertical-align: middle;
+		}
+
+		.rating-star {
+			width: 15px;
+			height: 15px;
+		}
+
+		.advert-detail-counter-ratings {
+			@include font($paragraph-font-family, regular, regular, 14, 25, rgba($text-dark-grey, 0.8));
 		}
 	}
 
@@ -652,6 +699,50 @@ body {
 			vertical-align: middle;
 		}
 	}
+
+	// Styling reviews container when there are no reviews
+
+	.advert-detail-no-reviews-container {
+		@include grid-column(12);
+		text-align: center;
+		
+		.no-reviews-container {
+			background-color: $light-grey;
+			padding: 40px;
+			width: 100%;
+		}
+
+		.no-reviews-icon {
+			font-size: rem-calc(90);
+			color: $border-color-dark-grey;
+		}
+
+		.no-reviews-title {
+			@include font($paragraph-font-family, regular, regular, 14, 21, rgba($text-dark-grey, 0.4));
+		}
+	}
+
+	@include breakpoint(small) {
+		.advert-detail-no-reviews-container {
+			.no-reviews-icon {
+				font-size: rem-calc(80);
+			}
+
+			.no-reviews-container {
+				padding: 60px 20px 60px 20px;
+			}
+		}
+	}
+
+	@include breakpoint(large) {
+		.advert-detail-no-reviews-container {
+			.no-reviews-icon {
+				font-size: rem-calc(90);
+			}
+		}
+	}
+
+	// Styling pagination for the review container
 
 	.advert-detail-pagination {
 		float: left;

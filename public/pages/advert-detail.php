@@ -40,10 +40,11 @@
     $children_results = $mysqli->query("SELECT child_first_name from tbl_user_child LEFT JOIN tbl_child ON tbl_user_child.fk_child_id=tbl_child.child_id WHERE fk_user_id=".$advert_information['user_id']."");
 
     while($children_row = $children_results->fetch_array(MYSQLI_ASSOC)) {
-        $formatted_children_names .= $children_row['child_first_name'].' en ';
+        $formatted_children_names .= $children_row['child_first_name'].',  ';
     }
 
-    $formatted_children_names = preg_replace('/\W\w+\s*(\W*)$/', '$1', $formatted_children_names);
+    $formatted_children_names = rtrim($formatted_children_names,', ');
+    $formatted_children_names = preg_replace('/,([^,]*)$/', ' en \1', $formatted_children_names);
 
     // Processing user vote on a review
     $vote = new Vote();
@@ -73,7 +74,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Advertentie-detail</title>
         <link rel="stylesheet" href="../css/minimum-viable-product.min.css">
-        <link href="https://file.myfontastic.com/wfY5TXHecmqLMkPUKHzNrK/icons.css" rel="stylesheet">
+        <link href="https://file.myfontastic.com/QxAJVhmfbQ2t7NGCUAnz9P/icons.css" rel="stylesheet">
     </head>
 
 	<body>
@@ -121,7 +122,7 @@
 						<div class="description-item">
 							<ul>
 								<li>
-				    				<label data-icon="m">Tussen 5 - <?php echo $advert_information["advert_price"]; ?> credits per kind</label>
+				    				<label data-icon="c">Tussen 5 - <?php echo $advert_information["advert_price"]; ?> credits per kind</label>
 				    			</li>
 
 								<li>
@@ -141,7 +142,7 @@
 				    			<label data-icon="o">Plaats voor <?php echo $advert_information["advert_spots"]; ?> kinderen</label>
 			    			</li>
 			    			<li>
-			    				<label data-icon="m">Tussen 5 - <?php echo $advert_information["advert_price"]; ?> credits per kind</label>
+			    				<label data-icon="c">Tussen 5 - <?php echo $advert_information["advert_price"]; ?> credits per kind</label>
 			    			</li>
 
 							<li>
@@ -151,7 +152,7 @@
 					</div>
 				</div>
 
-			    <div class="large-6 columns datepicker-small" data-equalizer-watch="description-calendar">
+			    <div class="large-6 columns calendar-container" data-equalizer-watch="description-calendar">
 			    	<h2 class="mrgtop">Beschikbaarheid</h2>
 			    	<hr class="blue-horizontal-line"></hr>
 
@@ -221,7 +222,7 @@
 										if (in_array("opvang-thuisomgeving", $servicesArray)) {
 										   	echo '<label for="opvang-thuisomgeving" data-icon="m">Opvang in een thuisomgeving</label>';
 										} else {
-										    echo '<label class="not-selected" for="opvang-thuisomgeving" data-icon="m">Opvang in een thuisomgeving</label>';
+										    echo '<label class="not-selected" for="opvang-thuisomgeving" data-icon="w">Opvang in een thuisomgeving</label>';
 										}
 									?>
 								</li>
@@ -231,7 +232,7 @@
 										if (in_array("ophalen-schoolpoort", $servicesArray)) {
 										   	echo '<label for="ophalen-schoolpoort" data-icon="m">Ophalen aan de schoolpoort</label>';
 										} else {
-										    echo '<label class="not-selected" for="ophalen-schoolpoort" data-icon="m">Ophalen aan de schoolpoort</label>';
+										    echo '<label class="not-selected" for="ophalen-schoolpoort" data-icon="w">Ophalen aan de schoolpoort</label>';
 										}
 									?>
 								</li>
@@ -247,7 +248,7 @@
 										if (in_array("vervoer-thuis", $servicesArray)) {
 										    echo '<label for="vervoer-thuis" data-icon="m">Vervoer naar thuis na opvang</label>';
 										} else {
-										    echo '<label class="not-selected" for="vervoer-thuis" data-icon="m">Vervoer naar thuis na opvang</label>';
+										    echo '<label class="not-selected" for="vervoer-thuis" data-icon="w">Vervoer naar thuis na opvang</label>';
 										}
 									?>
 								</li>
@@ -257,7 +258,7 @@
 										if (in_array("vervoer-naschoolse-activiteiten", $servicesArray)) {
 										   	echo '<label for="vervoer-activiteiten" data-icon="m">Vervoer naschoolse activiteiten</label>';
 										} else {
-										    echo '<label class="not-selected" for="vervoer-activiteiten" data-icon="m">Vervoer naschoolse activiteiten</label>';
+										    echo '<label class="not-selected" for="vervoer-activiteiten" data-icon="w">Vervoer naschoolse activiteiten</label>';
 										}
 									?>
 								</li>
@@ -273,7 +274,7 @@
 										if (in_array("voorzien-maaltijd", $servicesArray)) {
 										    echo '<label for="voorzien-maaltijd" data-icon="m">Voorzien van een maaltijd</label>';
 										} else {
-										    echo '<label class="not-selected" for="voorzien-maaltijd" data-icon="m">Voorzien van een maaltijd</label>';
+										    echo '<label class="not-selected" for="voorzien-maaltijd" data-icon="w">Voorzien van een maaltijd</label>';
 										}
 									?>
 								</li>
@@ -283,7 +284,7 @@
 										if (in_array("hulp-huiswerktaken", $servicesArray)) {
 										    echo '<label for="hulp-huiswerk" data-icon="m">Hulp bij huiswerktaken</label>';
 										} else {
-										    echo '<label class="not-selected" for="hulp-huiswerk" data-icon="m">Hulp bij huiswerktaken</label>';
+										    echo '<label class="not-selected" for="hulp-huiswerk" data-icon="w">Hulp bij huiswerktaken</label>';
 										}
 									?>
 								</li>
@@ -299,7 +300,7 @@
 									   	echo '<label for="opvang-thuisomgeving" data-icon="m">Opvang in een thuisomgeving</label>';
 
 									} else {
-									    echo '<label class="not-selected" for="opvang-thuisomgeving" data-icon="m">Opvang in een thuisomgeving</label>';
+									    echo '<label class="not-selected" for="opvang-thuisomgeving" data-icon="w">Opvang in een thuisomgeving</label>';
 									}
 								?>
 							</li>
@@ -309,7 +310,7 @@
 									if (in_array("ophalen-schoolpoort", $servicesArray)) {
 									   	echo '<label for="ophalen-schoolpoort" data-icon="m">Ophalen aan de schoolpoort</label>';
 									} else {
-									    echo '<label class="not-selected" for="ophalen-schoolpoort" data-icon="m">Ophalen aan de schoolpoort</label>';
+									    echo '<label class="not-selected" for="ophalen-schoolpoort" data-icon="w">Ophalen aan de schoolpoort</label>';
 									}
 								?>
 							</li>
@@ -318,7 +319,7 @@
 									if (in_array("vervoer-thuis", $servicesArray)) {
 									    echo '<label for="vervoer-thuis" data-icon="m">Vervoer naar thuis na opvang</label>';
 									} else {
-									    echo '<label class="not-selected" for="vervoer-thuis" data-icon="m">Vervoer naar thuis na opvang</label>';
+									    echo '<label class="not-selected" for="vervoer-thuis" data-icon="w">Vervoer naar thuis na opvang</label>';
 									}
 								?>
 							</li>
@@ -328,7 +329,7 @@
 									if (in_array("vervoer-naschoolse-activiteiten", $servicesArray)) {
 									   	echo '<label for="vervoer-activiteiten" data-icon="m">Vervoer naschoolse activiteiten</label>';
 									} else {
-									    echo '<label class="not-selected" for="vervoer-activiteiten" data-icon="m">Vervoer naschoolse activiteiten</label>';
+									    echo '<label class="not-selected" for="vervoer-activiteiten" data-icon="w">Vervoer naschoolse activiteiten</label>';
 									}
 								?>
 							</li>
@@ -337,7 +338,7 @@
 									if (in_array("voorzien-maaltijd", $servicesArray)) {
 									    echo '<label for="voorzien-maaltijd" data-icon="m">Voorzien van een maaltijd</label>';
 									} else {
-									    echo '<label class="not-selected" for="voorzien-maaltijd" data-icon="m">Voorzien van een maaltijd</label>';
+									    echo '<label class="not-selected" for="voorzien-maaltijd" data-icon="w">Voorzien van een maaltijd</label>';
 									}
 								?>
 							</li>
@@ -347,7 +348,7 @@
 									if (in_array("hulp-huiswerktaken", $servicesArray)) {
 									    echo '<label for="hulp-huiswerk" data-icon="m">Hulp bij huiswerktaken</label>';
 									} else {
-									    echo '<label class="not-selected" for="hulp-huiswerk" data-icon="m">Hulp bij huiswerktaken</label>';
+									    echo '<label class="not-selected" for="hulp-huiswerk" data-icon="w">Hulp bij huiswerktaken</label>';
 									}
 								?>
 							</li>
@@ -363,7 +364,7 @@
 			    	<h2>Ratings &amp; reviews</h2>
 			    	<hr class="blue-horizontal-line"></hr>
 			    </div>
-
+			    
 		    	<div id="reviews"></div>
 			</div>
 		</div>
@@ -406,7 +407,7 @@
 						    			<div class='small-6 columns'>
 							    			<div class='advert-price'>
 								    			<p>".$advert_price."</p>
-								    			<p>p/u</p>
+								    			<p>per kind</p>
 							    			</div>
 							    		</div>
 

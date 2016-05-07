@@ -44,6 +44,7 @@ class Vote
 	public function Vote() {
 		$conn = Db::getInstance();
 		$vote_query = "INSERT INTO tbl_upvote(fk_user_id, fk_review_id) VALUES ('$this->UserId', '$this->ReviewId');";
+		$vote_query .= "UPDATE tbl_review SET review_upvotes=+1 WHERE review_id=$this->ReviewId";
 	   	$statement = $conn->prepare($vote_query);
 		$statement->execute();
 	}

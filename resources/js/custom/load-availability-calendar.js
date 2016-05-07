@@ -22,6 +22,10 @@ $(document).ready(function() {
 		};
 
 		var events = [];
+		$.ajaxSetup({
+			async: false
+		});
+
 		$.getJSON('availability-dates.php?id="'+advert_id+'"', function(data) {
             $.each(data, function(key, val) {
                 availability_date_item = val.availability_date.replace(/-/g, '/');
