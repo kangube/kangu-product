@@ -1,4 +1,4 @@
-.planning-date-item > a::after, .planning-events td a::after {
+.availability-date-item > a::after, .planning-events td a::after {
 	content: '';
 	display: block;
 	width: 5px;
@@ -16,6 +16,6 @@
 	background-color: $light-red;
 }
 ​
-.planning-date-item > a::after {
+.availability-date-item > a::after {
 	background-color: green !important;
 }

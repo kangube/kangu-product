@@ -50,7 +50,7 @@
     		<li class="to-boeken"><a class="none-active-button" href="#">boeked</a></li>
     	</ul>
 		<div class="boeken visible">
-			<div class="large-12 columns datepicker-small">
+			<div class="large-12 columns">
 			    	<h3>Datums waarop ik anderen geboekt heb</h3>
 					<?php
 						//Datums tonen waarop ik anderen geboekt heb
@@ -71,15 +71,12 @@
 						}
 					?>
 			</div>
-			<div class="large-12 columns datepicker-small">
-		    	<h2 class="mrgtop">Dagen waarop ik geboekt ben</h2>
-		    	<hr class="blue-horizontal-line"></hr>
-
-				<div id="planning-events"></div>
+			<div class="large-12 columns">
+				<div class="planning-events"></div>
 			</div>
 		</div>
 		<div class="boeked hidden">
-			<div class="large-12 columns datepicker-small">
+			<div class="large-12 columns">
 		    	<h3>Datums waarop ik geboekt ben</h3>
 				<?php
 					//Datums tonen waarop ik geboekt ben

@@ -29,7 +29,7 @@ $(document).ready(function() {
             });
         });
 ​
-		$('.availability-events').datepicker({
+		$('.planning-events').multiDatesPicker({
 	        inline: true,
 		    firstDay: 0,
 		    showOtherMonths: true,
