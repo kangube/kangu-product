@@ -105,8 +105,9 @@
 </body>
 </html>
 
-<script src="../js/minimum-viable-product.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script src="http://multidatespickr.sourceforge.net/jquery-ui.multidatespicker.js"></script>
+<script src="../js/minimum-viable-product.min.js"></script>
 <script>
 	$(document).ready(function () {
 	    $('.to-boeked').on('click', function () {

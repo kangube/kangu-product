@@ -210,14 +210,14 @@ $(document).ready(function() {
 		};
 ​
 		var events = [];
-		$.getJSON('availability-dates.php?id="'+advert_id+'"', function(data) {
+		$.getJSON('planning-dates.php?id="'+advert_id+'"', function(data) {
             $.each(data, function(key, val) {
-                availability_date_item = val.availability_date.replace(/-/g, '/');
-                events[new Date(availability_date_item)] = new Event("availability-date-item");
+                planning_date_item = val.planning_date.replace(/-/g, '/');
+                events[new Date(planning_date_item)] = new Event("planning-date-item");
             });
         });
 ​
-		$('.availability-events').datepicker({
+		$('.planning-events').datepicker({
 	        inline: true,
 		    firstDay: 0,
 		    showOtherMonths: true,
