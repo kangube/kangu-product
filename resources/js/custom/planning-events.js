@@ -22,14 +22,14 @@ $(document).ready(function() {
 		};
 ​
 		var events = [];
-		$.getJSON('planning-dates.php?id="'+advert_id+'"', function(data) {
+		$.getJSON('availability-dates.php?id="'+advert_id+'"', function(data) {
             $.each(data, function(key, val) {
-                planning_date_item = val.planning_date.replace(/-/g, '/');
-                events[new Date(planning_date_item)] = new Event("planning-date-item");
+                availability_date_item = val.availability_date.replace(/-/g, '/');
+                events[new Date(availability_date_item)] = new Event("availability-date-item");
             });
         });
 ​
-		$('.planning-events').datepicker({
+		$('.availability-events').datepicker({
 	        inline: true,
 		    firstDay: 0,
 		    showOtherMonths: true,

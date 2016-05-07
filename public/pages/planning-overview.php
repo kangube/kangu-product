@@ -108,12 +108,12 @@
 				?>
 		</div>
 
-	    <!--<div class="large-6 columns datepicker-small">
+	    <div class="large-6 columns datepicker-small">
 		    	<h2 class="mrgtop">Dagen waarop ik geboekt ben</h2>
 		    	<hr class="blue-horizontal-line"></hr>
 
 				<div id="planning-events"></div>
-		</div>-->
+		</div>
 
 </body>
 </html>
