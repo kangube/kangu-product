@@ -2399,19 +2399,30 @@ return $.datepicker;
 
 }));
 
-$(document).ready(function() {
-	$("#results" ).load( "../php-assets/class.pagination.php");
+/*$("#create-availability-input").on("click", function() {
+	$(".advert-availability-input-fields").append("<div class='small-12 large-4 columns'><label>Datum</label><input type='date' name='advert-availability-date[]'></div><div class='small-12 large-4 columns'><label>Begin-tijd</label><input type='time' name='advert-availability-start-time[]'></div><div class='small-12 large-4 columns'><label>Eind-tijd</label><input type='time' name='advert-availability-end-time[]'></div>");
+	return false;
+});*/
 
-	$("#hide").click(function(e) {
-		$("#results").hide();
-		$("#searchresults").show();
-	});
-	
-	$("#results").on( "click", ".pagination a", function (e) {
-		e.preventDefault();
-		var page = $(this).attr("data-page");
-		$("#results").load("../php-assets/class.pagination.php",{"page":page});
-	});
+// Creating a new datepicker and setting all options
+$('.availability-datepicker').datepicker({
+    inline: true,
+    dateFormat: 'yy-mm-dd',
+    firstDay: 0,
+    showOtherMonths: true,
+    monthNames: ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'],
+    dayNames: ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'],
+    dayNamesMin: ['Zo', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za'],
+    onSelect: function (date) {
+        var selected = $(this).val();
+        $(".advert-availability-input-fields").append("<div class='small-12 large-4 columns'><label>Datum</label><input type='date' name='advert-availability-date[]' value="+selected+"></div><div class='small-6 large-4 columns'><label>Begin-tijd</label><input type='time' name='advert-availability-start-time[]'></div><div class='small-6 large-4 columns'><label>Eind-tijd</label><input type='time' name='advert-availability-end-time[]'></div>");
+        return false;
+    },
+    beforeShowDay: function (date) {
+        var td = date.getDay();
+        var ret = [(date.getDay() != 0 && date.getDay() != 6),'',(td != 'Za' && td != 'Zo')?'':'only on workday'];
+        return ret;
+    }
 });
 $(document).foundation();
 $("#registration-form").on("invalid.zf.abide", function(ev, el) {
@@ -2433,6 +2444,98 @@ $(".functionalities-button-group .button:last-child").on("click", function() {
     $('.functionalities-search-container').css("display", "none");
     $('.functionalities-offer-container').css("display", "block");
     $('.functionalities-offer-container').addClass("animated fadeInRight");
+});
+$(document).ready(function() {
+	var filter = "";
+
+	$(".advert-overview-container").load("../php-assets/class.adverts.pagination.php");
+
+	$(".advert-overview-container").on("change", ".advert-overview-filter", function(e) {
+		e.preventDefault();
+		filter = $(this).val();
+
+		$.ajax({
+			type: 'post',
+			dataType: 'html',
+			url: '../php-assets/class.adverts.pagination.php',
+			data: {chosenFilter:filter},
+			cache: false,
+			success: function(response) {
+				$(".advert-overview-container").html(response);
+				$(".advert-overview-filter").val(filter);
+			}
+		});
+	});
+
+	$(".advert-overview-container").on("click", ".pagination a", function (e) {
+		e.preventDefault();
+		var page = $(this).attr("data-page");
+
+		if (!filter) {
+			$(".advert-overview-container").load("../php-assets/class.adverts.pagination.php", {page:page});
+		}
+		else if (filter) {
+			$(".advert-overview-container").load("../php-assets/class.adverts.pagination.php", {page:page, chosenFilter:filter});
+		}
+	});
+});
+$(document).ready(function() {
+	var filter = "";
+
+	$(".advert-search-form, .advert-search-form-mobile").on("submit", function (e) {
+		e.preventDefault();
+		var school = $('.search-region').val();
+		var price = $('.search-price').val();
+		var spots = $('.search-spots').val();
+
+		$.ajax({
+			type: 'post',
+			dataType: 'html',
+			url: '../php-assets/class.search.php',
+			data: {school:school, price:price, spots:spots},
+			cache: false,
+			success: function(response) {
+				$(".advert-overview-container").css("display", "none");
+				$(".search-advert-overview-container" ).html(response);
+			}
+		});
+	});
+
+	$(".search-advert-overview-container").on("change", ".search-advert-overview-filter", function(e) {
+		filter = $(this).val();
+		var school = $('.search-region').val();
+		var price = $('.search-price').val();
+		var spots = $('.search-spots').val();
+
+		$.ajax({
+			type: 'post',
+			dataType: 'html',
+			url: '../php-assets/class.search.php',
+			data: {chosenFilter:filter, filterSchool:school, filterPrice:price, filterSpots:spots},
+			cache: false,
+			success: function(response) {
+				$(".advert-overview-container").css("display", "none");
+				$(".search-advert-overview-container").html(response);
+				$(".search-advert-overview-filter").val(filter);
+			}
+		});
+	});
+
+	$(".search-advert-overview-container").on("click", ".pagination a", function (e) {
+		e.preventDefault();
+		var school = $('.search-region').val();
+		var price = $('.search-price').val();
+		var spots = $('.search-spots').val();
+		var page = $(this).attr("data-page");
+
+		if (!filter) {
+			$(".search-advert-overview-container").load("../php-assets/class.search.php", {page:page, school:school, price:price, spots:spots});
+		}
+		else if (filter) {
+    		//alert("chosen filter: "+filter+", school: "+school+", price: "+price+", spots: "+spots+".");
+			$(".search-advert-overview-container").load("../php-assets/class.search.php", {page:page, chosenFilter:filter, filterSchool:school, filterPrice:price, filterSpots:spots});
+		}
+	});
 });
 // Opening and closing the mobile search form
 $("#mobile-search-form-button").on("click", function() {
@@ -2514,22 +2617,22 @@ $(document).ready(function() {
 	    }
 	};
 ​
-	var advert_id = getUrlParameter('id');
+	var booker_id = getUrlParameter('id');
 ​
-	if (typeof advert_id !== 'undefined') {
+	if (typeof booker_id !== 'undefined') {
         var Event = function(className) {
 	    	this.className = className;
 		};
 ​
 		var events = [];
-		$.getJSON('availability-dates.php?id="'+advert_id+'"', function(data) {
+		$.getJSON('booker-dates.php?id="'+booker_id+'"', function(data) {
             $.each(data, function(key, val) {
-                availability_date_item = val.availability_date.replace(/-/g, '/');
-                events[new Date(availability_date_item)] = new Event("availability-date-item");
+                booker_date_item = val.booking_date_format.replace(/-/g, '/');
+                events[new Date(booker_date_item)] = new Event("booker-date-item");
             });
         });
 ​
-		$('.planning-events').multiDatesPicker({
+		$('.booker-events').multiDatesPicker({
 	        inline: true,
 		    firstDay: 0,
 		    showOtherMonths: true,
@@ -2548,6 +2651,63 @@ $(document).ready(function() {
 		    }
 		});
 	}
+});
+
+$(document).ready(function() {
+	var getUrlParameter = function getUrlParameter(sParam) {
+	    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+	        sURLVariables = sPageURL.split('&'),
+	        sParameterName,
+	        i;
+​
+	    for (i = 0; i < sURLVariables.length; i++) {
+	        sParameterName = sURLVariables[i].split('=');
+​
+	        if (sParameterName[0] === sParam) {
+	            return sParameterName[1] === undefined ? true : sParameterName[1];
+	        }
+	    }
+	};
+​
+	var renter_id = getUrlParameter('id');
+​
+	if (typeof renter_id !== 'undefined') {
+        var Event = function(className) {
+	    	this.className = className;
+		};
+​
+		var events = [];
+		$.getJSON('renter-dates.php?id="'+renter_id+'"', function(data) {
+            $.each(data, function(key, val) {
+                renter_date_item = val.booking_date_format.replace(/-/g, '/');
+                events[new Date(renter_date_item)] = new Event("renter-date-item");
+            });
+        });
+​
+		$('.renter-events').multiDatesPicker({
+	        inline: true,
+		    firstDay: 0,
+		    showOtherMonths: true,
+		    monthNames: ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'],
+		    dayNames: ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'],
+		    dayNamesMin: ['Zo', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za'],
+		    beforeShowDay: function(date) {
+		        var event = events[date];
+​
+		        if (event) {
+		            return [true, event.className];
+		        }
+		        else {
+		            return [true, ''];
+		        }
+		    }
+		});
+	}
+});
+// Changing the styling of the radio button when selected
+$(".radio-button").on("click", function() {
+	$('.radio-button').removeClass("radio-selected");
+	$(this).addClass("radio-selected");
 });
 var wow = new WOW({
 	boxClass:     'wow',
