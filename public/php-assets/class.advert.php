@@ -221,16 +221,38 @@ class advert
 	   	$statement = $conn->prepare($services_dates_query);
 		$statement->execute();
 
-	   	$children_information_query .= "INSERT INTO tbl_child(child_first_name, child_last_name, child_school, child_class) VALUES ";
+	   	$children_information_query = "INSERT INTO tbl_child(child_first_name, child_last_name, child_school, child_class) VALUES ";
+	   	$number_children_created = 0;
 
 		foreach($this->ChildFirstName as $key => $c)
 		{
 			$children_information_query .= "('".$c."', '".$this->ChildLastName[$key]."', '".$this->School."', '".$this->ChildClass[$key]."'), ";
+			$number_children_created++;
 		}
 
 		$children_information_query = rtrim($children_information_query,', ').";";
 	   	$statement = $conn->prepare($children_information_query);
 	   	$statement->execute();
+	   	$child_last_created_id = $conn->lastInsertId();
+
+	   	$number_children_created_array = Array();
+		for ($i = 0; $i < $number_children_created; ++$i) {
+			$created_child_id = $child_last_created_id+$i;
+			array_push($number_children_created_array, $created_child_id);
+		}
+
+	   	$children_link_query = "INSERT INTO tbl_user_child(fk_child_id, fk_user_id) VALUES ";
+
+		foreach($this->ChildFirstName as $key => $c)
+		{
+			$children_link_query .= "('".$number_children_created_array[$key]."', '".$this->UserId."'), ";
+		}
+
+		$children_link_query = rtrim($children_link_query,', ').";";
+	   	$statement = $conn->prepare($children_link_query);
+	   	$statement->execute();
+
+	   	echo $children_link_query;
 	}
 	
 	public function getAll() {
