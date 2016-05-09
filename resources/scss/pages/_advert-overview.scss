@@ -14,22 +14,28 @@
 	background-size: cover;
 	overflow: hidden;
 
-	.advert-overview-title-container {
+	.advert-overview-header-container {
 		align-self: center;
-		margin-top: 8%;
-		margin-bottom: 12%;
+		//margin-top: 8%;
+		//margin-bottom: 12%;
 		width: 60%;
 
 		@include breakpoint(medium down) {
 			width: 95%;
+			margin-top: 20px;
+			margin-bottom: 120px;
 		}
 
 		@include breakpoint(large) {
 			width: 70%;
+			margin-top: 115px;
+			margin-bottom: 175px;
 		}
 
 		@include breakpoint(105em) { 
 			width: 50%;
+			margin-top: 115px;
+			margin-bottom: 175px;
 		}
 
 		@include breakpoint(120em) { 
@@ -37,12 +43,12 @@
 		}
 	}
 
-	.advert-overview-title, .advert-overview-subheader {
+	.advert-overview-header, .advert-overview-subheader {
 		color: $text-white !important;
 		text-align: center;
 	}
 
-	.advert-overview-title {
+	.advert-overview-header {
 		margin-bottom: 25px;
 
 		@include breakpoint(small) { 
@@ -97,15 +103,7 @@
 	align-self: center;
 
 	@include breakpoint(large) {
-		width: 57%;
-	}
-
-	@include breakpoint(105em) {
-		width: 50%;
-	}
-
-	@include breakpoint(120em) {
-		width: 45%;
+		width: 70%;
 	}
 
 	display: flex;
@@ -115,6 +113,11 @@
 	.search-region {
 		width: 50%;
 		border-radius: 3px 0 0 3px;
+	}
+
+	.search-date {
+		width: 16.67%;
+		border-left: none !important;
 	}
 
 	.search-price {
@@ -230,6 +233,7 @@
 	background-color: $light-grey-alt;
 	display: none;
 	padding: 40px 20px 40px 20px;
+	overflow: auto;
 
 	.mobile-search-form {
 		@include grid-column(12);
@@ -259,6 +263,10 @@
 		text-align: center !important;
 		display: inline-block !important;
 	}
+}
+
+.mobile-search-form .search-date-mobile {
+	margin-bottom: 20px;
 }
 
 .advert-search-form-mobile {
