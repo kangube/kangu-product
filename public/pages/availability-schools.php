@@ -11,12 +11,12 @@
 	    die('Error : ('. $mysqli_connection->connect_errno .') '. $mysqli_connection->connect_error);
 	}
 
-	$results = $mysqli_connection->query("SELECT availability_date from tbl_availability WHERE fk_advert_id=".$_GET['id']."");
+	$results = $mysqli_connection->query("SELECT school_name from tbl_school");
 
-	$datesArray = array();
+	$schoolsArray = array();
     while($row = $results->fetch_array(MYSQLI_ASSOC)) {
-        $datesArray[] = $row;
+        $schoolsArray[] = $row;
     }
 
-    echo json_encode($datesArray);
+    echo json_encode($schoolsArray);
 ?>

@@ -1,3 +1,5 @@
+// Loading all of the reviews and corresponding ratings of an advert
+
 $(document).ready(function() {
 	var getUrlParameter = function getUrlParameter(sParam) {
 	    var sPageURL = decodeURIComponent(window.location.search.substring(1)),

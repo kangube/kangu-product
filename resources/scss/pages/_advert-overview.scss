@@ -103,7 +103,7 @@
 	align-self: center;
 
 	@include breakpoint(large) {
-		width: 70%;
+		width: 60%;
 	}
 
 	display: flex;
@@ -118,6 +118,7 @@
 	.search-date {
 		width: 16.67%;
 		border-left: none !important;
+		border-right: none !important;
 	}
 
 	.search-price {

@@ -1,3 +1,5 @@
+// Loading the availability-calendar which shows the available dates of the advert
+
 $(document).ready(function() {
 	var getUrlParameter = function getUrlParameter(sParam) {
 	    var sPageURL = decodeURIComponent(window.location.search.substring(1)),

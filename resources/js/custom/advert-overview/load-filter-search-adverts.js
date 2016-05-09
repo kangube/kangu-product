@@ -1,22 +1,22 @@
+// Loading all adverts that match the search criteria
+
 $(document).ready(function() {
 	var filter = "";
 	var school = "";
 	var date = "";
-	var price = "";
 	var spots = "";
 
 	$(".advert-search-form").on("submit", function (e) {
 		e.preventDefault();
 		school = $('.search-region').val();
 		date = $('.search-date').val();
-		price = $('.search-price').val();
 		spots = $('.search-spots').val();
 
 		$.ajax({
 			type: 'post',
 			dataType: 'html',
 			url: '../php-assets/class.search.php',
-			data: {school:school, date:date, price:price, spots:spots},
+			data: {school:school, date:date, spots:spots},
 			cache: false,
 			success: function(response) {
 				$(".advert-overview-container").css("display", "none");
@@ -29,14 +29,13 @@ $(document).ready(function() {
 		e.preventDefault();
 		school = $('.search-region-mobile').val();
 		date = $('.search-date-mobile-alt').val();
-		price = $('.search-price-mobile').val();
 		spots = $('.search-spots-mobile').val();
 
 		$.ajax({
 			type: 'post',
 			dataType: 'html',
 			url: '../php-assets/class.search.php',
-			data: {school:school, date:date, price:price, spots:spots},
+			data: {school:school, date:date, spots:spots},
 			cache: false,
 			success: function(response) {
 				$(".advert-overview-container").css("display", "none");
@@ -52,7 +51,7 @@ $(document).ready(function() {
 			type: 'post',
 			dataType: 'html',
 			url: '../php-assets/class.search.php',
-			data: {chosenFilter:filter, filterSchool:school, filterDate:date, filterPrice:price, filterSpots:spots},
+			data: {chosenFilter:filter, filterSchool:school, filterDate:date, filterSpots:spots},
 			cache: false,
 			success: function(response) {
 				$(".advert-overview-container").css("display", "none");
@@ -67,10 +66,10 @@ $(document).ready(function() {
 		var page = $(this).attr("data-page");
 
 		if (!filter) {
-			$(".search-advert-overview-container").load("../php-assets/class.search.php", {page:page, school:school, date:date, price:price, spots:spots});
+			$(".search-advert-overview-container").load("../php-assets/class.search.php", {page:page, school:school, date:date, spots:spots});
 		}
 		else if (filter) {
-			$(".search-advert-overview-container").load("../php-assets/class.search.php", {page:page, chosenFilter:filter, filterSchool:school, filterDate:date, filterPrice:price, filterSpots:spots});
+			$(".search-advert-overview-container").load("../php-assets/class.search.php", {page:page, chosenFilter:filter, filterSchool:school, filterDate:date, filterSpots:spots});
 		}
 	});
 });
