@@ -112,7 +112,15 @@
 				    			</li>
 
 								<li>
-					    			<label data-icon="o">Plaats voor <?php echo $advert_information["advert_spots"]; ?> kinderen</label>
+					    			<label data-icon="o">
+						    			<?php 
+							    			if ($advert_information["advert_spots"] <= 1) {
+							    				echo 'Plaats voor '.$advert_information["advert_spots"].' kind';
+							    			} else {
+							    				echo 'Plaats voor '.$advert_information["advert_spots"].' kinderen';
+							    			}
+						    			?>
+					    			</label>
 				    			</li>
 							</ul>
 						</div>
@@ -122,7 +130,16 @@
 						<div class="description-item">
 							<ul>
 								<li>
-				    				<label data-icon="c">Tussen 5 - <?php echo $advert_information["advert_price"]; ?> credits per kind</label>
+				    				<label data-icon="c">
+					    				<?php
+					    					if ($advert_information["advert_price"] <= 5) {
+					    						echo $advert_information["advert_price"].' credits per kind';
+					    					}
+					    					else {
+					    						echo 'Tussen 5 - '.$advert_information["advert_price"].' credits per kind';
+					    					}
+					    				?>
+				    				</label>
 				    			</li>
 
 								<li>
@@ -139,10 +156,27 @@
 			    			</li>
 
 							<li>
-				    			<label data-icon="o">Plaats voor <?php echo $advert_information["advert_spots"]; ?> kinderen</label>
+				    			<label data-icon="o">
+				    				<?php 
+						    			if ($advert_information["advert_spots"] <= 1) {
+						    				echo 'Plaats voor '.$advert_information["advert_spots"].' kind';
+						    			} else {
+						    				echo 'Plaats voor '.$advert_information["advert_spots"].' kinderen';
+						    			}
+					    			?>
+				    			</label>
 			    			</li>
 			    			<li>
-			    				<label data-icon="c">Tussen 5 - <?php echo $advert_information["advert_price"]; ?> credits per kind</label>
+			    				<label data-icon="c">
+			    					<?php
+				    					if ($advert_information["advert_price"] <= 5) {
+				    						echo $advert_information["advert_price"].' credits per kind';
+				    					}
+				    					else {
+				    						echo 'Tussen 5 - '.$advert_information["advert_price"].' credits per kind';
+				    					}
+				    				?>
+			    				</label>
 			    			</li>
 
 							<li>
