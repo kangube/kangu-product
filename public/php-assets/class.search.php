@@ -144,7 +144,19 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 		exit;
     }
     else {
-        echo "<div class='no-search-results-container'><p>Er zijn geen advertenties gevonden</p></div>";
+        echo "<div class='large-12 columns'>
+			     <div class='large-12 columns'>
+			    	<h2>Advertenties</h2>
+			    	<hr class='blue-horizontal-line'></hr>
+			     </div>
+
+	        	 <div class='advert-overview-no-search-container'>
+	        	 	<div class='no-search-results-container'>
+		        		<span class='no-adverts-icon' data-icon='5'></span>
+		        	 	<p class='no-adverts-title'>Er zijn geen opvang-advertenties gevonden voor uw zoekcriteria.</p>
+		        	 </div>
+		         </div>
+	         </div>";
     }
 
 }
