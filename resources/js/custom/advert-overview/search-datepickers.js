@@ -1,4 +1,6 @@
 $(document).ready(function() {
+	// Input datepicker for large screens and up
+
 	$(".search-date").datepicker({
 		inline: false,
 		dateFormat: 'yy-mm-dd',
@@ -9,6 +11,8 @@ $(document).ready(function() {
 	    dayNamesMin: ['Zo', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za']
 	});
 
+	// Input datepicker for medium screens and down
+	
 	$(".search-date-mobile").datepicker({
 		inline: true,
 		dateFormat: 'yy-mm-dd',
