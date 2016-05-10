@@ -1,3 +1,5 @@
+// Loading all of the adverts
+
 $(document).ready(function() {
 	var filter = "";
 

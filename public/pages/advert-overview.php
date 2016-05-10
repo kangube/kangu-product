@@ -36,14 +36,14 @@
                                    [../assets/advert-overview/advert-background-1920.jpg, retina]">
 	        
 	        
-	        <div class="advert-overview-title-container">
-	            <h1 class="advert-overview-title">Vind de ideale opvang voor uw kind</h1>
-	            <h3 class="advert-overview-subheader">Deze header wordt vergezeld van een subheader met bijbehorende informatie over de pagina</h3>
+	        <div class="advert-overview-header-container">
+	            <h1 class="advert-overview-header">Vind de ideale opvang voor uw kind</h1>
+	            <h3 class="advert-overview-subheader">Kies tussen tal van advertenties en vind de geschikte opvangbiedende ouder om uw kinderen op te vangen</h3>
 	        </div>
 
         	<form action="advert-overview.php" method="get" name="search" class="advert-search-form">
     			<input class="search-region" type="text" placeholder="Binnen welke school zoekt u een opvangbiedende ouder?" name="school" required>
-    			<input class="search-price" type="text" placeholder="Prijs (max.)" name="price" required>
+    			<input class="search-date" type="text" placeholder="op welke datum?" name="date" required>
     			<select class="search-spots" name="number-children" required>
 					<option value="1" selected>1 kind</option> 
 					<option value="2">2 kinderen</option>
@@ -69,14 +69,15 @@
 
 			    <div class="mobile-search-form">
 			    	<form action="advert-overview.php" method="get" name="search" class="advert-search-form-mobile">
-			    		<input type="text" placeholder="Binnen welke school zoekt u een opvangouder?" name="school" required>
-			    		<select class="search-spots" name="number-children" required>
+			    		<input class="search-region-mobile" type="text" placeholder="Binnen welke school zoekt u een opvangouder?" name="school" required>
+			    		<div class="search-date-mobile"></div>
+						<input class="search-date-mobile-alt" type="hidden">
+						<select class="search-spots-mobile" name="number-children" required>
 							<option value="1" selected>1 kind</option> 
 							<option value="2">2 kinderen</option>
 							<option value="3">3 kinderen</option>
 							<option value="3">4 kinderen</option>
 						</select>
-						<input class="search-price" type="text" placeholder="Prijs (max.)" name="price" required>
 						<input class="search-submit" type="submit" name="search" value="Zoeken">
 			    	</form>
 			    </div>

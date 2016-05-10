@@ -1,0 +1,26 @@
+// Styling of the autocomplete container
+
+.ui-autocomplete {
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    float: left;
+    display: none;
+    min-width: 160px;   
+    padding: 4px 0;
+    margin: 0 0 10px 25px;
+    list-style-type: none;
+    background-color: $white;
+    border: 1px solid $border-color-light-grey;
+    border-top: none;
+    border-radius: 0 0 3px 3px;
+
+    .ui-menu-item {
+        @include font($paragraph-font-family, normal, regular, 14, 19, $text-dark-grey);
+        padding: 5px 15px 5px 15px;
+    }
+
+    .ui-state-focus {
+        font-weight: bold !important;
+    }
+}
