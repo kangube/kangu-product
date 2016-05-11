@@ -10,7 +10,8 @@
 	$stmt->execute(array(":user_id"=>$user_id));
 	$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
-?><!doctype html>
+?>
+<!doctype html>
 <html class="no-js" lang="nl">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -45,68 +46,73 @@
 
 	<body>	
 		<?php include('../php-includes/navigation.php'); ?>
+
 		<ul class="toggle">
 			<li class="to-boeked"><a class="active-button" href="#">ik ben geboekt</a></li>
     		<li class="to-boeken"><a class="none-active-button" href="#">ik heb geboekt</a></li>
     	</ul>
+    	<input id="user-id" type="hidden" value="<?php echo $userRow['user_id']; ?>">
+
 		<div class="boeken visible">
 			<div class="large-12 columns">
-			    	<h3>Datums waarop ik anderen geboekt heb</h3>
-					<?php
-						//Datums tonen waarop ik anderen geboekt heb
-						$booking_results = $mysqli->prepare("SELECT fk_booking_id, booking_date_format, tbl_user.user_firstname, tbl_user.user_lastname, tbl_user.user_email, tbl_user.user_mobile_number  FROM tbl_booking_dates 
-							LEFT JOIN tbl_booking ON tbl_booking_dates.fk_booking_id=tbl_booking.booking_id 
-							LEFT JOIN tbl_user ON tbl_booking.fk_booker_user_id=tbl_user.user_id
-							WHERE tbl_booking.fk_renter_user_id = ".$userRow['user_id']."");
-						$booking_results->execute();
-						$booking_results->bind_result($fk_booking_id, $booking_date_format, $user_firstname, $user_lastname, $user_email, $user_mobile_number);
-
-						while($booking_results->fetch()) 
-						{
-							echo "Datum: ".$booking_date_format."<br/>";
-							echo "Voornaam: ".$user_firstname."<br/>";
-							echo "Achternaam: ".$user_lastname."<br/>";
-							echo "Email: ".$user_email."<br/>";
-							echo "GSM: ".$user_mobile_number."<br/>";
-						}
-					?>
+				<div id="renter-events"></div>
 			</div>
-			<div class="large-6 columns end">
-				<div class="renter-events"></div>
+
+			<div class="large-12 columns">
+		    	<h3>Datums waarop ik anderen heb geboekt</h3>
+				<?php
+					$booking_results = $mysqli->prepare("SELECT fk_booking_id, booking_date_format, tbl_user.user_firstname, tbl_user.user_lastname, tbl_user.user_email, tbl_user.user_mobile_number  FROM tbl_booking_dates 
+						LEFT JOIN tbl_booking ON tbl_booking_dates.fk_booking_id=tbl_booking.booking_id 
+						LEFT JOIN tbl_user ON tbl_booking.fk_booker_user_id=tbl_user.user_id
+						WHERE tbl_booking.fk_renter_user_id = ".$userRow['user_id']."");
+					$booking_results->execute();
+					$booking_results->bind_result($fk_booking_id, $booking_date_format, $user_firstname, $user_lastname, $user_email, $user_mobile_number);
+
+					while($booking_results->fetch()) 
+					{
+						echo "Datum: ".$booking_date_format."<br/>";
+						echo "Voornaam: ".$user_firstname."<br/>";
+						echo "Achternaam: ".$user_lastname."<br/>";
+						echo "Email: ".$user_email."<br/>";
+						echo "GSM: ".$user_mobile_number."<br/>";
+					}
+				?>
 			</div>
 		</div>
+
 		<div class="boeked hidden">
 			<div class="large-12 columns">
-		    	<h3>Datums waarop ik geboekt ben</h3>
+				<div id="booker-events"></div>
+			</div>
+
+			<div class="large-12 columns">
+		    	<h3>Datums waarop ik anderen geboekt heb</h3>
 				<?php
-						//Datums tonen waarop ik anderen geboekt heb
-						$booking_results = $mysqli->prepare("SELECT fk_booking_id, booking_date_format, tbl_user.user_firstname, tbl_user.user_lastname, tbl_user.user_email, tbl_user.user_mobile_number  FROM tbl_booking_dates 
-							LEFT JOIN tbl_booking ON tbl_booking_dates.fk_booking_id=tbl_booking.booking_id 
-							LEFT JOIN tbl_user ON tbl_booking.fk_renter_user_id=tbl_user.user_id
-							WHERE tbl_booking.fk_booker_user_id = ".$userRow['user_id']."");
-						$booking_results->execute();
-						$booking_results->bind_result($fk_booking_id, $booking_date_format, $user_firstname, $user_lastname, $user_email, $user_mobile_number);
+					$booking_results = $mysqli->prepare("SELECT fk_booking_id, booking_date_format, tbl_user.user_firstname, tbl_user.user_lastname, tbl_user.user_email, tbl_user.user_mobile_number  FROM tbl_booking_dates 
+						LEFT JOIN tbl_booking ON tbl_booking_dates.fk_booking_id=tbl_booking.booking_id 
+						LEFT JOIN tbl_user ON tbl_booking.fk_renter_user_id=tbl_user.user_id
+						WHERE tbl_booking.fk_booker_user_id = ".$userRow['user_id']."");
+					$booking_results->execute();
+					$booking_results->bind_result($fk_booking_id, $booking_date_format, $user_firstname, $user_lastname, $user_email, $user_mobile_number);
 
-						while($booking_results->fetch()) 
-						{
-							echo "Datum: ".$booking_date_format."<br/>";
-							echo "Voornaam: ".$user_firstname."<br/>";
-							echo "Achternaam: ".$user_lastname."<br/>";
-							echo "Email: ".$user_email."<br/>";
-							echo "GSM: ".$user_mobile_number."<br/><br/>";
-						}
-					?>
+					while($booking_results->fetch()) 
+					{
+						echo "Datum: ".$booking_date_format."<br/>";
+						echo "Voornaam: ".$user_firstname."<br/>";
+						echo "Achternaam: ".$user_lastname."<br/>";
+						echo "Email: ".$user_email."<br/>";
+						echo "GSM: ".$user_mobile_number."<br/><br/>";
+					}
+				?>
+			</div>
 		</div>
-		<div class="large-6 columns end">
-			<div id="booker-events"></div>
-		</div>
-	</div>
-
-</body>
+	</body>
 </html>
 
 <script src="../js/minimum-viable-product.min.js"></script>
-<script src="http://multidatespickr.sourceforge.net/jquery-ui.multidatespicker.js"></script>
+<script src="https://use.typekit.net/vnw3zje.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
 <script>
 	$(document).ready(function () {
 	    $('.to-boeked').on('click', function () {

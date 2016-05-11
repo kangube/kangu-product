@@ -1,4 +1,6 @@
-.booker-date-item > a::after, .booker-events td a::after {
+// Styling of the calendar that shows the dates when I booked other people
+
+.availability-date-item > a::after, #booker-events td a::after {
 	content: '';
 	display: block;
 	width: 5px;
@@ -12,15 +14,17 @@
 	left: 49%;
 }
 ​
-.booker-events td a::after {
+#booker-events td a::after {
 	background-color: $light-red;
 }
 ​
-.renter-date-item > a::after {
+.availability-date-item > a::after {
 	background-color: green !important;
 }
 
-.renter-date-item > a::after, .renter-events td a::after {
+// Styling of the calendar that shows the dates when other people booked me
+
+.availability-date-item > a::after, #renter-events td a::after {
 	content: '';
 	display: block;
 	width: 5px;
@@ -34,10 +38,10 @@
 	left: 49%;
 }
 ​
-.renter-events td a::after {
+#renter-events td a::after {
 	background-color: $light-red;
 }
 ​
-.renter-date-item > a::after {
+.availability-date-item > a::after {
 	background-color: green !important;
 }
