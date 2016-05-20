@@ -39,12 +39,15 @@
     // Processing all of the children corresponding to the creator of the advert
     $children_results = $mysqli->query("SELECT child_first_name from tbl_user_child LEFT JOIN tbl_child ON tbl_user_child.fk_child_id=tbl_child.child_id WHERE fk_user_id=".$advert_information['user_id']."");
 
+ 	$formatted_children_names = "";
+
     while($children_row = $children_results->fetch_array(MYSQLI_ASSOC)) {
         $formatted_children_names .= $children_row['child_first_name'].',  ';
     }
 
     $formatted_children_names = rtrim($formatted_children_names,', ');
     $formatted_children_names = preg_replace('/,([^,]*)$/', ' en \1', $formatted_children_names);
+
 
     // Processing user vote on a review
     $vote = new Vote();

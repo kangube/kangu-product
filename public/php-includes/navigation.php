@@ -14,10 +14,7 @@
 
 	<?php 
 		$check_user_has_advert = $auth_user->hasAdvert($userRow['user_id']);
-		if($check_user_has_advert === true) {
-			$auth_user->redirect('advert-overview.php');
-		}
-		else if ($check_user_has_advert === false) {
+		if ($check_user_has_advert === false) {
 			echo '<div class="create-advert"><a href="../pages/advert-create.php">Opvang aanbieden</a></div>';
 		}
 	?>
@@ -56,10 +53,7 @@
 						<li>
 							<?php 
 								$check_user_has_advert = $auth_user->hasAdvert($userRow['user_id']);
-								if($check_user_has_advert === true) {
-									$auth_user->redirect('advert-overview.php');
-								}
-								else if ($check_user_has_advert === false) {
+								if ($check_user_has_advert === false) {
 									echo '<a href="../pages/advert-create.php" class="provide-services-button">Opvang aanbieden</a>';
 								}
 							?>

@@ -97,10 +97,11 @@ class USER
 			return true;
 		}
 	}
-	
+
 	public function redirect($url)
 	{
 		header("Location: $url");
 	}
 }
+
 ?>

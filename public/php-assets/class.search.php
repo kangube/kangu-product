@@ -4,15 +4,18 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 	
 	include("../php-assets/class.dbconfig.php");
 
-	// Collecting all given search variables
-	$school = htmlspecialchars($_POST['school']);
-	$date = htmlspecialchars($_POST['date']); 
-    $spots = htmlspecialchars($_POST['spots']);
-
-    // Collecting all given search variables with filter
-	$filter_school = htmlspecialchars($_POST['filterSchool']);
-	$filter_date = htmlspecialchars($_POST['filterDate']);
-    $filter_spots = htmlspecialchars($_POST['filterSpots']);
+	if(!isset($_POST['chosenFilter'])) {
+		// Collecting all given search variables
+		$school = htmlspecialchars($_POST['school']);
+		$date = htmlspecialchars($_POST['date']); 
+	    $spots = htmlspecialchars($_POST['spots']);
+	}
+	else if (isset($_POST['chosenFilter'])) {
+	    // Collecting all given search variables with filter
+		$filter_school = htmlspecialchars($_POST['filterSchool']);
+		$filter_date = htmlspecialchars($_POST['filterDate']);
+	    $filter_spots = htmlspecialchars($_POST['filterSpots']);
+	}
   	
   	// Gathering the page numer if pagination element has been clicked
 	if(isset($_POST["page"])) {

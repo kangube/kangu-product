@@ -69,10 +69,12 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 			  </div>";
 
 		$review_results = $mysqli->query("SELECT review_id, review_description, review_date, review_upvotes, fk_advert_id, fk_user_id, user_firstname, user_lastname, user_image_path FROM tbl_review LEFT JOIN tbl_user ON tbl_review.fk_user_id=tbl_user.user_id WHERE tbl_review.fk_advert_id='".$_POST['id']."' ORDER BY review_upvotes DESC LIMIT $page_position, $item_per_page_reviews");
+
+		$review_description = "";
 		
 		while ($services_row = $review_results->fetch_array(MYSQLI_ASSOC)) {
 			// Processing and shortening the review description
-			$shorten = strpos($review_description, ' ', 350);
+			$shorten = strpos($services_row['review_description'], ' ', 350);
 			$final_review_description = substr($review_description, 0, $shorten)." ...";
 
 			// Processing and reformatting the review-date from numbers to string

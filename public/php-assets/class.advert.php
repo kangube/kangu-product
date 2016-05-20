@@ -194,6 +194,8 @@ class advert
 		$statement->execute();
 		$last_created_id = $conn->lastInsertId();
 
+		$services_dates_query = "";
+
 		$services_dates_query .= "INSERT INTO tbl_service(fk_advert_id, service_name) VALUES ";
 		$iterator = new ArrayIterator($this->Services);
 		$cachingiterator = new CachingIterator($iterator);

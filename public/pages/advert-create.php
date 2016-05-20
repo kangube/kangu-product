@@ -73,7 +73,13 @@
 
 			foreach ($children_names as $name) {
 				$child_full_name = explode(' ', $name, 2);
+				if (!isset($child_full_name[0])) {
+				   $child_full_name[0] = null;
+				}
 				$children_first_names[] = $child_full_name[0];
+				if (!isset($child_full_name[1])) {
+				   $child_full_name[1] = null;
+				}
 				$children_last_names[] = $child_full_name[1];
 			}
 
