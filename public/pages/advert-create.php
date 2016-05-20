@@ -83,6 +83,10 @@
 				$children_last_names[] = $child_full_name[1];
 			}
 
+			$_POST['advert-availability-date'] = "";
+			$_POST['advert-availability-start-time'] = "";
+			$_POST['advert-availability-end-time'] = "";
+
 			// Passing data to the advert class for processing
 			$advert->UserId = $userRow['user_id'];
 			$advert->Description = $_POST['advert-description'];
