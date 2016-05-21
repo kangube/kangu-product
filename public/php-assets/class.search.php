@@ -3,19 +3,6 @@
 if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 	
 	include("../php-assets/class.dbconfig.php");
-
-	if(!isset($_POST['chosenFilter'])) {
-		// Collecting all given search variables
-		$school = htmlspecialchars($_POST['school']);
-		$date = htmlspecialchars($_POST['date']); 
-	    $spots = htmlspecialchars($_POST['spots']);
-	}
-	else if (isset($_POST['chosenFilter'])) {
-	    // Collecting all given search variables with filter
-		$filter_school = htmlspecialchars($_POST['filterSchool']);
-		$filter_date = htmlspecialchars($_POST['filterDate']);
-	    $filter_spots = htmlspecialchars($_POST['filterSpots']);
-	}
   	
   	// Gathering the page numer if pagination element has been clicked
 	if(isset($_POST["page"])) {
@@ -27,8 +14,12 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 		$page_number = 1;
 	}
 	
+    if(!isset($_POST['chosenFilter'])) {
+    	// Collecting all given search variables
+		$school = htmlspecialchars($_POST['school']);
+		$date = htmlspecialchars($_POST['date']); 
+	    $spots = htmlspecialchars($_POST['spots']);
 
-    if(!isset($_POST['chosenFilter'])) {	
 		// Calculating the number of pages and the current page position
 		$search_results = $mysqli->query("SELECT COUNT(*) FROM tbl_advert LEFT JOIN tbl_availability ON tbl_advert.advert_id=tbl_availability.fk_advert_id WHERE advert_status='approved' AND advert_school LIKE '%".$school."%' AND availability_date = '".$date."' AND advert_spots >= '".$spots."'");
 		$get_total_rows = $search_results->fetch_row();
@@ -38,6 +29,11 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 		$search_results = $mysqli->prepare("SELECT advert_id, fk_user_id, advert_description, advert_price, advert_spots, advert_school, user_image_path, user_firstname, user_lastname, user_city, availability_spots FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id LEFT JOIN tbl_availability ON tbl_advert.advert_id=tbl_availability.fk_advert_id WHERE advert_status='approved' AND advert_school LIKE '%".$school."%' AND availability_spots >= '".$spots."' AND availability_date = '".$date."' ORDER BY advert_id ASC");
 	}
 	else if (isset($_POST['chosenFilter'])) {
+		// Collecting all given search variables with filter
+		$filter_school = htmlspecialchars($_POST['filterSchool']);
+		$filter_date = htmlspecialchars($_POST['filterDate']);
+	    $filter_spots = htmlspecialchars($_POST['filterSpots']);
+
 		// Calculating the number of pages and the current page position
 		$search_results = $mysqli->query("SELECT COUNT(*) FROM tbl_advert LEFT JOIN tbl_availability ON tbl_advert.advert_id=tbl_availability.fk_advert_id WHERE advert_status='approved' AND advert_school LIKE '%".$filter_school."%' AND availability_date = '".$filter_date."' AND advert_spots >= '".$filter_spots."'");
 		$get_total_rows = $search_results->fetch_row();

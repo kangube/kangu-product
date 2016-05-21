@@ -11,7 +11,7 @@
 	    die('Error : ('. $mysqli_connection->connect_errno .') '. $mysqli_connection->connect_error);
 	}
 
-	$results = $mysqli_connection->query("SELECT school_name from tbl_school");
+	$results = $mysqli_connection->query("SELECT school_name from tbl_school ORDER BY school_name");
 
 	$schoolsArray = array();
     while($row = $results->fetch_array(MYSQLI_ASSOC)) {

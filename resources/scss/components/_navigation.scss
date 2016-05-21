@@ -25,8 +25,9 @@
 		align-self: center;
 	}
 
-	span:nth-child(2) {
+	span:nth-child(2) a {
 		@include font($header-font-family, regular, bold, 25, 35, rgba($text-dark-grey,0.8));
+		text-decoration: none;
 	}
 
 	span:first-child {
@@ -243,9 +244,12 @@
 	padding: 8px 0 8px 0;
 
 	.top-bar-title {
-		@include font($header-font-family, regular, bold, 25, 35, rgba($text-dark-grey,0.8));
-		margin-right: 0;
 		margin-top: 5px;
+
+		a {
+			@include font($header-font-family, regular, bold, 25, 35, rgba($text-dark-grey,0.8));
+			text-decoration: none;
+		}
 	}
 }
 

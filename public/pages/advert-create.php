@@ -76,16 +76,14 @@
 				if (!isset($child_full_name[0])) {
 				   $child_full_name[0] = null;
 				}
+
 				$children_first_names[] = $child_full_name[0];
 				if (!isset($child_full_name[1])) {
 				   $child_full_name[1] = null;
 				}
+
 				$children_last_names[] = $child_full_name[1];
 			}
-
-			$_POST['advert-availability-date'] = "";
-			$_POST['advert-availability-start-time'] = "";
-			$_POST['advert-availability-end-time'] = "";
 
 			// Passing data to the advert class for processing
 			$advert->UserId = $userRow['user_id'];
@@ -191,7 +189,7 @@
 							<p class="form-subheader">Geef aan naar welke school je kinderen gaan zodat andere ouders weten op welke school je opvang aanbiedt.</p>
 							<div class="form-icon-input-container">
 								<span class="form-icon" data-icon="e"></span>
-								<input class="form-input" type="text" name="advert-school" placeholder="de basisschool van jouw kinderen" required>
+								<select class="form-input advert-school" name="advert-school" required></select>
 							</div>
 						</div>
 
@@ -462,6 +460,17 @@
 		<script src="../js/minimum-viable-product.min.js"></script>
 		<script src="https://use.typekit.net/vnw3zje.js"></script>
 		<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+		<script>
+			var schools = [];
+			$.getJSON('availability-schools.php', function(data) {
+				$.each(data, function(key, val) {
+					var school_name = "";
+					school_name = val["school_name"].replace(/ /g, '&#32;');
+				    $('.advert-school').append('<option value='+school_name+'>'+val["school_name"]+'</option>');
+				});
+			});
+		</script>
 
 		<script src="http://multidatespickr.sourceforge.net/jquery-ui.multidatespicker.js"></script>
 		<script>

@@ -1,6 +1,6 @@
 // Styling of all input fields displayed in forms
 
-input:not([type=submit]):not([type=file]), textarea {
+input:not([type=submit]):not([type=file]), textarea, select {
 	background-color: transparent;
 	-webkit-box-shadow: none !important;
 	-moz-box-shadow: none !important;
