@@ -172,7 +172,27 @@
 	// Styling of the number spots container
 
 	.form-school-container .advert-school {
+		background-color: transparent;
+		-webkit-box-shadow: none !important;
+		-moz-box-shadow: none !important;
+		box-shadow: none !important;
+		text-decoration: none;
+		border: none;
+		border-bottom: 1px solid rgba($dark-grey, 0.4);
+		font-family: "open-sans", sans-serif;
+		font-style: italic;
+		font-size: rem-calc(14);
+		color: rgba($dark-grey, 0.4);
+		padding: 0 0 15px 0;
 		margin-bottom: 0;
+		outline: none;
+
+		&:focus, &:hover, &:active {
+			background-color: transparent;
+			text-decoration: none;
+			border: none;
+			border-bottom: 1px solid rgba($dark-grey, 0.6);
+		}
 	}
 
 	// Styling of the contact information container
