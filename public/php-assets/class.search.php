@@ -137,42 +137,35 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 			$shorten = strpos($advert_description, ' ', 145);
 			$final_advert_description = substr($advert_description, 0, $shorten)." ...";
 
-			echo "<div class='advert-container end'>
-				  	<a href='advert-detail.php?id=".$advert_id."' class='advert-link'>
-						<div class='advert'>
-			    			<div class='small-12 columns'>
-				    			<div class='small-2 columns'>
-				    				<img class='advert-profile-image' src='".$user_profile_image."'>
-				    			</div>
-				    			
-				    			<div class='small-10 columns'>
-					    			<ul class='advert-information-list'>
-					    				<li>".$user_first_name.' '.$user_last_name."</li>
-					    				<li data-icon='d'>".$user_city."</li>
-					    			</ul>
-				    			</div>
+			$advert_spots_additive = '';
+			if ($advert_spots <= 1) {
+				$advert_spots_additive = 'kind';
+			} else {
+				$advert_spots_additive = 'kinderen';
+			}
+
+		    echo "<div class='advert-container end'>
+			  	<a href='advert-detail.php?id=".$advert_id."' class='advert-link'>
+					<div class='advert'>
+		    			<div class='small-12 columns'>
+			    			<div class='small-2 columns'>
+			    				<img class='advert-profile-image' src='".$user_profile_image."'>
 			    			</div>
+			    			
+			    			<div class='small-10 columns'>
+				    			<ul class='advert-information-list'>
+				    				<li>".$user_first_name.' '.$user_last_name."</li>
+				    				<li data-icon='d'>".$user_city."</li>
+				    			</ul>
+			    			</div>
+		    			</div>
 
-							<p class='advert-description'>".$final_advert_description."</p>
-			
-			    			<div class='small-6 columns'>
-				    			<div class='advert-price'>
-					    			<p>".$advert_price."</p>
-					    			<p>p/u</p>
-				    			</div>
-				    		</div>
-
-				    		<div class='small-6 columns'>
-				    			<div class='advert-spots'>
-				    				<p>".$availability_spots."</p>
-					    			<p>plaatsen</p>
-				    			</div>
-				    		</div>
-	    	
-				    		<p class='advert-school' data-icon='e'>Basisschool ".$advert_school."</p>
-			    		</div>
-			    	</a>
-		    	</div>";
+						<p class='advert-description'>".$final_advert_description."</p>
+    					<p class='advert-spots'><span data-icon='o'></span>Plaats voor ".$advert_spots." ".$advert_spots_additive."</p>
+			    		<p class='advert-school'><span data-icon='e'></span>Basisschool ".$advert_school."</p>
+		    		</div>
+		    	</a>
+	    	</div>";
 		}
 
 		echo '<div class="large-12 columns">';

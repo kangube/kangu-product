@@ -45,13 +45,12 @@ class USER
 		{
 			$new_password = password_hash($user_password, PASSWORD_DEFAULT);
 			
-			$stmt = $this->conn->prepare("INSERT INTO tbl_user(user_firstname, user_lastname, user_email, user_password, user_image_path) 
-		                                               VALUES(:ufirstname, :ulastname, :umail, :upass, '../assets/user-profile-images/default-profile-image.png')");
+			$stmt = $this->conn->prepare("INSERT INTO tbl_user(user_firstname, user_lastname, user_email, user_password, user_image_path, user_credits) VALUES(:ufirstname, :ulastname, :umail, :upass, '../assets/user-profile-images/default-profile-image.png', 10)");
 												  
 			$stmt->bindparam(":ufirstname", $user_first_name);
 			$stmt->bindparam(":ulastname", $user_last_name);
 			$stmt->bindparam(":umail", $user_email);
-			$stmt->bindparam(":upass", $new_password);										  
+			$stmt->bindparam(":upass", $new_password);
 				
 			$stmt->execute();	
 			

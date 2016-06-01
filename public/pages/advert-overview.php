@@ -49,6 +49,8 @@
 					<option value="2">2 kinderen</option>
 					<option value="3">3 kinderen</option>
 					<option value="4">4 kinderen</option>
+					<option value="5">5 kinderen</option>
+					<option value="6">6 kinderen</option>
 				</select>
     			<input id="search-submit-button" class="search-submit" type="submit" value="Zoeken" name="search">
         	</form>
@@ -77,6 +79,8 @@
 							<option value="2">2 kinderen</option>
 							<option value="3">3 kinderen</option>
 							<option value="3">4 kinderen</option>
+							<option value="5">5 kinderen</option>
+							<option value="6">6 kinderen</option>
 						</select>
 						<input class="search-submit" type="submit" name="search" value="Zoeken">
 			    	</form>
