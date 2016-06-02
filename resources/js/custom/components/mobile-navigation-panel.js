@@ -1,4 +1,5 @@
 // Opening and closing the mobile menu panel
+
 $("#top-bar-mobile-menu-button").on("click", function() {
 	if ($('.mobile-menu-panel').hasClass('animate-slide-left')) 
 	{

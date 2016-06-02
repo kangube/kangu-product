@@ -14,22 +14,28 @@
 	background-size: cover;
 	overflow: hidden;
 
-	.advert-overview-title-container {
+	.advert-overview-header-container {
 		align-self: center;
-		margin-top: 8%;
-		margin-bottom: 12%;
+		//margin-top: 8%;
+		//margin-bottom: 12%;
 		width: 60%;
 
 		@include breakpoint(medium down) {
 			width: 95%;
+			margin-top: 20px;
+			margin-bottom: 120px;
 		}
 
 		@include breakpoint(large) {
 			width: 70%;
+			margin-top: 115px;
+			margin-bottom: 175px;
 		}
 
 		@include breakpoint(105em) { 
 			width: 50%;
+			margin-top: 115px;
+			margin-bottom: 175px;
 		}
 
 		@include breakpoint(120em) { 
@@ -37,12 +43,12 @@
 		}
 	}
 
-	.advert-overview-title, .advert-overview-subheader {
+	.advert-overview-header, .advert-overview-subheader {
 		color: $text-white !important;
 		text-align: center;
 	}
 
-	.advert-overview-title {
+	.advert-overview-header {
 		margin-bottom: 25px;
 
 		@include breakpoint(small) { 
@@ -97,15 +103,7 @@
 	align-self: center;
 
 	@include breakpoint(large) {
-		width: 57%;
-	}
-
-	@include breakpoint(105em) {
-		width: 50%;
-	}
-
-	@include breakpoint(120em) {
-		width: 45%;
+		width: 60%;
 	}
 
 	display: flex;
@@ -115,6 +113,12 @@
 	.search-region {
 		width: 50%;
 		border-radius: 3px 0 0 3px;
+	}
+
+	.search-date {
+		width: 16.67%;
+		border-left: none !important;
+		border-right: none !important;
 	}
 
 	.search-price {
@@ -186,17 +190,6 @@
 	}
 }
 
-.no-search-results-container {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-
-	p {
-		@include font($paragraph-font-family, regular, regular, 14, 19, red);
-	}
-}
-
 // Styling of the search form used for medium screens and smaller
 
 #mobile-search-form-button {
@@ -230,6 +223,7 @@
 	background-color: $light-grey-alt;
 	display: none;
 	padding: 40px 20px 40px 20px;
+	overflow: auto;
 
 	.mobile-search-form {
 		@include grid-column(12);
@@ -259,6 +253,10 @@
 		text-align: center !important;
 		display: inline-block !important;
 	}
+}
+
+.mobile-search-form .search-date-mobile {
+	margin-bottom: 20px;
 }
 
 .advert-search-form-mobile {
@@ -312,4 +310,39 @@
 	background-color: $light-grey;
 	border: 1px solid $border-color-light-grey;
 	border-radius: 3px;
+}
+
+// Styling of the search container when there are no search results
+
+.advert-overview-no-search-container {
+	@include grid-column(12);
+
+	.no-search-results-container {
+		@include grid-column(12);
+		padding: 80px 40px 80px 40px;
+		background-color: $light-grey;
+		text-align: center;
+
+		.no-adverts-icon {
+			font-size: rem-calc(120);
+			color: $border-color-dark-grey;
+		}
+
+		.no-adverts-title {
+			@include font($paragraph-font-family, regular, regular, 14, 21, rgba($text-dark-grey, 0.4));
+			margin-bottom: 0;
+		}
+	}
+}
+
+@include breakpoint(medium down) {
+	.advert-overview-no-search-container .no-search-results-container {
+		.no-adverts-icon {
+			font-size: rem-calc(100);
+		}
+
+		.no-search-results-container {
+			padding: 60px 20px 60px 20px;
+		}
+	}
 }

@@ -1,6 +1,6 @@
 <?php
 	header('Content-Type: application/json');
-							
+
 	$db_username = 'root';
 	$db_password = 'root';
 	$db_name = 'kangu-product';

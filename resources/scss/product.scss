@@ -13,6 +13,7 @@
 @import 'components/footer';
 @import 'components/advert';
 @import 'components/animate';
+@import 'components/autocomplete';
 
 // Importing all partials
 @import 'partials/input-fields';
@@ -23,11 +24,13 @@
 @import 'partials/datepicker';
 @import 'partials/event-datepicker';
 @import 'partials/timepicker';
+@import 'partials/availability-calendar';
 
 // Importing all pages
 @import 'pages/promotional';
 @import 'pages/registration';
 @import 'pages/login';
 @import 'pages/advert-overview';
+@import 'pages/advert-detail';
 @import 'pages/advert-create';
 @import 'pages/advert-create-confirmation';
