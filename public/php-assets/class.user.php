@@ -38,6 +38,25 @@ class USER
 			echo $e->getMessage();
 		}
 	}
+
+	public function hasProvidedChildren($user_id)
+	{
+		try
+		{
+			$user_has_provided_children = $this->conn->prepare("SELECT * FROM tbl_user_child LEFT JOIN tbl_child ON tbl_user_child.fk_child_id=tbl_child.child_id WHERE fk_user_id=:user_id");
+			$user_has_provided_children->execute(array(":user_id"=>$user_id));
+			if($user_has_provided_children->rowCount() >= 1) {
+				return $user_has_provided_children;
+			}
+			else {
+				return false;
+			}
+		}
+		catch(PDOException $e)
+		{
+			echo $e->getMessage();
+		}
+	}
 	
 	public function register($user_first_name, $user_last_name, $user_email, $user_password)
 	{

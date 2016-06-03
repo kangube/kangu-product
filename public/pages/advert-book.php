@@ -111,87 +111,160 @@
 	<body>
 		<?php include('../php-includes/navigation.php'); ?>
 
-		<div class="row">
-			<div class="small-12 columns booking-create-form-container">
-			  	<form method="post" data-abide novalidate>
-				  	<p>
-				  		<?php
-							while($advert = $oneAdvert->fetch(PDO::FETCH_ASSOC))
-							{
-								echo "<h3>Info over advert van ".$advert["user_firstname"]."</h3>";
-								echo "Advert creator: ".$advert["user_firstname"].' '.$advert["user_lastname"]."<br />";
-								echo "Advert location: ".$advert["user_adress"].', '.$advert["user_city"]."<br />";
-								echo "Contact email: ".$advert["user_email"]."<br />";
-								echo "Contact home number: ".$advert["user_home_number"]."<br />";
-								echo "Contact mobile number: ".$advert["user_mobile_number"]."<br />";
-								echo "Description: ".$advert["advert_description"]."<br />";
-								echo "Price: ".$advert["advert_price"]."<br />";
-								echo "Spots left: ".$advert["advert_spots"]."<br />";
-								echo "Advert school: ".$advert["advert_school"]."<br />";
-								echo "Advert transport: ".$advert["advert_transport"]."<br />";
-								echo "<br/>";		
-							}
-						?>
-				  	</p>
+		<div class="full-width-advert-book">
+			<div class="full-height-gradient"></div>
 
-					<?php if(isset($error)): ?>
-						<div class="error">
-							<?php echo $error;?>
+			<div class="advert-book-create-container">
+				<div class="advert-book-form-container">
+				  	<form class="advert-book-form" method="post" data-abide novalidate>
+
+				  		<div class="form-select-date-container">
+				  			<h3 class="form-header">Opvang-datum</h3>
+							<hr class='blue-horizontal-line'></hr>
+							<p class="form-subheader">Selecteer de datum waarvoor u graag opvang zou willen aanvragen.</p>
+							<div class="availability-spots-select"></div>
 						</div>
-					<?php endif; ?>
 
-					<?php if(isset($succes)): ?>
-						<div class="feedback">
-							<?php echo $succes;?>
+						<div class='form-select-children-container'>
+							<h3 class="form-header">Aantal kinderen</h3>
+							<hr class='blue-horizontal-line'></hr>
+							<p class="form-subheader">Selecteer de kinderen die moeten opgevangen worden zodat de opvang-ouder weet welke kinderen men moet ophalen en opvangen.</p>
+
+							<?php
+								$check_user_has_provided_children = $auth_user->hasProvidedChildren($userRow['user_id']);
+								if($check_user_has_provided_children) {
+									echo '<p>This user has provided us with the right information about his/her children!</p>';
+								}
+								else {
+									echo '<div class="number-children-container">
+											<div class="form-icon-input-field">
+												<div class="form-icon-input-container">
+													<span class="form-icon" data-icon="o"></span>
+													<input class="form-input" type="text" name="advert-child-name[]" placeholder="Voor- en achternaam van jouw kind" required>
+												</div>
+											</div>
+
+											<div class="form-icon-input-field">
+												<div class="form-icon-input-container">
+													<span class="form-icon" data-icon="e"></span>
+													<input class="form-input" type="text" name="advert-child-class[]" placeholder="Klasnummer van jouw kind" required>
+												</div>
+											</div>
+										</div>
+
+										<a class="advert-add-child-button">Kind toevoegen</a>';
+								}
+							?>
 						</div>
-					<?php endif; ?>
 
-					<div class="availability-events"></div>
-					
-					<label for="children">Aantal kinderen dat je wilt boeken</label>
-					
-					<select name="booking_number_children">
-						<?php
-							$advertspots_results = $mysqli->prepare("SELECT availability_spots FROM tbl_availability LEFT JOIN tbl_advert ON tbl_advert.advert_id=tbl_availability.fk_advert_id WHERE tbl_availability.fk_advert_id='".$_GET['id']."' AND tbl_availability.availability_date='2016-03-09'");
-							$advertspots_results->execute();
-							$advertspots_results->bind_result($availability_spots);
+						<div class="form-select-transportation-container">
+							<h3 class="form-header">Verplaatsingsmogelijkheden</h3>
+							<hr class="blue-horizontal-line"></hr>
+							<p class="form-subheader">Geef aan op welke manier(en) je de kinderen van en naar school voert. (Meerdere opties zijn mogelijk)</p>
 
-							while($advertspots_results->fetch()) {
-								for($i = 1; $i < $availability_spots+1; $i++) {
-									if ($i == 1) {
-										echo '<option value="'.$i.'">'.$i.' kind</option>';
+							<div class="show-for-large transportation-container">
+								<div class="transportation">
+									<ul>
+										<li>
+											<div class="checkbox">
+												<input type="checkbox" name="advert-transportation[]" id="auto" value="auto">
+												<label for="auto"><span></span>Met de auto</label>
+			  								</div>
+			  							</li>
+
+			  							<li>
+			  								<div class="checkbox">
+				  								<input type="checkbox" name="advert-transportation[]" id="fiets" value="fiets">
+		  										<label for="fiets"><span></span>Met de fiets</label>
+			  								</div>
+			  							</li>
+									</ul>
+								</div>
+
+								<div class="vertical-line"></div>
+
+								<div class="transportation">
+									<ul>
+										<li>
+			  								<div class="checkbox">
+				  								<input type="checkbox" name="advert-transportation[]" id="openbaar-vervoer" value="openbaar-vervoer">
+		  										<label for="openbaar-vervoer"><span></span>Openbaar vervoer</label>
+			  								</div>
+			  							</li>
+
+			  							<li>
+			  								<div class="checkbox">
+				  								<input type="checkbox" name="advert-transportation[]" id="wandelend" value="wandelend">
+		  										<label for="wandelend"><span></span>Te voet</label>
+			  								</div>
+			  							</li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="show-for-small hide-for-large transportation-container-mobile">
+								<ul>
+									<li>
+										<div class="checkbox">
+											<input type="checkbox" name="advert-transportation[]" id="auto-mobile" value="auto">
+											<label for="auto-mobile"><span></span>Met de auto</label>
+		  								</div>
+		  							</li>
+
+		  							<li>
+		  								<div class="checkbox">
+			  								<input type="checkbox" name="advert-transportation[]" id="openbaar-vervoer-mobile" value="openbaar-vervoer">
+	  										<label for="openbaar-vervoer-mobile"><span></span>Openbaar vervoer</label>
+		  								</div>
+		  							</li>
+
+		  							<li>
+		  								<div class="checkbox">
+			  								<input type="checkbox" name="advert-transportation[]" id="fiets-mobile" value="fiets">
+	  										<label for="fiets-mobile"><span></span>Met de fiets</label>
+		  								</div>
+		  							</li>
+
+		  							<li>
+		  								<div class="checkbox">
+			  								<input type="checkbox" name="advert-transportation[]" id="wandelend-mobile" value="wandelend">
+	  										<label for="wandelend-mobile"><span></span>Te voet</label>
+		  								</div>
+		  							</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="form-select-services-container">
+							<input type="hidden" name="advert-booking-services[]" value="opvang-thuisomgeving">
+							<input type="hidden" name="advert-booking-services[]" value="ophalen-schoolpoort">
+
+							<?php
+								while($service = $oneService->fetch(PDO::FETCH_ASSOC))
+								{
+									if (($service["service_name"] == 'opvang-thuisomgeving')OR($service["service_name"] == 'ophalen-schoolpoort'))
+									{
+										echo '<input class="my-activity" type="checkbox" name="advert-booking-services[]" value='.$service["service_name"].' disabled checked>'.$service["service_name"].'<br/>';
 									}
-									else if ($i > 1) {
-										echo '<option value="'.$i.'">'.$i.' kinderen</option>';
+									else 
+									{
+										echo '<input class="my-activity" type="checkbox" name="advert-booking-services[]" value='.$service["service_name"].'>'.$service["service_name"].'<br/>';
 									}
-							    }
-							}
-						?>
-					</select>
+								}
+							?>
+						</div>
+						
+						<div class="form-add-extra-information-container">
+							<h3 class="form-header">Extra informatie</h3>
+							<hr class='blue-horizontal-line'></hr>
+							<textarea id="info" name="booking_extra_information" placeholder="Geef hier eventuele extra informatie mee waarvan de opvang-ouder dient op de hoogte gebracht te worden." rows="5" cols="10"></textarea>
+						</div>
 
-					<label for="info">Vink de services aan die je wil gebruiken</label><br/>
-					<input type="hidden" name="advert-booking-services[]" value="opvang-thuisomgeving">
-					<input type="hidden" name="advert-booking-services[]" value="ophalen-schoolpoort">
-
-					<?php
-						while($service = $oneService->fetch(PDO::FETCH_ASSOC))
-						{
-							if (($service["service_name"] == 'opvang-thuisomgeving')OR($service["service_name"] == 'ophalen-schoolpoort'))
-							{
-								echo '<input class="my-activity" type="checkbox" name="advert-booking-services[]" value='.$service["service_name"].' disabled checked>'.$service["service_name"].'<br/>';
-							}
-							else 
-							{
-								echo '<input class="my-activity" type="checkbox" name="advert-booking-services[]" value='.$service["service_name"].'>'.$service["service_name"].'<br/>';
-							}
-						}
-					?>
-					
-					<label for="info">Extra informatie</label><br/>
-					<textarea id="info" name="booking_extra_information"></textarea>
-				
-					<input class="submit" type="submit" id="btnSubmit" value="Book" />
-				</form>
+						<div class="form-submit-request-container">
+							<input class="submit" type="submit" id="btnSubmit" value="Opvang-aanvraag versturen"/>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 
@@ -233,23 +306,54 @@
 	                    });
 	                });
 
-					$('.availability-events').datepicker({
+	                $(document).ready(function() {
+				    	checkSize();
+					    $(window).resize(checkSize);
+
+						function checkSize() {
+							var currentSize = Foundation.MediaQuery.current;
+							var numberOfMonths = $('.availability-spots-select').datepicker('option', 'numberOfMonths');
+						    if (currentSize == 'small' || currentSize == 'medium') {
+								$('.availability-spots-select').datepicker('option', 'numberOfMonths', 1);
+							}
+							else if (currentSize == 'large' || currentSize == 'xlarge' || currentSize == 'xxlarge') {
+								$('.availability-spots-select').datepicker('option', 'numberOfMonths', [1,2]);
+							}
+						}
+					});
+
+					$('.availability-spots-select').datepicker({
 				        inline: true,
+					    dateFormat: 'yy-mm-dd',
 					    firstDay: 0,
 					    showOtherMonths: true,
 					    monthNames: ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'],
 					    dayNames: ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'],
 					    dayNamesMin: ['Zo', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za'],
 					    beforeShowDay: function(date) {
-					        var event = events[date];
+							var event = events[date];
 
 					        if (event) {
 					            return [true, event.className];
 					        }
 					        else {
-					            return [true, ''];
+					            return [false, ''];
 					        }
-					    }
+					    },
+					    onSelect: function(date) {
+							$.getJSON('availability-spots.php?id='+advert_id+'&date='+date+'', function(data) {
+			                    $.each(data, function(key, val) {
+			                    	if (val.availability_spots == 1) {
+			                    		$('.select-children-alert').html('Er is nog '+val.availability_spots+' beschikbare plaats');
+			                    	}
+			                    	else if (val.availability_spots >= 1) {
+			                    		$('.select-children-alert').html('Er zijn nog '+val.availability_spots+' beschikbare plaatsen');
+			                    	}
+			                    });
+			                });
+
+			                $('.form-select-children-container').css('display', 'block');
+						}
 					});
 				}
 			});

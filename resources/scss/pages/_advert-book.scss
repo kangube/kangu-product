@@ -1,0 +1,190 @@
+// Styling of the introductory header
+
+.full-width-advert-book {
+	min-width: 100%;
+	height: auto;
+}
+
+.full-height-gradient {
+	min-width: 100%;
+	min-height: 100%;
+	display: flex;
+	background: linear-gradient(-225deg, #57B9F6 0%, $dark-blue 100%);
+	left: 0;
+	top: 0;
+	position: absolute;
+	z-index: -1;
+}
+
+// Styling of the advert book form and all of its components
+
+.advert-book-create-container {
+	@include grid-row;
+}
+
+.advert-book-form-container {
+	display: flex;
+	margin: 0 auto 0 auto;
+	background-color: $white;
+	border-radius: 3px;
+	box-shadow: 0px 19px 38px 0px rgba(0,0,0,0.2);
+
+	@include breakpoint(small) {
+		width: 94%;
+	}
+
+	@include breakpoint(large) {
+		width: 97.3%;
+	}
+
+	.advert-book-form {
+		padding: 60px 20px 60px 20px;
+	}
+
+	// General styling of all the form-containers
+
+	.form-select-date-container, .form-select-children-container,
+	.form-select-transportation-container, .form-select-services-container, 
+	.form-add-extra-information-container, .form-submit-request-container {
+		@include grid-column(12);
+		margin-bottom: 50px;
+	}
+
+	@include breakpoint(large) {
+		.form-select-children-container {
+			@include grid-column(7);
+		}
+
+		.form-select-transportation-container {
+			@include grid-column(5);
+		}
+	}
+
+	.form-header {
+		@include font($header-font-family, regular, regular, 24, 30, $text-dark-grey);
+	}
+
+	.blue-horizontal-line {
+		margin-bottom: 25px;
+	}
+
+	.form-subheader {
+		@include font($paragraph-font-family, regular, regular, 14, 22, rgba($text-dark-grey, 0.8));
+		margin-bottom: 25px;
+	}
+
+	.form-icon-input-field {
+		margin-bottom: 30px;
+
+		@include breakpoint(small) {
+			@include grid-column(12);
+		}
+
+		@include breakpoint(medium) {
+			@include grid-column(6);
+		}
+	}
+
+	.form-icon-input-container {
+		border: none;    
+		display: flex;
+		flex-direction: row;
+
+		input {
+			margin-bottom: 0;
+		}
+
+		.form-icon {
+			font-size: rem-calc(25);
+			color: rgba($text-dark-grey, 0.6);
+			padding: 6px 0 0 0;
+			margin-right: 20px;
+		}
+
+		.form-input {
+			flex: 1;
+		}
+	}
+
+	// Styling of the number children container
+
+	.advert-add-child-button {
+		@include button(transparent, 3px);
+		border: 1px solid rgba($text-dark-grey, 0.4);
+		color: rgba($text-dark-grey, 0.6);
+		text-align: center;
+		padding: 12px;
+		text-decoration: none;
+		display: inline-block;
+		width: 100%;
+	}
+
+	// Styling of the transportation container
+
+	.form-transportation-container ul {
+		margin: 0;
+	}
+
+	.transportation-container {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
+	
+		.vertical-line {
+			border: 1px solid $border-color-light-grey;
+			min-height: 95px;
+			width: 1px;
+		}
+
+		.transportation ul {
+			margin: 0;
+		}
+
+		.transportation ul li {
+			text-align: left;
+			list-style-type: none;
+			padding: 7px 0 7px 0!important;
+		}
+
+		.transportation ul li:not(:last-child) {
+			margin-bottom: 30px;
+		}
+	}
+
+	@include breakpoint(small only) {
+		.transportation-container-mobile ul li {
+			@include grid-column(12);
+			list-style-type: none;
+			border: 1px solid $border-color-light-grey;
+			padding: 15px !important;
+		}
+
+		.transportation-container-mobile ul li:nth-child(even) {
+			border-top: none;
+			border-bottom: none;
+		}
+
+		.transportation-container-mobile ul li:last-child {
+			border-bottom: 1px solid $border-color-light-grey;
+		}
+	}
+
+	@include breakpoint(medium only) {
+		.transportation-container-mobile ul li {
+			@include grid-column(6);
+			list-style-type: none;
+			border: 1px solid $border-color-light-grey;
+			padding: 15px !important;
+		}
+
+		.transportation-container-mobile ul li:nth-child(odd) {
+			border-right: none;
+		}
+
+		.transportation-container-mobile ul li:nth-child(-n+2) {
+			border-bottom: none;
+		}
+	}
+}
