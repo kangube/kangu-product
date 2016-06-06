@@ -49,6 +49,20 @@
 			vertical-align: middle;
 		}
 	}
+
+	.top-bar-title {
+		margin-right: 0;
+		text-align: center;
+	}
+
+	.top-bar-title a {
+		vertical-align: middle;
+	}
+
+	.top-bar-title a:before {
+		@include font($header-font-family, regular, bold, 20, 20, rgba($text-dark-grey, 0.8));
+		margin: 0 10px 0 0;
+	}
 }
 
 .mobile-menu-background {

@@ -12,16 +12,10 @@
 		</ul>
 	</div>
 
-	<?php 
-		$check_user_has_advert = $auth_user->hasAdvert($userRow['user_id']);
-		if ($check_user_has_advert === false) {
-			echo '<div class="create-advert"><a href="../pages/advert-create.php">Opvang aanbieden</a></div>';
-		}
-	?>
-
 	<div class="menu-links">
 		<div><span><?php echo 'Jouw credits: '.$userRow['user_credits']; ?></span></div>
 		<ul>
+			<li><a href="../pages/advert-create.php">Opvang aanbieden</a></li>
 			<li><a href="../pages/advert-overview.php">Credits aankopen</a></li>
 		</ul>
 	</div>
@@ -50,7 +44,7 @@
 
 <div class="top-bar-mobile">
 	<span id="top-bar-mobile-menu-button" data-icon="j"></span>
-	<span><a class="top-bar-title" href="../pages/advert-overview.php">kangu</a></span>
+	<span class="top-bar-title"><a href="../pages/advert-overview.php" data-icon="A">kangu</a></span>
 	<span data-icon="f"></span>
 </div>
 
