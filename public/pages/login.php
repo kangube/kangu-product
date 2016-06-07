@@ -64,7 +64,7 @@ if(isset($_POST['login-button']))
                                             } ?>
 
                                         <input type="submit" class="login-account-button" value="Aanmelden" name="login-button">
-                                        <a href="#" class="forgot-password-link">Wachtwoord vergeten?</a>
+                                        <a href="password-reset-mail.php" class="forgot-password-link">Wachtwoord vergeten?</a>
                                     </div>
                                 </div>
                             </div>
