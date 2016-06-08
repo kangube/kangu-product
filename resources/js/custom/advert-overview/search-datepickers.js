@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	// Input datepicker for large screens and up
 
-	$(".search-date").datepicker({
+	/*$(".search-date").datepicker({
 		inline: false,
 		dateFormat: 'yy-mm-dd',
 		firstDay: 0,
@@ -23,5 +23,5 @@ $(document).ready(function() {
 	    dayNamesMin: ['Zo', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za'],
 	    altFormat: "yy-mm-dd",
 		altField: ".search-date-mobile-alt"
-	});
+	});*/
 });

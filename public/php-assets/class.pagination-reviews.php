@@ -72,8 +72,8 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 		
 		while ($services_row = $review_results->fetch_array(MYSQLI_ASSOC)) {
 			// Processing and shortening the review description
-			$shorten = strpos($review_description, ' ', 350);
-			$final_review_description = substr($review_description, 0, $shorten)." ...";
+			$shorten = strpos($services_row['review_description'], ' ', 350);
+			$final_review_description = substr($services_row['review_description'], 0, $shorten)." ...";
 
 			// Processing and reformatting the review-date from numbers to string
 			$processed_review_date = explode("-", $services_row['review_date']);

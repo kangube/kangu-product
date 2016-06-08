@@ -39,12 +39,15 @@
     // Processing all of the children corresponding to the creator of the advert
     $children_results = $mysqli->query("SELECT child_first_name from tbl_user_child LEFT JOIN tbl_child ON tbl_user_child.fk_child_id=tbl_child.child_id WHERE fk_user_id=".$advert_information['user_id']."");
 
+ 	$formatted_children_names = "";
+
     while($children_row = $children_results->fetch_array(MYSQLI_ASSOC)) {
         $formatted_children_names .= $children_row['child_first_name'].',  ';
     }
 
     $formatted_children_names = rtrim($formatted_children_names,', ');
     $formatted_children_names = preg_replace('/,([^,]*)$/', ' en \1', $formatted_children_names);
+
 
     // Processing user vote on a review
     $vote = new Vote();
@@ -419,8 +422,14 @@
 						$shorten = strpos($advert_description, ' ', 145);
 						$final_advert_description = substr($advert_description, 0, $shorten)." ...";
 
-						echo "
-							<div class='advert-container columns end'>
+						$advert_spots_additive = '';
+						if ($advert_spots <= 1) {
+							$advert_spots_additive = 'kind';
+						} else {
+							$advert_spots_additive = 'kinderen';
+						}
+
+					    echo "<div class='advert-container end'>
 							  	<a href='advert-detail.php?id=".$advert_id."' class='advert-link'>
 									<div class='advert'>
 						    			<div class='small-12 columns'>
@@ -437,26 +446,11 @@
 						    			</div>
 
 										<p class='advert-description'>".$final_advert_description."</p>
-						
-						    			<div class='small-6 columns'>
-							    			<div class='advert-price'>
-								    			<p>".$advert_price."</p>
-								    			<p>per kind</p>
-							    			</div>
-							    		</div>
-
-							    		<div class='small-6 columns'>
-							    			<div class='advert-spots'>
-							    				<p>".$advert_spots."</p>
-								    			<p>plaatsen</p>
-							    			</div>
-							    		</div>
-				    	
-							    		<p class='advert-school' data-icon='e'>Basisschool ".$advert_school."</p>
+				    					<p class='advert-spots'><span data-icon='o'></span>Plaats voor ".$advert_spots." ".$advert_spots_additive."</p>
+							    		<p class='advert-school'><span data-icon='e'></span>Basisschool ".$advert_school."</p>
 						    		</div>
 						    	</a>
-					    	</div>
-					    ";
+					    	</div>";
 					}    
 				?>
 		    </div>

@@ -117,4 +117,43 @@
 			margin-right: 10px;
 		}
 	}
+
+	.advert-spots, .advert-school {
+		@include font($paragraph-font-family, regular, regular, 12, 12, rgba($text-dark-grey, 0.8));
+		background-color: darken($light-grey, 5%);
+		border-radius: 3px;
+		padding: 12px 10px 12px 15px;
+		margin: 0 0 0 0;
+		text-align: left;
+
+		span {
+			font-size: rem-calc(19);
+			margin-right: 10px;
+			vertical-align: middle;
+		}
+	}
+
+	.advert-spots {
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
+
+	/*.advert-spots, .advert-school {
+		@include font($paragraph-font-family, regular, regular, 14, 14, rgba($text-dark-grey, 0.8));
+		background-color: transparent;
+		border-radius: 3px;
+		padding: 5px 0 5px 0;
+		margin: 0 0 0 0;
+		text-align: left;
+
+		span {
+			font-size: rem-calc(20);
+			margin-right: 10px;
+			vertical-align: middle;
+		}
+	}
+
+	.advert-spots {
+		margin-top: 10px;
+	}*/
 }
