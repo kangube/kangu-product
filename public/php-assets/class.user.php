@@ -107,6 +107,25 @@ class USER
 		}
 	}
 
+	public function hasProvidedChildren($user_id)
+	{
+		try
+		{
+			$user_has_provided_children = $this->conn->prepare("SELECT * FROM tbl_user_child WHERE fk_user_id=:user_id");
+			$user_has_provided_children->execute(array(":user_id"=>$user_id));
+			if($user_has_provided_children->rowCount() >= 1) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		catch(PDOException $e)
+		{
+			echo $e->getMessage();
+		}
+	}
+
 	public function resetPassword($user_email, $user_password)
 	{
 		try

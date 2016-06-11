@@ -266,5 +266,42 @@ class advert
 		$oneAdvert = $conn->query("SELECT * FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id WHERE tbl_advert.advert_id=$advertNumber");
 		return $oneAdvert;
 	}
+
+	public function GetAdvertCreatorDetails($advert_id) {
+		$conn = Db::getInstance();
+		$statement = $conn->prepare("SELECT * FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id WHERE tbl_advert.advert_id=:AdvertId");
+		$statement->bindValue(":AdvertId", $advert_id);
+		$statement->execute();
+		return $statement;
+	}
+
+	public function GetServices($advert_id) {
+		$conn = Db::getInstance();
+		$statement = $conn->prepare("SELECT service_name FROM tbl_service WHERE fk_advert_id=:AdvertId");
+		$statement->bindValue(":AdvertId", $advert_id);
+		$statement->execute();
+		return $statement;
+	}
+
+	public function GetServiceNames() {
+		$conn = Db::getInstance();
+		$statement = $conn->prepare("SELECT service_price_name FROM tbl_service_price");
+		$statement->execute();
+		return $statement;
+	}
+
+	public function GetServiceDescriptions() {
+		$conn = Db::getInstance();
+		$statement = $conn->prepare("SELECT service_price_description FROM tbl_service_price");
+		$statement->execute();
+		return $statement;
+	}
+
+	public function GetServicePrices() {
+		$conn = Db::getInstance();
+		$statement = $conn->prepare("SELECT service_price_value FROM tbl_service_price");
+		$statement->execute();
+		return $statement;
+	}
 }
 ?>

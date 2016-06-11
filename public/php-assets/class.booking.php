@@ -2,14 +2,16 @@
 
 require_once('class.dbconfig.php');
 
-class booking
+class Booking
 {	
-	private $m_sAdvert_ID;
-	private $m_sBooker_user_ID;
-	private $m_sRenter_user_ID;
-	private $m_sBooking_Number_Spots;
-	private $m_sBooking_Price;
-	private $m_sBooking_Extra_Information;
+	private $m_iAdvertId;
+	private $m_iBookerUserId;
+	private $m_iRenterUserId;
+	private $m_iNumberSpots;
+	private $m_iPrice;
+	private $m_sExtraInformation;
+	private $m_sDate;
+	private $m_iChildId;
 
 	private $conn;
 	
@@ -22,28 +24,36 @@ class booking
     public function __set($p_sProperty, $p_sValue) {
 		switch ($p_sProperty) 
 		{
-			case 'Advert_ID':
-				$this->m_sAdvert_ID = $p_sValue;
+			case 'AdvertId':
+				$this->m_iAdvertId = $p_sValue;
 				break;
 
-			case 'Booker_user_ID':
-				$this->m_sBooker_user_ID = $p_sValue;
+			case 'BookerUserId':
+				$this->m_iBookerUserId = $p_sValue;
 				break;
 
-			case 'Renter_user_ID':
-				$this->m_sRenter_user_ID = $p_sValue;
+			case 'RenterUserId':
+				$this->m_iRenterUserId = $p_sValue;
 				break;
 
-			case 'Booking_Number_Spots':
-				$this->m_sBooking_Number_Spots = $p_sValue;
+			case 'NumberSpots':
+				$this->m_iNumberSpots = $p_sValue;
 				break;
 
-			case 'Booking_Price':
-				$this->m_sBooking_Price = $p_sValue;
+			case 'Price':
+				$this->m_iPrice = $p_sValue;
 				break;
 
-			case 'Booking_Extra_Information':
-				$this->m_sBooking_Extra_Information = $p_sValue;
+			case 'ExtraInformation':
+				$this->m_sExtraInformation = $p_sValue;
+				break;
+
+			case 'Date':
+				$this->m_sDate = $p_sValue;
+				break;
+
+			case 'ChildId':
+				$this->m_iChildId = $p_sValue;
 				break;
 		}
 	}
@@ -51,57 +61,110 @@ class booking
 	public function __get($p_sProperty) {
 		switch ($p_sProperty) 
 		{
-			case 'Advert_ID':
-				return $this->m_sAdvert_ID;
+			case 'AdvertId':
+				return $this->m_iAdvertId;
 				break;
 
-			case 'Booker_user_ID':
-				return $this->m_sBooker_user_ID;
+			case 'BookerUserId':
+				return $this->m_iBookerUserId;
 				break;
 
-			case 'Renter_user_ID':
-				return $this->m_sRenter_user_ID;
+			case 'RenterUserId':
+				return $this->m_iRenterUserId;
 				break;
 
-			case 'Booking_Number_Spots':
-				return $this->m_sBooking_Number_Spots;
+			case 'NumberSpots':
+				return $this->m_iNumberSpots;
 				break;
 
-			case 'Booking_Price':
-				return $this->m_sBooking_Price;
+			case 'Price':
+				return $this->m_iPrice;
 				break;
 
-			case 'Booking_Extra_Information':
-				return $this->m_sBooking_Extra_Information;
+			case 'ExtraInformation':
+				return $this->m_sExtraInformation;
+				break;
+
+			case 'Date':
+				return $this->m_sDate;
+				break;
+
+			case 'ChildId':
+				return $this->m_iChildId;
 				break;
 		}
 	}
 	
 	public function Save() {
 		$conn = Db::getInstance();
-		$statement = $conn->prepare("INSERT INTO tbl_booking(
-			fk_advert_id,
-			fk_booker_user_id,
-			fk_renter_user_id, 
-			booking_extra_information,
-			booking_price,
-			booking_number_spots)
-			VALUES 
-			(:advertID, :bookerID, :renterID, :extrainformation, :booking_price, :booking_number_spots)");
-		$statement->bindValue(
-			':advertID', $this->Advert_ID);
-		$statement->bindValue(
-			':bookerID', $this->Booker_user_ID);
-		$statement->bindValue(
-			':renterID', $this->Renter_user_ID);
-		$statement->bindValue(
-			':extrainformation', $this->Booking_Extra_Information);
-		$statement->bindValue(
-			':booking_price', $this->Booking_Price);
-		$statement->bindValue(
-			':booking_number_spots', $this->Booking_Number_Spots);
+		$statement = $conn->prepare("INSERT INTO tbl_booking(fk_advert_id, fk_booker_user_id, fk_renter_user_id, booking_number_spots, booking_price, booking_extra_information, booking_status) VALUES (:AdvertId, :BookerUserId, :RenterUserId, :NumberSpots, :Price, :ExtraInformation, 'pending')");
+		$statement->bindValue(':AdvertId', $this->AdvertId);
+		$statement->bindValue(':BookerUserId', $this->BookerUserId);
+		$statement->bindValue(':RenterUserId', $this->RenterUserId);
+		$statement->bindValue(':NumberSpots', $this->NumberSpots);
+		$statement->bindValue(':Price', $this->Price);
+		$statement->bindValue(':ExtraInformation', $this->ExtraInformation);
 		$statement->execute();
+
+		echo "INSERT INTO tbl_booking(fk_advert_id, fk_booker_user_id, fk_renter_user_id, booking_number_spots, booking_price, booking_extra_information, booking_status) VALUES ('$this->AdvertId', '$this->BookerUserId', '$this->RenterUserId', '$this->NumberSpots', '$this->Price', '$this->ExtraInformation', 'pending')";
 	}
-	
+
+	public function SaveBookedDate() {
+		$conn = Db::getInstance();
+
+		$last_created_booking_id = $conn->lastInsertId();
+
+		$statement = $conn->prepare("INSERT INTO tbl_booking_dates(fk_booking_id, booking_date_format) VALUES (:BookingId, :BookingDate)");
+		$statement->bindValue(':BookingId', $last_created_booking_id);
+		$statement->bindValue(':BookingDate', $this->Date);
+		//$statement->execute();
+
+		echo "INSERT INTO tbl_booking_dates(fk_booking_id, booking_date_format) VALUES ($last_created_booking_id, '$this->Date')";
+	}
+
+	public function SaveBookedChildren() {
+		$conn = Db::getInstance();
+
+		$last_created_booking_id = $conn->lastInsertId();
+
+		$query = "INSERT INTO tbl_booking_children(fk_booking_id, fk_child_id) VALUES";
+		$iterator = new ArrayIterator($this->ChildId);
+		$cachingiterator = new CachingIterator($iterator);
+
+		foreach ($cachingiterator as $value)
+	    {
+	        $query .= "('$last_created_booking_id', '".$cachingiterator->current()."')";
+
+	        if($cachingiterator->hasNext())
+	        {
+	            $query .= ", ";
+	        }
+	    }
+
+		//$statement->execute($query);
+
+		echo $query;
+	}
+
+	public function UpdateAdvertNumberBookings() {
+		$conn = Db::getInstance();
+		$statement = $conn->prepare("UPDATE tbl_advert SET advert_number_bookings = (advert_number_bookings + :NumberSpots) WHERE advert_id = :AdvertId");
+		$statement->bindValue(':AdvertId', $this->AdvertId);
+		$statement->bindValue(':NumberSpots', $this->NumberSpots);
+		//$statement->execute();
+
+		echo "UPDATE tbl_advert SET advert_number_bookings = (advert_number_bookings + $this->NumberSpots) WHERE advert_id = '$this->AdvertId'";
+	}
+
+	public function UpdateAvailabilitySpots() {
+		$conn = Db::getInstance();
+		$statement = $conn->prepare("UPDATE tbl_availability SET availability_spots = (availability_spots - :NumberSpots) WHERE fk_advert_id = :AdvertId AND availability_date = :BookingDate");
+		$statement->bindValue(':AdvertId', $this->AdvertId);
+		$statement->bindValue(':NumberSpots', $this->NumberSpots);
+		$statement->bindValue(':BookingDate', $this->Date);
+		//$statement->execute();
+
+		echo "UPDATE tbl_availability SET availability_spots = (availability_spots - $this->NumberSpots) WHERE fk_advert_id = '$this->AdvertId' AND availability_date = '$this->Date'";
+	}
 }
 ?>

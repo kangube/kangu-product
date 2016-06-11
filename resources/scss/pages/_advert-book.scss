@@ -1,0 +1,364 @@
+// Styling of the introductory header
+
+.full-width-advert-book {
+	min-width: 100%;
+	height: auto;
+}
+
+.advert-book-container {
+	@include grid-row;
+
+	.advert-book-header {
+		@include font($header-font-family, regular, regular, 45, 54, $text-white);
+		text-align: center;
+		margin-bottom: 30px;
+	}
+
+	.advert-book-subheader {
+		@include font($header-font-family, regular, regular, 30, 36, $light-blue);
+		text-align: center;
+	}
+}
+
+.advert-book-introductory-header {
+	@include grid-column(12);
+	margin-top: 120px;
+	margin-bottom: 120px;
+}
+
+// Styling of the advert book form and all of its components
+
+.advert-book-form-container {
+	display: flex;
+	margin: 0 auto 0 auto;
+	background-color: $white;
+	border-radius: 3px;
+	box-shadow: 0px 19px 38px 0px rgba(0,0,0,0.2);
+
+	@include breakpoint(small) {
+		width: 94%;
+	}
+
+	@include breakpoint(large) {
+		width: 97.3%;
+	}
+
+	.advert-book-form {
+		padding: 60px 20px 60px 20px;
+		width: 100%;
+	}
+
+	// Styling of general components used throughout the form
+
+	.form-header {
+		@include font($header-font-family, regular, regular, 24, 30, $text-dark-grey);
+	}
+
+	.blue-horizontal-line {
+		margin-bottom: 25px;
+	}
+
+	.form-subheader {
+		@include font($paragraph-font-family, regular, regular, 14, 22, rgba($text-dark-grey, 0.8));
+		margin-bottom: 25px;
+	}
+
+	.form-error {
+		margin-top: 20px !important;
+	}
+
+	// Styling for all form containers
+
+	.form-select-date-container, .form-select-children-container,
+	.form-select-services-container, .form-add-extra-information-container,
+	.form-submit-request-container {
+		@include grid-column(12);
+		margin-bottom: 50px;
+	}
+
+	// Styling of the date selection container
+
+	.advert-availability-slots {
+		background-color: $light-grey;
+		border-radius: 3px;
+		margin-top: 30px;
+		padding-top: 30px;
+		min-width: 100%;
+		max-height: 500px;
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+
+	.availability-slot-container {
+		margin-bottom: 30px;
+		cursor: pointer;
+
+		@include breakpoint(small) {
+			@include grid-column(12);
+		}
+
+		@include breakpoint(medium) {
+			@include grid-column(6);
+		}
+
+		@include breakpoint(large) {
+			@include grid-column(4);
+		}
+	}
+
+	.availability-slot {
+		display: inline-block;
+		background-color: $white;
+		border: 1px solid rgba($dark-grey, 0.4);
+		border-radius: 3px;
+		width: 100%;
+
+		div {
+			padding-top: 10px;
+			padding-bottom: 10px;
+		}
+
+		.selected-date {
+			border-right: 1px solid rgba($dark-grey, 0.4);
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.selected-date p:first-of-type {
+			margin-bottom: 10px;
+		}
+
+		.selected-date p {
+			@include font($paragraph-font-family, regular, regular, 14, 18, $text-dark-grey);
+			margin-bottom: 0;
+		}
+
+		.selected-time p {
+			margin-bottom: 0;
+			text-align: center;
+			vertical-align: middle !important;
+			margin-top: 15px;
+		}
+
+		.selected-time {
+			height: 66px !important;
+		}
+
+		.availability-slot-duration {
+			padding: 0 !important;
+			margin-top: 25px;
+			text-align: center;
+		}
+
+		.availability-slot-duration::before {
+			font-size: rem-calc(20);
+			color: rgba($text-dark-grey, 0.6);
+		}
+	}
+
+	.advert-availability-month .date-month {
+		margin-bottom: 25px;
+		margin-left: 2px;
+
+		p {
+			@include font($header-font-family, regular, regular, 20, 20, rgba($text-dark-grey, 0.8));
+			margin-bottom: 0;
+		}
+	}
+
+	// Styling of the select children container
+
+	.form-select-children-container {
+		.select-children-callout {
+			display: none;
+		}
+
+		// Styling of the add new children containers
+
+		.child-container {
+			background-color: $light-grey;
+			border-radius: 3px;
+			padding: 20px 5px 20px 5px;
+			margin-bottom: 15px;
+			overflow: auto;
+			width: 100%;
+		}
+
+		.child-container-input-field {
+			height: 40px;
+		}
+
+		input, select {
+			margin-bottom: 0 !important;
+		}
+
+		input {
+			height: 40px;
+		}
+		
+		select {
+			background-color: transparent;
+			-webkit-box-shadow: none !important;
+			-moz-box-shadow: none !important;
+			box-shadow: none !important;
+			text-decoration: none;
+			border: none;
+			border-bottom: 1px solid rgba($dark-grey, 0.4);
+			font-family: "open-sans", sans-serif;
+			font-style: italic;
+			font-size: rem-calc(14);
+			color: rgba($dark-grey, 0.4);
+			padding: 0 0 15px 0;
+			margin-bottom: 0;
+			outline: none;
+		}
+
+		select::focus, select::hover, select::active {
+			background-color: transparent;
+			text-decoration: none;
+			border: none;
+			border-bottom: 1px solid rgba($dark-grey, 0.6);
+		}
+
+		.advert-book-save-child-button {
+			@include button($light-red, 3px);
+			text-decoration: none;
+			text-align: center;
+			display: block;
+			height: 100%;
+		}
+
+		.child-container-error {
+			display: none;
+			@include grid-column(12);
+			@include font($paragraph-font-family, regular, regular, 14, 21, $light-red);
+			margin: 25px 0 0 0;
+		}
+
+		// Styling of the select children containers
+
+		.provided-children-container {
+			display: block;
+			overflow: auto;
+			margin-bottom: 25px;
+		}
+
+		.select-child-container {
+			background-color: $light-grey;
+			border-radius: 3px;
+			display: flex;
+			flex-direction: column;
+
+			@include breakpoint(small) {
+				@include grid-column(12);
+			}
+
+			@include breakpoint(medium) {
+				@include grid-column(6);
+			}
+		}
+
+		.select-child-container ul {
+			margin: 0;
+		}
+
+		.select-child-container ul li, .select-child-container ul li label {
+			@include font($paragraph-font-family, regular, regular, 14, 14, rgba($text-dark-grey, 0.6));
+			list-style-type: none;
+			display: inline;
+			vertical-align: middle;
+		}
+
+		.select-child-container ul li:first-child {
+			vertical-align: top;
+		}
+	}
+
+	// Styling of the select services container
+
+	.services-container ul {
+		margin: 0;
+	}
+
+	[type=checkbox]+label, [type=radio]+label {
+		display: block;
+	}
+
+	.services-container ul li {
+		@include breakpoint(small) {
+			@include grid-column(12);
+		}
+
+		@include breakpoint(medium) {
+			@include grid-column(6);
+		}
+
+		@include breakpoint(large) {
+			@include grid-column(4);
+		}
+
+		list-style-type: none;
+		border: 1px solid $border-color-light-grey;
+		background-color: $light-grey;
+		padding: 15px;
+	}
+
+	.services-container	ul li label:before {
+		margin-right: 15px;
+		font-size: rem-calc(25);
+		color: rgba($text-dark-grey, 0.8);
+		vertical-align: middle;
+	}
+
+	.services-container	ul li label {
+		@include font($paragraph-font-family, regular, regular, 14, 25, $text-dark-grey);
+		color: rgba($text-dark-grey, 0.8);
+		cursor: default;
+	}
+
+	.services-container	ul li .not-selected, .not-selected:before {
+		color: rgba($text-dark-grey, 0.3) !important;
+	}
+}
+
+// Responsiveness
+
+@include breakpoint(small only) {
+	.child-container {
+		padding: 40px 20px 40px 20px !important;
+	}
+
+	.child-container-input-field {
+		@include grid-column(12);
+	}
+
+	.child-container-input-field:not(:last-of-type) {
+		margin-bottom: 35px;
+	}
+}
+
+@include breakpoint(medium only) {
+	.child-container-input-field {
+		@include grid-column(6);
+	}
+
+	.child-container-input-field:last-of-type {
+		@include grid-column(12);
+	}
+
+	.child-container-input-field:not(:last-of-type) {
+		margin-bottom: 35px;
+	}
+}
+
+@include breakpoint(large) {
+	.child-container-input-field {
+		@include grid-column(3);
+	}
+
+	.child-container-input-field:nth-child(even), .child-container-input-field:last-of-type {
+		@include grid-column(2);
+	}
+}

@@ -495,7 +495,7 @@
 		    $('#availability-datepicker').multiDatesPicker({
 		        inline: true,
 			    dateFormat: 'yy-mm-dd',
-			    firstDay: 0,
+			    firstDay: 1,
 			    showOtherMonths: true,
 			    monthNames: ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'],
 			    dayNames: ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'],
