@@ -26,6 +26,60 @@
 	margin-bottom: 120px;
 }
 
+// Styling of the confirmation container
+
+.full-width-advert-book-confirmation .row {
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.full-width-advert-book-confirmation > .half-height-gradient {
+	min-width: 100%;
+	min-height: 50%;
+	display: flex;
+	background: url(../assets/index/pattern-tile-alt.svg) repeat;
+	left: 0;
+	top: 59px;
+	position: absolute;
+	z-index: -1;
+}
+
+.advert-book-input-panel {
+	background-color: $light-grey;
+	padding: 35px 30px 35px 30px;
+	border-radius: 3px;
+	box-shadow: 0px 19px 38px 0px rgba(0,0,0,0.2);
+
+	.blue-horizontal-line {
+		text-align: center !important;
+		display: inline-block;
+	}
+
+	.confirmation-icon {
+		font-size: rem-calc(60);
+		color: $dark-blue;
+	}
+
+	h3 {
+		@include font($header-font-family, regular, regular, 20, 20, rgba($text-dark-grey, 0.6));
+		margin: 20px 0 30px 0;
+	}
+
+	.success-message {
+		@include font($paragraph-font-family, regular, regular, 14, 21, rgba($text-dark-grey, 0.6));
+		text-align: center;
+	}
+
+	.confirmation-button {
+		margin-top: 40px;
+		@include button($light-red, 3px);
+		text-decoration: none;
+		display: block;
+		width: 100%;
+	}
+}
+
 // Styling of the advert book form and all of its components
 
 .advert-book-form-container {
@@ -237,25 +291,35 @@
 			margin: 25px 0 0 0;
 		}
 
+		.advert-book-add-child-button {
+			@include button(transparent, 3px);
+			border: 1px solid rgba($text-dark-grey, 0.4);
+			color: rgba($text-dark-grey, 0.6);
+			text-align: center;
+			padding: 12px 25px 12px 25px;
+			text-decoration: none;
+			display: inline-block;
+		}
+
 		// Styling of the select children containers
 
 		.provided-children-container {
 			display: block;
 			overflow: auto;
-			margin-bottom: 25px;
 		}
 
 		.select-child-container {
 			background-color: $light-grey;
-			border-radius: 3px;
+			border: 1px solid $border-color-light-grey;
 			display: flex;
 			flex-direction: column;
+			overflow: hidden;
 
 			@include breakpoint(small) {
 				@include grid-column(12);
 			}
 
-			@include breakpoint(medium) {
+			@include breakpoint(large) {
 				@include grid-column(6);
 			}
 		}
@@ -268,7 +332,16 @@
 			@include font($paragraph-font-family, regular, regular, 14, 14, rgba($text-dark-grey, 0.6));
 			list-style-type: none;
 			display: inline;
-			vertical-align: middle;
+		}
+
+		.select-child-container ul li:not(:first-child) {
+			height: 55px;
+			line-height: 1.7;
+		}
+
+		.select-child-container ul li {
+			padding-top: 15px;
+			padding-bottom: 15px;
 		}
 
 		.select-child-container ul li:first-child {
@@ -321,13 +394,41 @@
 	.services-container	ul li .not-selected, .not-selected:before {
 		color: rgba($text-dark-grey, 0.3) !important;
 	}
+
+	// Styling of the submit request container
+	.form-submit-request-container {
+		margin-bottom: 0;
+
+		#advert-create-request-button {
+			@include button($light-red, 3px);
+		}
+	}
 }
 
 // Responsiveness
 
 @include breakpoint(small only) {
+	// Styling of the introductory header
+
+	.advert-book-introductory-header {
+		margin-top: 90px;
+		margin-bottom: 90px;
+	}
+
+	.advert-book-container .advert-book-header {
+		@include font($header-font-family, regular, regular, 28, 37, $text-white);
+		margin-bottom: 30px;
+	}
+
+	.advert-book-container .advert-book-subheader {
+		@include font($header-font-family, regular, regular, 20, 24, $light-blue);
+	}
+
+	// Styling of the add new children container
+
 	.child-container {
 		padding: 40px 20px 40px 20px !important;
+		margin-bottom: 20px !important;
 	}
 
 	.child-container-input-field {
@@ -337,9 +438,51 @@
 	.child-container-input-field:not(:last-of-type) {
 		margin-bottom: 35px;
 	}
+
+	.advert-book-add-child-button {
+		margin-top: 20px;
+		width: 100%;
+	}
+
+	// Styling of the select services container
+
+	.services-container ul li:nth-child(odd) {
+		border-bottom: none;
+	}
+
+	.services-container ul li:nth-child(3) {
+		border-top: none;
+	}
+
+	.services-container ul li:nth-child(4) {
+		border-bottom: none;
+	}
 }
 
 @include breakpoint(medium only) {
+	// Styling of the introductory header
+
+	.advert-book-introductory-header {
+		margin-top: 90px;
+		margin-bottom: 90px;
+	}
+
+	.advert-book-container .advert-book-header {
+		@include font($header-font-family, regular, regular, 30, 39, $text-white);
+		margin-bottom: 30px;
+	}
+
+	.advert-book-container .advert-book-subheader {
+		@include font($header-font-family, regular, regular, 22, 26.4, $light-blue);
+	}
+
+	// Styling of the add new children container
+
+	.child-container {
+		padding: 40px 20px 40px 20px !important;
+		margin-bottom: 20px !important;
+	}
+
 	.child-container-input-field {
 		@include grid-column(6);
 	}
@@ -351,14 +494,43 @@
 	.child-container-input-field:not(:last-of-type) {
 		margin-bottom: 35px;
 	}
+
+	.advert-book-add-child-button {
+		margin-top: 20px;
+		width: 100%;
+	}
+
+	// Styling of the select services container
+
+	.services-container ul li:nth-child(odd) {
+		border-right: none;
+	}
+
+	.services-container ul li:nth-child(3), .services-container ul li:nth-child(4) {
+		border-top: none;
+		border-bottom: none;
+	}
 }
 
 @include breakpoint(large) {
+	// Styling of the add new children container
+	
 	.child-container-input-field {
 		@include grid-column(3);
 	}
 
 	.child-container-input-field:nth-child(even), .child-container-input-field:last-of-type {
 		@include grid-column(2);
+	}
+
+	// Styling of the select services container
+
+	.services-container ul li:nth-child(-n+3) {
+		border-bottom: none;
+	}
+
+	.services-container ul li:nth-child(2), .services-container ul li:nth-child(5) {
+		border-left: none;
+		border-right: none;
 	}
 }
