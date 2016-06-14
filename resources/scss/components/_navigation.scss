@@ -51,17 +51,14 @@
 	}
 
 	.top-bar-title {
-		margin-right: 0;
 		text-align: center;
+		padding: 16px 0 16px 0;
+		margin-right: 0;
 	}
 
-	.top-bar-title a {
-		vertical-align: middle;
-	}
-
-	.top-bar-title a:before {
-		@include font($header-font-family, regular, bold, 20, 20, rgba($text-dark-grey, 0.8));
-		margin: 0 10px 0 0;
+	.top-bar-title img {
+		width: 100px;
+		height: 25.5px;
 	}
 }
 
@@ -253,27 +250,17 @@
 
 .top-bar {
 	@include show-for(large);
-	//min-height: 60px;
 	background-color: $white;
-	//padding: 15px 0 15px 0;
 	padding: 0;
 
 	.top-bar-title {
-		//margin-top: 3px;
 		padding: 16px 0 16px 0;
 		margin-right: 0;
 	}
 
-	.top-bar-title a {
-		@include font($header-font-family, regular, bold, 25, 25, rgba($text-dark-grey, 0.8));
-		text-decoration: none;
-		vertical-align: bottom;
-	}
-
-	.top-bar-title a:before {
-		@include font($header-font-family, regular, bold, 20, 20, rgba($text-dark-grey, 0.8));
-		vertical-align: middle;
-		margin-right: 10px;
+	.top-bar-title img {
+		width: 100px;
+		height: 25.5px;
 	}
 }
 

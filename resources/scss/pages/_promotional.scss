@@ -25,13 +25,27 @@
 	@include grid-row;
 	margin-top: 40px;
 
+	.header-logotype {
+		width: 125px;
+		height: 31.875px;
+
+		@include breakpoint(small) {
+			margin-top: 3px;
+		}
+
+		@include breakpoint(large) {
+			margin-top: 0;
+		}
+	}
+
+
 	h2 {
 		@include breakpoint(small) {
-			@include font($header-font-family, regular, bold, 28, 34, $text-white);
+			@include font($header-font-family, regular, bold, 28, 28, $text-white);
 		}
 
 		@include breakpoint(medium) {
-			@include font($header-font-family, regular, bold, 34, 32, $text-white);
+			@include font($header-font-family, regular, bold, 34, 34, $text-white);
 		}
 	}
 
@@ -198,7 +212,7 @@
 .beta-registration-gradient {
 	min-width: 100%;
 	max-width: 100%;
-	background: linear-gradient(-225deg, #57B9F6 0%, $dark-blue 100%);
+	background-color: $dark-blue;
 	padding: 90px 0 90px 0;
 	display: flex;
 	justify-content: center;

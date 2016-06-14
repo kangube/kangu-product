@@ -44,7 +44,7 @@
 
 <div class="top-bar-mobile">
 	<span id="top-bar-mobile-menu-button" data-icon="j"></span>
-	<span class="top-bar-title"><a href="../pages/advert-overview.php" data-icon="A">kangu</a></span>
+	<span class="top-bar-title"><a href="../pages/advert-overview.php"><img src="../assets/components/kangu-logotype-grey.svg"></a></span>
 	<span data-icon="f"></span>
 </div>
 
@@ -52,7 +52,7 @@
 	<div class="row">
 		<div class="large-12 small-centered columns">
 			<div class="top-bar" id="top-bar-menu">
-				<div class="top-bar-title show-for-medium"><a href="../pages/advert-overview.php" data-icon="A">kangu</a></div>
+				<div class="top-bar-title show-for-medium"><a href="../pages/advert-overview.php"><img src="../assets/components/kangu-logotype-grey.svg"></a></div>
 
 				<div class="top-bar-right">
 					<ul class="vertical medium-horizontal menu">
