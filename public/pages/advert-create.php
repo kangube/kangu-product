@@ -434,61 +434,6 @@
 							<div class="advert-availability-slots"></div>
 						</div>
 
-						<div class="small-12 columns availability-events"></div>
-
-						<?php
-							/*$db_username = 'root';
-							$db_password = 'root';
-							$db_name = 'kangu-product';
-							$db_host = 'localhost';
-
-							$mysqli_connection = new mysqli($db_host, $db_username, $db_password, $db_name);
-							if ($mysqli_connection->connect_error) {
-							    die('Error : ('. $mysqli_connection->connect_errno .') '. $mysqli_connection->connect_error);
-							}
-
-							$results = $mysqli_connection->query("SELECT service_name from tbl_service WHERE fk_advert_id=".$_GET['id']."");
-
-							$services = array(
-								'opvang-thuisomgeving',
-								'ophalen-schoolpoort',
-								'vervoer-thuis',
-								'vervoer-naschoolse-activiteiten',
-								'voorzien-maaltijd',
-								'hulp-huiswerktaken'
-							);
-
-							$servicesArray = array();
-						    while($row = $results->fetch_array(MYSQLI_ASSOC)) {
-						        $servicesArray[] = $row['service_name'];
-						    }
-
-							if (in_array("opvang-thuisomgeving", $servicesArray))
-							{
-							    echo "<p>opvang thuisomgeving is gekozen</p>";
-							}
-
-							if (in_array("ophalen-schoolpoort", $servicesArray)) {
-								echo "<p>ophalen aan de schoolpoort is gekozen</p>";
-							}
-
-							if (in_array("vervoer-thuis", $servicesArray)) {
-								echo "<p>vervoer naar thuis is gekozen</p>";
-							}
-
-							if (in_array("vervoer-naschoolse-activiteiten", $servicesArray)) {
-								echo "<p>vervoer naar naschoolse activiteiten is gekozen</p>";
-							}
-
-							if (in_array("voorzien-maaltijd", $servicesArray)) {
-								echo "<p>voorzien van een maaltijd is gekozen</p>";
-							}
-							
-							if (in_array("hulp-huiswerktaken", $servicesArray)) {
-								echo "<p>hulp bij huiswerktaken is gekozen</p>";
-							}*/
-						?>
-
 						<div class="small-12 columns form-error-container" data-abide-error>
 							<p>Er zitten enkele fouten in het formulier, kijk na of alles is ingevuld en probeer het vervolgens nogmaals.</p>
 						</div>
@@ -507,60 +452,6 @@
 		<script src="../js/minimum-viable-product.min.js"></script>
 		<script src="https://use.typekit.net/vnw3zje.js"></script>
 		<script>try{Typekit.load({ async: true });}catch(e){}</script>
-
-		<script>
-			$(document).ready(function() {
-				var getUrlParameter = function getUrlParameter(sParam) {
-				    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-				        sURLVariables = sPageURL.split('&'),
-				        sParameterName,
-				        i;
-
-				    for (i = 0; i < sURLVariables.length; i++) {
-				        sParameterName = sURLVariables[i].split('=');
-
-				        if (sParameterName[0] === sParam) {
-				            return sParameterName[1] === undefined ? true : sParameterName[1];
-				        }
-				    }
-				};
-
-				var advert_id = getUrlParameter('id');
-
-				if (typeof advert_id !== 'undefined') {
-	                var Event = function(className) {
-				    	this.className = className;
-					};
-
-					var events = [];
-					$.getJSON('availability-dates.php?id="'+advert_id+'"', function(data) {
-	                    $.each(data, function(key, val) {
-	                        availability_date_item = val.availability_date.replace(/-/g, '/');
-	                        events[new Date(availability_date_item)] = new Event("availability-date-item");
-	                    });
-	                });
-
-					$('.availability-events').datepicker({
-				        inline: true,
-					    firstDay: 0,
-					    showOtherMonths: true,
-					    monthNames: ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'],
-					    dayNames: ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'],
-					    dayNamesMin: ['Zo', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za'],
-					    beforeShowDay: function(date) {
-					        var event = events[date];
-
-					        if (event) {
-					            return [true, event.className];
-					        }
-					        else {
-					            return [true, ''];
-					        }
-					    }
-					});
-				}
-			});
-		</script>
 
 		<script src="http://multidatespickr.sourceforge.net/jquery-ui.multidatespicker.js"></script>
 		<script>
@@ -653,7 +544,7 @@
 						'step': 15,
 						'forceRoundTime': true,
 						'useSelect': false,
-						'minTime': '15:30',
+						'minTime': '15:00',
 						'orientation': 'b'
 					});
 				}
@@ -685,12 +576,6 @@
 					}
 				});
 		    });
-		</script>
-
-		<script>
-			$(".advert-add-child-button").on("click", function() {
-				$(".number-children-container").append("<div class='form-icon-input-field'><div class='form-icon-input-container'><span class='form-icon' data-icon='o'></span><input class='form-input' type='text' name='advert-child-name[]' placeholder='Voor- en achternaam van jouw kind' required></div></div><div class='form-icon-input-field'><div class='form-icon-input-container'><span class='form-icon' data-icon='e'></span><input class='form-input' type='text' name='advert-child-class[]' placeholder='Klasnummer van jouw kind' required></div></div>");
-			});
 		</script>
 	</body>
 </html>

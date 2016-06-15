@@ -26,7 +26,7 @@
 		<div><span>Het platform</span></div>
 		<ul>
 			<li><a href="../pages/advert-overview.php">Advertenties</a></li>
-			<li><a href="#">Schema</a></li>
+			<li><a href="#">Planning</a></li>
 		</ul>
 	</div>
 
@@ -65,7 +65,7 @@
 							?>
 						</li>
 						<li><a href="../pages/advert-overview.php">Advertenties</a></li>
-						<li><a href="#">Schema</a></li>
+						<li><a href="#">Planning</a></li>
 						<li><a href="#" class="show-for-medium" data-icon="g"></a></li>
 						<li>
 							<ul class="dropdown menu user-dropdown-menu" data-dropdown-menu>

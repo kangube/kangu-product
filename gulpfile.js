@@ -45,6 +45,7 @@ gulp.task('sass', function () {
 gulp.task('watch', function () {
     console.log("Watching for changes");
     livereload.listen();
+    gulp.watch("resources/js/custom/**/*.js", ['concat-custom-js']);
     gulp.watch("resources/scss/**/*.scss", ['sass']);
 });
 
@@ -58,9 +59,13 @@ function JavascriptCompile(cb) {
         ('bower_components/wow/dist/wow.min.js'),
         ('bower_components/jquery-ui/ui/core.js'),
         ('bower_components/jquery-ui/ui/datepicker.js'),
+        ('bower_components/jquery-ui/ui/widget.js'),
+        ('bower_components/jquery-ui/ui/position.js'),
+        ('bower_components/jquery-ui/ui/menu.js'),
+        ('bower_components/jquery-ui/ui/autocomplete.js'),
         ('bower_components/jt.timepicker/jquery.timepicker.js'),
         ('bower_components/arrive/minified/arrive.min.js'),
-        ('resources/js/custom/*')
+        ('resources/js/custom/**/*')
       ]).pipe(plumber())
         .pipe(concat('minimum-viable-product.js'))
         .pipe(gulp.dest('resources/js'))

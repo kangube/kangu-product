@@ -61,16 +61,6 @@
         cursor: pointer;
     }
 
-    .ui-datepicker-prev {
-        left: 0;
-        padding: 17px 0 0 120px;
-    }
-
-    .ui-datepicker-next {
-        right: 0;
-        padding: 17px 120px 0 0;
-    }
-
     .ui-datepicker-prev span, .ui-datepicker-next span {
         display: block;
         width: 10px;
@@ -154,6 +144,18 @@ td.ui-datepicker-week-end {
     }
 }
 
+@include breakpoint(xlarge) {
+    .ui-datepicker-prev {
+        left: 0;
+        padding: 17px 0 0 120px;
+    }
+
+    .ui-datepicker-next {
+        right: 0;
+        padding: 17px 120px 0 0;
+    }
+}
+
 // Multiple calendars inline
 .ui-datepicker.ui-datepicker-multi {
     width: 100% !important;
@@ -192,4 +194,18 @@ td.ui-datepicker-week-end {
 
 .ui-datepicker-group-last {
 
+}
+
+// Styling of the input field calendar
+
+#ui-datepicker-div {
+    .ui-datepicker-prev {
+        left: 0 !important;
+        padding: 17px 0 0 20px !important;
+    }
+
+    .ui-datepicker-next {
+        right: 0 !important;
+        padding: 17px 20px 0 0 !important;
+    }
 }

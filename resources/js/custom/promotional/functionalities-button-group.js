@@ -1,4 +1,5 @@
 // Opening and closing of the appropiate functionality containers
+
 $(".functionalities-button-group .button:first-child").on("click", function() {
     $('.functionalities-button-group .button:last-child').removeClass("selected");
     $('.functionalities-button-group .button:first-child').addClass("selected");
