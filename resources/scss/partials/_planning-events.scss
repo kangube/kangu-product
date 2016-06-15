@@ -1,4 +1,19 @@
-.availability-date-item > a::after, .planning-events td a::after {
+.booker-date-item > a::after, .booker-events td a::after {
+	content: '';
+	display: block;
+	width: 5px;
+	left: 49%;
+}
+​
+.booker-events td a::after {
+	background-color: $light-red;
+}
+​
+.renter-date-item > a::after {
+	background-color: green !important;
+}
+
+.renter-date-item > a::after, .renter-events td a::after {
 	content: '';
 	display: block;
 	width: 5px;
@@ -12,10 +27,10 @@
 	left: 49%;
 }
 ​
-.planning-events td a::after {
+.renter-events td a::after {
 	background-color: $light-red;
 }
 ​
-.availability-date-item > a::after {
+.renter-date-item > a::after {
 	background-color: green !important;
 }
