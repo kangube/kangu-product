@@ -1,4 +1,4 @@
-$.getJSON('availability-schools.php', function(data) {
+$.getJSON('../pages/availability-schools.php', function(data) {
 	$('.advert-school-input').append('<option value="" selected="selected">Basisschool van jouw kind</option>');
 
 	$.each(data, function(key, val) {

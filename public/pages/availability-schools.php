@@ -1,9 +1,9 @@
 <?php
+	header('Content-Type: application/json');
+
 	include("../php-assets/class.dbconfig.php");
 
 	$conn = Db::getInstance();
-
-	header('Content-Type: application/json');
 
 	$results = $conn->prepare("SELECT school_name from tbl_school ORDER BY school_name");
 	$results->execute();

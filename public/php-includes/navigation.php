@@ -45,7 +45,7 @@
 <div class="top-bar-mobile">
 	<span id="top-bar-mobile-menu-button" data-icon="j"></span>
 	<span class="top-bar-title"><a href="../pages/advert-overview.php"><img src="../assets/components/kangu-logotype-grey.svg"></a></span>
-	<span data-icon="f"></span>
+	<span data-icon="g"></span>
 </div>
 
 <div class="menu-panel">

@@ -4,14 +4,17 @@
 	require_once("../php-assets/class.session.php");
 	require_once("../php-assets/class.user.php");
 
+	// Gathering the logged user's personal information
 	$auth_user = new USER();
 	$user_id = $_SESSION['user_session'];
 	$stmt = $auth_user->runQuery("SELECT * FROM tbl_user WHERE user_id=:user_id");
 	$stmt->execute(array(":user_id"=>$user_id));
 	$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
+	// Creating a new advert
 	$advert = new Advert();
 
+	// Checking if the logged user has already created an advert
 	$check_user_has_advert = $auth_user->hasAdvert($userRow['user_id']);
 	if($check_user_has_advert === true) {
 		$auth_user->redirect('advert-overview.php');
@@ -47,23 +50,22 @@
 			$chosen_transportation_options = implode(", ", $_POST['advert-transportation']);
 
 			// Calculating the advert price based on the chosen services
-			$prices = array(
-				'opvang-thuisomgeving' => 3,
-				'ophalen-schoolpoort' => 2,
-				'vervoer-thuis' => 2,
-				'vervoer-naschoolse-activiteiten' => 2,
-				'voorzien-maaltijd' => 1,
-				'hulp-huiswerktaken' => 2
-			);
+			$advert_service_names = $advert->GetServiceNames();
+			$serviceNamesArray = $advert_service_names->fetchAll(PDO::FETCH_COLUMN, 0);
+
+			$advert_service_prices = $advert->GetServicePrices();
+			$servicePricesArray = $advert_service_prices->fetchAll(PDO::FETCH_COLUMN, 0);
+
+			$CombinedServicesArray = array_combine($serviceNamesArray, $servicePricesArray);
 
 			$services = $_POST['advert-services'];
 			$advert_price = 0;
 
 			foreach(array_unique($services) as $key => $service) {
-				if (!isset($prices[$service])) {
+				if (!isset($CombinedServicesArray[$service])) {
 					continue;
 				}
-				$advert_price += $prices[$service];
+				$advert_price += $CombinedServicesArray[$service];
 			}
 
 			// Processing the given children information
@@ -552,38 +554,11 @@
 						'step': 15,
 						'forceRoundTime': true,
 						'useSelect': false,
-						'minTime': '15:00',
+						'minTime': '12:00',
 						'orientation': 'b'
 					});
 				}
 			});
-
-		    $(document).on('click','.remove-availability-slot', function() { 
-		    	$(this).parent('div').parent('div').remove();
-		    	selectedDate = $(this).prev().prev().prev().prev('.selected-date').find('input[type="date"]').attr('value');
-
-		    	selectedDateFormat = selectedDate.split("-");
-				selectedDateDay = selectedDateFormat[2];
-				selectedDateMonth = selectedDateFormat[1].replace(/^0+/, '');
-				selectedDateYear = selectedDateFormat[0];
-
-				selectedDateInArray = disabledDates.indexOf(selectedDate);
-				if(selectedDateInArray != -1) {
-					disabledDates.splice(selectedDateInArray, 1);
-				}
-
-				if ($(".advert-availability-month .advert-availability-dates").children('.availability-slot-container').length === 0) {
-					$(".advert-availability-month[data-availability-format='"+selectedDateMonth+'-'+selectedDateYear+"']").remove();
-					$(".advert-availability-slots").css("display", "none");
-				}
-
-				$('#availability-datepicker tbody td:has(a)').each(function(index) {
-					var date = $.datepicker.formatDate('yy-mm-dd', new Date($(this).data('year'), $(this).data('month'), $(this).text()));
-					if (date === selectedDate) {
-						$(this).find('.ui-state-highlight').removeClass('ui-state-highlight');
-					}
-				});
-		    });
 		</script>
 	</body>
 </html>

@@ -10,8 +10,8 @@ if($user->is_loggedin()!="")
 
 if(isset($_POST['register-button']))
 {
-	$user_first_name = strip_tags($_POST['user-first-name']);
-	$user_last_name = strip_tags($_POST['user-last-name']);
+	$user_first_name = strip_tags(htmlentities($_POST['user-first-name'], ENT_COMPAT, 'UTF-8'));
+	$user_last_name = strip_tags(htmlentities($_POST['user-last-name'], ENT_COMPAT, 'UTF-8'));
 	$user_email = strip_tags($_POST['user-email']);
 	$user_password = strip_tags($_POST['user-password']);
 		
@@ -123,10 +123,11 @@ if(isset($_POST['register-button']))
 												</div>
 									  <?php }
 										} else { ?>
-								  				<p class="terms_conditions">Door een account aan te maken ga je akkoord met onze <a href="#">termen en condities<a>.</p>
+								  				<p class="terms_conditions">Door een account aan te maken ga je akkoord met onze <a href="#">termen en condities</a>.</p>
 								  <?php } ?>
 
 									<input type="submit" class="create-account-btn" value="Account aanmaken" name="register-button">
+									<span class="login-existing-account-link">of<a href="login.php">inloggen met een bestaande account</a></span>
 								</div>
 							</div>
 						</form>

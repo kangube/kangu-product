@@ -9,12 +9,14 @@
 
 	$conn = Db::getInstance();
 
+	// Gathering the logged user's personal information
 	$auth_user = new USER();
 	$user_id = $_SESSION['user_session'];
 	$stmt = $auth_user->runQuery("SELECT * FROM tbl_user WHERE user_id=:user_id");
 	$stmt->execute(array(":user_id"=>$user_id));
 	$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
+	// Creating a new Advert and Booking
 	$advert = new Advert();
 	$booking = new Booking();
 
@@ -214,14 +216,6 @@
 
 						<div class="advert-book-form-container">
 							<form class="advert-book-form" method="post" data-abide novalidate>
-								<!--<div class="form-select-date-container">
-						  			<h3 class="form-header">Opvangdatum</h3>
-									<hr class="blue-horizontal-line"></hr>
-									<p class="form-subheader">Selecteer de datum waarvoor u graag opvang zou willen aanvragen.</p>
-									<div class="availability-spots-select"></div>
-									<input type="hidden" class="advert-book-date" name="advert-book-date">
-								</div>-->
-
 								<div class="form-select-date-container">
 						  			<h3 class="form-header">Selecteer de opvangdatum</h3>
 									<hr class="blue-horizontal-line"></hr>
@@ -250,7 +244,7 @@
 											$statement->execute();
 
 											while($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-										        echo '<div class="select-child-container">
+										        echo '<div class="select-child-container float-left">
 														<ul>
 															<li class="small-2 columns">
 																<input type="checkbox" class="advert-select-children" id="select-child-'.$row['child_id'].'" name="advert-select-children[]" value="'.$row['child_id'].'"><label for="select-child-'.$row['child_id'].'"><span></span></label>
@@ -362,119 +356,6 @@
 		<script src="https://use.typekit.net/vnw3zje.js"></script>
 		<script>try{Typekit.load({ async: true });}catch(e){}</script>
 
-		<!--<script>
-			$(document).ready(function() {
-				var getUrlParameter = function getUrlParameter(sParam) {
-				    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-				        sURLVariables = sPageURL.split('&'),
-				        sParameterName,
-				        i;
-
-				    for (i = 0; i < sURLVariables.length; i++) {
-				        sParameterName = sURLVariables[i].split('=');
-
-				        if (sParameterName[0] === sParam) {
-				            return sParameterName[1] === undefined ? true : sParameterName[1];
-				        }
-				    }
-				};
-
-				var advert_id = getUrlParameter('id');
-
-				if (typeof advert_id !== 'undefined') {
-	                var Event = function(className) {
-				    	this.className = className;
-					};
-
-					var events = [];
-					$.getJSON('availability-dates.php?id="'+advert_id+'"', function(data) {
-	                    $.each(data, function(key, val) {
-	                        availability_date_item = val.availability_date.replace(/-/g, '/');
-	                        events[new Date(availability_date_item)] = new Event("availability-date-item");
-	                    });
-	                });
-
-	                $(document).ready(function() {
-				    	checkSize();
-					    $(window).resize(checkSize);
-
-						function checkSize() {
-							var currentSize = Foundation.MediaQuery.current;
-							var numberOfMonths = $('.availability-spots-select').datepicker('option', 'numberOfMonths');
-						    if (currentSize == 'small' || currentSize == 'medium') {
-								$('.availability-spots-select').datepicker('option', 'numberOfMonths', 1);
-							}
-							else if (currentSize == 'large' || currentSize == 'xlarge' || currentSize == 'xxlarge') {
-								$('.availability-spots-select').datepicker('option', 'numberOfMonths', [1,2]);
-							}
-						}
-					});
-
-					$('.availability-spots-select').datepicker({
-				        inline: true,
-					    dateFormat: 'yy-mm-dd',
-					    firstDay: 1,
-					    showOtherMonths: true,
-					    monthNames: ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'],
-					    dayNames: ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'],
-					    dayNamesMin: ['Zo', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za'],
-					    altFormat: "yy-mm-dd",
-        				altField: ".advert-book-date",
-					    beforeShowDay: function(date) {
-							var event = events[date];
-
-					        if (event) {
-					            return [true, event.className];
-					        }
-					        else {
-					            return [false, ''];
-					        }
-					    },
-					    onSelect: function(date) {
-					    	var date_format = date.split("-");
-							var date_day = date_format[2].replace(/^0+/, '');
-							var date_month = date_format[1];
-
-							function GetFullMonthName(date_month) {
-								var months = ["Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December"];
-								return months[date_month-1];
-							}
-
-							date_month_full = GetFullMonthName(date_month);
-							format_date_month = date_format[1].replace(/^0+/, '');
-
-					    	$('.select-children-callout').css("display", "block");
-
-					    	var available_spots = '';
-
-							$.getJSON('availability-spots.php?id='+advert_id+'&date='+date+'', function(data) {
-			                    $.each(data, function(key, val) {
-			                    	available_spots = val.availability_spots;
-
-			                    	if (val.availability_spots == 1) {
-			                    		$('.select-children-alert').html('Deze opvang-ouder heeft nog plaats voor '+val.availability_spots+' kind op '+date_day+' '+date_month_full+'.');
-			                    	}
-			                    	else if (val.availability_spots >= 1) {
-			                    		$('.select-children-alert').html('Deze opvang-ouder heeft nog plaats voor '+val.availability_spots+' kinderen op '+date_day+' '+date_month_full+'.');
-			                    	}
-			                    });
-			                });
-
-							$('input.advert-select-children').on('change', function(evt) {
-								current_class = $(this).closest('.select-child-container').attr('class');
-								$(this).closest('.select-child-container').css("background-color", "red");
-								//alert(current_class);
-
-								if($("input[name^='advert-select-children']:checked").length > available_spots) {
-									this.checked = false;
-								}
-							});
-						}
-					});
-				}
-			});
-		</script>-->
-
 		<script>
 			$(document).ready(function() {
 				var getUrlParameter = function getUrlParameter(sParam) {
@@ -548,6 +429,8 @@
 						$(".advert-availability-month[data-availability-format='"+format_date_month+'-'+date_year+"'] .advert-availability-dates").append('<div class="small-6 columns availability-slot-container float-left"><div class="availability-slot"><div class="small-3 columns selected-date"><p>'+date_day+'</p><p>'+date_month_short+'</p><input type="hidden" class="selected-date-input" value="'+AvailableDates[i]+'"></div><div class="small-4 columns selected-time"><p>'+AvailableTimesStart[i].slice(0,-3)+'</p></div><div class="small-1 columns availability-slot-duration" data-icon="y"></div><div class="small-4 columns selected-time"><p>'+AvailableTimesEnd[i].slice(0,-3)+'</p></div></div></div>');
 					}
 
+					var available_spots;
+
 					$('.availability-slot-container').on('click', function() {
 						$(this).parent().parent().parent().find(".availability-slot").css("background-color", "#FFFFFF");
 						$(this).find(".availability-slot").css("background-color", "#F6F6F6");
@@ -569,20 +452,26 @@
 
 				    	$('.select-children-callout').css("display", "block");
 
-				    	var available_spots = '';
-
 						$.getJSON('availability-spots.php?id='+advert_id+'&date='+date+'', function(data) {
 		                    $.each(data, function(key, val) {
+		                    	available_spots = null;
 		                    	available_spots = val.availability_spots;
 
-		                    	if (val.availability_spots == 1) {
-		                    		$('.select-children-alert').html('Deze opvang-ouder heeft nog plaats voor '+val.availability_spots+' kind op '+date_day+' '+date_month_full+'.');
+		                    	if (available_spots == 1) {
+		                    		$('.select-children-alert').html('Deze opvang-ouder heeft nog plaats voor '+available_spots+' kind op '+date_day+' '+date_month_full+'.');
+		                    		$('.select-children-alert').parent().css("background-color", "transparent");
 		                    	}
-		                    	else if (val.availability_spots >= 1) {
-		                    		$('.select-children-alert').html('Deze opvang-ouder heeft nog plaats voor '+val.availability_spots+' kinderen op '+date_day+' '+date_month_full+'.');
+		                    	else if (available_spots >= 1) {
+		                    		$('.select-children-alert').html('Deze opvang-ouder heeft nog plaats voor '+available_spots+' kinderen op '+date_day+' '+date_month_full+'.');
+		                    		$('.select-children-alert').parent().css("background-color", "transparent");
+		                    	} else {
+		                    		$('.select-children-alert').html('Deze opvang-ouder heeft geen beschikbare plaatsen meer voor '+date_day+' '+date_month_full+'.');
+		                    		$('.select-children-alert').parent().css("background-color", "rgba(243, 122, 125, 0.2)", "border-color", "#F37A7D !important");
 		                    	}
 		                    });
 		                });
+
+		                $('input.advert-select-children').removeAttr('checked');
 
 						$('input.advert-select-children').on('change', function(evt) {
 							if($("input[name^='advert-select-children']:checked").length > available_spots) {

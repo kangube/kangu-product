@@ -1,10 +1,15 @@
 <?php
+	header("Content-Type: text/html; charset=ISO-8859-1");
+	
 	include_once("../php-assets/class.advert.php");
 	include_once("../php-assets/class.vote.php");
 	require_once("../php-assets/class.session.php");
 	require_once("../php-assets/class.user.php");
 	require_once("../php-assets/class.pagination-reviews.php");
 
+	$conn = Db::getInstance();
+
+	// Gathering the logged user's personal information
 	$auth_user = new USER();
 	$user_id = $_SESSION['user_session'];
 	$stmt = $auth_user->runQuery("SELECT * FROM tbl_user WHERE user_id=:user_id");
@@ -19,35 +24,27 @@
 	// Processing and creating the full adress for usage in the google maps api
 	$advert_full_adress = $advert_information['user_adress'].','.$advert_information['user_city'];
 
-	// Processing all of the provided services
-	$results = $mysqli->query("SELECT service_name from tbl_service WHERE fk_advert_id=".$_GET['id']."");
+	// Processing all of the provided services in this advert
+	$advert_services = $advert->GetServices($_GET['id']);
+	$servicesArray = $advert_services->fetchAll(PDO::FETCH_COLUMN, 0);
 
-	$services = array(
-		'opvang-thuisomgeving',
-		'ophalen-schoolpoort',
-		'vervoer-thuis',
-		'vervoer-naschoolse-activiteiten',
-		'voorzien-maaltijd',
-		'hulp-huiswerktaken'
-	);
-
-	$servicesArray = array();
-    while($services_row = $results->fetch_array(MYSQLI_ASSOC)) {
-        $servicesArray[] = $services_row['service_name'];
-    }
+	// Creating a new array to hold all available services
+	$advert_service_names = $advert->GetServiceNames();
+	$serviceNamesArray = $advert_service_names->fetchAll(PDO::FETCH_COLUMN, 0);
 
     // Processing all of the children corresponding to the creator of the advert
-    $children_results = $mysqli->query("SELECT child_first_name from tbl_user_child LEFT JOIN tbl_child ON tbl_user_child.fk_child_id=tbl_child.child_id WHERE fk_user_id=".$advert_information['user_id']."");
+    $children_results = $conn->prepare("SELECT child_first_name from tbl_user_child LEFT JOIN tbl_child ON tbl_user_child.fk_child_id=tbl_child.child_id WHERE fk_user_id=".$advert_information['user_id']."");
+    $children_results->execute();
+    $childrenNamesArray = $children_results->fetchAll(PDO::FETCH_COLUMN, 0);
 
- 	$formatted_children_names = "";
+    $formatted_children_names = "";
 
-    while($children_row = $children_results->fetch_array(MYSQLI_ASSOC)) {
-        $formatted_children_names .= $children_row['child_first_name'].',  ';
-    }
+    foreach($childrenNamesArray as $child) {
+		$formatted_children_names .= $child.',  ';
+	}
 
-    $formatted_children_names = rtrim($formatted_children_names,', ');
+	$formatted_children_names = rtrim($formatted_children_names,', ');
     $formatted_children_names = preg_replace('/,([^,]*)$/', ' en \1', $formatted_children_names);
-
 
     // Processing user vote on a review
     $vote = new Vote();

@@ -44,4 +44,14 @@ $(document).ready(function() {
 		var page = $(this).attr("data-page");
 		$("#reviews").load("../php-assets/class.pagination-reviews.php",{"page":page, "id":advert_id,  "user_id":user_id});
 	});
+
+	function RegulateMarginReviews() {
+		var NumberOfReviews = $('.advert-detail-review-container').length;
+
+		if (NumberOfReviews <= 2) {
+			$('.advert-detail-review-container').css("margin-bottom", "0");
+		}
+	}
+
+	RegulateMarginReviews();
 });
