@@ -190,6 +190,12 @@
 	}
 }
 
+// Hiding the autocomplete suggestions
+
+.ui-helper-hidden-accessible {
+	display: none !important;
+}
+
 // Styling of the search form used for medium screens and smaller
 
 #mobile-search-form-button {
@@ -310,6 +316,7 @@
 	background-color: $light-grey;
 	border: 1px solid $border-color-light-grey;
 	border-radius: 3px;
+	outline: none;
 }
 
 // Styling of the search container when there are no search results

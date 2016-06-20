@@ -1,5 +1,5 @@
 var schools = [];
-$.getJSON('availability-schools.php', function(data) {
+$.getJSON('../pages/availability-schools.php', function(data) {
 	$.each(data, function(key, val) {
 	    schools.push(val["school_name"]);
 	});

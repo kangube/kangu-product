@@ -187,13 +187,18 @@ class advert
 	
 	public function Save() {
 		$conn = Db::getInstance();
+
+		// Creating a new advert and updating the contact-information of the creator
 		$advert_query = "INSERT INTO tbl_advert(fk_user_id, advert_description, advert_price, advert_spots, advert_school, advert_transport) VALUES ('$this->UserId', '$this->Description', '$this->Price', '$this->NumberChildren', '$this->School', '$this->Transportation');";
 		$advert_query .= "UPDATE tbl_user SET user_mobile_number = '$this->MobileNumber', user_home_number = '$this->HomeNumber', user_adress = '$this->HomeAdress', user_city = '$this->HomeCity' WHERE user_id = '$this->UserId';";
 
 	   	$statement = $conn->prepare($advert_query);
 		$statement->execute();
+
+		// Gathering the last created advert id and saving all chosen services corresponding to the newly created advert
 		$last_created_id = $conn->lastInsertId();
 
+		$services_dates_query = "";
 		$services_dates_query .= "INSERT INTO tbl_service(fk_advert_id, service_name) VALUES ";
 		$iterator = new ArrayIterator($this->Services);
 		$cachingiterator = new CachingIterator($iterator);
@@ -210,6 +215,7 @@ class advert
 
 	    $services_dates_query .= "; ";
 
+	    // Saving all chosen dates and timestamps corresponding to the newly created advert
 	    $services_dates_query .= "INSERT INTO tbl_availability(fk_advert_id, availability_date, availability_time_start, availability_time_end, availability_spots) VALUES ";
 
 		foreach($this->AvailableDates as $key => $d)
@@ -221,6 +227,7 @@ class advert
 	   	$statement = $conn->prepare($services_dates_query);
 		$statement->execute();
 
+		// Saving all newly added children corresponding to the creator of the advert
 	   	$children_information_query = "INSERT INTO tbl_child(child_first_name, child_last_name, child_school, child_class) VALUES ";
 	   	$number_children_created = 0;
 
@@ -233,6 +240,8 @@ class advert
 		$children_information_query = rtrim($children_information_query,', ').";";
 	   	$statement = $conn->prepare($children_information_query);
 	   	$statement->execute();
+
+	   	// Gathering all newly created children and linking them to the creator of the advert
 	   	$child_last_created_id = $conn->lastInsertId();
 
 	   	$number_children_created_array = Array();
@@ -251,8 +260,6 @@ class advert
 		$children_link_query = rtrim($children_link_query,', ').";";
 	   	$statement = $conn->prepare($children_link_query);
 	   	$statement->execute();
-
-	   	echo $children_link_query;
 	}
 	
 	public function getAll() {
@@ -266,6 +273,43 @@ class advert
 		$advertNumber = $_GET['id'];
 		$oneAdvert = $conn->query("SELECT * FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id WHERE tbl_advert.advert_id=$advertNumber");
 		return $oneAdvert;
+	}
+
+	public function GetAdvertCreatorDetails($advert_id) {
+		$conn = Db::getInstance();
+		$statement = $conn->prepare("SELECT * FROM tbl_advert LEFT JOIN tbl_user ON tbl_advert.fk_user_id=tbl_user.user_id WHERE tbl_advert.advert_id=:AdvertId");
+		$statement->bindValue(":AdvertId", $advert_id);
+		$statement->execute();
+		return $statement;
+	}
+
+	public function GetServices($advert_id) {
+		$conn = Db::getInstance();
+		$statement = $conn->prepare("SELECT service_name FROM tbl_service WHERE fk_advert_id=:AdvertId");
+		$statement->bindValue(":AdvertId", $advert_id);
+		$statement->execute();
+		return $statement;
+	}
+
+	public function GetServiceNames() {
+		$conn = Db::getInstance();
+		$statement = $conn->prepare("SELECT service_price_name FROM tbl_service_price");
+		$statement->execute();
+		return $statement;
+	}
+
+	public function GetServiceDescriptions() {
+		$conn = Db::getInstance();
+		$statement = $conn->prepare("SELECT service_price_description FROM tbl_service_price");
+		$statement->execute();
+		return $statement;
+	}
+
+	public function GetServicePrices() {
+		$conn = Db::getInstance();
+		$statement = $conn->prepare("SELECT service_price_value FROM tbl_service_price");
+		$statement->execute();
+		return $statement;
 	}
 }
 ?>

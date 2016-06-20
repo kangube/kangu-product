@@ -25,11 +25,16 @@
 @import 'partials/timepicker';
 @import 'partials/availability-calendar';
 
+// Importing all error-pages
+@import 'error-pages/404';
+
 // Importing all pages
 @import 'pages/promotional';
 @import 'pages/registration';
 @import 'pages/login';
+@import 'pages/password-reset-mail';
 @import 'pages/advert-overview';
 @import 'pages/advert-detail';
 @import 'pages/advert-create';
+@import 'pages/advert-book';
 @import 'pages/advert-create-confirmation';

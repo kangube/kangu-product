@@ -1,0 +1,33 @@
+<!doctype html>
+<html class="no-js" lang="nl">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>404 - Pagina niet gevonden</title>
+		<link rel="stylesheet" href="../css/minimum-viable-product.min.css">
+		<link href="https://file.myfontastic.com/QxAJVhmfbQ2t7NGCUAnz9P/icons.css" rel="stylesheet">
+	</head>
+
+	<body>
+		<div class="full-page-container">
+			<div class="error-outer-container">
+				<div class="error-inner-container">
+					<p class="error-header">404</p>
+					<p class="error-subheader">Deze pagina werd niet gevonden!</p>
+					<a href="" class="error-link-button">Breng me terug!</a>
+				</div>
+			</div>
+		</div>
+
+		<script src="../js/minimum-viable-product.min.js"></script>
+		<script src="https://use.typekit.net/vnw3zje.js"></script>
+		<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+		<script>
+			$(document).ready(function() {
+			    $(".error-link-button").on("click", function() {
+			    	history.go(-1);
+			    });
+			});
+		</script>
+	</body>
+</html>

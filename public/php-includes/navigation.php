@@ -12,28 +12,31 @@
 		</ul>
 	</div>
 
-	<?php 
-		$check_user_has_advert = $auth_user->hasAdvert($userRow['user_id']);
-		if($check_user_has_advert === true) {
-			$auth_user->redirect('advert-overview.php');
-		}
-		else if ($check_user_has_advert === false) {
-			echo '<div class="create-advert"><a href="../pages/advert-create.php">Opvang aanbieden</a></div>';
-		}
-	?>
+	<div class="menu-links">
+		<div><span><?php echo 'Jouw credits: '.$userRow['user_credits']; ?></span></div>
+		<ul>
+			<li><a href="../pages/advert-create.php">Opvang aanbieden</a></li>
+			<li><a href="../pages/advert-overview.php">Credits aankopen</a></li>
+		</ul>
+	</div>
 
 	<div class="menu-links">
 		<div><span>Het platform</span></div>
 		<ul>
 			<li><a href="../pages/advert-overview.php">Advertenties</a></li>
-			<li><a href="#">Planning</a></li>
+			<li><a href="../pages/planning-overview.php">Planning</a></li>
 		</ul>
 	</div>
 
 	<div class="profile-links">
 		<div><span>Jouw profiel</span></div>
 		<ul>
-			<li><a href="#">Mijn account</a></li>
+			<?php 
+				$check_user_has_advert = $auth_user->hasAdvert($userRow['user_id']);
+				if ($check_user_has_advert === true) {
+					echo '<li><a href="../pages/advert-edit.php">Advertentie wijzigen</a></li>';
+				}
+			?>
 			<li><a href="../pages/logout.php">Afmelden</a></li>
 		</ul>
 	</div>
@@ -41,38 +44,46 @@
 
 <div class="top-bar-mobile">
 	<span id="top-bar-mobile-menu-button" data-icon="j"></span>
-	<span>kangu</span>
-	<span data-icon="f"></span>
+	<span class="top-bar-title"><a href="../pages/advert-overview.php"><img src="../assets/components/kangu-logotype-grey.svg"></a></span>
+	<span data-icon="g"></span>
 </div>
 
 <div class="menu-panel">
 	<div class="row">
 		<div class="large-12 small-centered columns">
 			<div class="top-bar" id="top-bar-menu">
-				<div class="top-bar-title show-for-medium">kangu</div>
+				<div class="top-bar-title show-for-medium"><a href="../pages/advert-overview.php"><img src="../assets/components/kangu-logotype-grey.svg"></a></div>
 
 				<div class="top-bar-right">
 					<ul class="vertical medium-horizontal menu">
 						<li>
 							<?php 
 								$check_user_has_advert = $auth_user->hasAdvert($userRow['user_id']);
-								if($check_user_has_advert === true) {
-									$auth_user->redirect('advert-overview.php');
-								}
-								else if ($check_user_has_advert === false) {
+								if ($check_user_has_advert === false) {
 									echo '<a href="../pages/advert-create.php" class="provide-services-button">Opvang aanbieden</a>';
 								}
 							?>
 						</li>
 						<li><a href="../pages/advert-overview.php">Advertenties</a></li>
-						<li><a href="#">Planning</a></li>
-						<li><a href="#" class="show-for-medium" data-icon="g"></a></li>
+						<li><a href="../pages/planning-overview.php">Planning</a></li>
+						<li><a href="#" data-icon="g"></a></li>
+						<li><a href="#" data-icon="c"><?php echo $userRow['user_credits']; ?></a></li>
+
 						<li>
 							<ul class="dropdown menu user-dropdown-menu" data-dropdown-menu>
-								<li><img class="user-profile-image" src="<?php echo $userRow['user_image_path']; ?>"></li>
 								<li>
-									<a href="#"><?php echo $userRow['user_firstname'].' '.$userRow['user_lastname']; ?></a>
+									<a href="#">
+										<img class="user-profile-image" src="<?php echo $userRow['user_image_path']; ?>">
+										<?php echo $userRow['user_firstname'].' '.$userRow['user_lastname']; ?>
+									</a>
+									
 									<ul class="vertical menu">
+										<?php 
+											$check_user_has_advert = $auth_user->hasAdvert($userRow['user_id']);
+											if ($check_user_has_advert === true) {
+												echo '<li><a href="../pages/advert-edit.php">Advertentie wijzigen</a></li>';
+											}
+										?>
 										<li><a href="../pages/logout.php">Afmelden</a></li>
 									</ul>
 								</li>

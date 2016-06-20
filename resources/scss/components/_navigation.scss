@@ -25,8 +25,9 @@
 		align-self: center;
 	}
 
-	span:nth-child(2) {
-		@include font($header-font-family, regular, bold, 25, 35, rgba($text-dark-grey,0.8));
+	span:nth-child(2) a {
+		@include font($header-font-family, regular, bold, 25, 35, rgba($text-dark-grey, 0.8));
+		text-decoration: none;
 	}
 
 	span:first-child {
@@ -47,6 +48,17 @@
 			color: rgba($text-dark-grey, 0.8);
 			vertical-align: middle;
 		}
+	}
+
+	.top-bar-title {
+		text-align: center;
+		padding: 16px 0 16px 0;
+		margin-right: 0;
+	}
+
+	.top-bar-title img {
+		width: 100px;
+		height: 25.5px;
 	}
 }
 
@@ -79,7 +91,7 @@
 	}
 
 	.profile-information {
-		background: linear-gradient(-225deg, #57B9F6 0%, $dark-blue 100%);
+		background: url(../assets/index/pattern-tile-alt.svg) repeat;
 		padding: 30px 0 20px 0;
 
 		ul {
@@ -238,14 +250,17 @@
 
 .top-bar {
 	@include show-for(large);
-	height: 60px;
 	background-color: $white;
-	padding: 8px 0 8px 0;
+	padding: 0;
 
 	.top-bar-title {
-		@include font($header-font-family, regular, bold, 25, 35, rgba($text-dark-grey,0.8));
+		padding: 16px 0 16px 0;
 		margin-right: 0;
-		margin-top: 5px;
+	}
+
+	.top-bar-title img {
+		width: 100px;
+		height: 25.5px;
 	}
 }
 
@@ -253,23 +268,38 @@
 	.menu {
 		background-color: $white;
 
+		li {
+			padding: 6.5px 0 6.5px 0;
+			border-right: 1.5px solid rgba($border-color-light-grey, 0.5);
+		}
+
+		li:last-child {
+			border-right: none !important;
+		}
+
 		li a {
 			margin: 0 25px 0 25px;
-			padding-left: 0;
-			padding-right: 0;
-		}
-
-		li:nth-child(2) a {
-			margin-left: 10px;
-		}
-
-		li:nth-child(3) a {
-			margin-right: 0;
+			padding: 0;
 		}
 
 		li:nth-child(4) a {
 			font-size: rem-calc(25);
 			margin: 0 35px 0 35px;
+		}
+
+		li:nth-child(5) a:before {
+			font-size: rem-calc(23);
+			vertical-align: middle;
+			margin-right: 8px;
+		}
+
+		// Styling of the profile-dropdown-menu
+
+		.user-profile-image {
+			width: 35px;
+			height: 35px;
+			border-radius: 50px;
+			margin-right: 15px;
 		}
 
 		.user-dropdown-menu li a {
@@ -279,28 +309,47 @@
 
 		.user-dropdown-menu li a::after {
 			border-color: rgba($text-dark-grey, 0.8) transparent transparent;
+			margin-top: -0.5px;
+		}
+
+		.is-dropdown-submenu {
+			width: 100%;
+			padding-top: 15px;
+			border: none;
+			border-radius: 0 0 3px 3px;
+		}
+
+		.is-dropdown-submenu-parent a {
+			margin-left: 25px !important;
+		}
+
+		.is-dropdown-submenu-parent {
+			border-right: none !important;
+		}
+
+		.is-dropdown-submenu-item {
+			padding: 20px 0 20px 0 !important;
+		}
+
+		.is-dropdown-submenu-item:not(:last-child) {
+			border-bottom: 1px solid $border-color-light-grey;
 		}
 	}
 
 	a {
-		@include font($paragraph-font-family, regular, semi-bold, 14, 19, rgba($text-dark-grey,0.8));
+		@include font($paragraph-font-family, regular, semi-bold, 14, 14, rgba($text-dark-grey, 0.8));
 		text-decoration: none;
 	}
 
 	.provide-services-button {
-		@include font($paragraph-font-family, regular, regular, 14, 19, rgba($text-dark-grey,0.8));
+		@include font($paragraph-font-family, regular, regular, 14, 14, rgba($text-dark-grey, 0.8));
+		padding: 10px 15px 10px 15px !important;
+		margin-right: 40px !important;
 		border: 1px solid rgba($text-dark-grey, 0.8);
 		border-radius: 3px;
-		padding: 7px 15px 7px 15px !important;
 
 		&:hover {
-			background-color: rgba($dark-grey, 0.1);
+			background-color: rgba($light-grey, 0.8);
 		}
-	}
-
-	.user-profile-image {
-		width: 40px;
-		height: 40px;
-		border-radius: 50px;
 	}
 }

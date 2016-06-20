@@ -4,7 +4,7 @@
 	min-width: 100%;
 	min-height: 50%;
 	display: flex;
-	background: linear-gradient(-225deg, #57B9F6 0%, $dark-blue 100%);
+	background: url(../assets/components/pattern-tile-alt.png) repeat;
 	left: 0;
 	top: 0;
 	position: absolute;
@@ -93,5 +93,24 @@
 
 	.create-account-btn {
 		@include button($light-red, 3px);
+	}
+
+	.login-existing-account-link {
+		@include font($paragraph-font-family, regular, regular, 13, 18, rgba($text-dark-grey, 0.8));
+		//@include show-for(medium);
+		margin-left: 10px;
+
+		a {
+			@include font($paragraph-font-family, regular, regular, 13, 18, $light-red);
+			text-decoration: underline;
+			margin-left: 10px;
+		}
+	}
+
+	@include breakpoint(small only) {
+		.login-existing-account-link {
+			display: block;
+			margin: 25px 0 0 0;
+		}
 	}
 }

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 09, 2016 at 05:19 PM
+-- Generation Time: Jun 13, 2016 at 03:29 PM
 -- Server version: 5.5.42
 -- PHP Version: 5.6.10
 
@@ -38,15 +38,15 @@ CREATE TABLE `tbl_advert` (
 
 INSERT INTO `tbl_advert` (`advert_id`, `fk_user_id`, `advert_description`, `advert_price`, `advert_spots`, `advert_school`, `advert_transport`, `advert_number_bookings`, `advert_status`) VALUES
 (1, 1, 'Dag ouders! Ik ben Sanne, een 26 jarige zorgkundige die zo nu en dan wat uurtjes vrij heeft. Ik heb veel ervaring met kinderen, in het verleden heb ik gewerkt in een kinderopvang en een buitenschoolse opvang. Ook met pubers kan ik goed overweg. Ik ben een zachtaardig en lief persoon, maar ik sta wel op mijn strepen. Het uurloon vind ik heel moeilijk, daarom dat ik het liefst tot discussie over laat. Meestal vraag ik geen uurloon maar gewoon een oplet loon. Is het voor enkele uurtjes, dan vind ik 20 euro best, is het voor een lange avond, een hele middag, een ganse dag, dan kan daar wat bij komen.', 6, 2, 'Heilig-hartcollege', 'auto', 0, 'pending'),
-(2, 2, 'Hallo mama en papa zoekt u een ervaren met verantwoordelijks gevoel toffe kinderoppas? Dan bied ik mij graag aan! \nIk doe deze leuke job reeds 1 jaar en heb nog tijd over om jullie te helpen met voorschoolse opvang of tijdens de dag. Ik hoop snel iets van jullie te horen! Tot dan! Ainarra.', 8, 3, 'Heilig-hartcollege', 'fiets', 0, 'approved'),
-(3, 3, 'Ik ben een moeder van 4 kinderen die nu volwassen zijn, maar ze wonen niet bij mij en heeft altijd graag kinderopvang. Ik heb slechts een jaar ervaring, maar ik begrijp en ik hou van kinderen. Ik ben een warm en zorgzaam persoon en ik respecteer de aanwijzingen van de ouders. En boven alles heb ik gezond verstand.', 9, 1, 'Sint-Guibertus', 'fiets', 0, 'approved'),
-(4, 4, 'Hallo, Ik ben een spontane, lieve, enthousiaste kinderoppas. die heel betrouwbaar is en een groot verantwoordelijkheidsgevoel heeft. ik heb al meerdere jaren ervaring voorbeeld als de de ouders 2weken op reis waren heb ik ze voor hun gezorgd dag en nacht zelf oppas ik al meerdere jaren ik ben 19 word bijna 20 ben flexibel kan heel goed met kindjes omgaan vind het super om met de kindjes te knutselen gaan wandel Ik ben ook bereid om eventueel enkele huishoudelijke taken op mij te nemen. \r\nIk doe de job ontzettend graag en pas me aan aan de noden & wensen van de ouders. \r\nIk ben alle dagen beschikbaar mvg groet, Pieters.', 5, 2, 'De Groeituin', 'auto', 0, 'approved'),
-(5, 5, 'Hallo, Ik ben 18 jaar en woon in Antwerpen. Ik babysit al van mijn 15 jaar en dit met heel veel liefde en passie. Daarom studeer ik ook Vroedkunde aan Karel de Grote Hogeschool. Ik heb gewerkt in een naschoolse kinderopvang in Antwerpen op woensdagnamiddag als vrijwilliger. 2 jaar geleden heb ik in een pop up kinderopvang gewerkt. In de familie wordt ik ook altijd gevraagd om te babysitten op mijn nichtjes en neefjes. Ik doe niets liever dan voor kinderen te zorgen groot en klein. Het zou fijn zijn dit te kunnen combineren met mijn studies. \r\nHopelijk horen we elkaar snel! ', 6, 3, 'Heilig-hartcollege', 'auto', 0, 'approved'),
-(6, 6, 'Ik ben erg ervaren met kinderen. Ik babysit vanaf mijn 16 jaar bij de gezinsbond. \r\nDaarnaast heb ik twee studies achter de rug in de sociale sector. Ik heb in mijn bachelor orthopedagogie gedaan, dus ik heb veel ervaring met kinderen en daarnaast ook met kinderen met bijzondere noden. \r\nNaast babysitten zou ik ook graag huishoudelijk werk doen.', 8, 2, 'Heilig-hartcollege', 'auto', 0, 'approved'),
-(7, 7, 'Ik ben erg ervaren met kinderen. Ik babysit vanaf mijn 16 jaar bij de gezinsbond. \r\nDaarnaast heb ik twee studies achter de rug in de sociale sector. Ik heb in mijn bachelor orthopedagogie gedaan, dus ik heb veel ervaring met kinderen en daarnaast ook met kinderen met bijzondere noden. \r\nNaast babysitten zou ik ook graag huishoudelijk werk doen.', 9, 1, 'Sint-Guibertus', 'auto', 0, 'approved'),
-(8, 8, 'Mijn naam is en ik ben momenteel 21 jaar. Ik babysit al een 5-tal jaar en ik heb enkele jaren gewerkt als monitrice op een speelplein. Ik heb ook 6 jaar turnles gegeven maar daar ben ik sinds dit jaar mee gestopt om me meer bezig te kunnen houden met mijn studies. \r\nVooral de jongste kindjes spreken mij enorm aan maar met de ouderen heb ik het tot nu toe ook altijd kunnen vinden. \r\nIk ben in het bezit van een rijbewijs en een auto dus bij het gezin thuis geraken en terug is geen probleem. Indien jullie dit graag willen, kan ik jullie ook altijd een aantal referenties bezorgen. \r\nIk hoop snel iets van jullie te horen! ', 6, 2, 'De Groeituin', 'openbaar vervoer', 0, 'approved'),
-(9, 9, 'Ik heb in het verleden vooral voor mijn kleine neefjes en nichtjes gezorgd, maar nu ze wat ouder worden zoek ik een nieuw gezin waar ik kan instaan voor de zorg van de kinderen wanneer het nodig is. Ik ben een heel vrolijk persoon, en doe niets liever dan spelen en ravotte met kinderen. Als student in de bio-ingenieurswetenschappen kan ik zeker ook helpen met huiswerk indien nodig.', 7, 2, 'Heilig-hartcollege', 'auto', 0, 'approved'),
-(10, 10, 'Binnenkort ga ik Gent verkennen door me er te settelen en een job te zoeken. \r\nNaast het vele vrijwilligerswerk met kinderen en het werken in de horeca, rondde ik mijn studies af als opvoeder/begeleider. Door het gevarieerde vrijwilligerswerk dat ik met plezier deed vanaf mijn vijftiende, leerde ik veel bij. Belangrijk vind ik dat kinderen naast de schooluren zich kunnen ontspannen in een familiale en liefdevolle omgeving. \r\nOok supporter ik de eigen ontwikkeling van het kind naar de weg van zelfstandigheid (meehelpen, laten ontdekken, huiswerk,...). Afhankelijk van de leeftijd, de mogelijkheden van het kind en in samenspraak met de ouders. V', 5, 2, 'Sint-Guibertus', 'auto', 0, 'approved'),
+(2, 2, 'Hallo ouder! Mijn naam is Ainarra en ik ben 36-jarige moeder van 2 kinderen, genaamd Lucas en Julia. Samen met mijn man en kinderen woon ik een buitenwijk niet ver van de basisschool. Via de basisschool van mijn kinderen werd ik gewezen op dit platform. Hierbij wil ik graag naschoolse-opvang aanbieden aan ouders er nood aan hebben. Dankzij mijn ervaring als kinderbegeleidster in een buitenschoolse opvang heb ik een uitgebreide kennis in het omgaan met en het verzorgen van kinderen. Zoekt u een warme en huiselijke naschoolse opvang waarbinnen uw kind zich kan thuis voelen en zichzelf kan ontwikkelen? Aarzel dan niet om mij te contacteren!', 8, 3, 'Heilig-hartcollege', 'fiets', 0, 'approved'),
+(3, 3, 'Beste ouder, ik ben Anita, een 32-jarige moeder. Samen met mijn 6-jarig zoontje woon ik een gezellige woonwijk niet ver van de gemeentelijke basisschool. Sinds de scheiding van mijn man, ben ik deeltijds gaan werken om meer tijd vrij te houden om mijn zoontje op te voeden. Hierdoor heb ik het echter financieel moeilijker gekregen en zou ik graag ik een bijberoep willen uitvoeren dat ik kan combineren met de opvoeding van mijn kind. Ben je dus op zoek naar een spontane en vriendelijke mama om uw kinderen van school op te halen en ze tijdelijk op te vangen? Aarzel dan niet om mij te contacteren! Ik kijk alvast uit naar uw bericht!', 9, 1, 'Sint-Guibertus', 'fiets', 0, 'approved'),
+(4, 4, 'Hallo ik ben Christel, een 32-jarige moeder van 2 kinderen, Sophie en Ruben. Dankzij mijn deeltijdse werkstatus als administratief bediende en vlotte werkuren heb ik voldoende vrije tijd om mijn kinderen zelf op te halen van school. Uit gesprekken met andere ouders weet ik dat omwille van werk- of prive-omstandigheden dit voor veel ouders niet mogelijk is. Hierbij heb ik daarom besloten om mijn eigen advertentie aan te maken en andere ouders hulp aan te bieden. Ben je dus op zoek naar een spontane en vriendelijke mama om uw kinderen van school op te halen en ze tijdelijk op te vangen? Aarzel dan niet om mij te contacteren!', 5, 2, 'De Groeituin', 'auto', 0, 'approved'),
+(5, 5, 'Beste, ik ben Linda, ouder van Lynn, Fleur en Thomas. Sinds de geboorte van mijn eerste kindje ben ik huismoeder geworden. Nu ben ik op zoek naar een bijberoep om een centje bij te verdienen. Gezien ik zelf 3 kinderen heb en dus over de nodige ervaring beschik, besloot ik om kinderen op te vangen. Ik heb geen tuin maar woon wel vlak nabij een gemeentelijke speeltuin. Een geschikte locatie om de kinderen te laten ravotten en een wandeling te maken. We hebben een hond, een hele kalme bullmastiff die heel goed met kinderen overweg kan. In ons gezin wordt bovendien ook niet gerookt!', 6, 3, 'Heilig-hartcollege', 'auto', 0, 'approved'),
+(6, 6, 'Hallo. Mijn naam is Marjan en ik ben de moeder van Daan. Ik werk deeltijds als consulente en ben elke dag vanaf ''s middags thuis. Ik vind het belangrijk dat kinderen zich thuis kunnen voelen in een opvang-omgeving. Het huis is volledig afgestemd op de veiligheid van de kinderen. Schadelijke en gevaarlijke producten staan buiten handbereik. De kinderen kunnen zowel in de woonkamer als in de keuken spelen en als het goed weer is ook in de tuin.', 8, 2, 'Heilig-hartcollege', 'auto', 0, 'approved'),
+(7, 7, 'Beste ouder, ik ben Maya, een 32-jarige moeder. Samen met mijn 9-jarig dochtertje woon ik een gezellige woonwijk niet ver van de gemeentelijke basisschool. Sinds de scheiding van mijn man, ben ik deeltijds gaan werken om meer tijd vrij te houden om mijn dochtertje op te voeden. Hierdoor heb ik het echter financieel moeilijker gekregen en zou ik graag ik een bijberoep willen uitvoeren dat ik kan combineren met de opvoeding van mijn dochtertje. Ben je dus op zoek naar een spontane en vriendelijke mama om uw kinderen van school op te halen en ze tijdelijk op te vangen? Aarzel dan niet om mij te contacteren! Ik kijk alvast uit naar uw bericht!', 9, 1, 'Sint-Guibertus', 'auto', 0, 'approved'),
+(8, 8, 'Beste ouders. Ik ben zelf mama van twee kinderen, Sanne en Max. Je zou kunnen zeggen dat ik dus veel ervaring heb met de behoeften van verschillende kinderen. Ik ben leerkracht van opleiding maar ik heb besloten om thuis te blijven voor de kinderen toen ik voor de tweede keer zwanger werd. Ik geniet van het werken met de kindjes en tevens is dit goed te combineren met mijn gezin. Als hobby heb ik m''n bezigheid als verantwoordelijke voor de vormelingen in de parochie. Knutselen met kinderen is verder ook een van mijn favoriete bezigheden.', 6, 2, 'De Groeituin', 'openbaar vervoer', 2, 'approved'),
+(9, 9, 'Hallo ik ben Philippe, een 34-jarige vader van 2 dochtertjes, Vera en Charlotte. Dankzij mijn deeltijdse werkstatus als administratief bediende en vlotte werkuren heb ik voldoende vrije tijd om mijn kinderen zelf op te halen van school. Uit gesprekken met andere ouders weet ik dat omwille van werk- of prive-omstandigheden dit voor veel ouders niet mogelijk is. Hierbij heb ik daarom besloten om mijn eigen advertentie aan te maken en andere ouders hulp aan te bieden. Ben je dus op zoek naar een spontane en vriendelijke vader om uw kinderen van school op te halen en ze tijdelijk op te vangen? Aarzel dan niet om mij te contacteren!', 7, 2, 'Heilig-hartcollege', 'auto', 0, 'approved'),
+(10, 10, 'Hallo ouder! Mijn naam is Regine en ik ben 36-jarige moeder van 2 kinderen, genaamd Stijn en Eline. Samen met mijn man en kinderen woon ik een buitenwijk niet ver van de gemeentelijke basisschool. Via de basisschool van mijn kinderen werd ik gewezen op dit platform. Hierbij wil ik graag naschoolse-opvang aanbieden aan ouders er nood aan hebben. Zoekt u een warme en huiselijke naschoolse opvang waarbinnen uw kind zich kan thuis voelen en zichzelf kan ontwikkelen? Aarzel dan niet om mij te contacteren!', 5, 2, 'Sint-Guibertus', 'auto', 0, 'approved'),
 (11, 11, 'Tijdens de week werk ik als leerkracht in het secundair aan het Stedelijk Lyceum Lamoriniere. Graag wil ik na mijn uren een bijverdienste als kinderoppas, zo kan ik mijn schoolwerk en sociaal leven nog steeds goed combineren. \r\nIk ben afgestudeerd als leerkracht verzorgende wat maakt dat ik soms stagebegeleiding geef aan 6 en 7 kinderzorg. Kinderen van verscheidene leeftijden zijn dus geen enkel probleem. ', 6, 2, 'Sint-Guibertus', 'auto', 0, 'approved'),
 (12, 12, 'Ik ben afgestudeerd als maatschappelijk assistente en doe nu de banaba buitengewoon onderwijs. Mijn droom is om met kinderen te werken. Ik heb snel een vertrouwensband met kinderen. Ook ben ik graag creatief bezig met kinderen en vind ik het belangrijk om hen iets bij te brengen. ', 5, 1, 'Heilig-hartcollege', 'auto', 0, 'approved'),
 (13, 13, 'Tijdens de week werk ik als leerkracht in het secundair aan het Stedelijk Lyceum Lamoriniere. Graag wil ik na mijn uren een bijverdienste als kinderoppas, zo kan ik mijn schoolwerk en sociaal leven nog steeds goed combineren. \r\nIk ben afgestudeerd als leerkracht verzorgende wat maakt dat ik soms stagebegeleiding geef aan 6 en 7 kinderzorg. Kinderen van verscheidene leeftijden zijn dus geen enkel probleem. ', 8, 1, 'De Groeituin', 'auto, wandelend', 0, 'approved'),
@@ -90,7 +90,7 @@ CREATE TABLE `tbl_availability` (
   `availability_time_start` time NOT NULL,
   `availability_time_end` time NOT NULL,
   `availability_spots` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=120 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=122 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `tbl_availability`
@@ -127,7 +127,7 @@ INSERT INTO `tbl_availability` (`availability_id`, `fk_advert_id`, `availability
 (37, 7, '2016-06-07', '15:00:00', '18:00:00', 1),
 (38, 7, '2016-06-09', '15:00:00', '18:30:00', 1),
 (39, 8, '2016-05-18', '15:00:00', '20:00:00', 2),
-(40, 8, '2016-05-25', '15:30:00', '20:00:00', 2),
+(40, 8, '2016-05-25', '15:30:00', '20:00:00', 0),
 (41, 9, '2016-05-13', '15:30:00', '18:30:00', 2),
 (42, 9, '2016-05-09', '15:00:00', '19:00:00', 2),
 (43, 10, '2016-06-13', '15:00:00', '19:00:00', 2),
@@ -206,7 +206,9 @@ INSERT INTO `tbl_availability` (`availability_id`, `fk_advert_id`, `availability
 (116, 39, '2016-06-14', '15:30:00', '19:00:00', 1),
 (117, 39, '2016-06-15', '12:00:00', '18:30:00', 1),
 (118, 39, '2016-06-16', '15:00:00', '18:30:00', 1),
-(119, 39, '2016-06-17', '15:30:00', '18:30:00', 1);
+(119, 39, '2016-06-17', '15:30:00', '18:30:00', 1),
+(120, 7, '2016-07-12', '15:00:00', '19:00:00', 1),
+(121, 7, '2016-07-13', '12:00:00', '16:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -223,35 +225,43 @@ CREATE TABLE `tbl_booking` (
   `booking_price` int(11) NOT NULL,
   `booking_extra_information` mediumtext COLLATE utf8_unicode_ci NOT NULL,
   `booking_status` varchar(11) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'pending'
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `tbl_booking`
---
-
-INSERT INTO `tbl_booking` (`booking_id`, `fk_advert_id`, `fk_booker_user_id`, `fk_renter_user_id`, `booking_number_spots`, `booking_price`, `booking_extra_information`, `booking_status`) VALUES
-(1, 15, 15, 1, 1, 5, '', 'pending'),
-(2, 17, 17, 1, 1, 5, '', 'pending');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_booking_dates`
+-- Table structure for table `tbl_booking_child`
 --
 
-CREATE TABLE `tbl_booking_dates` (
+CREATE TABLE `tbl_booking_child` (
+  `booking_child_id` int(11) NOT NULL,
+  `fk_booking_id` int(11) NOT NULL,
+  `fk_child_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_booking_date`
+--
+
+CREATE TABLE `tbl_booking_date` (
   `booking_date_id` int(11) NOT NULL,
   `fk_booking_id` int(11) NOT NULL,
   `booking_date_format` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `tbl_booking_dates`
+-- Table structure for table `tbl_booking_service`
 --
 
-INSERT INTO `tbl_booking_dates` (`booking_date_id`, `fk_booking_id`, `booking_date_format`) VALUES
-(1, 1, '2016-04-28'),
-(2, 2, '2016-04-27');
+CREATE TABLE `tbl_booking_service` (
+  `booking_service_id` int(11) NOT NULL,
+  `fk_booking_id` int(11) NOT NULL,
+  `fk_service_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -345,42 +355,6 @@ INSERT INTO `tbl_child` (`child_id`, `child_first_name`, `child_last_name`, `chi
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_facebook`
---
-
-CREATE TABLE `tbl_facebook` (
-  `facebook_id` int(11) NOT NULL,
-  `fk_friend_id` int(11) NOT NULL,
-  `fk_user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_favorite_advert`
---
-
-CREATE TABLE `tbl_favorite_advert` (
-  `favorite_advert_id` int(11) NOT NULL,
-  `fk_user_id` int(11) NOT NULL,
-  `fk_advert_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_friend`
---
-
-CREATE TABLE `tbl_friend` (
-  `friend_id` int(11) NOT NULL,
-  `friend_first_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `friend_last_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tbl_notifications`
 --
 
@@ -418,40 +392,40 @@ INSERT INTO `tbl_review` (`review_id`, `fk_advert_id`, `fk_user_id`, `review_dat
 (3, 15, 17, '2016-03-13', 4, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
 (4, 15, 20, '2016-03-20', 4, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
 (5, 15, 24, '2016-03-06', 4, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
-(6, 2, 20, '2016-02-15', 3, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
-(7, 2, 17, '2016-03-21', 4, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
-(8, 2, 13, '2016-03-06', 4, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
-(9, 3, 10, '2015-12-13', 5, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
-(10, 3, 11, '2016-01-17', 4, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
-(11, 3, 12, '2015-10-11', 4, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
-(12, 3, 18, '2015-12-13', 4, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
-(13, 4, 17, '2015-11-09', 5, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
-(14, 4, 21, '2015-11-18', 5, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
-(15, 5, 20, '2015-12-18', 4, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
-(16, 5, 19, '2016-04-11', 5, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
-(17, 5, 20, '2016-03-14', 4, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
-(18, 5, 15, '2016-03-20', 4, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
-(19, 5, 22, '2016-02-17', 4, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
-(20, 6, 4, '2016-01-28', 4, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
-(21, 6, 5, '2016-01-10', 4, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
-(22, 7, 11, '2016-01-18', 4, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
-(23, 7, 4, '2016-03-15', 4, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
-(24, 7, 25, '2016-02-12', 5, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
-(25, 7, 8, '2016-02-09', 4, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
-(26, 8, 23, '2016-04-14', 4, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
-(27, 8, 9, '2016-04-16', 3, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
-(28, 8, 18, '2016-03-15', 4, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
-(29, 9, 3, '2016-04-04', 4, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
-(30, 9, 4, '2016-03-03', 5, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
-(31, 10, 6, '2016-03-10', 4, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
-(32, 10, 7, '2016-01-09', 5, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
-(33, 10, 17, '2016-03-08', 4, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
+(6, 2, 20, '2016-02-15', 4, 'Ainarra is een uitstekende opvangouder en een echt moederfiguur! We hebben al meerdere malen gebruik gemaakt van haar opvang-diensten en zijn nog nooit teleurgesteld geweest. Ze speelt met de kinderen, luistert naar hun behoeften en verzorgt ze alsof het haar eigen kinderen zijn. Na de opvang wordt je als ouder bovendien ook op de hoogte gebracht het verloop van de opvang.', 0),
+(7, 2, 17, '2016-03-21', 4, 'Wij zijn zeer tevreden! Ainarra is zeer gemotiveerd en mijn dochter kon goed overweg met haar kinderen. Ik heb mijn dochter de keuze gegeven tussen andere opvang-ouders, maar ze wil in de toekomst enkel nog door haar opgehaald blijven worden.', 0),
+(8, 2, 13, '2016-03-06', 4, 'Ainarra is een warme en gezellige opvangouder. We kunnen ons geen betere opvang voor onze kinderen voorstellen! De compleetheid en kwaliteit van de opvang is beter dan we hadden kunnen verwachten. Ainarra verzorgt de kinderen, helpt ze bij hun huiswerk en voorziet ze van een snack of een maaltijd als ze honger hebben.', 0),
+(9, 3, 10, '2015-12-13', 5, 'Anita is een geweldige opvangouder die gezellig en liefdevol met de kinderen omgaat. Dankzij haar voormalig beroep als kinderleidster heeft ze enorm veel ervaring met het omgaan en verzorgen van kinderen. Dit reflecteert zich dan ook positief in het enthousiasme van onze kinderen. Ze zijn blij als ze opgevangen worden en vinden het leuk om samen met hun vrienden nog wat langer te kunnen spelen.', 0),
+(10, 3, 11, '2016-01-17', 4, 'Wij zijn zeer tevreden! Anita is zeer gemotiveerd en mijn dochter kon goed overweg met haar zoon. Ik heb mijn dochter de keuze gegeven tussen andere opvang-ouders, maar ze wil enkel door haar opgehaald blijven worden.', 0),
+(11, 3, 12, '2015-10-11', 4, 'Anita is een uitstekende opvangouder en een echt moederfiguur! We hebben al meerdere malen gebruik gemaakt van haar opvang-diensten en zijn nog nooit teleurgesteld geweest. Ze speelt met de kinderen, luistert naar hun behoeften en verzorgt ze alsof het haar eigen kinderen zijn. Na de opvang wordt je als ouder bovendien ook op de hoogte gebracht het verloop van de opvang.', 0),
+(12, 3, 18, '2015-12-13', 4, 'Geweldige opvang-ouder! Ik heb twee kinderen die in verschillende scholen zitten, maar dat bleek geen enkel probleem te zijn voor Anita. Ze ging beide kinderen met haar auto ophalen en bracht later zelfs onze zoon naar de voetbal-training. Daarnaast zijn mijn kinderen ook heel enthousiast en warmtelijk opgevangen.', 0),
+(13, 4, 17, '2015-11-09', 5, 'Wij zijn zeer tevreden! Christel is zeer gemotiveerd en mijn dochter kon goed overweg met haar kinderen. Ik heb mijn dochter de keuze gegeven tussen andere opvang-ouders, maar ze wil enkel door haar opgehaald blijven worden.', 0),
+(14, 4, 21, '2015-11-18', 5, 'Christel is een warme en gezellige opvangouder. We kunnen ons geen betere opvang voor onze kinderen voorstellen! De compleetheid en kwaliteit van de opvang is beter dan we hadden kunnen verwachten. [naam] verzorgt de kinderen, helpt ze bij hun huiswerk en voorziet ze van een snack of een maaltijd als ze honger hebben.', 0),
+(15, 5, 20, '2015-12-18', 4, 'Linda is een geweldige opvangouder die gezellig en liefdevol met de kinderen omgaat. Dankzij haar voormalig beroep als kinderleidster heeft ze enorm veel ervaring met het omgaan en verzorgen van kinderen. Dit reflecteert zich dan ook positief in het enthousiasme van onze kinderen. Ze zijn blij als ze opgevangen worden en vinden het leuk om samen met hun vrienden nog wat langer te kunnen spelen.', 0),
+(16, 5, 19, '2016-04-11', 5, 'Geweldige opvang-ouder! Ik heb twee kinderen die in verschillende scholen zitten, maar dat bleek geen enkel probleem te zijn voor Linda. Ze ging beide kinderen met haar auto ophalen en bracht later zelfs onze zoon naar de voetbal-training. Daarnaast zijn mijn kinderen ook heel enthousiast en warmtelijk opgevangen.', 0),
+(17, 5, 18, '2016-03-14', 4, 'Linda is een uitstekende opvangouder en een echt moederfiguur! We hebben al meerdere malen gebruik gemaakt van haar opvang-diensten en zijn nog nooit teleurgesteld geweest. Ze speelt met de kinderen, luistert naar hun behoeften en verzorgt ze alsof het haar eigen kinderen zijn. Na de opvang wordt je als ouder bovendien ook op de hoogte gebracht het verloop van de opvang.', 0),
+(18, 5, 15, '2016-03-20', 4, 'Linda is een warme en gezellige opvangouder. We kunnen ons geen betere opvang voor onze kinderen voorstellen! De compleetheid en kwaliteit van de opvang is beter dan we hadden kunnen verwachten. [naam] verzorgt de kinderen, helpt ze bij hun huiswerk en voorziet ze van een snack of een maaltijd als ze honger hebben.', 0),
+(19, 5, 22, '2016-02-17', 4, 'Wij zijn zeer tevreden! Linda is zeer gemotiveerd en mijn dochter kon goed overweg met haar kinderen. Ik heb mijn dochter de keuze gegeven tussen andere opvang-ouders, maar ze wil enkel door haar opgehaald blijven worden.', 0),
+(20, 6, 4, '2016-01-28', 4, 'Marjan is een uitstekende opvangouder en een echt moederfiguur! We hebben al meerdere malen gebruik gemaakt van haar opvang-diensten en zijn nog nooit teleurgesteld geweest. Ze speelt met de kinderen, luistert naar hun behoeften en verzorgt ze alsof het haar eigen kinderen zijn. Na de opvang wordt je als ouder bovendien ook op de hoogte gebracht het verloop van de opvang.', 0),
+(21, 6, 5, '2016-01-10', 4, 'Geweldige opvang-ouder! Ik heb twee kinderen die in verschillende scholen zitten, maar dat bleek geen enkel probleem te zijn voor Marjan. Ze ging beide kinderen met haar auto ophalen en bracht later zelfs onze zoon naar de voetbal-training. Daarnaast zijn mijn kinderen ook heel enthousiast en warmtelijk opgevangen.', 0),
+(22, 7, 11, '2016-01-18', 4, 'Maya is een warme en gezellige opvangouder. We kunnen ons geen betere opvang voor onze kinderen voorstellen! De compleetheid en kwaliteit van de opvang is beter dan we hadden kunnen verwachten. Maya verzorgt de kinderen, helpt ze bij hun huiswerk en voorziet ze van een snack of een maaltijd als ze honger hebben.', 0),
+(23, 7, 4, '2016-03-15', 4, 'Maya is een uitstekende opvangouder en een echt moederfiguur! We hebben al meerdere malen gebruik gemaakt van haar opvang-diensten en zijn nog nooit teleurgesteld geweest. Ze speelt met de kinderen, luistert naar hun behoeften en verzorgt ze alsof het haar eigen kinderen zijn. Na de opvang wordt je als ouder bovendien ook op de hoogte gebracht het verloop van de opvang.', 0),
+(24, 7, 25, '2016-02-12', 5, 'Geweldige opvang-ouder! Ik heb twee kinderen die in verschillende scholen zitten, maar dat bleek geen enkel probleem te zijn voor Maya. Ze ging beide kinderen met haar auto ophalen en bracht later zelfs onze zoon naar de voetbal-training. Daarnaast zijn mijn kinderen ook heel enthousiast en warmtelijk opgevangen.', 0),
+(25, 7, 8, '2016-02-09', 4, 'Wij zijn zeer tevreden! Maya is zeer gemotiveerd en mijn dochter kon goed overweg met haar kind. Ik heb mijn dochter de keuze gegeven tussen andere opvang-ouders, maar ze wil enkel door haar opgehaald blijven worden.', 0),
+(26, 8, 23, '2016-04-14', 4, 'Nicole is een warme en gezellige opvangouder. We kunnen ons geen betere opvang voor onze kinderen voorstellen! De compleetheid en kwaliteit van de opvang is beter dan we hadden kunnen verwachten. Nicole verzorgt de kinderen, helpt ze bij hun huiswerk en voorziet ze van een snack of een maaltijd als ze honger hebben.', 0),
+(27, 8, 9, '2016-04-16', 3, 'Nicole is een uitstekende opvangouder en een echt moederfiguur! We hebben al meerdere malen gebruik gemaakt van haar opvang-diensten en zijn nog nooit teleurgesteld geweest. Ze speelt met de kinderen, luistert naar hun behoeften en verzorgt ze alsof het haar eigen kinderen zijn. Na de opvang wordt je als ouder bovendien ook op de hoogte gebracht het verloop van de opvang.', 0),
+(28, 8, 18, '2016-03-15', 4, 'Geweldige opvang-ouder! Ik heb twee kinderen die in verschillende scholen zitten, maar dat bleek geen enkel probleem te zijn voor Nicole. Ze ging beide kinderen met haar auto ophalen en bracht later zelfs onze zoon naar de voetbal-training. Daarnaast zijn mijn kinderen ook heel enthousiast en warmtelijk opgevangen.', 0),
+(29, 9, 3, '2016-04-04', 4, 'Philippe is een uitstekende opvangouder en een echt vaderfiguur! We hebben al meerdere malen gebruik gemaakt van haar opvang-diensten en zijn nog nooit teleurgesteld geweest. Ze speelt met de kinderen, luistert naar hun behoeften en verzorgt ze alsof het haar eigen kinderen zijn. Na de opvang wordt je als ouder bovendien ook op de hoogte gebracht het verloop van de opvang.', 0),
+(30, 9, 4, '2016-03-03', 5, 'Philippe is een warme en gezellige opvangouder. We kunnen ons geen betere opvang voor onze kinderen voorstellen! De compleetheid en kwaliteit van de opvang is beter dan we hadden kunnen verwachten. Philippe verzorgt de kinderen, helpt ze bij hun huiswerk en voorziet ze van een snack of een maaltijd als ze honger hebben.', 0),
+(31, 10, 6, '2016-03-10', 4, 'Regine is een uitstekende opvangouder en een echt moederfiguur! We hebben al meerdere malen gebruik gemaakt van haar opvang-diensten en zijn nog nooit teleurgesteld geweest. Ze speelt met de kinderen, luistert naar hun behoeften en verzorgt ze alsof het haar eigen kinderen zijn. Na de opvang wordt je als ouder bovendien ook op de hoogte gebracht het verloop van de opvang.', 0),
+(32, 10, 7, '2016-01-09', 5, 'Regine is een geweldige opvangouder die gezellig en liefdevol met de kinderen omgaat. Dankzij haar voormalig beroep als kinderleidster heeft ze enorm veel ervaring met het omgaan en verzorgen van kinderen. Dit reflecteert zich dan ook positief in het enthousiasme van onze kinderen. Ze zijn blij als ze opgevangen worden en vinden het leuk om samen met hun vrienden nog wat langer te kunnen spelen.', 0),
+(33, 10, 17, '2016-03-08', 4, 'Regine is een warme en gezellige opvangouder. We kunnen ons geen betere opvang voor onze kinderen voorstellen! De compleetheid en kwaliteit van de opvang is beter dan we hadden kunnen verwachten. Regine verzorgt de kinderen, helpt ze bij hun huiswerk en voorziet ze van een snack of een maaltijd als ze honger hebben.', 0),
 (34, 11, 2, '2016-04-04', 4, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
 (35, 11, 3, '2016-03-14', 3, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
 (36, 11, 4, '2016-03-16', 4, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
 (37, 11, 5, '2016-03-11', 4, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
 (38, 12, 18, '2016-03-23', 3, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
-(39, 12, 19, '2016-02-17', 4, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
+(39, 12, 19, '2016-02-17', 4, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 1),
 (40, 13, 14, '2016-02-18', 4, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
 (41, 13, 15, '2016-03-17', 4, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
 (42, 14, 20, '2016-03-09', 3, 'Wij kunnen ons geen betere opvang voor onze kinderen voorstellen. Er wordt door de vakkundige en lieve leidsters goed naar de behoeftes van het kind gekeken. We laten onze kinderen hier met een gerust hart achter. Ze zijn blij als ze erheen gaan en als ze opgehaald worden. Ook voor de ouders is veel aandacht bij de overdracht en dat is prettig. Iedereen weet zo hoe het met het kind gaat.', 0),
@@ -693,6 +667,31 @@ INSERT INTO `tbl_service` (`service_id`, `fk_advert_id`, `service_name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_service_price`
+--
+
+CREATE TABLE `tbl_service_price` (
+  `service_price_id` int(11) NOT NULL,
+  `service_price_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `service_price_description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `service_price_value` int(2) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `tbl_service_price`
+--
+
+INSERT INTO `tbl_service_price` (`service_price_id`, `service_price_name`, `service_price_description`, `service_price_value`) VALUES
+(1, 'opvang-thuisomgeving', 'Opvang in een thuisomgeving', 3),
+(2, 'ophalen-schoolpoort', 'Ophalen aan de schoolpoort', 2),
+(3, 'vervoer-thuis', 'Vervoer naar thuis na opvang', 2),
+(4, 'vervoer-naschoolse-activiteiten', 'Vervoer naschoolse activiteiten', 2),
+(5, 'voorzien-maaltijd', 'Voorzien van een maaltijd', 1),
+(6, 'hulp-huiswerktaken', 'Hulp bij huiswerktaken', 2);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_upvote`
 --
 
@@ -700,7 +699,14 @@ CREATE TABLE `tbl_upvote` (
   `upvote_id` int(11) NOT NULL,
   `fk_user_id` int(11) NOT NULL,
   `fk_review_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `tbl_upvote`
+--
+
+INSERT INTO `tbl_upvote` (`upvote_id`, `fk_user_id`, `fk_review_id`) VALUES
+(1, 41, 39);
 
 -- --------------------------------------------------------
 
@@ -722,54 +728,56 @@ CREATE TABLE `tbl_user` (
   `user_password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `user_facebook_id` int(30) NOT NULL,
   `user_home_number` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `user_mobile_number` varchar(20) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `user_mobile_number` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `user_credits` int(11) NOT NULL DEFAULT '10'
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `tbl_user`
 --
 
-INSERT INTO `tbl_user` (`user_id`, `user_image_path`, `user_firstname`, `user_lastname`, `user_sex_type`, `user_age`, `user_adress`, `user_city`, `user_biography`, `user_email`, `user_password`, `user_facebook_id`, `user_home_number`, `user_mobile_number`) VALUES
-(1, '../assets/user-profile-images/maarten-van-loock.png', 'Maarten', 'Van Loock', 'Male', 22, 'Kleistraat 2', 'Heist-op-den-Berg', 'Hallo, ik ben maarten!', 'maartenphone@gmail.com', '$2y$10$vRYw8FUNuPpHlnoFms1UXOyOwsRCH6zHdomeD37GSkuYv2/ZVzEK.', 0, '+32 015 24 68 32', '+32 0477 744 162'),
-(2, '../assets/user-profile-images/ainarra-verboven.png', 'Ainarra', 'Verboven', 'Female', 34, 'Lostraat 50', 'Heist-op-den-Berg', 'Hallo ik ben Ainarra!', 'ainarra.verboven@gmail.com', '$2y$10$xu.6utUNhq589d2PUXuN2uXN.oMHMGAr../JLWz3gSAZ3jJDTQ6aK', 0, '+32 015 24 64 48', '+32 0478 134 596'),
-(3, '../assets/user-profile-images/anita-verhoeven.png', 'Anita', 'Verhoeven', 'Female', 31, 'Kasteelstraat 14', 'Heist-op-den-Berg', 'Hallo ik ben Anita!', 'anita.verhoeven@gmail.com', '$2y$10$ESpwc7x2aS5r6OTw0PnddO9N8TM.RwoS7/5RKcbs8Cp2jiBl8xIfy', 0, '+32 015 24 67 92', '+32 0474 546 087'),
-(4, '../assets/user-profile-images/christel-janssens.png', 'Christel', 'Janssens', 'Female', 36, 'Bosstraat 15', 'Putte', 'Hallo ik ben Christel!', 'christel.janssens@gmail.com', '$2y$10$8MfX.FsawX.FPV60M7lDgejpNZ8bWO2Rs7YmYvl9m5s8BsEyqhwAa', 0, '+32 015 24 83 54', '+32 0477 123 765'),
-(5, '../assets/user-profile-images/linda-deraeve.png', 'Linda', 'Deraeve', 'Female', 21, 'Koolstraat 34', 'Mechelen', 'Hallo ik ben Linda!', 'linda.deraeve@gmail.com', '$2y$10$8vEY8DaaIOaR6clF.YRomu/l65zADnbspus/KKdmd6.bBGQ.8L3nm', 0, '+32 015 24 32 94', '+32 0479 832 476'),
-(6, '../assets/user-profile-images/marjan-dewaele.png', 'Marjan', 'Dewaele', 'Female', 41, 'Hulststraat 78', 'Lier', 'Hallo ik ben Marjan!', 'marjan.dewaele@gmail.com', '$2y$10$pkc6hLp7snKZsHxGmZoUaeJ26DsGPqh7EFvSyVORvNIaKuorgp0DW', 0, '+32 015 24 31 96', '+32 0477 841 043'),
-(7, '../assets/user-profile-images/maya-van-den-broeck.png', 'Maya', 'Van den Broeck', 'Female', 45, 'Schaapstraat 17', 'Putte', 'Hallo ik ben Maya!', 'maya.van.den.broeck@gmail.com', '$2y$10$6zEZyIzw7vGg5ms65bX56.JunL0bTUJbQPJTjkHEyDApfObqLp1hW', 0, '+32 015 28 64 53', '+32 0474 094 321'),
-(8, '../assets/user-profile-images/nicole-straatmans.png', 'Nicole', 'Straatmans', 'Female', 34, 'Lintsesteenweg 50', 'Duffel', 'Hallo ik ben Nicole!', 'nicole.straatmans@gmail.com', '$2y$10$WvrJ/tYjkFiRR/7Q6yisXuKqXyCxoP94lReA/94qbHux3uXYV9SDa', 0, '+32 015 24 53 21', '+32 0477 984 763'),
-(9, '../assets/user-profile-images/philippe-verstraeten.png', 'Philippe', 'Verstraeten', 'Male', 40, 'Heistraat 45', 'Lier', 'Hallo ik ben Philippe!', 'philippe.verstraeten@gmail.com', '$2y$10$GTnixES4Fxw2bDtWBwO/teDMcE4PxYi1Vdz/1jb2CSn/0.1pUkbpa', 0, '+32 015 24 87 43', '+32 0477 832 513'),
-(10, '../assets/user-profile-images/regine-verschalke.png', 'Regine', 'Verschalke', 'Female', 32, 'Kruisstraat 10', 'Lier', 'Hallo ik ben Regine!', 'regine.verschalke@gmail.com', '$2y$10$eZKWRg/gUvLWqDaEbjgJgO5nrO/QLZ4GWsZH/BaKAg6JDMaxB7MT6', 0, '+32 015 24 71 34', '+32 0479 032 487'),
-(11, '../assets/user-profile-images/sandra-van-haute.png', 'Sandra', 'Van Haute', 'Female', 37, 'Bergstraat 18', 'Heist-op-den-Berg', 'Hallo ik ben Sandra!', 'sandra.van.haute@gmail.com', '$2y$10$aBf3TrSnLr7UshuygLmefei01u2FbdRb83UaMMqLeNQnAmfoszvi2', 0, '+32 015 24 98 56', '+32 0475 890 432'),
-(12, '../assets/user-profile-images/sophia-verstraeten.png', 'Sophia', 'Verstraeten', 'Female', 38, 'Bergstraat 70', 'Heist-op-den-Berg', 'Hallo ik ben Sophia!', 'sophia.verstraeten@gmail.com', '$2y$10$H7UBRNreaymtVKtUp2LL6eJeZShhMQnARPVfia7FfLI5lcre7NoJy', 0, '+32 015 24 67 54', '+32 0477 876 452'),
-(13, '../assets/user-profile-images/tanja-vandersteen.png', 'Tanja', 'Vandersteen', 'Female', 42, 'Pachtersdreef 80', 'Putte', 'Hallo ik ben Tanja', 'tanja.vandersteen@gmail.com', '$2y$10$xKNpLSBbOy/Tn84/kUr.uuIZiJbydsSrlHNzxsjRtNuCaM6k7.wRG', 0, '+32 015 24 98 21', '+32 0477 098 675'),
-(14, '../assets/user-profile-images/selma-tulmans.png', 'Selma', 'Tulmans', 'Female', 32, 'Dorpsstraat 78', 'Berlaar', 'Hallo ik ben Selma!', 'selma.tulmans@gmail.com', '$2y$10$U.H5pb9UuLRh.yF.aI2xC.RwgRdneq656vfyrulnlX7n3E0s45bqC', 0, '+32 015 24 32 89', '+32 0475 786 385'),
-(15, '../assets/user-profile-images/marlies-depraetere.png', 'Marlies', 'Depraetere', 'Female', 51, 'Smidsstraat 89', 'Berlaar', 'Hallo ik ben Marlies!', 'marlies.depraetere@gmail.com', '$2y$10$0WBKtNcLKbeBrCIa7Cppf.Ctpsw.ITK3Jss.09xY//8t0Ivn4FJxW', 0, '+32 015 28 86 21', '+32 0477 986 403'),
-(16, '../assets/user-profile-images/wendy-schoenaerts.png', 'Wendy', 'Schoenaerts', 'Female', 35, 'Isschotweg 108', 'Itegem', 'Hallo ik ben Wendy!', 'wendy.schoenaerts@gmail.com', '$2y$10$9hSdhEIrfAwKgQijbEORmeiRXNp1a2QyaTYYPA0imx0Zu176QWxHG', 0, '+32 015 24 31 98', '+32 0477 620 931'),
-(17, '../assets/user-profile-images/karen-verhoeven.png', 'Karen', 'Verhoeven', 'Female', 30, 'Hoogstraat 39', 'Beerzel', 'Hallo ik ben Karen!', 'karen.verhoeven@gmail.com', '$2y$10$.D3uQp7hAXMuGu7ejUKv1euk17uSkSBr56bSeMhpv1os4cxawO6P.', 0, '+32 015 24 89 76', '+32 0477 521 863'),
-(18, '../assets/user-profile-images/koen-verbruggen.png', 'Koen', 'Verbruggen', 'Male', 30, 'Pompoenstraat 34', 'Wiekevorst', 'Hallo ik ben koen!', 'koen.verbruggen@gmail.com', '$2y$10$bDqjR6idv9oA3vrwAWSgoejFVs7EC.Kkmd5IdIlg9HznzPLFS02XO', 0, '+32 015 24 76 32', '+32 0477 744 321'),
-(19, '../assets/user-profile-images/karel-degrote.png', 'Karel', 'Degrote', 'Male', 27, 'Kerkstraat 12', 'Itegem', 'Hallo ik ben Karel!', 'karel.degrote@gmail.com', '$2y$10$yxjJVUVewuUDF9CVJSLcK.crIQ3.pD3fWkk4xKo16JXvdVU.E1IDu', 0, '+32 015 26 98 21', '+32 0478 912 834'),
-(20, '../assets/user-profile-images/marleen-ruiters.png', 'Marleen', 'Ruiters', 'Female', 34, 'Herenthoutseweg 89', 'Wiekevorst', 'Hallo ik ben Marleen!', 'marleen.ruiters@gmail.com', '$2y$10$84pf/ACEkZ8tynKXJnqlSOp4U39gU9NMEj3dxXZElzT8J2J7qDc2y', 0, '+32 015 24 09 34', '+32 0477 901 921'),
-(21, '../assets/user-profile-images/lisa-aerts.png', 'Lisa', 'Aerts', 'Female', 24, 'Kattestraat 17', 'Beerzel', 'Hallo ik ben Lisa!', 'lisa.aerts@gmail.com', '$2y$10$uOChfuKVmuCmtDJOmSH23eI8r5fUU3/WhCAz5qcGMU749xpHxf8Xy', 0, '+32 015 24 08 31', '+32 0477 731 983'),
-(22, '../assets/user-profile-images/charles-guysmans.png', 'Charles', 'Guysmans', 'Male', 32, 'Houwstraat 34', 'Beerzel', 'Hallo ik ben Charles!', 'chales.guysmans@gmail.com', '$2y$10$TEavI40SFkJDvWqZqJQdTeMkni46t7kmGBqqHZZZb.5OAH.5Gij.q', 0, '+32 015 24 08 12', '+32 0477 798 301'),
-(23, '../assets/user-profile-images/veronique-moermans.png', 'Veronique', 'Moermans', 'Female', 35, 'Broekweg 17', 'Melkouwen', 'Hallo ik ben Veronique!', 'veronique.moermans@gmail.com', '$2y$10$bSESzfXLnI0Smr7yWlWFRuXrtiMtmZ4i9sCD8qJQHBbf6.YscCdOW', 0, '+32 015 24 01 31', '+32 0477 701 932'),
-(24, '../assets/user-profile-images/sandra-verpoortere.png', 'Sandra', 'Verpoortere', 'Female', 26, 'Nijlense steenweg 67', 'Herenthout', 'Hallo ik ben Sandra!', 'sandra.verpoortere@gmail.com', '$2y$10$72je9.tsdB4rJSCtglLYbuKqLlanQ.f3dqWIFBvZpHoNXN4RYaHVa', 0, '+32 015 24 01 32', '+32 0477 744 092'),
-(25, '../assets/user-profile-images/charline-messermans.png', 'Charline', 'Messermans', 'Female', 28, 'Heuvelstraat 32', 'Heist-op-den-Berg', 'Hallo ik ben Charline!', 'charline.messermans@gmail.com', '$2y$10$Or6U71IS.dU4HQ10xXAoeewnhyX4foTVF.sc/ulvysB4u/ikUVxyG', 0, '+32 015 28 01 92', '+32 0479 912 394'),
-(27, '../assets/user-profile-images/walter-decroone.png', 'Walter', 'De croone', 'Male', 31, 'Schriekstraat 34', 'Heist-op-den-Berg', 'Hallo ik ben Walter!', 'walter.decroone@gmail.com', '$2y$10$rH92tGWRj/q1RNPuviyD8OkDSgqWxFBuk9y4rDY32nbX1oxUa31iS', 0, '+32 015 24 68 75', '+32 0478 623 021'),
-(28, '../assets/user-profile-images/lisa-struyfmans.png', 'Lisa', 'Struyfmans', 'Female', 38, 'Hollandstraat 20', 'Heist-op-den-Berg', 'Hallo ik ben Lisa', 'lisa.struyfmans@gmail.com', '$2y$10$mT.Y7vemQBx2o4N19n5slOq/N0p1gVCgZ1/94W0oaN8sKsRw75hSC', 0, '+32 015 24 56 32', '+32 0477 901 873'),
-(29, '../assets/user-profile-images/paul-teunis.png', 'Paul', 'Teunis', 'Male', 32, 'Hoogstraat 40', 'Schriek', 'Hallo ik ben Paul', 'paul.teunis@gmail.com', '$2y$10$9HCc270GlW6hO5K.2hlYkOcnSN0xd4IB8/2Td1X.xo6nky0UNPmsG', 0, '+32 015 78 32 64', '+32 0477 896 321'),
-(30, '../assets/user-profile-images/emma-verschueren.png', 'Emma', 'Verschueren', 'Female', 31, 'Grasheideweg 30', 'Schriek', 'Hallo ik ben Emma!', 'emma.verschueren@gmail.com', '$2y$10$MQXooSso1N1ErHNbCxnIAuP11.GZEVtfasO9XuMpoSs3kkTZC915a', 0, '+32 015 34 87 92', '+32 0478 632 974'),
-(31, '../assets/user-profile-images/sarah-van-dijk.png', 'Sarah', 'Van Dijk', 'Female', 32, 'Broekmansstraat 38', 'Booischot', 'Hallo ik ben Sara!', 'sarah.vandijk@gmail.com', '$2y$10$nzeAnPROc//qT.Qt3/G7rOj4sd4Pd8u8fCAFTbOo8DtrRjxIAU5qu', 0, '+32 015 24 68 76', '+32 0477 712 973'),
-(32, '../assets/user-profile-images/emilie-de-jong.png', 'Emilie', 'De Jong', 'Female', 30, 'Ter laken 20', 'Booischot', 'Hallo ik ben Emilie!', 'emilie.dejong@gmail.com', '$2y$10$BPo9VJxd/6ElD0Zxpj6nHeTwwCNZt3Q.uAAPGf6CxwfrynUdDJ.uq', 0, '+32 015 24 73 65', '+32 0479 532 912'),
-(33, '../assets/user-profile-images/julie-aerts.png', 'Julie', 'Aerts', 'Female', 33, 'Heisstraat 50', 'Lier', 'Hallo ik ben Julie!', 'julie.aerts@gmail.com', '$2y$10$4NX9c4KAnicaurMa5Uw.beVym8QZvPTPYqTVPi/qHqz4lDhC8P9IS', 0, '+32 015 68 93 04', '+32 0477 983 123'),
-(34, '../assets/user-profile-images/charlotte-tuinmans.png', 'Charlotte', 'Tuinmans', 'Female', 39, 'Beekstraat 55', 'Koningshooikt', 'Hallo ik ben Charlotte!', 'charlotte.tuinmans@gmail.com', '$2y$10$cu/PGMGPDiXbnZnlxqgcYeJnUUQ9yGuuudklRaCyHJYSxc90W2JTi', 0, '+32 015 24 68 75', '+32 0478 963 245'),
-(35, '../assets/user-profile-images/mia-van-doorne.png', 'Mia', 'Van Doorne', 'Female', 36, 'Schoolstraat 35', 'Itegem', 'Hallo ik ben Mia!', 'mia.vandoorne@gmail.com', '$2y$10$qwi61OxTVt.xybMfvLsY2.J2g8k1g/Cj6rR6B1bnvMVoFhk.RYKQ2', 0, '+32 015 24 76 34', '+32 0479 623 192'),
-(36, '../assets/user-profile-images/elsa-van-laecke.png', 'Elsa', 'Van Laecke', 'Female', 28, 'Rozendaelstraat 45', 'Itegem', 'Hallo ik ben Elsa!', 'elsa.vanlaecke@gmail.com', '$2y$10$vBe2eVVUp1.bvIudv12pGepqcydYpQxfGxu2qhVL20TITw0lzf3cG', 0, '+32 015 34 78 23', '+32 0477 987 123'),
-(37, '../assets/user-profile-images/nathan-van-eylen.png', 'Nathan', 'Van Eylen', 'Male', 30, 'Heibergstraat 60', 'Itegem', 'Sint-Guibertus', 'nathan.vaneylen@gmail.com', '$2y$10$MfFoVHlSRNH1QecAlPNSCe3HXHSz23Vxxhy52KspjJFaZ1GFowyWC', 0, '+32 015 24 68 73', '+32 0477 890 124'),
-(38, '../assets/user-profile-images/christel-van-nuys.png', 'Christel', 'Van Nuys', 'Female', 35, 'Lauwrijkstraat 30', 'Grootlo', 'Hallo ik ben Christel!', 'christel.vannuys@gmail.com', '$2y$10$dM7oJVIvLXgTCZtH8hro/OsUNpult.1T8EYfIEVWFqRUCCpLgFnD6', 0, '+32 015 24 56 32', '+32 0479 821 304'),
-(39, '../assets/user-profile-images/louise-deconinck.png', 'Louise', 'Deconinck', 'Female', 29, 'Jespersweg 21', 'Schriek', 'Hallo ik ben Louise!', 'louise.deconinck@gmail.com', '$2y$10$XeXJvAzYGs9eiyGmqH80HuSU6NXgICNEicoR3Fm7MI3mb731kqwIe', 0, '+32 015 24 67 02', '+32 0478 521 109'),
-(40, '../assets/user-profile-images/emma-gellens.png', 'Emma', 'Gellens', 'Female', 32, 'Lozenhoekstraat 12', 'Grootlo', 'Hallo ik ben Emma!', 'emma.gellens@gmail.com', '$2y$10$eJhGG7kwSIl5ChQbnmOggOgRWQfcZZ2nCmq/W15.i8Fs/xS7xnTqe', 0, '+32 015 24 68 76', '+32 0477 892 162'),
-(41, '../assets/user-profile-images/default-profile-image.png', 'Wouter', 'Van Heusden', '', 0, 'Kleistraat 2', 'Heist-op-den-Berg', '', 'wouter.vanheusden@gmail.com', '$2y$10$x0F/PYluKB6lg7cW3OlxWOGZwKWBw8DNpXwo3/DAEB.A5KVvMAc8q', 0, '+32 015 24 68 32', '+32 0477 744 162');
+INSERT INTO `tbl_user` (`user_id`, `user_image_path`, `user_firstname`, `user_lastname`, `user_sex_type`, `user_age`, `user_adress`, `user_city`, `user_biography`, `user_email`, `user_password`, `user_facebook_id`, `user_home_number`, `user_mobile_number`, `user_credits`) VALUES
+(1, '../assets/user-profile-images/maarten-van-loock.png', 'Maarten', 'Van Loock', 'Male', 22, 'Kleistraat 2', 'Heist-op-den-Berg', 'Hallo, ik ben maarten!', 'maartenphone@gmail.com', '$2y$10$vRYw8FUNuPpHlnoFms1UXOyOwsRCH6zHdomeD37GSkuYv2/ZVzEK.', 0, '+32 015 24 68 32', '+32 0477 744 162', 10),
+(2, '../assets/user-profile-images/ainarra-verboven.png', 'Ainarra', 'Verboven', 'Female', 34, 'Lostraat 50', 'Heist-op-den-Berg', 'Hallo ik ben Ainarra!', 'ainarra.verboven@gmail.com', '$2y$10$xu.6utUNhq589d2PUXuN2uXN.oMHMGAr../JLWz3gSAZ3jJDTQ6aK', 0, '+32 015 24 64 48', '+32 0478 134 596', 10),
+(3, '../assets/user-profile-images/anita-verhoeven.png', 'Anita', 'Verhoeven', 'Female', 31, 'Kasteelstraat 14', 'Heist-op-den-Berg', 'Hallo ik ben Anita!', 'anita.verhoeven@gmail.com', '$2y$10$ESpwc7x2aS5r6OTw0PnddO9N8TM.RwoS7/5RKcbs8Cp2jiBl8xIfy', 0, '+32 015 24 67 92', '+32 0474 546 087', 10),
+(4, '../assets/user-profile-images/christel-janssens.png', 'Christel', 'Janssens', 'Female', 36, 'Bosstraat 15', 'Putte', 'Hallo ik ben Christel!', 'christel.janssens@gmail.com', '$2y$10$8MfX.FsawX.FPV60M7lDgejpNZ8bWO2Rs7YmYvl9m5s8BsEyqhwAa', 0, '+32 015 24 83 54', '+32 0477 123 765', 10),
+(5, '../assets/user-profile-images/linda-deraeve.png', 'Linda', 'Deraeve', 'Female', 21, 'Koolstraat 34', 'Mechelen', 'Hallo ik ben Linda!', 'linda.deraeve@gmail.com', '$2y$10$8vEY8DaaIOaR6clF.YRomu/l65zADnbspus/KKdmd6.bBGQ.8L3nm', 0, '+32 015 24 32 94', '+32 0479 832 476', 10),
+(6, '../assets/user-profile-images/marjan-dewaele.png', 'Marjan', 'Dewaele', 'Female', 41, 'Hulststraat 78', 'Lier', 'Hallo ik ben Marjan!', 'marjan.dewaele@gmail.com', '$2y$10$pkc6hLp7snKZsHxGmZoUaeJ26DsGPqh7EFvSyVORvNIaKuorgp0DW', 0, '+32 015 24 31 96', '+32 0477 841 043', 10),
+(7, '../assets/user-profile-images/maya-van-den-broeck.png', 'Maya', 'Van den Broeck', 'Female', 45, 'Schaapstraat 17', 'Putte', 'Hallo ik ben Maya!', 'maya.van.den.broeck@gmail.com', '$2y$10$6zEZyIzw7vGg5ms65bX56.JunL0bTUJbQPJTjkHEyDApfObqLp1hW', 0, '+32 015 28 64 53', '+32 0474 094 321', 10),
+(8, '../assets/user-profile-images/nicole-straatmans.png', 'Nicole', 'Straatmans', 'Female', 34, 'Lintsesteenweg 50', 'Duffel', 'Hallo ik ben Nicole!', 'nicole.straatmans@gmail.com', '$2y$10$WvrJ/tYjkFiRR/7Q6yisXuKqXyCxoP94lReA/94qbHux3uXYV9SDa', 0, '+32 015 24 53 21', '+32 0477 984 763', 10),
+(9, '../assets/user-profile-images/philippe-verstraeten.png', 'Philippe', 'Verstraeten', 'Male', 40, 'Heistraat 45', 'Lier', 'Hallo ik ben Philippe!', 'philippe.verstraeten@gmail.com', '$2y$10$GTnixES4Fxw2bDtWBwO/teDMcE4PxYi1Vdz/1jb2CSn/0.1pUkbpa', 0, '+32 015 24 87 43', '+32 0477 832 513', 10),
+(10, '../assets/user-profile-images/regine-verschalke.png', 'Regine', 'Verschalke', 'Female', 32, 'Kruisstraat 10', 'Lier', 'Hallo ik ben Regine!', 'regine.verschalke@gmail.com', '$2y$10$eZKWRg/gUvLWqDaEbjgJgO5nrO/QLZ4GWsZH/BaKAg6JDMaxB7MT6', 0, '+32 015 24 71 34', '+32 0479 032 487', 10),
+(11, '../assets/user-profile-images/sandra-van-haute.png', 'Sandra', 'Van Haute', 'Female', 37, 'Bergstraat 18', 'Heist-op-den-Berg', 'Hallo ik ben Sandra!', 'sandra.van.haute@gmail.com', '$2y$10$aBf3TrSnLr7UshuygLmefei01u2FbdRb83UaMMqLeNQnAmfoszvi2', 0, '+32 015 24 98 56', '+32 0475 890 432', 10),
+(12, '../assets/user-profile-images/sophia-verstraeten.png', 'Sophia', 'Verstraeten', 'Female', 38, 'Bergstraat 70', 'Heist-op-den-Berg', 'Hallo ik ben Sophia!', 'sophia.verstraeten@gmail.com', '$2y$10$H7UBRNreaymtVKtUp2LL6eJeZShhMQnARPVfia7FfLI5lcre7NoJy', 0, '+32 015 24 67 54', '+32 0477 876 452', 10),
+(13, '../assets/user-profile-images/tanja-vandersteen.png', 'Tanja', 'Vandersteen', 'Female', 42, 'Pachtersdreef 80', 'Putte', 'Hallo ik ben Tanja', 'tanja.vandersteen@gmail.com', '$2y$10$xKNpLSBbOy/Tn84/kUr.uuIZiJbydsSrlHNzxsjRtNuCaM6k7.wRG', 0, '+32 015 24 98 21', '+32 0477 098 675', 10),
+(14, '../assets/user-profile-images/selma-tulmans.png', 'Selma', 'Tulmans', 'Female', 32, 'Dorpsstraat 78', 'Berlaar', 'Hallo ik ben Selma!', 'selma.tulmans@gmail.com', '$2y$10$U.H5pb9UuLRh.yF.aI2xC.RwgRdneq656vfyrulnlX7n3E0s45bqC', 0, '+32 015 24 32 89', '+32 0475 786 385', 10),
+(15, '../assets/user-profile-images/marlies-depraetere.png', 'Marlies', 'Depraetere', 'Female', 51, 'Smidsstraat 89', 'Berlaar', 'Hallo ik ben Marlies!', 'marlies.depraetere@gmail.com', '$2y$10$0WBKtNcLKbeBrCIa7Cppf.Ctpsw.ITK3Jss.09xY//8t0Ivn4FJxW', 0, '+32 015 28 86 21', '+32 0477 986 403', 10),
+(16, '../assets/user-profile-images/wendy-schoenaerts.png', 'Wendy', 'Schoenaerts', 'Female', 35, 'Isschotweg 108', 'Itegem', 'Hallo ik ben Wendy!', 'wendy.schoenaerts@gmail.com', '$2y$10$9hSdhEIrfAwKgQijbEORmeiRXNp1a2QyaTYYPA0imx0Zu176QWxHG', 0, '+32 015 24 31 98', '+32 0477 620 931', 10),
+(17, '../assets/user-profile-images/karen-verhoeven.png', 'Karen', 'Verhoeven', 'Female', 30, 'Hoogstraat 39', 'Beerzel', 'Hallo ik ben Karen!', 'karen.verhoeven@gmail.com', '$2y$10$.D3uQp7hAXMuGu7ejUKv1euk17uSkSBr56bSeMhpv1os4cxawO6P.', 0, '+32 015 24 89 76', '+32 0477 521 863', 10),
+(18, '../assets/user-profile-images/koen-verbruggen.png', 'Koen', 'Verbruggen', 'Male', 30, 'Pompoenstraat 34', 'Wiekevorst', 'Hallo ik ben koen!', 'koen.verbruggen@gmail.com', '$2y$10$bDqjR6idv9oA3vrwAWSgoejFVs7EC.Kkmd5IdIlg9HznzPLFS02XO', 0, '+32 015 24 76 32', '+32 0477 744 321', 10),
+(19, '../assets/user-profile-images/karel-degrote.png', 'Karel', 'Degrote', 'Male', 27, 'Kerkstraat 12', 'Itegem', 'Hallo ik ben Karel!', 'karel.degrote@gmail.com', '$2y$10$yxjJVUVewuUDF9CVJSLcK.crIQ3.pD3fWkk4xKo16JXvdVU.E1IDu', 0, '+32 015 26 98 21', '+32 0478 912 834', 10),
+(20, '../assets/user-profile-images/marleen-ruiters.png', 'Marleen', 'Ruiters', 'Female', 34, 'Herenthoutseweg 89', 'Wiekevorst', 'Hallo ik ben Marleen!', 'marleen.ruiters@gmail.com', '$2y$10$84pf/ACEkZ8tynKXJnqlSOp4U39gU9NMEj3dxXZElzT8J2J7qDc2y', 0, '+32 015 24 09 34', '+32 0477 901 921', 10),
+(21, '../assets/user-profile-images/lisa-aerts.png', 'Lisa', 'Aerts', 'Female', 24, 'Kattestraat 17', 'Beerzel', 'Hallo ik ben Lisa!', 'lisa.aerts@gmail.com', '$2y$10$uOChfuKVmuCmtDJOmSH23eI8r5fUU3/WhCAz5qcGMU749xpHxf8Xy', 0, '+32 015 24 08 31', '+32 0477 731 983', 10),
+(22, '../assets/user-profile-images/charles-guysmans.png', 'Charles', 'Guysmans', 'Male', 32, 'Houwstraat 34', 'Beerzel', 'Hallo ik ben Charles!', 'chales.guysmans@gmail.com', '$2y$10$TEavI40SFkJDvWqZqJQdTeMkni46t7kmGBqqHZZZb.5OAH.5Gij.q', 0, '+32 015 24 08 12', '+32 0477 798 301', 10),
+(23, '../assets/user-profile-images/veronique-moermans.png', 'Veronique', 'Moermans', 'Female', 35, 'Broekweg 17', 'Melkouwen', 'Hallo ik ben Veronique!', 'veronique.moermans@gmail.com', '$2y$10$bSESzfXLnI0Smr7yWlWFRuXrtiMtmZ4i9sCD8qJQHBbf6.YscCdOW', 0, '+32 015 24 01 31', '+32 0477 701 932', 10),
+(24, '../assets/user-profile-images/sandra-verpoortere.png', 'Sandra', 'Verpoortere', 'Female', 26, 'Nijlense steenweg 67', 'Herenthout', 'Hallo ik ben Sandra!', 'sandra.verpoortere@gmail.com', '$2y$10$72je9.tsdB4rJSCtglLYbuKqLlanQ.f3dqWIFBvZpHoNXN4RYaHVa', 0, '+32 015 24 01 32', '+32 0477 744 092', 10),
+(25, '../assets/user-profile-images/charline-messermans.png', 'Charline', 'Messermans', 'Female', 28, 'Heuvelstraat 32', 'Heist-op-den-Berg', 'Hallo ik ben Charline!', 'charline.messermans@gmail.com', '$2y$10$Or6U71IS.dU4HQ10xXAoeewnhyX4foTVF.sc/ulvysB4u/ikUVxyG', 0, '+32 015 28 01 92', '+32 0479 912 394', 10),
+(27, '../assets/user-profile-images/walter-decroone.png', 'Walter', 'De croone', 'Male', 31, 'Schriekstraat 34', 'Heist-op-den-Berg', 'Hallo ik ben Walter!', 'walter.decroone@gmail.com', '$2y$10$rH92tGWRj/q1RNPuviyD8OkDSgqWxFBuk9y4rDY32nbX1oxUa31iS', 0, '+32 015 24 68 75', '+32 0478 623 021', 10),
+(28, '../assets/user-profile-images/lisa-struyfmans.png', 'Lisa', 'Struyfmans', 'Female', 38, 'Hollandstraat 20', 'Heist-op-den-Berg', 'Hallo ik ben Lisa', 'lisa.struyfmans@gmail.com', '$2y$10$mT.Y7vemQBx2o4N19n5slOq/N0p1gVCgZ1/94W0oaN8sKsRw75hSC', 0, '+32 015 24 56 32', '+32 0477 901 873', 10),
+(29, '../assets/user-profile-images/paul-teunis.png', 'Paul', 'Teunis', 'Male', 32, 'Hoogstraat 40', 'Schriek', 'Hallo ik ben Paul', 'paul.teunis@gmail.com', '$2y$10$9HCc270GlW6hO5K.2hlYkOcnSN0xd4IB8/2Td1X.xo6nky0UNPmsG', 0, '+32 015 78 32 64', '+32 0477 896 321', 10),
+(30, '../assets/user-profile-images/emma-verschueren.png', 'Emma', 'Verschueren', 'Female', 31, 'Grasheideweg 30', 'Schriek', 'Hallo ik ben Emma!', 'emma.verschueren@gmail.com', '$2y$10$MQXooSso1N1ErHNbCxnIAuP11.GZEVtfasO9XuMpoSs3kkTZC915a', 0, '+32 015 34 87 92', '+32 0478 632 974', 10),
+(31, '../assets/user-profile-images/sarah-van-dijk.png', 'Sarah', 'Van Dijk', 'Female', 32, 'Broekmansstraat 38', 'Booischot', 'Hallo ik ben Sara!', 'sarah.vandijk@gmail.com', '$2y$10$nzeAnPROc//qT.Qt3/G7rOj4sd4Pd8u8fCAFTbOo8DtrRjxIAU5qu', 0, '+32 015 24 68 76', '+32 0477 712 973', 10),
+(32, '../assets/user-profile-images/emilie-de-jong.png', 'Emilie', 'De Jong', 'Female', 30, 'Ter laken 20', 'Booischot', 'Hallo ik ben Emilie!', 'emilie.dejong@gmail.com', '$2y$10$BPo9VJxd/6ElD0Zxpj6nHeTwwCNZt3Q.uAAPGf6CxwfrynUdDJ.uq', 0, '+32 015 24 73 65', '+32 0479 532 912', 10),
+(33, '../assets/user-profile-images/julie-aerts.png', 'Julie', 'Aerts', 'Female', 33, 'Heisstraat 50', 'Lier', 'Hallo ik ben Julie!', 'julie.aerts@gmail.com', '$2y$10$4NX9c4KAnicaurMa5Uw.beVym8QZvPTPYqTVPi/qHqz4lDhC8P9IS', 0, '+32 015 68 93 04', '+32 0477 983 123', 10),
+(34, '../assets/user-profile-images/charlotte-tuinmans.png', 'Charlotte', 'Tuinmans', 'Female', 39, 'Beekstraat 55', 'Koningshooikt', 'Hallo ik ben Charlotte!', 'charlotte.tuinmans@gmail.com', '$2y$10$cu/PGMGPDiXbnZnlxqgcYeJnUUQ9yGuuudklRaCyHJYSxc90W2JTi', 0, '+32 015 24 68 75', '+32 0478 963 245', 10),
+(35, '../assets/user-profile-images/mia-van-doorne.png', 'Mia', 'Van Doorne', 'Female', 36, 'Schoolstraat 35', 'Itegem', 'Hallo ik ben Mia!', 'mia.vandoorne@gmail.com', '$2y$10$qwi61OxTVt.xybMfvLsY2.J2g8k1g/Cj6rR6B1bnvMVoFhk.RYKQ2', 0, '+32 015 24 76 34', '+32 0479 623 192', 10),
+(36, '../assets/user-profile-images/elsa-van-laecke.png', 'Elsa', 'Van Laecke', 'Female', 28, 'Rozendaelstraat 45', 'Itegem', 'Hallo ik ben Elsa!', 'elsa.vanlaecke@gmail.com', '$2y$10$vBe2eVVUp1.bvIudv12pGepqcydYpQxfGxu2qhVL20TITw0lzf3cG', 0, '+32 015 34 78 23', '+32 0477 987 123', 10),
+(37, '../assets/user-profile-images/nathan-van-eylen.png', 'Nathan', 'Van Eylen', 'Male', 30, 'Heibergstraat 60', 'Itegem', 'Sint-Guibertus', 'nathan.vaneylen@gmail.com', '$2y$10$MfFoVHlSRNH1QecAlPNSCe3HXHSz23Vxxhy52KspjJFaZ1GFowyWC', 0, '+32 015 24 68 73', '+32 0477 890 124', 10),
+(38, '../assets/user-profile-images/christel-van-nuys.png', 'Christel', 'Van Nuys', 'Female', 35, 'Lauwrijkstraat 30', 'Grootlo', 'Hallo ik ben Christel!', 'christel.vannuys@gmail.com', '$2y$10$dM7oJVIvLXgTCZtH8hro/OsUNpult.1T8EYfIEVWFqRUCCpLgFnD6', 0, '+32 015 24 56 32', '+32 0479 821 304', 10),
+(39, '../assets/user-profile-images/louise-deconinck.png', 'Louise', 'Deconinck', 'Female', 29, 'Jespersweg 21', 'Schriek', 'Hallo ik ben Louise!', 'louise.deconinck@gmail.com', '$2y$10$XeXJvAzYGs9eiyGmqH80HuSU6NXgICNEicoR3Fm7MI3mb731kqwIe', 0, '+32 015 24 67 02', '+32 0478 521 109', 10),
+(40, '../assets/user-profile-images/emma-gellens.png', 'Emma', 'Gellens', 'Female', 32, 'Lozenhoekstraat 12', 'Grootlo', 'Hallo ik ben Emma!', 'emma.gellens@gmail.com', '$2y$10$eJhGG7kwSIl5ChQbnmOggOgRWQfcZZ2nCmq/W15.i8Fs/xS7xnTqe', 0, '+32 015 24 68 76', '+32 0477 892 162', 10),
+(41, '../assets/user-profile-images/default-profile-image.png', 'Wouter', 'Van Heusden', 'Male', 32, 'Kleistraat 2', 'Heist-op-den-Berg', 'Hallo ik ben Wouter!', 'wouter.vanheusden@gmail.com', '$2y$10$x0F/PYluKB6lg7cW3OlxWOGZwKWBw8DNpXwo3/DAEB.A5KVvMAc8q', 0, '+32 015 24 68 32', '+32 0477 744 162', 10),
+(42, '../assets/user-profile-images/default-profile-image.png', 'Joeri', 'Dekinck', 'Male', 31, 'Bergstraat 23', 'Heist-op-den-Berg', 'Hallo ik ben Joeri!', 'joeri.dekinck@gmail.com', '$2y$10$nkEtIKQSyolYZbdB2q9.heQIKZH1MXZ7kt.9KNrOCfmsoI1aZ9I/e', 0, '+32 0477 893 213', '+32 015 24 78 32', 100);
 
 -- --------------------------------------------------------
 
@@ -879,34 +887,28 @@ ALTER TABLE `tbl_booking`
   ADD PRIMARY KEY (`booking_id`);
 
 --
--- Indexes for table `tbl_booking_dates`
+-- Indexes for table `tbl_booking_child`
 --
-ALTER TABLE `tbl_booking_dates`
+ALTER TABLE `tbl_booking_child`
+  ADD PRIMARY KEY (`booking_child_id`);
+
+--
+-- Indexes for table `tbl_booking_date`
+--
+ALTER TABLE `tbl_booking_date`
   ADD PRIMARY KEY (`booking_date_id`);
+
+--
+-- Indexes for table `tbl_booking_service`
+--
+ALTER TABLE `tbl_booking_service`
+  ADD PRIMARY KEY (`booking_service_id`);
 
 --
 -- Indexes for table `tbl_child`
 --
 ALTER TABLE `tbl_child`
   ADD PRIMARY KEY (`child_id`);
-
---
--- Indexes for table `tbl_facebook`
---
-ALTER TABLE `tbl_facebook`
-  ADD PRIMARY KEY (`facebook_id`);
-
---
--- Indexes for table `tbl_favorite_advert`
---
-ALTER TABLE `tbl_favorite_advert`
-  ADD PRIMARY KEY (`favorite_advert_id`);
-
---
--- Indexes for table `tbl_friend`
---
-ALTER TABLE `tbl_friend`
-  ADD PRIMARY KEY (`friend_id`);
 
 --
 -- Indexes for table `tbl_notifications`
@@ -931,6 +933,12 @@ ALTER TABLE `tbl_school`
 --
 ALTER TABLE `tbl_service`
   ADD PRIMARY KEY (`service_id`);
+
+--
+-- Indexes for table `tbl_service_price`
+--
+ALTER TABLE `tbl_service_price`
+  ADD PRIMARY KEY (`service_price_id`);
 
 --
 -- Indexes for table `tbl_upvote`
@@ -963,37 +971,32 @@ ALTER TABLE `tbl_advert`
 -- AUTO_INCREMENT for table `tbl_availability`
 --
 ALTER TABLE `tbl_availability`
-  MODIFY `availability_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=120;
+  MODIFY `availability_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=122;
 --
 -- AUTO_INCREMENT for table `tbl_booking`
 --
 ALTER TABLE `tbl_booking`
-  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `tbl_booking_dates`
+-- AUTO_INCREMENT for table `tbl_booking_child`
 --
-ALTER TABLE `tbl_booking_dates`
-  MODIFY `booking_date_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+ALTER TABLE `tbl_booking_child`
+  MODIFY `booking_child_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_booking_date`
+--
+ALTER TABLE `tbl_booking_date`
+  MODIFY `booking_date_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_booking_service`
+--
+ALTER TABLE `tbl_booking_service`
+  MODIFY `booking_service_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbl_child`
 --
 ALTER TABLE `tbl_child`
   MODIFY `child_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=69;
---
--- AUTO_INCREMENT for table `tbl_facebook`
---
-ALTER TABLE `tbl_facebook`
-  MODIFY `facebook_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `tbl_favorite_advert`
---
-ALTER TABLE `tbl_favorite_advert`
-  MODIFY `favorite_advert_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `tbl_friend`
---
-ALTER TABLE `tbl_friend`
-  MODIFY `friend_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbl_notifications`
 --
@@ -1015,15 +1018,20 @@ ALTER TABLE `tbl_school`
 ALTER TABLE `tbl_service`
   MODIFY `service_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=146;
 --
+-- AUTO_INCREMENT for table `tbl_service_price`
+--
+ALTER TABLE `tbl_service_price`
+  MODIFY `service_price_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
 -- AUTO_INCREMENT for table `tbl_upvote`
 --
 ALTER TABLE `tbl_upvote`
-  MODIFY `upvote_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `upvote_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=42;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT for table `tbl_user_child`
 --
