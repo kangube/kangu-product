@@ -25,6 +25,9 @@
 @import 'partials/timepicker';
 @import 'partials/availability-calendar';
 
+// Importing all error-pages
+@import 'error-pages/404';
+
 // Importing all pages
 @import 'pages/promotional';
 @import 'pages/registration';

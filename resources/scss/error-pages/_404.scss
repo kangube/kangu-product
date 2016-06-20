@@ -1,0 +1,40 @@
+// Styling of the 404 error page
+
+.full-page-container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	background: url(../assets/components/pattern-tile-alt.png) repeat;
+}
+
+.error-outer-container {
+	@include grid-row;
+	text-align: center;
+	justify-content: center;
+	align-self: center;
+	background-color: $light-grey;
+	border-radius: 10px;
+	padding: 60px;
+
+	.error-inner-container {
+		@include grid-column(12);
+		display: block;
+
+		.error-header {
+			@include font($header-font-family, regular, regular, 125, 125, rgba($text-dark-grey, 0.6));
+			text-align: center;
+			margin-bottom: 30px;
+		}
+
+		.error-subheader {
+			@include font($header-font-family, regular, regular, 16, 16, rgba($text-dark-grey, 0.6));
+			text-align: center;
+			margin-bottom: 40px;
+		}
+
+		.error-link-button {
+			@include button($light-red, 3px);
+			text-decoration: none;
+		}
+	}
+}
